@@ -1,0 +1,105 @@
+{
+   "index_patterns": [".arcanna-jobs",".arcanna_jobs"],
+   "aliases" : { },
+    "mappings" : {
+      "doc" : {
+        "properties" : {
+          "createdAt" : {
+            "type" : "long"
+          },
+		  "batch_size":{
+			"type":"long"
+		  },
+		  "train_interval":{
+				"type": "date_range", 
+				"format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+		  },
+		  
+		  "execution_interval":{
+			"type": "date_range", 
+			"format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+		  },
+		  "last_batch_timestamp":{
+		     "type":"date"
+		  },
+          "indexData" : {
+            "properties" : {
+              "fields" : {
+                "properties" : {
+                  "field" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "newName" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "type" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  }
+                }
+              },
+              "index" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "type" : "keyword",
+                    "ignore_above" : 256
+                  }
+                }
+              }
+            }
+          },
+          "jobName" : {
+            "type" : "text",
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword",
+                "ignore_above" : 256
+              }
+            }
+          },
+          "jobStatus" : {
+            "type" : "text",
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword",
+                "ignore_above" : 256
+              }
+            }
+          },
+          "trainingStatus" : {
+            "type" : "text",
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword",
+                "ignore_above" : 256
+              }
+            }
+          }
+        }
+      }
+    },
+    "settings" : {
+      "index" : {
+        "number_of_shards" : "1",
+        "number_of_replicas" : "2"
+      }
+    }
+}
