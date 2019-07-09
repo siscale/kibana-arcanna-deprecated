@@ -1,0 +1,32 @@
+
+<div class="euiPage" ng-controller="listJobsController as ctrl">
+    <div class="euiPageBody">
+        <div class="euiPageHeader euiPageHeader--responsive">
+            <div class="euiPageHeaderSection">
+                <h1 class="euiTitle euiTitle--large">Arcanna</h1>
+            </div>
+            <div class="EuiPageHeaderSection">Automated Root Cause Analysis Neural Network Assisted</div>
+        </div>
+        <div class="euiPanel euiPanel--paddingExtraLarge euiPageContent">
+            <div class="euiPageContentHeader euiPageContentHeader--responsive">
+                <div class="euiPageContentHeaderSection">
+                    <h2 class="euiTitle euiTitle--medium">Job List</h2>
+                </div>
+            </div>
+            <div class="euiPageContentBody">
+                <div class="euiFlexGroup euiFlexGroup--gutterSmall euiFlexGroup--alignItemsCenter euiFlexGroup--directionRowReverse euiFlexGroup--responsive">
+                    <div class="euiFlexItem euiFlexItem--flexGrowZero" style="padding: 1em">
+                        <a class="euiButton euiButton--primary euiButton--fill" href="#/create_job">
+                            <span class="euiButton__content">
+                                <span class="euiButton__text">Create new job</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="euiSpacer euiSpacer--l"></div>
+                <job-list></job-list>
+            </div>
+        </div>
+
+    </div>
+</div>
