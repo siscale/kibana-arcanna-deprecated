@@ -21,7 +21,7 @@ export class TensorflowController {
     try {
       const jobId = req.payload.jobId;
       const body = {
-        token: this.tfEndpointToken,
+        apiToken: this.tfEndpointToken,
         action: 'TRAIN',
         jobId: jobId
       };
@@ -46,7 +46,7 @@ export class TensorflowController {
     try {
       const jobId = req.payload.jobId;
       const body = {
-        token: this.tfEndpointToken,
+        apiToken: this.tfEndpointToken,
         action: 'EVALUATE',
         jobId: jobId
       };
@@ -73,7 +73,7 @@ export class TensorflowController {
     try {
       const jobId = req.payload.jobId;
       const body = {
-        token: this.tfEndpointToken,
+        apiToken: this.tfEndpointToken,
         action: 'PAUSE',
         jobId: jobId
       };
@@ -98,7 +98,7 @@ export class TensorflowController {
     try {
       const jobId = req.payload.jobId;
       const body = {
-        token: this.tfEndpointToken,
+        apiToken: this.tfEndpointToken,
         action: 'STOP',
         jobId: jobId
       };
@@ -122,7 +122,7 @@ export class TensorflowController {
   async healthCheck(req, reply) {
     try {
       const body = {
-        token: this.tfEndpointToken
+        apiToken: this.tfEndpointToken
       };
       const fetch = require('node-fetch');
       fetch(this.tfEndpointUrl +'/api/v1/health_check', {
