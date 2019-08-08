@@ -28,5 +28,5 @@ import './controllers/index';
 
 import './components/index';
 
-// chrome.setRootController('testPlugin', MainController);
+chrome.setRootController('testPlugin', HomepageController);
 
