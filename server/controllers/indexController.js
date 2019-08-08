@@ -9,7 +9,7 @@ export class IndexController {
       jobsIndexType: '_doc'
     };
     this.esClient = new Client({
-      host: server.config().get('elasticsearch.url')
+      host: server.config().get('elasticsearch.hosts')[0]
     });
   }
 
