@@ -11,7 +11,7 @@ export class IndexController {
     console.log(JSON.stringify(server.config()));
     this.esClient = new Client({
   
-      // host: server.config().get('elasticsearch.hosts')[0]
+      host: server.config().get('elasticsearch.hosts')[0]
     });
   }
 
