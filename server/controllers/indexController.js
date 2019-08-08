@@ -8,10 +8,10 @@ export class IndexController {
       jobsIndex: '.arcanna-jobs',
       jobsIndexType: '_doc'
     };
-    console.log(JSON.stringify(server.config()));
+    console.log(JSON.stringify(server.config().get("server.host")));
     this.esClient = new Client({
   
-      host: server.config().get('elasticsearch.hosts')[0]
+      // host: server.config().get('elasticsearch.hosts')[0]
     });
   }
 
