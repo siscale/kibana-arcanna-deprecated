@@ -21,12 +21,14 @@ app.config(stateManagementConfigProvider =>
 );
 
 
-import './services/routes';
-import './services/factories';
+// import './services/routes';
+// import './services/factories';
 
-import './controllers/index';
+// import './controllers/index';
 
-import './components/index';
+// import './components/index';
+
+import { HomepageController } from './controllers/homepage'
 
 chrome.setRootController('testPlugin', HomepageController);
 
