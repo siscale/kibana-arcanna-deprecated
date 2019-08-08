@@ -2,7 +2,7 @@
 import { uiModules } from 'ui/modules';
 
 // import { MainController } from './controllers/main';
-
+import chrome from 'ui/chrome';
 import 'ui/autoload/styles';
 import './less/main.less';
 // import { Main } from './components/main';
