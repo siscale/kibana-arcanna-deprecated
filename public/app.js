@@ -34,21 +34,19 @@ app.config(stateManagementConfigProvider =>
 
 // import './components/index';
 
-import { HomepageController } from './controllers/homepage'
+// import { HomepageController } from './controllers/homepage'
+import { HomepageComponent } from './components/homepage/homepage'
 
 
 function RootController($scope, $element, $http) {
   const domNode = $element[0];
   render(
-    // <H1>Hello?</H1>
     <Il8nProvider>
-      <HomepageController/>
-      {/* <H2>Hello2?</H2>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={HomepageController}></Route>
+          <Route exact path="/" component={HomepageComponent}></Route>
         </Switch>
-      </BrowserRouter> */}
+      </BrowserRouter>
     </Il8nProvider>,
     domNode
   ),
