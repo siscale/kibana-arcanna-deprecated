@@ -41,12 +41,7 @@ function RootController($scope, $element, $http) {
   const domNode = $element[0];
   render(
     <Il8nProvider>
-      {/* <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={HomepageComponent}></Route>
-        </Switch>
-      </BrowserRouter> */}
-      <Main title="test-plugin" httpClient={$http} />
+      <h1>???????????</h1>
     
     </Il8nProvider>,
     domNode
