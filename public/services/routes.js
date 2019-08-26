@@ -13,7 +13,7 @@ import homepageTemplate from '../templates/index.html';
 routes.enable();
 
 routes
-  .when('', {
+  .when('/', {
     template: homepageTemplate,
     controller:'homepageController',
     controllerAs: 'ctrl'
