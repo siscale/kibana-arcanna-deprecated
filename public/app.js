@@ -32,12 +32,8 @@ import { Main } from './components/test/test'
 
 function RootController($scope, $element, $http) {
   const domNode = $element[0];
-  console.log("fk this framework from the rootController!");
   render(
-    <Il8nProvider>
-      <Main title="hahahah"></Main>
-    
-    </Il8nProvider>,
+    <h1>?????????</h1>,
     domNode
   ),
   // unmount react on controller destroy
