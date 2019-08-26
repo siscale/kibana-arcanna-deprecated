@@ -28,39 +28,7 @@ export default function (kibana) {
     },
 
     init(server, options) { // eslint-disable-line no-unused-vars
-      const xpackMainPlugin = server.plugins.xpack_main;
-      if (xpackMainPlugin) {
-        const featureId = 'arcanna';
-
-        xpackMainPlugin.registerFeature({
-          id: featureId,
-          name: i18n.translate('arcanna.featureRegistry.featureName', {
-            defaultMessage: 'arcanna',
-          }),
-          navLinkId: featureId,
-          icon: 'questionInCircle',
-          app: [featureId, 'kibana'],
-          catalogue: [],
-          privileges: {
-            all: {
-              api: [],
-              savedObject: {
-                all: [],
-                read: [],
-              },
-              ui: ['show'],
-            },
-            read: {
-              api: [],
-              savedObject: {
-                all: [],
-                read: [],
-              },
-              ui: ['show'],
-            },
-          },
-        });
-      }
+      
 
       // Add server routes and initialize the plugin here
       // console.log(JSON.stringify(server.config().get()));
