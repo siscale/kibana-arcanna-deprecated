@@ -32,6 +32,7 @@ import { Main } from './components/test/test'
 
 function RootController($scope, $element, $http) {
   const domNode = $element[0];
+  console.log("fk this framework from the rootController!");
   render(
     <Il8nProvider>
       <Main title="hahahah"></Main>
@@ -46,7 +47,6 @@ function RootController($scope, $element, $http) {
 
 }
 
-console.log("fk this framework!");
 
 chrome.setRootController('arcanna', RootController);
 
