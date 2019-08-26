@@ -43,7 +43,7 @@ function RootController($scope, $element, $http) {
     <Il8nProvider>
       <BrowserRouter>
         <Switch>
-          <Route path="/" component={HomepageController}></Route>
+          <Route exact path="/" component={HomepageController}></Route>
         </Switch>
       </BrowserRouter>
     </Il8nProvider>,
@@ -53,6 +53,7 @@ function RootController($scope, $element, $http) {
   $scope.$on('$destroy', () => {
     unmountComponentAtNode(domNode);
   });
+
 }
 
 
