@@ -25,48 +25,8 @@ export class Main extends React.Component {
     // const { httpClient } = this.props;
   }
   render() {
-    const { title } = this.props;
     return (
-      <EuiPage>
-        <EuiPageBody>
-          <EuiPageHeader>
-            <EuiTitle size="l">
-              <h1>
-                <FormattedMessage
-                  id="testPlugin.helloWorldText"
-                  defaultMessage="{title} Hello World!"
-                  values={{ title }}
-                />
-              </h1>
-            </EuiTitle>
-          </EuiPageHeader>
-          <EuiPageContent>
-            <EuiPageContentHeader>
-              <EuiTitle>
-                <h2>
-                  <FormattedMessage
-                    id="testPlugin.congratulationsTitle"
-                    defaultMessage="Congratulations"
-                  />
-                </h2>
-              </EuiTitle>
-            </EuiPageContentHeader>
-            <EuiPageContentBody>
-              <EuiText>
-                <h3>
-                  <FormattedMessage
-                    id="testPlugin.congratulationsText"
-                    defaultMessage="You have successfully created your first Kibana Plugin!"
-                  />
-                </h3>
-                <p>
-                  
-                </p>
-              </EuiText>
-            </EuiPageContentBody>
-          </EuiPageContent>
-        </EuiPageBody>
-      </EuiPage>
+      <h1>Mic check 1 2</h1>
     );
   }
 }

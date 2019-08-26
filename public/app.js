@@ -33,7 +33,7 @@ import { Main } from './components/test/test'
 function RootController($scope, $element, $http) {
   const domNode = $element[0];
   render(
-    <h1>?????????</h1>,
+    <Main></Main>,
     domNode
   ),
   // unmount react on controller destroy
