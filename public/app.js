@@ -27,7 +27,7 @@ app.config(stateManagementConfigProvider =>
 // import './components/index';
 
 // import { HomepageController } from './controllers/homepage'
-import { HomepageComponent } from './components/homepage/homepage'
+// import { HomepageComponent } from './components/homepage/homepage'
 import { Main } from './components/test'
 
 function RootController($scope, $element, $http) {
@@ -47,5 +47,5 @@ function RootController($scope, $element, $http) {
 }
 
 
-chrome.setRootController('testPlugin', RootController);
+chrome.setRootController('arcanna', RootController);
 
