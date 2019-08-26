@@ -4,7 +4,7 @@ import { existsSync } from 'fs';
 
 export default function (kibana) {
   return new kibana.Plugin({
-    require: ['elasticsearch'],
+    require: ['elasticsearch', 'kibana'],
     name: 'arcanna',
     uiExports: {
       app: {
