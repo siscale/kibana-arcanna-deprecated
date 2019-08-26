@@ -11,7 +11,7 @@ export default function (kibana) {
         title: 'Arcanna',
         description: 'An awesome Kibana plugin',
         icon: 'plugins/arcanna/img/logo.png',
-        main: 'plugins/arcanna/app',
+        main: 'plugins/kibana-arcanna/app',
       },
       hacks: [],
       styleSheetPaths: [resolve(__dirname, 'public/app.scss'), resolve(__dirname, 'public/app.css')].find(p => existsSync(p)),
