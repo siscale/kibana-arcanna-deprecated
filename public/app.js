@@ -42,11 +42,12 @@ function RootController($scope, $element, $http) {
   const domNode = $element[0];
   render(
     <Il8nProvider>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Switch>
           <Route exact path="/" component={HomepageComponent}></Route>
         </Switch>
-      </BrowserRouter>
+      </BrowserRouter> */}
+      <HomepageComponent></HomepageComponent>
     </Il8nProvider>,
     domNode
   ),
