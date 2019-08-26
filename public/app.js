@@ -36,7 +36,7 @@ app.config(stateManagementConfigProvider =>
 
 // import { HomepageController } from './controllers/homepage'
 import { HomepageComponent } from './components/homepage/homepage'
-
+import { Main } from './components/test'
 
 function RootController($scope, $element, $http) {
   const domNode = $element[0];
@@ -47,7 +47,9 @@ function RootController($scope, $element, $http) {
           <Route exact path="/" component={HomepageComponent}></Route>
         </Switch>
       </BrowserRouter> */}
-      <HomepageComponent></HomepageComponent>
+      <HomepageComponent/>
+      <Main title="test-plugin" httpClient={$http} />
+    
     </Il8nProvider>,
     domNode
   ),
