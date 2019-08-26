@@ -23,9 +23,6 @@ export class Main extends React.Component {
        manage state and update your UI than this.
     */
     const { httpClient } = this.props;
-    httpClient.get('../api/test-plugin/example').then((resp) => {
-      this.setState({ time: resp.data.time });
-    });
   }
   render() {
     const { title } = this.props;
@@ -63,11 +60,7 @@ export class Main extends React.Component {
                   />
                 </h3>
                 <p>
-                  <FormattedMessage
-                    id="testPlugin.serverTimeText"
-                    defaultMessage="The server time (via API call) is {time}"
-                    values={{ time: this.state.time || 'NO API CALL YET' }}
-                  />
+                  
                 </p>
               </EuiText>
             </EuiPageContentBody>
