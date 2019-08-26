@@ -47,7 +47,6 @@ function RootController($scope, $element, $http) {
           <Route exact path="/" component={HomepageComponent}></Route>
         </Switch>
       </BrowserRouter> */}
-      <HomepageComponent/>
       <Main title="test-plugin" httpClient={$http} />
     
     </Il8nProvider>,
