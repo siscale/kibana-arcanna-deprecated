@@ -40,7 +40,7 @@ import { HomepageController } from './controllers/homepage'
 function RootController($scope, $element, $http) {
   const domNode = $element[0];
   render(
-    <H1>Hello?</H1>
+    // <H1>Hello?</H1>
     <Il8nProvider>
       <H2>Hello2?</H2>
       <BrowserRouter>
