@@ -42,12 +42,13 @@ function RootController($scope, $element, $http) {
   render(
     // <H1>Hello?</H1>
     <Il8nProvider>
-      <H2>Hello2?</H2>
+      <HomepageController/>
+      {/* <H2>Hello2?</H2>
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={HomepageController}></Route>
         </Switch>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </Il8nProvider>,
     domNode
   ),
