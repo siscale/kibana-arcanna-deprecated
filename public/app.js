@@ -28,7 +28,7 @@ app.config(stateManagementConfigProvider =>
 
 // import { HomepageController } from './controllers/homepage'
 import { HomepageComponent } from './components/homepage/homepage'
-import { Main } from './components/test/test'
+import { Main } from './components/test'
 
 function RootController($scope, $element, $http) {
   const domNode = $element[0];
