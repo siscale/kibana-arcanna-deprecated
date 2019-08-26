@@ -1,8 +1,10 @@
 import exampleRoute from './server/routes/backend';
+import { resolve } from 'path';
+import { existsSync } from 'fs';
 
 export default function (kibana) {
   return new kibana.Plugin({
-    require: ['elasticsearch', 'kibana'],
+    require: ['elasticsearch'],
     name: 'arcanna',
     uiExports: {
       app: {
@@ -12,7 +14,7 @@ export default function (kibana) {
         main: 'plugins/arcanna/app',
       },
       hacks: [],
-      styleSheetPaths: require('path').resolve(__dirname, 'public/app.scss'),
+      styleSheetPaths: [resolve(__dirname, 'public/app.scss'), resolve(__dirname, 'public/app.css')].find(p => existsSync(p)),
     },
 
     config(Joi) {
@@ -26,6 +28,40 @@ export default function (kibana) {
     },
 
     init(server, options) { // eslint-disable-line no-unused-vars
+      const xpackMainPlugin = server.plugins.xpack_main;
+      if (xpackMainPlugin) {
+        const featureId = 'arcanna';
+
+        xpackMainPlugin.registerFeature({
+          id: featureId,
+          name: i18n.translate('arcanna.featureRegistry.featureName', {
+            defaultMessage: 'arcanna',
+          }),
+          navLinkId: featureId,
+          icon: 'questionInCircle',
+          app: [featureId, 'kibana'],
+          catalogue: [],
+          privileges: {
+            all: {
+              api: [],
+              savedObject: {
+                all: [],
+                read: [],
+              },
+              ui: ['show'],
+            },
+            read: {
+              api: [],
+              savedObject: {
+                all: [],
+                read: [],
+              },
+              ui: ['show'],
+            },
+          },
+        });
+      }
+
       // Add server routes and initialize the plugin here
       // console.log(JSON.stringify(server.config().get()));
       exampleRoute(server);
