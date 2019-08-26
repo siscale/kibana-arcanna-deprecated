@@ -34,7 +34,7 @@ function RootController($scope, $element, $http) {
   const domNode = $element[0];
   render(
     <Il8nProvider>
-      <h1>???????????</h1>
+      <Main title="hahahah"></Main>
     
     </Il8nProvider>,
     domNode
