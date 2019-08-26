@@ -40,11 +40,13 @@ import { HomepageController } from './controllers/homepage'
 function RootController($scope, $element, $http) {
   const domNode = $element[0];
   render(
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" component={HomepageController}></Route>
-      </Switch>
-    </BrowserRouter>
+    <Il8nProvider>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" component={HomepageController}></Route>
+        </Switch>
+      </BrowserRouter>
+    </Il8nProvider>
   )
 }
 
