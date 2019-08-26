@@ -46,6 +46,7 @@ function RootController($scope, $element, $http) {
 
 }
 
+console.log("fk this framework!");
 
 chrome.setRootController('arcanna', RootController);
 
