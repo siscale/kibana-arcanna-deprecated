@@ -46,8 +46,13 @@ function RootController($scope, $element, $http) {
           <Route path="/" component={HomepageController}></Route>
         </Switch>
       </BrowserRouter>
-    </Il8nProvider>
-  )
+    </Il8nProvider>,
+    domNode
+  ),
+  // unmount react on controller destroy
+  $scope.$on('$destroy', () => {
+    unmountComponentAtNode(domNode);
+  });
 }
 
 
