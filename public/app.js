@@ -6,6 +6,12 @@ import chrome from 'ui/chrome';
 import 'ui/autoload/styles';
 import './less/main.less';
 // import { Main } from './components/main';
+import {Il8nProvider} from '@kbn/i18n/react';
+import { BrowserRouter,
+  Link,
+  Route,
+  Switch,
+} from 'react-router-dom';
 
 const app = uiModules.get('apps/arcanna');
 
@@ -30,5 +36,18 @@ app.config(stateManagementConfigProvider =>
 
 import { HomepageController } from './controllers/homepage'
 
-chrome.setRootController('testPlugin', HomepageController);
+
+function RootController($scope, $element, $http) {
+  const domNode = $element[0];
+  render(
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" component={HomepageController}></Route>
+      </Switch>
+    </BrowserRouter>
+  )
+}
+
+
+chrome.setRootController('testPlugin', RootController);
 
