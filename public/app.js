@@ -1,16 +1,9 @@
 import React from 'react';
 import { uiModules } from 'ui/modules';
-// import { MainController } from './controllers/main';
 import chrome from 'ui/chrome';
 import 'ui/autoload/styles';
 import './less/main.less';
-// import { Main } from './components/main';
 import {Il8nProvider} from '@kbn/i18n/react';
-import { BrowserRouter,
-  Link,
-  Route,
-  Switch,
-} from 'react-router-dom';
 
 const app = uiModules.get('apps/arcanna');
 
@@ -35,7 +28,7 @@ app.config(stateManagementConfigProvider =>
 
 // import { HomepageController } from './controllers/homepage'
 import { HomepageComponent } from './components/homepage/homepage'
-import { Main } from './components/test'
+import { Main } from './components/test/test'
 
 function RootController($scope, $element, $http) {
   const domNode = $element[0];
