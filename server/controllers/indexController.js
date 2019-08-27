@@ -18,7 +18,7 @@ export class IndexController {
       index: req.params.name
     }).then(function (response) {
       const jsonResp = JSON.stringify(response.metadata.indices);
-      reply.send(jsonResp);
+      return jsonResp;
     });
   }
 
