@@ -14,12 +14,12 @@ import homepageTemplate from '../templates/homepage.html';
 uiRoutes.enable();
 
 uiRoutes
-  .when('/', {
+  .when('#/', {
     template: homepageTemplate,
     controller:'homepageController',
     controllerAs: 'ctrl'
   })
-  .when('/list_jobs', {
+  .when('#/list_jobs', {
     template: listJobsTemplate,
     controller: 'listJobsController',
     controllerAs: 'ctrl'
