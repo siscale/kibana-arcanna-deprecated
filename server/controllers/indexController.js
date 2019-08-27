@@ -18,7 +18,7 @@ export class IndexController {
         metric: 'metadata',
         index: req.params.name
       })
-      jsonResp = JSON.stringify(results.metadata.indices);
+      const jsonResp = JSON.stringify(results.metadata.indices);
       return jsonResp;
     } catch(error) {
       console.error(error);
