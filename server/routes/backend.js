@@ -17,7 +17,7 @@ export default function (server) {
     path: '/api/arcanna/list_jobs',
     method: 'GET',
     handler(req, reply) {
-      return indexCtrl.getJobList(req, reply);
+      indexCtrl.getJobList(req, reply);
     }
   });
 
