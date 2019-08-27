@@ -47,5 +47,5 @@ import { HomepageController } from './controllers/homepage'
 // }
 
 
-chrome.setRootController('arcanna', HomepageController);
+chrome.setRootController('homepageController', HomepageController);
 
