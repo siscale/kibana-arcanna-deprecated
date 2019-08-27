@@ -8,7 +8,7 @@ export default function (server) {
     path: '/api/arcanna/list_indices',
     method: 'GET',
     handler(req, reply) {
-      indexCtrl.listIndices(req, reply);
+      return indexCtrl.listIndices(req, reply);
     }
   });
 
