@@ -10,8 +10,6 @@ import feedbackTemplate from '../templates/feedback.html';
 import feedbackNextTemplate from '../templates/feedback_next.html';
 import homepageTemplate from '../templates/homepage.html';
 
-routes.enable();
-
 routes
   .when('/', {
     template: homepageTemplate,
@@ -48,3 +46,5 @@ routes
     controller: 'feedbackNextController',
     controllerAs: 'ctrl'
   });
+
+  routes.enable();
