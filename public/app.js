@@ -46,7 +46,7 @@ import { HomepageController } from './controllers/homepage'
 
 // }
 
-import homepageTemplate from '../templates/homepage.html';
+import homepageTemplate from './templates/homepage.html';
 
 
 chrome.setRootController('homepageController', HomepageController);
