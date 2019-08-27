@@ -19,6 +19,11 @@ routes
     controller:'homepageController',
     controllerAs: 'ctrl'
   })
+  .when('/homepage', {
+    template: homepageTemplate,
+    controller:'homepageController',
+    controllerAs: 'ctrl'
+  })
   .when('/list_jobs', {
     template: listJobsTemplate,
     controller: 'listJobsController',
