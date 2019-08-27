@@ -48,4 +48,9 @@ routes
     template: feedbackNextTemplate,
     controller: 'feedbackNextController',
     controllerAs: 'ctrl'
+  })
+  .otherwise({
+    template: homepageTemplate,
+    controller:'homepageController',
+    controllerAs: 'ctrl'
   });
