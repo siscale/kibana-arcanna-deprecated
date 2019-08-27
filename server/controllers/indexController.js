@@ -83,10 +83,10 @@ export class IndexController {
         jobsResults.push(source);
       });
     
-      reply(jobsResults);
+      reply.send(jobsResults);
     } catch(err) {
       console.error(err);
-      reply({error: err});
+      reply.send({error: err});
     }
 
   }
