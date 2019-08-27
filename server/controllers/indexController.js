@@ -70,6 +70,14 @@ export class IndexController {
 
   async getJobList(req, reply) {
     const self = this;
+    console.log("json req");
+    console.log(JSON.stringify(req));
+    console.log("json repl");
+    console.log(JSON.stringify(reply));
+    console.log("raw req");
+    console.log(req);
+    console.log("raw repl");
+    console.log(reply);
     try {
       const rawSearchRes = await self.esClient.search({
         index: self.settings.jobsIndex
