@@ -28,7 +28,7 @@ import './controllers/index';
 import './services/routes';
 
 
-// import { HomepageController } from './controllers/homepage'
+import { HomepageController } from './controllers/homepage'
 // import { HomepageComponent } from './components/homepage/homepage'
 // import { Main } from './components/test/test'
 
@@ -47,5 +47,5 @@ import './services/routes';
 // }
 
 
-// chrome.setRootController('arcanna', RootController);
+chrome.setRootController('arcanna', HomepageController);
 
