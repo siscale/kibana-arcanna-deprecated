@@ -8,7 +8,7 @@ export class IndexController {
       jobsIndex: '.arcanna-jobs',
       jobsIndexType: '_doc'
     };
-    this.esClient = server.plugins.elasticsearch;
+    this.esClient = server.plugins.elasticsearch.getCluster('data');
   }
 
   async listIndices(req, reply) {
@@ -70,13 +70,21 @@ export class IndexController {
 
   async getJobList(req, reply) {
     const self = this;
+    const { callWithRequest } = self.esClient;
     try {
       // console.log("raw repl");
       // console.log(reply);
       // return;
-      const rawSearchRes = await self.esClient.search({
+      
+      // const rawSearchRes = await self.esClient.search({
+      //   index: self.settings.jobsIndex
+      // });
+      const rawSearchRes = await callWithRequest(req, 'search', {
         index: self.settings.jobsIndex
       });
+      // const rawSearchRes = await self.esClient.search({
+      //   index: self.settings.jobsIndex
+      // });
 
       const jobsResults = [];
 
