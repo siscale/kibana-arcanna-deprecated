@@ -13,13 +13,18 @@ export class IndexController {
 
   async listIndices(req, reply) {
     const { callWithRequest } = this.esClient;
-    callWithRequest(req, 'cluster.state', {
-      metric: 'metadata',
-      index: req.params.name
-    }).then(function (response) {
-      const jsonResp = JSON.stringify(response.metadata.indices);
+    try {
+      const results = await callWithRequest(req, 'cluster.state', {
+        metric: 'metadata',
+        index: req.params.name
+      })
+      jsonResp = JSON.stringify(results.metadata.indices);
       return jsonResp;
-    });
+    } catch(error) {
+      console.error(error);
+      return {error: error};
+    }
+    
   }
 
   async putJob(req, reply) {
