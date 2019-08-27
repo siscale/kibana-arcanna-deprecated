@@ -54,6 +54,12 @@ routes
     controller: 'feedbackNextController',
     controllerAs: 'ctrl'
   })
+  .when('/', {
+    redirectTo: '/homepage'
+  })
+  .when('', {
+    redirectTo: '/homepage'
+  })
   .otherwise({
     template: homepageTemplate,
     controller:'homepageController',
