@@ -19,7 +19,7 @@ routes
   //   controller:'homepageController',
   //   controllerAs: 'ctrl'
   // })
-  .when('/homepage', {
+  .when('/home', {
     template: homepageTemplate,
     controller:'homepageController',
     controllerAs: 'ctrl'
@@ -55,10 +55,10 @@ routes
     controllerAs: 'ctrl'
   })
   .when('/', {
-    redirectTo: '/homepage'
+    redirectTo: '/home'
   })
   .when('', {
-    redirectTo: '/homepage'
+    redirectTo: '/home'
   })
   .otherwise({
     template: homepageTemplate,
