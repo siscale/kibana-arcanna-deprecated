@@ -71,9 +71,9 @@ export class IndexController {
   async getJobList(req, reply) {
     const self = this;
     try {
-      console.log("raw repl");
-      console.log(reply);
-      return;
+      // console.log("raw repl");
+      // console.log(reply);
+      // return;
       const rawSearchRes = await self.esClient.search({
         index: self.settings.jobsIndex
       });
@@ -86,10 +86,10 @@ export class IndexController {
         jobsResults.push(source);
       });
     
-      reply.send(jobsResults);
+      return jobsResults;
     } catch(err) {
       console.error(err);
-      reply.send({error: err});
+      return {error: err};
     }
 
   }
