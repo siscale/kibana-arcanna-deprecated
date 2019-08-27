@@ -19,13 +19,14 @@ app.config(stateManagementConfigProvider =>
   stateManagementConfigProvider.disable()
 );
 
-
-import './services/routes';
 import './services/factories';
 
 import './controllers/index';
 
 import './components/index';
+
+import './services/routes';
+
 
 // import { HomepageController } from './controllers/homepage'
 // import { HomepageComponent } from './components/homepage/homepage'

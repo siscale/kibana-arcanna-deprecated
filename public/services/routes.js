@@ -8,7 +8,7 @@ import createJobMappingsTemplate from '../templates/create_job_mappings.html';
 import createJobSettingsTemplate from '../templates/create_job_settings.html';
 import feedbackTemplate from '../templates/feedback.html';
 import feedbackNextTemplate from '../templates/feedback_next.html';
-import homepageTemplate from '../templates/index.html';
+import homepageTemplate from '../templates/homepage.html';
 
 routes.enable();
 
