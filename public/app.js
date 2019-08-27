@@ -24,7 +24,9 @@ import './services/factories';
 import './controllers/index';
 import './services/routes';
 
-window.location.href = '#/list_jobs';
+await sleep(2000);
+
+window.location.href = '#/';
 
 import { HomepageController } from './controllers/homepage'
 import homepageTemplate from './templates/homepage.html';
