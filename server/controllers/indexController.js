@@ -73,7 +73,7 @@ export class IndexController {
     try {
       console.log("raw repl");
       console.log(reply);
-      return
+      return;
       const rawSearchRes = await self.esClient.search({
         index: self.settings.jobsIndex
       });
