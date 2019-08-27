@@ -20,34 +20,12 @@ app.config(stateManagementConfigProvider =>
 );
 
 import './components/index';
-
 import './services/factories';
-
 import './controllers/index';
-
 import './services/routes';
 
 
 import { HomepageController } from './controllers/homepage'
-// import { HomepageComponent } from './components/homepage/homepage'
-// import { Main } from './components/test/test'
-
-// function RootController($scope, $element, $http) {
-//   const domNode = $element[0];
-//   render(
-
-//     <Main></Main>,
-//     domNode
-//   ),
-//   // unmount react on controller destroy
-//   $scope.$on('$destroy', () => {
-//     unmountComponentAtNode(domNode);
-//   });
-
-// }
-
 import homepageTemplate from './templates/homepage.html';
-
-
-chrome.setRootController('homepageController', HomepageController);
-chrome.setRootTemplate(homepageTemplate);
+// chrome.setRootController('homepageController', HomepageController);
+// chrome.setRootTemplate(homepageTemplate);
