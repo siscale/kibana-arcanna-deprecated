@@ -12,7 +12,7 @@ export class IndexController {
   }
 
   async listIndices(req, reply) {
-    const { callWithRequest } = this.server.plugins.elasticsearch.getCluster('data');
+    const { callWithRequest } = this.esClient;
     callWithRequest(req, 'cluster.state', {
       metric: 'metadata',
       index: req.params.name
@@ -24,8 +24,8 @@ export class IndexController {
 
   async putJob(req, reply) {
     const self = this;
+    const { callWithRequest } = this.esClient;
     const jobInfo = req.payload;
-
     try {
       const body = {
         jobName: jobInfo.jobName,
@@ -50,18 +50,23 @@ export class IndexController {
         })
       });
 
-
-      await self.esClient.index({
+      await callWithRequest(req, 'index', {
         index: self.settings.jobsIndex,
         type: '_doc',
         body: body,
         refresh: "true"
       });
-      reply({success: true});
+      // await self.esClient.index({
+      //   index: self.settings.jobsIndex,
+      //   type: '_doc',
+      //   body: body,
+      //   refresh: "true"
+      // });
+      return {success: true};
 
     } catch(error) {
       console.error(error);
-      reply({error: error})
+      return {error: error};
     }
     // } catch(error) {
     //   reply(error);
@@ -72,19 +77,9 @@ export class IndexController {
     const self = this;
     const { callWithRequest } = self.esClient;
     try {
-      // console.log("raw repl");
-      // console.log(reply);
-      // return;
-      
-      // const rawSearchRes = await self.esClient.search({
-      //   index: self.settings.jobsIndex
-      // });
       const rawSearchRes = await callWithRequest(req, 'search', {
         index: self.settings.jobsIndex
       });
-      // const rawSearchRes = await self.esClient.search({
-      //   index: self.settings.jobsIndex
-      // });
 
       const jobsResults = [];
 
@@ -104,9 +99,10 @@ export class IndexController {
 
   async getFeedbackBatch(req, reply) {
     const self = this;
+    const { callWithRequest } = self.esClient;
     try {
       const indexList = req.payload.indexList;
-      const feedbackGivenRes = await self.esClient.search({
+      const feedbackGivenRes = await callWithRequest(req, 'search', {
         index: indexList,
         body: {
           size: 1,
@@ -117,9 +113,20 @@ export class IndexController {
           }
         }
       });
+      // const feedbackGivenRes = await self.esClient.search({
+      //   index: indexList,
+      //   body: {
+      //     size: 1,
+      //     query: {
+      //       match: {
+      //         "arcanna.arcanna_feedback_given": false
+      //       }
+      //     }
+      //   }
+      // });
       if(feedbackGivenRes.hits.hits.length > 0) {
         const incidentId = feedbackGivenRes.hits.hits[0]._source.arcanna.arcanna_incident_id;
-        const incidentRes = await self.esClient.search({
+        const incidentRes = await callWithRequest(req, 'search', {
           index: indexList,
           body: {
             query: {
@@ -129,6 +136,16 @@ export class IndexController {
             }
           }
         });
+        // const incidentRes = await self.esClient.search({
+        //   index: indexList,
+        //   body: {
+        //     query: {
+        //       match: {
+        //         "arcanna.arcanna_incident_id": incidentId
+        //       }
+        //     }
+        //   }
+        // });
 
         let documents = [];
         incidentRes.hits.hits.forEach(hit => {
@@ -136,21 +153,22 @@ export class IndexController {
           documents.push({_id: hit._id, arcanna: source.arcanna, hit: hit});
 
         });
-        reply({incident: documents});
+        return {incident: documents};
 
       } else {
-        reply({incident: []});
+        return {incident: []};
       }
 
 
     } catch(err) {
       console.error(err);
-      reply({error: err});
+      return {error: err};
     }
   }
 
   async giveFeedback(req, reply) {
     const self = this;
+    const { callWithRequest } = self.esClient;
     try {
       console.log(JSON.stringify(req.payload));
       const docList = req.payload.events;
@@ -168,15 +186,15 @@ export class IndexController {
           }
         });
       });
-      const resp = await self.esClient.bulk({
+      const resp = await callWithRequest(req, 'bulk', {
         body: body,
         refresh: "true"
-      })
+      });
       console.log(JSON.stringify(resp));
-      reply({success: true});
+      return {success: true};
     } catch(err) {
       console.error(err);
-      reply({error: err});
+      return {error: err};
     }
   }
   // async getIndexMappings(req, reply) {
