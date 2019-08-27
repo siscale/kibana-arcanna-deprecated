@@ -13,6 +13,11 @@ import homepageTemplate from '../templates/index.html';
 routes.enable();
 
 routes
+  .when('/home', {
+    template: homepageTemplate,
+    controller:'homepageController',
+    controllerAs: 'ctrl'
+  })
   .when('/list_jobs', {
     template: listJobsTemplate,
     controller: 'listJobsController',
@@ -41,10 +46,5 @@ routes
   .when('/feedback_next', {
     template: feedbackNextTemplate,
     controller: 'feedbackNextController',
-    controllerAs: 'ctrl'
-  })
-  .otherwise({
-    template: homepageTemplate,
-    controller:'homepageController',
     controllerAs: 'ctrl'
   });
