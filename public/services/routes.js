@@ -1,6 +1,6 @@
 
 
-import routes from 'ui/routes';
+import uiRoutes from 'ui/routes';
 
 import listJobsTemplate from '../templates/list_jobs.html';
 import createJobTemplate from '../templates/create_job.html';
@@ -10,7 +10,10 @@ import feedbackTemplate from '../templates/feedback.html';
 import feedbackNextTemplate from '../templates/feedback_next.html';
 import homepageTemplate from '../templates/homepage.html';
 
-routes
+
+uiRoutes.enable();
+
+uiRoutes
   .when('/', {
     template: homepageTemplate,
     controller:'homepageController',
@@ -46,5 +49,3 @@ routes
     controller: 'feedbackNextController',
     controllerAs: 'ctrl'
   });
-
-  routes.enable();
