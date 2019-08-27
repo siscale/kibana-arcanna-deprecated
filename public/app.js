@@ -50,4 +50,4 @@ import homepageTemplate from './templates/homepage.html';
 
 
 chrome.setRootController('homepageController', HomepageController);
-chrome.setRootTemplate('homepageTemplate', homepageTemplate);
+chrome.setRootTemplate(homepageTemplate);
