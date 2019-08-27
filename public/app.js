@@ -24,8 +24,8 @@ import './services/factories';
 import './controllers/index';
 import './services/routes';
 
-setTimeout(() => { window.location.href = '#/'; }, 2000)
-
+// setTimeout(() => { window.location.href = '#/'; }, 2000)
+window.location.href = '#/';
 
 import { HomepageController } from './controllers/homepage'
 import homepageTemplate from './templates/homepage.html';
