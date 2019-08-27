@@ -19,11 +19,11 @@ app.config(stateManagementConfigProvider =>
   stateManagementConfigProvider.disable()
 );
 
+import './components/index';
+
 import './services/factories';
 
 import './controllers/index';
-
-import './components/index';
 
 import './services/routes';
 
