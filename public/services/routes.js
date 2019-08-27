@@ -14,11 +14,11 @@ import homepageTemplate from '../templates/homepage.html';
 routes.enable();
 
 routes
-  .when('/', {
-    template: homepageTemplate,
-    controller:'homepageController',
-    controllerAs: 'ctrl'
-  })
+  // .when('/', {
+  //   template: homepageTemplate,
+  //   controller:'homepageController',
+  //   controllerAs: 'ctrl'
+  // })
   .when('/homepage', {
     template: homepageTemplate,
     controller:'homepageController',
