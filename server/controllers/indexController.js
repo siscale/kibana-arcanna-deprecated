@@ -161,7 +161,7 @@ export class IndexController {
         // });
 
         let documents = [];
-        incidentRes.hits.hits.forEach(hit => {
+        incidentRes.hits.hits.forEach(async hit => {
           const source = hit._source;
           const origDocument = await callWithRequest(req, 'get', {
             index: source.source_index,
