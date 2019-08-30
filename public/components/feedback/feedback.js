@@ -129,42 +129,42 @@ export class FeedbackComponent extends React.Component {
     }
   }
 
-  // renderFeedbackElements = () => {
-  //   const rows = [];
-  //   if(this.state.events.length === 0) {
-  //     this.setState({submitButtonIsDisabled: true})
-  //     return (
-  //       <EuiText>
-  //         <h3>There are not items to give feedback to. Please try again later.</h3>
-  //       </EuiText>
-  //     );
-  //   } else {
-  //     this.setState({submitButtonIsDisabled: false})
-  //     this.state.events.forEach((event) => {
-  //       rows.push(
-  //         <FeedbackEvent
-  //           event={event}
-  //           key={event._id}
-  //           onSwitchChange={this.onSwitchChange}
-  //         />
-  //         // <EuiTableRow>
-  //         //   <EuiTableRowCell>
-  //         //     <EuiText>
-  //         //       <h4>{event._id}</h4>
-  //         //     </EuiText>
-  //         //   </EuiTableRowCell>
-  //         //   <EuiTableRowCell>
-  //         //     <EuiSwitch/>
-  //         //   </EuiTableRowCell>
-  //         //   <EuiTableRowCell>
-  //         //     <EuiBadge>{event.arcanna.arcanna_class}</EuiBadge>
-  //         //   </EuiTableRowCell>
-  //         // </EuiTableRow>
-  //       );
-  //     });
-  //     return rows;
-  //   }
-  // }
+  renderFeedbackElements = () => {
+    const rows = [];
+    if(this.state.events.length === 0) {
+      this.setState({submitButtonIsDisabled: true})
+      return (
+        <EuiText>
+          <h3>There are not items to give feedback to. Please try again later.</h3>
+        </EuiText>
+      );
+    } else {
+      this.setState({submitButtonIsDisabled: false})
+      this.state.events.forEach((event) => {
+        rows.push(
+          <FeedbackEvent
+            event={event}
+            key={event._id}
+            onSwitchChange={this.onSwitchChange}
+          />
+          // <EuiTableRow>
+          //   <EuiTableRowCell>
+          //     <EuiText>
+          //       <h4>{event._id}</h4>
+          //     </EuiText>
+          //   </EuiTableRowCell>
+          //   <EuiTableRowCell>
+          //     <EuiSwitch/>
+          //   </EuiTableRowCell>
+          //   <EuiTableRowCell>
+          //     <EuiBadge>{event.arcanna.arcanna_class}</EuiBadge>
+          //   </EuiTableRowCell>
+          // </EuiTableRow>
+        );
+      });
+      return rows;
+    }
+  }
 
   render() {
     return (
