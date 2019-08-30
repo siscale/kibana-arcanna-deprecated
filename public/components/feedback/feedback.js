@@ -144,14 +144,14 @@ export class FeedbackComponent extends React.Component {
       const events = this.state.events;
       console.log(events);
       events.forEach((event) => {
-        // console.log(event);
-        rows.push(
-          <FeedbackEvent
-            event={event}
-            key={event._id}
-            onSwitchChange={this.onSwitchChange}
-          />
-        )
+        console.log(event);
+        // rows.push(
+        //   <FeedbackEvent
+        //     event={event}
+        //     key={event._id}
+        //     onSwitchChange={this.onSwitchChange}
+        //   />
+        // )
       });
       // this.state.events.forEach((event) => {
       //   rows.push(
