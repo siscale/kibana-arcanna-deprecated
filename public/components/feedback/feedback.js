@@ -132,38 +132,37 @@ export class FeedbackComponent extends React.Component {
   renderFeedbackElements = () => {
     const rows = [];
     if(this.state.events.length === 0) {
-      this.setState({submitButtonIsDisabled: true})
+      // this.setState({submitButtonIsDisabled: true})
       return (
         <EuiText>
           <h3>There are not items to give feedback to. Please try again later.</h3>
         </EuiText>
       );
     } else {
-      this.setState({submitButtonIsDisabled: false})
-      this.state.events.forEach((event) => {
-        rows.push(
-          // <FeedbackEvent
-          //   event={event}
-          //   key={event._id}
-          //   onSwitchChange={this.onSwitchChange}
-          // />
-          <p>Hello!</p>
+      // this.setState({submitButtonIsDisabled: false})
+      // this.state.events.forEach((event) => {
+      //   rows.push(
+      //     <FeedbackEvent
+      //       event={event}
+      //       key={event._id}
+      //       onSwitchChange={this.onSwitchChange}
+      //     />
 
-          // <EuiTableRow>
-          //   <EuiTableRowCell>
-          //     <EuiText>
-          //       <h4>{event._id}</h4>
-          //     </EuiText>
-          //   </EuiTableRowCell>
-          //   <EuiTableRowCell>
-          //     <EuiSwitch/>
-          //   </EuiTableRowCell>
-          //   <EuiTableRowCell>
-          //     <EuiBadge>{event.arcanna.arcanna_class}</EuiBadge>
-          //   </EuiTableRowCell>
-          // </EuiTableRow>
-        );
-      });
+      //     // <EuiTableRow>
+      //     //   <EuiTableRowCell>
+      //     //     <EuiText>
+      //     //       <h4>{event._id}</h4>
+      //     //     </EuiText>
+      //     //   </EuiTableRowCell>
+      //     //   <EuiTableRowCell>
+      //     //     <EuiSwitch/>
+      //     //   </EuiTableRowCell>
+      //     //   <EuiTableRowCell>
+      //     //     <EuiBadge>{event.arcanna.arcanna_class}</EuiBadge>
+      //     //   </EuiTableRowCell>
+      //     // </EuiTableRow>
+      //   );
+      // });
       return rows;
     }
   }
@@ -175,14 +174,13 @@ export class FeedbackComponent extends React.Component {
           <EuiFlexItem>
             <EuiFlexGroup direction="rowReverse">
               <EuiFlexItem grow={false} style={{paddingRight:30}}>
-                {/* <EuiButton fill onClick={this.onSubmit} isLoading={this.submitButtonIsLoading}>
+                <EuiButton fill onClick={this.onSubmit} isLoading={this.submitButtonIsLoading}>
                   Submit
-                </EuiButton> */}
-                <p>ASD</p>
+                </EuiButton>
               </EuiFlexItem>
             </EuiFlexGroup>
           </EuiFlexItem>
-          {/* <EuiFlexItem>
+          <EuiFlexItem>
             <EuiFlexGrid>
               <EuiFlexItem>
                 <EuiTable>
@@ -194,7 +192,7 @@ export class FeedbackComponent extends React.Component {
               <EuiFlexItem>
               </EuiFlexItem>
             </EuiFlexGrid>
-          </EuiFlexItem> */}
+          </EuiFlexItem>
         </EuiFlexGroup>  
       </Fragment>
     );
