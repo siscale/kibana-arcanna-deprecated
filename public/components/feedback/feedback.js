@@ -54,7 +54,6 @@ export class FeedbackComponent extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.feedbackJobInformation);
     if (!('jobInformation' in this.props.feedbackJobInformation)) {
       window.location.href = '#/list_jobs';
       return;

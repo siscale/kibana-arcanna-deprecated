@@ -106,9 +106,11 @@ export class IndexController {
     const self = this;
     const { callWithRequest } = self.esClient;
     try {
-      const indexList = req.payload.indexList;
+      const jobId = req.payload.jobId.toLowerCase();
+      const jobIndex = ".arcanna-job-" + jobId;
+
       const feedbackGivenRes = await callWithRequest(req, 'search', {
-        index: indexList,
+        index: jobIndex,
         body: {
           size: 1,
           query: {
