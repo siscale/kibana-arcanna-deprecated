@@ -74,11 +74,11 @@ export class FeedbackComponent extends React.Component {
     }
   }
 
-  render() {
-    return (
-      <Fragment></Fragment>
-    )
-  }
+  // render() {
+  //   return (
+  //     <Fragment></Fragment>
+  //   )
+  // }
 
   // onSubmit = async () => {
   //   const body = {
@@ -166,34 +166,34 @@ export class FeedbackComponent extends React.Component {
   //   }
   // }
 
-  // render() {
-  //   return (
-  //     <Fragment>
-  //       <EuiFlexGroup  direction="column">
-  //         <EuiFlexItem>
-  //           <EuiFlexGroup direction="rowReverse">
-  //             <EuiFlexItem grow={false} style={{paddingRight:30}}>
-  //               <EuiButton fill onClick={this.onSubmit} isLoading={this.submitButtonIsLoading}>
-  //                 Submit
-  //               </EuiButton>
-  //             </EuiFlexItem>
-  //           </EuiFlexGroup>
-  //         </EuiFlexItem>
-  //         <EuiFlexItem>
-  //           <EuiFlexGrid>
-  //             <EuiFlexItem>
-  //               <EuiTable>
-  //                 <EuiTableBody>
-  //                   {this.renderFeedbackElements()}
-  //                 </EuiTableBody>
-  //               </EuiTable>
-  //             </EuiFlexItem>
-  //             <EuiFlexItem>
-  //             </EuiFlexItem>
-  //           </EuiFlexGrid>
-  //         </EuiFlexItem>
-  //       </EuiFlexGroup>  
-  //     </Fragment>
-  //   );
-  // }
+  render() {
+    return (
+      <Fragment>
+        <EuiFlexGroup  direction="column">
+          <EuiFlexItem>
+            <EuiFlexGroup direction="rowReverse">
+              <EuiFlexItem grow={false} style={{paddingRight:30}}>
+                <EuiButton fill onClick={this.onSubmit} isLoading={this.submitButtonIsLoading}>
+                  Submit
+                </EuiButton>
+              </EuiFlexItem>
+            </EuiFlexGroup>
+          </EuiFlexItem>
+          <EuiFlexItem>
+            <EuiFlexGrid>
+              <EuiFlexItem>
+                <EuiTable>
+                  <EuiTableBody>
+                    {this.renderFeedbackElements()}
+                  </EuiTableBody>
+                </EuiTable>
+              </EuiFlexItem>
+              <EuiFlexItem>
+              </EuiFlexItem>
+            </EuiFlexGrid>
+          </EuiFlexItem>
+        </EuiFlexGroup>  
+      </Fragment>
+    );
+  }
 }
