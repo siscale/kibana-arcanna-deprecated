@@ -80,23 +80,23 @@ export class FeedbackComponent extends React.Component {
   //   )
   // }
 
-  // onSubmit = async () => {
-  //   const body = {
-  //     events: this.state.newStates
-  //   };
-  //   console.log(body);
-  //   this.setState({submitButtonIsLoading: true});
-  //   const resp = await this.genericRequest.request('give_feedback', 'POST', JSON.stringify(body));
-  //   console.log('success' in resp);
-  //   if('error' in resp) {
-  //     console.error(resp.error);
-  //     this.setState({submitButtonIsLoading: false});
-  //   } else {
-  //     console.log(resp);
-  //     window.location.href = '#/feedback_next';
-  //     // this.render();
-  //   }
-  // }
+  onSubmit = async () => {
+    const body = {
+      events: this.state.newStates
+    };
+    console.log(body);
+    this.setState({submitButtonIsLoading: true});
+    const resp = await this.genericRequest.request('give_feedback', 'POST', JSON.stringify(body));
+    console.log('success' in resp);
+    if('error' in resp) {
+      console.error(resp.error);
+      this.setState({submitButtonIsLoading: false});
+    } else {
+      console.log(resp);
+      window.location.href = '#/feedback_next';
+      // this.render();
+    }
+  }
 
   loadData = async () => {
     const self = this;
