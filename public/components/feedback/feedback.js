@@ -187,7 +187,7 @@ export class FeedbackComponent extends React.Component {
     console.log("IN RENDER!!");
     return (
       <Fragment>
-        <EuiFlexGroup  direction="column">
+        {/* <EuiFlexGroup  direction="column">
           <EuiFlexItem>
             <EuiFlexGroup direction="rowReverse">
               <EuiFlexItem grow={false} style={{paddingRight:30}}>
@@ -210,7 +210,7 @@ export class FeedbackComponent extends React.Component {
               </EuiFlexItem>
             </EuiFlexGrid>
           </EuiFlexItem>
-        </EuiFlexGroup>  
+        </EuiFlexGroup>   */}
       </Fragment>
     );
   }
