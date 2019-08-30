@@ -103,29 +103,30 @@ export class FeedbackEvent extends React.Component {
       </EuiFlexGroup>
     );
     return (
-      <EuiFlexGroup>
-        <EuiFlexItem style={{minWidth:500}} grow={false}>
-          <EuiAccordion buttonContent={accordionContent}>
-            <EuiCodeBlock language="json">
-              {this.state.documentContent}
-            </EuiCodeBlock>
-          </EuiAccordion>
-          {/* <EuiText>
-            <h4>{this.state.id}</h4>
-          </EuiText> */}
-        </EuiFlexItem>
-        <EuiFlexItem grow={false}>
-        <EuiSwitch 
-          checked={this.state.status.checked}
-          onChange={this.onChangeSwitch}
-        />
-        </EuiFlexItem>
-        <EuiFlexItem grow={false}>
-          <EuiBadge color={this.state.status.color}>
-            {this.state.status.displayName}
-          </EuiBadge>
-        </EuiFlexItem>
-      </EuiFlexGroup>
+      <p>asd</p>
+      // <EuiFlexGroup>
+      //   <EuiFlexItem style={{minWidth:500}} grow={false}>
+      //     <EuiAccordion buttonContent={accordionContent}>
+      //       <EuiCodeBlock language="json">
+      //         {this.state.documentContent}
+      //       </EuiCodeBlock>
+      //     </EuiAccordion>
+      //     {/* <EuiText>
+      //       <h4>{this.state.id}</h4>
+      //     </EuiText> */}
+      //   </EuiFlexItem>
+      //   <EuiFlexItem grow={false}>
+      //   <EuiSwitch 
+      //     checked={this.state.status.checked}
+      //     onChange={this.onChangeSwitch}
+      //   />
+      //   </EuiFlexItem>
+      //   <EuiFlexItem grow={false}>
+      //     <EuiBadge color={this.state.status.color}>
+      //       {this.state.status.displayName}
+      //     </EuiBadge>
+      //   </EuiFlexItem>
+      // </EuiFlexGroup>
     );
   }
 }
