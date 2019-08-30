@@ -59,7 +59,7 @@ export class FeedbackComponent extends React.Component {
       window.location.href = '#/list_jobs';
       return;
     }
-    this.loadData();
+    // this.loadData();
   }
 
   componentWillUnmount() {
