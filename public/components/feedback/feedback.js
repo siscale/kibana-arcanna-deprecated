@@ -139,6 +139,7 @@ export class FeedbackComponent extends React.Component {
         </EuiText>
       );
     } else {
+      
       // this.setState({submitButtonIsDisabled: false})
       // this.state.events.forEach((event) => {
       //   rows.push(
