@@ -142,7 +142,9 @@ export class FeedbackComponent extends React.Component {
       
       this.setState({submitButtonIsDisabled: false})
       const events = this.state.events;
+      console.log(events);
       events.forEach((event) => {
+        console.log(event);
         rows.push(
           <FeedbackEvent
             event={event}
