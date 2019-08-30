@@ -126,8 +126,7 @@ export class JobList extends React.Component {
 
     if(jobToReturn !== null) {
       this.props.feedbackJobInformation.jobInformation = jobToReturn;
-      console.log(jobToReturn);
-      // window.location.href = '#/feedback';
+      window.location.href = '#/feedback';
     }
     
     // this.props.feedbackJobInformation.jobInformation = 

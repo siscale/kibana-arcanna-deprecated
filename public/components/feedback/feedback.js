@@ -127,7 +127,7 @@ export class FeedbackComponent extends React.Component {
       this.setState({submitButtonIsDisabled: true})
       return (
         <EuiText>
-          <H3>There are not items to give feedback to. Please try again later.</H3>
+          <h3>There are not items to give feedback to. Please try again later.</h3>
         </EuiText>
       );
     } else {
