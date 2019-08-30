@@ -181,7 +181,7 @@ export class FeedbackComponent extends React.Component {
               </EuiFlexItem>
             </EuiFlexGroup>
           </EuiFlexItem>
-          <EuiFlexItem>
+          {/* <EuiFlexItem>
             <EuiFlexGrid>
               <EuiFlexItem>
                 <EuiTable>
@@ -193,7 +193,7 @@ export class FeedbackComponent extends React.Component {
               <EuiFlexItem>
               </EuiFlexItem>
             </EuiFlexGrid>
-          </EuiFlexItem>
+          </EuiFlexItem> */}
         </EuiFlexGroup>  
       </Fragment>
     );
