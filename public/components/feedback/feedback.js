@@ -55,20 +55,20 @@ export class FeedbackComponent extends React.Component {
 
   componentDidMount() {
     console.log(this.props.feedbackJobInformation);
-    if(!('jobInformation' in this.props.feedbackJobInformation)) {
+    if (!('jobInformation' in this.props.feedbackJobInformation)) {
       window.location.href = '#/list_jobs';
       return;
     }
-    // this.loadData();
+    this.loadData();
   }
 
   componentWillUnmount() {
-    
+
   }
 
   onSwitchChange = (indexName, id, status) => {
-    for(let i = 0; i < this.state.newStates.length; i++) {
-      if(this.state.newStates[i].indexName === indexName && this.state.newStates[i].id === id) {
+    for (let i = 0; i < this.state.newStates.length; i++) {
+      if (this.state.newStates[i].indexName === indexName && this.state.newStates[i].id === id) {
         this.state.newStates[i].status = status;
         break;
       }
@@ -99,33 +99,37 @@ export class FeedbackComponent extends React.Component {
   //   }
   // }
 
-  // loadData = async () => {
-  //   const self = this;
-  //   const indexList = []
-  //   this.props.feedbackJobInformation.jobInformation.indexData.forEach( (indexData) => {
-  //     indexList.push(indexData.index);
-  //   });
-    
-  //   const body = { indexList: indexList };
+  loadData = async () => {
+    const self = this;
+    // const indexList = []
 
-  //   const incidentData = await self.genericRequest.request('get_incident', 'POST', JSON.stringify(body));
-  //   if('incident' in incidentData) {
-  //     self.setState({events: incidentData.incident});
-  //     const newStates = [];
-  //     incidentData.incident.forEach((incident) => {
-  //       newStates.push({
-  //         indexName: incident.hit._index,
-  //         status: incident.arcanna.arcanna_class,
-  //         id: incident._id
-  //       });
-  //     });
-  //     self.setState({
-  //       newStates: newStates
-  //     });
-  //   } else {
-  //     console.log("No new incidents to give feedback");
-  //   }
-  // }
+    // this.props.feed
+    // this.props.feedbackJobInformation.jobInformation.indexData.forEach( (indexData) => {
+    // indexList.push(indexData.index);
+    // });
+
+    // const body = { indexList: indexList };
+    const body = { jobId: self.props.feedbackJobInformation.jobInformation._id }
+
+    const incidentData = await self.genericRequest.request('get_incident', 'POST', JSON.stringify(body));
+    console.log(incidentData);
+    // if ('incident' in incidentData) {
+    //   self.setState({ events: incidentData.incident });
+    //   const newStates = [];
+    //   incidentData.incident.forEach((incident) => {
+    //     newStates.push({
+    //       indexName: incident.hit._index,
+    //       status: incident.arcanna.arcanna_class,
+    //       id: incident._id
+    //     });
+    //   });
+    //   self.setState({
+    //     newStates: newStates
+    //   });
+    // } else {
+    //   console.log("No new incidents to give feedback");
+    // }
+  }
 
   // renderFeedbackElements = () => {
   //   const rows = [];
