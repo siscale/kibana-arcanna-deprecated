@@ -175,9 +175,10 @@ export class FeedbackComponent extends React.Component {
           <EuiFlexItem>
             <EuiFlexGroup direction="rowReverse">
               <EuiFlexItem grow={false} style={{paddingRight:30}}>
-                <EuiButton fill onClick={this.onSubmit} isLoading={this.submitButtonIsLoading}>
+                {/* <EuiButton fill onClick={this.onSubmit} isLoading={this.submitButtonIsLoading}>
                   Submit
-                </EuiButton>
+                </EuiButton> */}
+                <p>ASD</p>
               </EuiFlexItem>
             </EuiFlexGroup>
           </EuiFlexItem>
