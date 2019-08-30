@@ -196,11 +196,11 @@ export class FeedbackComponent extends React.Component {
           <EuiFlexItem>
             <EuiFlexGrid>
               <EuiFlexItem>
-                <EuiTable>
-                  <EuiTableBody>
+                {/* <EuiTable>
+                  <EuiTableBody> */}
                     {this.renderFeedbackElements()}
-                  </EuiTableBody>
-                </EuiTable>
+                  {/* </EuiTableBody>
+                </EuiTable> */}
               </EuiFlexItem>
               <EuiFlexItem>
               </EuiFlexItem>
