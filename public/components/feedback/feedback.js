@@ -66,6 +66,7 @@ export class FeedbackComponent extends React.Component {
   }
 
   onSwitchChange = (indexName, id, status) => {
+    console.log("IN SWITCH CHANGE!!");
     for (let i = 0; i < this.state.newStates.length; i++) {
       if (this.state.newStates[i].indexName === indexName && this.state.newStates[i].id === id) {
         this.state.newStates[i].status = status;
@@ -81,6 +82,7 @@ export class FeedbackComponent extends React.Component {
   // }
 
   onSubmit = async () => {
+    console.log("IN SUBMIT!!");
     const body = {
       events: this.state.newStates
     };
@@ -99,6 +101,7 @@ export class FeedbackComponent extends React.Component {
   }
 
   loadData = async () => {
+    console.log("IN LOAD DATA!!");
     const self = this;
     // const indexList = []
 
@@ -130,6 +133,7 @@ export class FeedbackComponent extends React.Component {
   }
 
   renderFeedbackElements = () => {
+    console.log("IN RENDER_FEEDBACK_ELEM!!");
     const rows = [];
     if(this.state.events.length === 0) {
       this.setState({submitButtonIsDisabled: true})
@@ -180,6 +184,7 @@ export class FeedbackComponent extends React.Component {
   }
 
   render() {
+    console.log("IN RENDER!!");
     return (
       <Fragment>
         <EuiFlexGroup  direction="column">
@@ -193,9 +198,6 @@ export class FeedbackComponent extends React.Component {
             </EuiFlexGroup>
           </EuiFlexItem>
           <EuiFlexItem>
-            <p>??????????</p>
-          </EuiFlexItem>
-          {/* <EuiFlexItem>
             <EuiFlexGrid>
               <EuiFlexItem>
                 <EuiTable>
@@ -207,7 +209,7 @@ export class FeedbackComponent extends React.Component {
               <EuiFlexItem>
               </EuiFlexItem>
             </EuiFlexGrid>
-          </EuiFlexItem> */}
+          </EuiFlexItem>
         </EuiFlexGroup>  
       </Fragment>
     );
