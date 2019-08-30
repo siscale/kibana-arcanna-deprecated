@@ -111,23 +111,22 @@ export class FeedbackComponent extends React.Component {
     const body = { jobId: self.props.feedbackJobInformation.jobInformation._id }
 
     const incidentData = await self.genericRequest.request('get_incident', 'POST', JSON.stringify(body));
-    console.log(incidentData);
-    // if ('incident' in incidentData) {
-    //   self.setState({ events: incidentData.incident });
-    //   const newStates = [];
-    //   incidentData.incident.forEach((incident) => {
-    //     newStates.push({
-    //       indexName: incident.hit._index,
-    //       status: incident.arcanna.arcanna_class,
-    //       id: incident._id
-    //     });
-    //   });
-    //   self.setState({
-    //     newStates: newStates
-    //   });
-    // } else {
-    //   console.log("No new incidents to give feedback");
-    // }
+    if ('incident' in incidentData) {
+      self.setState({ events: incidentData.incident });
+      const newStates = [];
+      incidentData.incident.forEach((incident) => {
+        newStates.push({
+          indexName: incident.arcanna.source_index,
+          status: incident.arcanna.best_match,
+          id: incident._id
+        });
+      });
+      self.setState({
+        newStates: newStates
+      });
+    } else {
+      console.log("No new incidents to give feedback");
+    }
   }
 
   // renderFeedbackElements = () => {

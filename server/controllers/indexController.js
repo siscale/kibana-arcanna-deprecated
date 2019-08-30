@@ -166,7 +166,6 @@ export class IndexController {
           const origDocument = await callWithRequest(req, 'get', {
             index: source.source_index,
             id: source.source_id
-            
           });
           documents.push({ _id: hit._id, arcanna: source, origDocument: origDocument });
         }
