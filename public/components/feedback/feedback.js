@@ -132,7 +132,7 @@ export class FeedbackComponent extends React.Component {
   renderFeedbackElements = () => {
     const rows = [];
     if(this.state.events.length === 0) {
-      // this.setState({submitButtonIsDisabled: true})
+      this.setState({submitButtonIsDisabled: true})
       return (
         <EuiText>
           <h3>There are not items to give feedback to. Please try again later.</h3>
@@ -140,7 +140,7 @@ export class FeedbackComponent extends React.Component {
       );
     } else {
       
-      // this.setState({submitButtonIsDisabled: false})
+      this.setState({submitButtonIsDisabled: false})
       // this.state.events.forEach((event) => {
       //   rows.push(
       //     <FeedbackEvent
