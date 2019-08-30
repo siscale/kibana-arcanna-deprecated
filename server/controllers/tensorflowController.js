@@ -125,7 +125,7 @@ export class TensorflowController {
         token: this.tfEndpointToken
       };
       const fetch = require('node-fetch');
-      return fetch(this.tfEndpointUrl +'/api/v1/health_check', {
+      return fetch(this.tfEndpointUrl +'/health', {
         method: "POST",
         headers: this.tfEndpointHeader,
         body: JSON.stringify(body)
