@@ -140,7 +140,7 @@ export class IndexController {
       if (feedbackGivenRes.hits.hits.length > 0) {
         const batch_id = feedbackGivenRes.hits.hits[0]._source.batch_id;
         const incidentRes = await callWithRequest(req, 'search', {
-          index: indexList,
+          index: jobIndex,
           body: {
             query: {
               match: {
