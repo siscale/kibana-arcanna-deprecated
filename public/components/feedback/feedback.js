@@ -140,29 +140,29 @@ export class FeedbackComponent extends React.Component {
       );
     } else {
       this.setState({submitButtonIsDisabled: false})
-      this.state.events.forEach((event) => {
-        rows.push(
-          <FeedbackEvent
-            event={event}
-            key={event._id}
-            onSwitchChange={this.onSwitchChange}
-          />
-          // <EuiTableRow>
-          //   <EuiTableRowCell>
-          //     <EuiText>
-          //       <h4>{event._id}</h4>
-          //     </EuiText>
-          //   </EuiTableRowCell>
-          //   <EuiTableRowCell>
-          //     <EuiSwitch/>
-          //   </EuiTableRowCell>
-          //   <EuiTableRowCell>
-          //     <EuiBadge>{event.arcanna.arcanna_class}</EuiBadge>
-          //   </EuiTableRowCell>
-          // </EuiTableRow>
-        );
-      });
-      return rows;
+      // this.state.events.forEach((event) => {
+      //   rows.push(
+      //     <FeedbackEvent
+      //       event={event}
+      //       key={event._id}
+      //       onSwitchChange={this.onSwitchChange}
+      //     />
+      //     // <EuiTableRow>
+      //     //   <EuiTableRowCell>
+      //     //     <EuiText>
+      //     //       <h4>{event._id}</h4>
+      //     //     </EuiText>
+      //     //   </EuiTableRowCell>
+      //     //   <EuiTableRowCell>
+      //     //     <EuiSwitch/>
+      //     //   </EuiTableRowCell>
+      //     //   <EuiTableRowCell>
+      //     //     <EuiBadge>{event.arcanna.arcanna_class}</EuiBadge>
+      //     //   </EuiTableRowCell>
+      //     // </EuiTableRow>
+      //   );
+      // });
+      // return rows;
     }
   }
 
