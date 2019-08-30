@@ -65,15 +65,15 @@ export class FeedbackComponent extends React.Component {
 
   }
 
-  onSwitchChange = (indexName, id, status) => {
-    console.log("IN SWITCH CHANGE!!");
-    for (let i = 0; i < this.state.newStates.length; i++) {
-      if (this.state.newStates[i].indexName === indexName && this.state.newStates[i].id === id) {
-        this.state.newStates[i].status = status;
-        break;
-      }
-    }
-  }
+  // onSwitchChange = (indexName, id, status) => {
+  //   console.log("IN SWITCH CHANGE!!");
+  //   for (let i = 0; i < this.state.newStates.length; i++) {
+  //     if (this.state.newStates[i].indexName === indexName && this.state.newStates[i].id === id) {
+  //       this.state.newStates[i].status = status;
+  //       break;
+  //     }
+  //   }
+  // }
 
   // render() {
   //   return (
