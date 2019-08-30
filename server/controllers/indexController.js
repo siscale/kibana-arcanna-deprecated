@@ -163,7 +163,12 @@ export class IndexController {
         let documents = [];
         incidentRes.hits.hits.forEach(hit => {
           const source = hit._source;
-          documents.push({ _id: hit._id, arcanna: source.arcanna, hit: hit });
+          const origDocument = await callWithRequest(req, 'get', {
+            index: source.source_index,
+            id: source.source_id
+            
+          });
+          documents.push({ _id: hit._id, arcanna: source, origDocument: origDocument });
 
         });
         return { incident: documents };
