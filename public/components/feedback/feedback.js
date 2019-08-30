@@ -75,117 +75,123 @@ export class FeedbackComponent extends React.Component {
     }
   }
 
-  onSubmit = async () => {
-    const body = {
-      events: this.state.newStates
-    };
-    console.log(body);
-    this.setState({submitButtonIsLoading: true});
-    const resp = await this.genericRequest.request('give_feedback', 'POST', JSON.stringify(body));
-    console.log('success' in resp);
-    if('error' in resp) {
-      console.error(resp.error);
-      this.setState({submitButtonIsLoading: false});
-    } else {
-      console.log(resp);
-      window.location.href = '#/feedback_next';
-      // this.render();
-    }
-  }
-
-  loadData = async () => {
-    const self = this;
-    const indexList = []
-    this.props.feedbackJobInformation.jobInformation.indexData.forEach( (indexData) => {
-      indexList.push(indexData.index);
-    });
-    
-    const body = { indexList: indexList };
-
-    const incidentData = await self.genericRequest.request('get_incident', 'POST', JSON.stringify(body));
-    if('incident' in incidentData) {
-      self.setState({events: incidentData.incident});
-      const newStates = [];
-      incidentData.incident.forEach((incident) => {
-        newStates.push({
-          indexName: incident.hit._index,
-          status: incident.arcanna.arcanna_class,
-          id: incident._id
-        });
-      });
-      self.setState({
-        newStates: newStates
-      });
-    } else {
-      console.log("No new incidents to give feedback");
-    }
-  }
-
-  renderFeedbackElements = () => {
-    const rows = [];
-    if(this.state.events.length === 0) {
-      this.setState({submitButtonIsDisabled: true})
-      return (
-        <EuiText>
-          <h3>There are not items to give feedback to. Please try again later.</h3>
-        </EuiText>
-      );
-    } else {
-      this.setState({submitButtonIsDisabled: false})
-      this.state.events.forEach((event) => {
-        rows.push(
-          <FeedbackEvent
-            event={event}
-            key={event._id}
-            onSwitchChange={this.onSwitchChange}
-          />
-          // <EuiTableRow>
-          //   <EuiTableRowCell>
-          //     <EuiText>
-          //       <h4>{event._id}</h4>
-          //     </EuiText>
-          //   </EuiTableRowCell>
-          //   <EuiTableRowCell>
-          //     <EuiSwitch/>
-          //   </EuiTableRowCell>
-          //   <EuiTableRowCell>
-          //     <EuiBadge>{event.arcanna.arcanna_class}</EuiBadge>
-          //   </EuiTableRowCell>
-          // </EuiTableRow>
-        );
-      });
-      return rows;
-    }
-  }
-
   render() {
     return (
-      <Fragment>
-        <EuiFlexGroup  direction="column">
-          <EuiFlexItem>
-            <EuiFlexGroup direction="rowReverse">
-              <EuiFlexItem grow={false} style={{paddingRight:30}}>
-                <EuiButton fill onClick={this.onSubmit} isLoading={this.submitButtonIsLoading}>
-                  Submit
-                </EuiButton>
-              </EuiFlexItem>
-            </EuiFlexGroup>
-          </EuiFlexItem>
-          <EuiFlexItem>
-            <EuiFlexGrid>
-              <EuiFlexItem>
-                <EuiTable>
-                  <EuiTableBody>
-                    {this.renderFeedbackElements()}
-                  </EuiTableBody>
-                </EuiTable>
-              </EuiFlexItem>
-              <EuiFlexItem>
-              </EuiFlexItem>
-            </EuiFlexGrid>
-          </EuiFlexItem>
-        </EuiFlexGroup>  
-      </Fragment>
-    );
+      <Fragment></Fragment>
+    )
   }
+
+  // onSubmit = async () => {
+  //   const body = {
+  //     events: this.state.newStates
+  //   };
+  //   console.log(body);
+  //   this.setState({submitButtonIsLoading: true});
+  //   const resp = await this.genericRequest.request('give_feedback', 'POST', JSON.stringify(body));
+  //   console.log('success' in resp);
+  //   if('error' in resp) {
+  //     console.error(resp.error);
+  //     this.setState({submitButtonIsLoading: false});
+  //   } else {
+  //     console.log(resp);
+  //     window.location.href = '#/feedback_next';
+  //     // this.render();
+  //   }
+  // }
+
+  // loadData = async () => {
+  //   const self = this;
+  //   const indexList = []
+  //   this.props.feedbackJobInformation.jobInformation.indexData.forEach( (indexData) => {
+  //     indexList.push(indexData.index);
+  //   });
+    
+  //   const body = { indexList: indexList };
+
+  //   const incidentData = await self.genericRequest.request('get_incident', 'POST', JSON.stringify(body));
+  //   if('incident' in incidentData) {
+  //     self.setState({events: incidentData.incident});
+  //     const newStates = [];
+  //     incidentData.incident.forEach((incident) => {
+  //       newStates.push({
+  //         indexName: incident.hit._index,
+  //         status: incident.arcanna.arcanna_class,
+  //         id: incident._id
+  //       });
+  //     });
+  //     self.setState({
+  //       newStates: newStates
+  //     });
+  //   } else {
+  //     console.log("No new incidents to give feedback");
+  //   }
+  // }
+
+  // renderFeedbackElements = () => {
+  //   const rows = [];
+  //   if(this.state.events.length === 0) {
+  //     this.setState({submitButtonIsDisabled: true})
+  //     return (
+  //       <EuiText>
+  //         <h3>There are not items to give feedback to. Please try again later.</h3>
+  //       </EuiText>
+  //     );
+  //   } else {
+  //     this.setState({submitButtonIsDisabled: false})
+  //     this.state.events.forEach((event) => {
+  //       rows.push(
+  //         <FeedbackEvent
+  //           event={event}
+  //           key={event._id}
+  //           onSwitchChange={this.onSwitchChange}
+  //         />
+  //         // <EuiTableRow>
+  //         //   <EuiTableRowCell>
+  //         //     <EuiText>
+  //         //       <h4>{event._id}</h4>
+  //         //     </EuiText>
+  //         //   </EuiTableRowCell>
+  //         //   <EuiTableRowCell>
+  //         //     <EuiSwitch/>
+  //         //   </EuiTableRowCell>
+  //         //   <EuiTableRowCell>
+  //         //     <EuiBadge>{event.arcanna.arcanna_class}</EuiBadge>
+  //         //   </EuiTableRowCell>
+  //         // </EuiTableRow>
+  //       );
+  //     });
+  //     return rows;
+  //   }
+  // }
+
+  // render() {
+  //   return (
+  //     <Fragment>
+  //       <EuiFlexGroup  direction="column">
+  //         <EuiFlexItem>
+  //           <EuiFlexGroup direction="rowReverse">
+  //             <EuiFlexItem grow={false} style={{paddingRight:30}}>
+  //               <EuiButton fill onClick={this.onSubmit} isLoading={this.submitButtonIsLoading}>
+  //                 Submit
+  //               </EuiButton>
+  //             </EuiFlexItem>
+  //           </EuiFlexGroup>
+  //         </EuiFlexItem>
+  //         <EuiFlexItem>
+  //           <EuiFlexGrid>
+  //             <EuiFlexItem>
+  //               <EuiTable>
+  //                 <EuiTableBody>
+  //                   {this.renderFeedbackElements()}
+  //                 </EuiTableBody>
+  //               </EuiTable>
+  //             </EuiFlexItem>
+  //             <EuiFlexItem>
+  //             </EuiFlexItem>
+  //           </EuiFlexGrid>
+  //         </EuiFlexItem>
+  //       </EuiFlexGroup>  
+  //     </Fragment>
+  //   );
+  // }
 }
