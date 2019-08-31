@@ -181,6 +181,7 @@ export class FeedbackComponent extends React.Component {
   // }
 
   renderFeedbackElements() {
+    console.log("IN RENDER FEEDBACK");
     return (
       <EuiText>Er es sehr schon.</EuiText>
     )
