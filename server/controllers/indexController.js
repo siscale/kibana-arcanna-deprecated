@@ -55,7 +55,7 @@ export class IndexController {
         })
       });
 
-      await callWithRequest(req, 'index', {
+      const resp = await callWithRequest(req, 'index', {
         index: self.settings.jobsIndex,
         type: '_doc',
         body: body,
@@ -67,6 +67,7 @@ export class IndexController {
       //   body: body,
       //   refresh: "true"
       // });
+      console.log(JSON.stringify(resp));
       return { success: true };
 
     } catch (error) {
@@ -201,9 +202,6 @@ export class IndexController {
             params: {
               tag: "feedback_given"
             }
-          },
-          doc: {
-            best_match: doc.status
           }
         });
         body.push({ update: { _index: jobIndex, _type: '_doc', _id: doc.id } });
