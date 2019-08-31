@@ -32,6 +32,7 @@ export class FeedbackEvent extends React.Component {
     super(props);
     this.state = {
       id: '',
+      documentName: '', 
       indexName: '',
       documentContent: '',
       arcanna: {},
@@ -111,6 +112,7 @@ export class FeedbackEvent extends React.Component {
     const isRelevant = ((this.props.event.arcanna.best_match === -1) ? false : true);
     this.setState({
       id: this.props.event._id,
+      documentName: this.source._source.error.message,
       indexName: this.props.event.arcanna.source_index,
       documentContent: JSON.stringify(source, null, 2),
       arcanna: this.props.event.arcanna,
@@ -163,7 +165,7 @@ export class FeedbackEvent extends React.Component {
         </EuiFlexItem>
         <EuiFlexItem>
           <EuiText>
-            <h4>{this.state.id}</h4>
+            <h4>{this.state.documentName}</h4>
           </EuiText>
         </EuiFlexItem>
 
