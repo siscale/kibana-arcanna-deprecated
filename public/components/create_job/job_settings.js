@@ -76,7 +76,6 @@ export class JobSettings extends React.Component {
       indexData: this.props.indexFieldMappings
     };
 
-    // console.log(body);
 
     const resp = await this.genericRequest.request('put_job', 'POST', JSON.stringify(body));
 

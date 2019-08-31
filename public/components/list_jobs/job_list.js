@@ -71,7 +71,6 @@ export class JobList extends React.Component {
   }
 
   loadData = async () => {
-    // console.log("Loading data");
     const data = await this.genericRequest.request('list_jobs', 'GET');
     if('error' in data) {
       console.error(data.error);

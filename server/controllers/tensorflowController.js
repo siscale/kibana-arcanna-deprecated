@@ -17,7 +17,6 @@ export class TensorflowController {
   }
 
   async train(req, reply) {
-    // console.log(this.server.config().get('arcanna_v_1.endpoint.url'));
     try {
       const jobId = req.payload.jobId;
       const body = {
@@ -51,7 +50,6 @@ export class TensorflowController {
         jobId: jobId
       };
 
-      console.log(JSON.stringify(body));
       const fetch = require('node-fetch');
       return fetch(this.tfEndpointUrl +'/api/v1/execute', {
         method: "POST",

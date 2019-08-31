@@ -193,7 +193,6 @@ export class IndexController {
     const self = this;
     const { callWithRequest } = self.esClient;
     try {
-      console.log(JSON.stringify(req.payload));
       const docList = req.payload.events;
       const jobId = req.payload.jobId.toLowerCase();
       const jobIndex = ".arcanna-job-" + jobId;
@@ -220,7 +219,6 @@ export class IndexController {
         body: body,
         refresh: "true"
       });
-      console.log(JSON.stringify(resp));
       return { success: true };
     } catch (err) {
       console.error(err);
