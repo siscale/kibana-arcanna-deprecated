@@ -135,6 +135,7 @@ export class FeedbackEvent extends React.Component {
       const newStatus = this.feedbackStatusMapping.IRRELEVANT;
       newStatus.checked = this.state.status.checked; //to know previous state
       this.setState({status: newStatus});
+      this.props.onSwitchChange(this.state.indexName, this.state.id, newStatus.id);
     } else {
       this.setState({isRelevant: true});
       this.setState({isSwitchDisabled: false});
@@ -143,6 +144,7 @@ export class FeedbackEvent extends React.Component {
         const newStatus = this.feedbackStatusMapping.ROOT_CAUSE;
       }
       this.setState({status: newStatus});
+      this.props.onSwitchChange(this.state.indexName, this.state.id, newStatus.id);
     }
   }
 
