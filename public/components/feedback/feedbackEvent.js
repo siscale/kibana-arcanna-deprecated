@@ -64,16 +64,16 @@ export class FeedbackEvent extends React.Component {
     onSwitchChange: PropTypes.func
   }
 
-  
   componentDidMount() {
     const source = this.props.event.origDocument;
     // delete source.arcanna;
     this.setState({
       id: this.props.event._id,
-      indexName: this.props.event.hit._index,
+      indexName: this.props.event.arcanna.source_index,
       documentContent: JSON.stringify(source, null, 2),
       arcanna: this.props.event.arcanna,
-      status: this.feedbackStatusMapping[this.props.event.arcanna.arcanna_class]
+      // status: this.feedbackStatusMapping[this.props.event.arcanna.arcanna_class]
+      status: this.feedbackStatusMapping["SYMPTOM"]
     });
   }
 
