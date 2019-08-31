@@ -64,6 +64,7 @@ export class FeedbackEvent extends React.Component {
     onSwitchChange: PropTypes.func
   }
 
+  
   componentDidMount() {
     const source = this.props.event.origDocument;
     // delete source.arcanna;
