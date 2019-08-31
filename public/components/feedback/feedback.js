@@ -142,17 +142,12 @@ export class FeedbackComponent extends React.Component {
       this.setState({submitButtonIsDisabled: false});
       const events = this.state.events;
       console.log(events);
-      events.forEach((event) => {
+      for(event in events) {
         // console.log(event);
         rows.push(
-          // <FeedbackEvent
-          //   event={event}
-          //   key={event._id}
-          //   onSwitchChange={this.onSwitchChange}
-          // />
           <p>{event._id}</p>
         )
-      });
+      }
       // this.state.events.forEach((event) => {
       //   rows.push(
       //     <FeedbackEvent
