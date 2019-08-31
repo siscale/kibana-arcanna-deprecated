@@ -41,7 +41,7 @@ export class FeedbackComponent extends React.Component {
       newStates: [],
       submitButtonIsLoading: false,
       submitButtonIsDisabled: true,
-      isNoFeedbackModelVisible: false
+      isNoFeedbackModalVisible: false
     };
     this.genericRequest = new GenericRequest();
     // this.feedbackStatusMapping = {
@@ -137,8 +137,8 @@ export class FeedbackComponent extends React.Component {
         newStates: newStates
       });
     } else {
-      // console.log("No new incidents to give feedback");
-      self.setState({isNoFeedbackModelVisible: true});
+      console.log("No new incidents to give feedback");
+      self.setState({isNoFeedbackModalVisible: true});
     }
   }
 
@@ -210,7 +210,7 @@ export class FeedbackComponent extends React.Component {
 
   render() {
     let modal;
-    if(this.state.isNoFeedbackModelVisible) {
+    if(this.state.isNoFeedbackModalVisible) {
       modal = (
         <EuiOverlayMask>
           <EuiModal onClose={this.onNoFeedbackModalClose}>
