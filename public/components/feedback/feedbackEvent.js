@@ -128,24 +128,24 @@ export class FeedbackEvent extends React.Component {
   }
 
   onChangeCheckbox = () => {
-    // if(this.state.isRelevant) {
-    //   // make it irrelevant
-    //   this.setState({isRelevant: false});
-    //   this.setState({isSwitchDisabled: true});
-    //   const newStatus = this.feedbackStatusMapping.IRRELEVANT;
-    //   newStatus.checked = this.state.status.checked; //to know previous state
-    //   this.setState({status: newStatus});
-    //   this.props.onSwitchChange(this.state.indexName, this.state.id, newStatus.id);
-    // } else {
-    //   this.setState({isRelevant: true});
-    //   this.setState({isSwitchDisabled: false});
-    //   var newStatus = this.feedbackStatusMapping.SYMPTOM;
-    //   if(this.state.status.checked) {
-    //     const newStatus = this.feedbackStatusMapping.ROOT_CAUSE;
-    //   }
-    //   this.setState({status: newStatus});
-    //   this.props.onSwitchChange(this.state.indexName, this.state.id, newStatus.id);
-    // }
+    if(this.state.isRelevant) {
+      // make it irrelevant
+      this.setState({isRelevant: false});
+      this.setState({isSwitchDisabled: true});
+      const newStatus = this.feedbackStatusMapping.IRRELEVANT;
+      newStatus.checked = this.state.status.checked; //to know previous state
+      this.setState({status: newStatus});
+      this.props.onSwitchChange(this.state.indexName, this.state.id, newStatus.id);
+    } else {
+      this.setState({isRelevant: true});
+      this.setState({isSwitchDisabled: false});
+      var newStatus = this.feedbackStatusMapping.SYMPTOM;
+      if(this.state.status.checked) {
+        const newStatus = this.feedbackStatusMapping.ROOT_CAUSE;
+      }
+      this.setState({status: newStatus});
+      this.props.onSwitchChange(this.state.indexName, this.state.id, newStatus.id);
+    }
   }
 
   render() {
