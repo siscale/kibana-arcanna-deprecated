@@ -182,9 +182,13 @@ export class FeedbackComponent extends React.Component {
 
   renderFeedbackElements() {
     console.log("IN RENDER FEEDBACK");
-    return (
-      <EuiText>Er es sehr schon.</EuiText>
-    )
+    var rows = [];
+    this.state.events.forEach((event) => {
+      rows.push(
+        <EuiText>Er es {event._id}</EuiText>
+      )
+    });
+    return rows;
   }
 
   render() {
