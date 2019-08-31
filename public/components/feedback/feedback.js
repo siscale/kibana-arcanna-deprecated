@@ -128,7 +128,7 @@ export class FeedbackComponent extends React.Component {
     }
   }
 
-  renderFeedbackElements = () => {
+  renderFeedbackElements() {
     console.log("IN RENDER_FEEDBACK_ELEM!!");
     const rows = [];
     if(this.state.events.length === 0) {
@@ -142,12 +142,17 @@ export class FeedbackComponent extends React.Component {
       this.setState({submitButtonIsDisabled: false});
       const events = this.state.events;
       console.log(events);
-      for(event in events) {
+      events.forEach((event) => {
         // console.log(event);
         rows.push(
+          // <FeedbackEvent
+          //   event={event}
+          //   key={event._id}
+          //   onSwitchChange={this.onSwitchChange}
+          // />
           <p>{event._id}</p>
         )
-      }
+      });
       // this.state.events.forEach((event) => {
       //   rows.push(
       //     <FeedbackEvent
