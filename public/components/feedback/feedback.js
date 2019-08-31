@@ -30,8 +30,6 @@ import {
   EuiModalBody,
   EuiModalFooter
 } from '@elastic/eui';
-import { EuiModalHeader } from '@elastic/eui/src/components/modal/modal_header';
-import { EuiModalHeaderTitle } from '@elastic/eui/src/components/modal/modal_header_title';
 
 
 export class FeedbackComponent extends React.Component {
