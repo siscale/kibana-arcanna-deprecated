@@ -189,18 +189,30 @@ export class IndexController {
     try {
       console.log(JSON.stringify(req.payload));
       const docList = req.payload.events;
+      const jobId = req.payload.jobId.toLowerCase();
+      const jobIndex = ".arcanna-job-" + jobId;
       const body = [];
       docList.forEach((doc) => {
-        body.push({ update: { _index: doc.indexName, _type: '_doc', _id: doc.id } });
+        body.push({ update: { _index: jobIndex, _type: '_doc', _id: doc.id } });
         body.push({
-          doc: {
-            arcanna: {
-              arcanna_class: doc.status
-            },
-            arcanna: {
-              arcanna_feedback_given: true
+          script: {
+            source: "ctx._source.tags.add(params.tag)",
+            lang: "painless",
+            params: {
+              tag: "feedback_given"
             }
+          },
+          doc: {
+            best_match: doc.status
           }
+          // doc: {
+          //   arcanna: {
+          //     arcanna_class: doc.status
+          //   },
+          //   arcanna: {
+          //     arcanna_feedback_given: true
+          //   }
+          // }
         });
       });
       const resp = await callWithRequest(req, 'bulk', {
