@@ -65,8 +65,8 @@ export class FeedbackEvent extends React.Component {
   }
 
   componentDidMount() {
-    const source = this.props.event.hit._source;
-    delete source.arcanna;
+    const source = this.props.event.origDocument;
+    // delete source.arcanna;
     this.setState({
       id: this.props.event._id,
       indexName: this.props.event.hit._index,
