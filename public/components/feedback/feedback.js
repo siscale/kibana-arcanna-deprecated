@@ -199,7 +199,7 @@ export class FeedbackComponent extends React.Component {
               <EuiFlexItem>
                 <EuiTable>
                   <EuiTableBody>
-                    {this.renderFeedbackElements()}
+                    
                   </EuiTableBody>
                 </EuiTable>
               </EuiFlexItem>
