@@ -66,7 +66,6 @@ export class FeedbackComponent extends React.Component {
   }
 
   onSwitchChange = (indexName, id, status) => {
-    console.log("IN SWITCH CHANGE!!");
     for (let i = 0; i < this.state.newStates.length; i++) {
       if (this.state.newStates[i].indexName === indexName && this.state.newStates[i].id === id) {
         this.state.newStates[i].status = status;
@@ -82,17 +81,18 @@ export class FeedbackComponent extends React.Component {
       events: this.state.newStates
     };
     console.log(body);
-    this.setState({submitButtonIsLoading: true});
-    const resp = await this.genericRequest.request('give_feedback', 'POST', JSON.stringify(body));
-    console.log('success' in resp);
-    if('error' in resp) {
-      console.error(resp.error);
-      this.setState({submitButtonIsLoading: false});
-    } else {
-      console.log(resp);
-      window.location.href = '#/feedback_next';
-      // this.render();
-    }
+    // this.setState({submitButtonIsLoading: true});
+
+    // const resp = await this.genericRequest.request('give_feedback', 'POST', JSON.stringify(body));
+    // console.log('success' in resp);
+    // if('error' in resp) {
+    //   console.error(resp.error);
+    //   this.setState({submitButtonIsLoading: false});
+    // } else {
+    //   console.log(resp);
+    //   window.location.href = '#/feedback_next';
+    //   // this.render();
+    // }
   }
 
   loadData = async () => {
