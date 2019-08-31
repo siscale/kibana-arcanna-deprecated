@@ -196,7 +196,7 @@ export class IndexController {
         body.push({ update: { _index: jobIndex, _type: '_doc', _id: doc.id } });
         body.push({
           script: {
-            source: "ctx._source.tags.add(params.tag)",
+            source: "if (!ctx._source.tags.contains(params.tag)) { ctx._source.tags.add(params.tag) }",
             lang: "painless",
             params: {
               tag: "feedback_given"
