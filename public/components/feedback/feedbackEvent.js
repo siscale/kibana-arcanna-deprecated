@@ -101,6 +101,16 @@ export class FeedbackEvent extends React.Component {
     }
   }
 
+  nameMappingToClass(name) {
+    if(name === "IRRELEVANT") {
+      return -1;
+    } else if(name === "SYMPTOM") {
+      return 0;
+    } else if(cls === "ROOT_CAUSE") {
+      return 1;
+    }
+  }
+
   static propTypes = {
     event: PropTypes.object,
     onSwitchChange: PropTypes.func
@@ -128,11 +138,11 @@ export class FeedbackEvent extends React.Component {
     if (this.state.status.id === "SYMPTOM") {
       const newStatus = this.feedbackStatusMapping.ROOT_CAUSE;
       this.setState({ status: newStatus })
-      this.props.onSwitchChange(this.state.indexName, this.state.id, newStatus.id);
+      this.props.onSwitchChange(this.state.indexName, this.nameMappingToClass(this.state.id), newStatus.id);
     } else if(this.state.status.id === "ROOT_CAUSE") {
       const newStatus = this.feedbackStatusMapping.SYMPTOM;
       this.setState({ status: newStatus });
-      this.props.onSwitchChange(this.state.indexName, this.state.id, newStatus.id);
+      this.props.onSwitchChange(this.state.indexName, this.nameMappingToClass(this.state.id), newStatus.id);
     }
   }
 
@@ -144,7 +154,7 @@ export class FeedbackEvent extends React.Component {
       const newStatus = this.feedbackStatusMapping.IRRELEVANT;
       this.setState({oldSwitchStatus: this.state.status.checked}); //to know previous state
       this.setState({status: newStatus});
-      this.props.onSwitchChange(this.state.indexName, this.state.id, newStatus.id);
+      this.props.onSwitchChange(this.state.indexName, this.nameMappingToClass(this.state.id), newStatus.id);
     } else {
       this.setState({isRelevant: true});
       this.setState({isSwitchDisabled: false});
@@ -153,7 +163,7 @@ export class FeedbackEvent extends React.Component {
         newStatus = this.feedbackStatusMapping.ROOT_CAUSE;
       }
       this.setState({status: newStatus});
-      this.props.onSwitchChange(this.state.indexName, this.state.id, newStatus.id);
+      this.props.onSwitchChange(this.state.indexName, this.nameMappingToClass(this.state.id), newStatus.id);
     }
   }
 

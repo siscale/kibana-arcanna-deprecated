@@ -37,16 +37,20 @@ export class FeedbackComponent extends React.Component {
       submitButtonIsDisabled: true
     };
     this.genericRequest = new GenericRequest();
-    this.feedbackStatusMapping = {
-      SYMPTOM: {
-        color: 'warning',
-        checked: false
-      },
-      ROOT_CAUSE: {
-        color: 'danger',
-        checked: true
-      }
-    }
+    // this.feedbackStatusMapping = {
+    //   IRRELEVANT: {
+    //     color: 'default',
+    //     checked: false
+    //   },
+    //   SYMPTOM: {
+    //     color: 'warning',
+    //     checked: false
+    //   },
+    //   ROOT_CAUSE: {
+    //     color: 'danger',
+    //     checked: true
+    //   }
+    // }
   }
 
   static propTypes = {
