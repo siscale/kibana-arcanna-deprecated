@@ -124,6 +124,10 @@ export class FeedbackComponent extends React.Component {
     const incidentData = await self.genericRequest.request('get_incident', 'POST', JSON.stringify(body));
     if ('incident' in incidentData) {
       console.log(incidentData.incident);
+      if(incidentData.incident.length == 0) {
+        console.log("No new incidents to give feedback");
+        self.setState({isNoFeedbackModalVisible: true});        
+      }
       self.setState({ events: incidentData.incident });
       const newStates = [];
       incidentData.incident.forEach((incident) => {
