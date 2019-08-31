@@ -107,7 +107,7 @@ export class FeedbackEvent extends React.Component {
   componentDidMount() {
     const source = this.props.event.origDocument;
     // delete source.arcanna;
-    const isRelevant = ((this.props.arcanna.best_match === -1) ? false : true);
+    const isRelevant = ((this.props.event.arcanna.best_match === -1) ? false : true);
     this.setState({
       id: this.props.event._id,
       indexName: this.props.event.arcanna.source_index,
