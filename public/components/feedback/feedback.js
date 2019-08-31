@@ -213,5 +213,5 @@ export class FeedbackComponent extends React.Component {
   //       </EuiFlexGroup>   */}
   //     </Fragment>
   //   );
-  }
+  // }
 }
