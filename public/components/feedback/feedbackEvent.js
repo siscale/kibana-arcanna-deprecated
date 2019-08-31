@@ -24,8 +24,10 @@ import {
   EuiBadge,
   EuiAccordion,
   EuiCodeBlock,
-  EuiCode
+  EuiCode,
+  EuiCheckbox
 } from '@elastic/eui';
+import makeId from '@elastic/eui/src/components/form/form_row/make_id';
 
 
 export class FeedbackEvent extends React.Component {
@@ -40,7 +42,9 @@ export class FeedbackEvent extends React.Component {
       status: {
         color: 'warning',
         checked: false
-      }
+      },
+      isRelevant: true,
+      isSwitchDisabled: false
     };
     this.genericRequest = new GenericRequest();
     // this.feedbackStatusMapping = {
@@ -97,12 +101,16 @@ export class FeedbackEvent extends React.Component {
   componentDidMount() {
     const source = this.props.event.origDocument;
     // delete source.arcanna;
+    const isRelevant = ((this.props.arcanna.best_match === -1) ? false : true);
     this.setState({
       id: this.props.event._id,
       indexName: this.props.event.arcanna.source_index,
       documentContent: JSON.stringify(source, null, 2),
       arcanna: this.props.event.arcanna,
-      status: this.feedbackStatusMapping[this.classToNameMapping(this.props.event.arcanna.best_match)]
+      status: this.feedbackStatusMapping[this.classToNameMapping(this.props.event.arcanna.best_match)],
+      isRelevant: isRelevant,
+      isSwitchDisabled: !isRelevant
+
       // status: this.feedbackStatusMapping["SYMPTOM"]
     });
   }
@@ -112,10 +120,29 @@ export class FeedbackEvent extends React.Component {
       const newStatus = this.feedbackStatusMapping.ROOT_CAUSE;
       this.setState({ status: newStatus })
       this.props.onSwitchChange(this.state.indexName, this.state.id, newStatus.id);
-    } else {
+    } else if(this.state.status.id === "ROOT_CAUSE") {
       const newStatus = this.feedbackStatusMapping.SYMPTOM;
       this.setState({ status: newStatus });
       this.props.onSwitchChange(this.state.indexName, this.state.id, newStatus.id);
+    }
+  }
+
+  onChangeCheckbox = () => {
+    if(this.state.isRelevant) {
+      // make it irrelevant
+      this.setState({isRelevant: false});
+      this.setState({isSwitchDisabled: true});
+      const newStatus = this.feedbackStatusMapping.IRRELEVANT;
+      newStatus.checked = this.state.status.checked; //to know previous state
+      this.setState({status: newStatus});
+    } else {
+      this.setState({isRelevant: true});
+      this.setState({isSwitchDisabled: false});
+      var newStatus = this.feedbackStatusMapping.SYMPTOM;
+      if(this.state.status.checked) {
+        const newStatus = this.feedbackStatusMapping.ROOT_CAUSE;
+      }
+      this.setState({status: newStatus});
     }
   }
 
@@ -150,12 +177,20 @@ export class FeedbackEvent extends React.Component {
           <EuiSwitch
             checked={this.state.status.checked}
             onChange={this.onChangeSwitch}
+            isDisabled={this.state.isSwitchDisabled}
           />
         </EuiFlexItem>
         <EuiFlexItem grow={false}>
           <EuiBadge color={this.state.status.color}>
             {this.state.status.displayName}
           </EuiBadge>
+        </EuiFlexItem>
+        <EuiFlexItem grow={false}>
+          <EuiCheckbox
+            id={makeId()}
+            checked={this.state.isRelevant}
+            onChange={this.onChangeCheckbox}
+          />
         </EuiFlexItem>
       </EuiFlexGroup>
     );

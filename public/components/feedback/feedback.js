@@ -96,7 +96,6 @@ export class FeedbackComponent extends React.Component {
   }
 
   loadData = async () => {
-    console.log("IN LOAD DATA!!");
     const self = this;
     // const indexList = []
 
@@ -181,7 +180,6 @@ export class FeedbackComponent extends React.Component {
   // }
 
   renderFeedbackElements() {
-    console.log("IN RENDER FEEDBACK");
     var rows = [];
     this.state.events.forEach((event) => {
       rows.push(
@@ -196,7 +194,6 @@ export class FeedbackComponent extends React.Component {
   }
 
   render() {
-    console.log("IN RENDER!!");
     return (
       <Fragment>
         <EuiFlexGroup  direction="column">
