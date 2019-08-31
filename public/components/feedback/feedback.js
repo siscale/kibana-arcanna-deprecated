@@ -22,8 +22,16 @@ import {
   EuiButton,
   EuiText,
   EuiSwitch,
-  EuiBadge
+  EuiBadge,
+  EuiOverlayMask,
+  EuiModal,
+  EuiModalHeader,
+  EuiModalHeaderTitle,
+  EuiModalBody,
+  EuiModalFooter
 } from '@elastic/eui';
+import { EuiModalHeader } from '@elastic/eui/src/components/modal/modal_header';
+import { EuiModalHeaderTitle } from '@elastic/eui/src/components/modal/modal_header_title';
 
 
 export class FeedbackComponent extends React.Component {
@@ -34,7 +42,8 @@ export class FeedbackComponent extends React.Component {
       events: [],
       newStates: [],
       submitButtonIsLoading: false,
-      submitButtonIsDisabled: true
+      submitButtonIsDisabled: true,
+      isNoFeedbackModelVisible: false
     };
     this.genericRequest = new GenericRequest();
     // this.feedbackStatusMapping = {
@@ -78,9 +87,11 @@ export class FeedbackComponent extends React.Component {
     }
   }
 
+  onNoFeedbackModalClose = () => {
+    window.location.href = '#/list_jobs';
+  }
 
   onSubmit = async () => {
-    console.log("IN SUBMIT!!");
     const body = {
       events: this.state.newStates,
       jobId: this.props.feedbackJobInformation.jobInformation._id
@@ -128,7 +139,8 @@ export class FeedbackComponent extends React.Component {
         newStates: newStates
       });
     } else {
-      console.log("No new incidents to give feedback");
+      // console.log("No new incidents to give feedback");
+      self.setState({isNoFeedbackModelVisible: true});
     }
   }
 
@@ -199,6 +211,22 @@ export class FeedbackComponent extends React.Component {
   }
 
   render() {
+    let modal;
+    modal = (
+      <EuiOverlayMask>
+        <EuiModal onClose={this.onNoFeedbackModalClose}>
+          <EuiModalHeader>
+            <EuiModalHeaderTitle>Feedback</EuiModalHeaderTitle>
+          </EuiModalHeader>
+          <EuiModalBody>
+            <EuiText>There are no more incidents to give feedback to, at the current time. Please close this message to go back to the job list.</EuiText>
+          </EuiModalBody>
+          <EuiModalFooter>
+            <EuiButton onClick={this.onNoFeedbackModalClose}>Go back to job list</EuiButton>
+          </EuiModalFooter>
+        </EuiModal>
+      </EuiOverlayMask>
+    )
     return (
       <Fragment>
         <EuiFlexGroup  direction="column">
@@ -224,7 +252,8 @@ export class FeedbackComponent extends React.Component {
               </EuiFlexItem>
             </EuiFlexGrid>
           </EuiFlexItem>
-        </EuiFlexGroup>  
+        </EuiFlexGroup>
+        {modal}
       </Fragment>
     );
   }
