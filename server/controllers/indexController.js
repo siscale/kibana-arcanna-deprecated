@@ -67,8 +67,13 @@ export class IndexController {
       //   body: body,
       //   refresh: "true"
       // });
-      console.log(JSON.stringify(resp));
-      return { success: true };
+
+      // console.log(JSON.stringify(resp));
+      const jobId = resp._id.toLowerCase();
+      return {
+        success: true,
+        jobId: jobId
+      };
 
     } catch (error) {
       console.error(error);

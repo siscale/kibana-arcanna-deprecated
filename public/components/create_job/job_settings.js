@@ -71,7 +71,7 @@ export class JobSettings extends React.Component {
 
   submitJob = async () => {
     this.setState({submitButtonIsLoading: true});
-    const body = {
+    var body = {
       jobName: this.state.jobName,
       indexData: this.props.indexFieldMappings
     };
@@ -84,6 +84,10 @@ export class JobSettings extends React.Component {
       console.error(resp.error);
       this.setState({submitButtonIsLoading: false});
     } else {
+      body = {
+        jobId: resp.jobId
+      };
+      await this.genericRequest.request('tensorflow/evaluate', "POST", JSON.stringify(body));
       window.location.href='#/list_jobs';
     }
   }
