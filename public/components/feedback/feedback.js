@@ -110,6 +110,7 @@ export class FeedbackComponent extends React.Component {
 
     const incidentData = await self.genericRequest.request('get_incident', 'POST', JSON.stringify(body));
     if ('incident' in incidentData) {
+      console.log(incidentData.incident);
       self.setState({ events: incidentData.incident });
       const newStates = [];
       incidentData.incident.forEach((incident) => {
@@ -127,56 +128,56 @@ export class FeedbackComponent extends React.Component {
     }
   }
 
-  renderFeedbackElements = () => {
-    console.log("IN RENDER_FEEDBACK_ELEM!!");
-    const rows = [];
-    if(this.state.events.length === 0) {
-      this.setState({submitButtonIsDisabled: true})
-      return (
-        <EuiText>
-          <h3>There are not items to give feedback to. Please try again later.</h3>
-        </EuiText>
-      );
-    } else {      
-      this.setState({submitButtonIsDisabled: false});
-      const events = this.state.events;
-      console.log(events);
-      events.forEach((event) => {
-        // console.log(event);
-        rows.push(
-          <FeedbackEvent
-            event={event}
-            key={event._id}
-            onSwitchChange={this.onSwitchChange}
-          />
-        )
-      });
-      // this.state.events.forEach((event) => {
-      //   rows.push(
-      //     <FeedbackEvent
-      //       event={event}
-      //       key={event._id}
-      //       onSwitchChange={this.onSwitchChange}
-      //     />
+  // renderFeedbackElements = () => {
+  //   console.log("IN RENDER_FEEDBACK_ELEM!!");
+  //   const rows = [];
+  //   if(this.state.events.length === 0) {
+  //     this.setState({submitButtonIsDisabled: true})
+  //     return (
+  //       <EuiText>
+  //         <h3>There are not items to give feedback to. Please try again later.</h3>
+  //       </EuiText>
+  //     );
+  //   } else {      
+  //     this.setState({submitButtonIsDisabled: false});
+  //     const events = this.state.events;
+  //     console.log(events);
+  //     events.forEach((event) => {
+  //       // console.log(event);
+  //       rows.push(
+  //         <FeedbackEvent
+  //           event={event}
+  //           key={event._id}
+  //           onSwitchChange={this.onSwitchChange}
+  //         />
+  //       )
+  //     });
+  //     // this.state.events.forEach((event) => {
+  //     //   rows.push(
+  //     //     <FeedbackEvent
+  //     //       event={event}
+  //     //       key={event._id}
+  //     //       onSwitchChange={this.onSwitchChange}
+  //     //     />
 
-      //     // <EuiTableRow>
-      //     //   <EuiTableRowCell>
-      //     //     <EuiText>
-      //     //       <h4>{event._id}</h4>
-      //     //     </EuiText>
-      //     //   </EuiTableRowCell>
-      //     //   <EuiTableRowCell>
-      //     //     <EuiSwitch/>
-      //     //   </EuiTableRowCell>
-      //     //   <EuiTableRowCell>
-      //     //     <EuiBadge>{event.arcanna.arcanna_class}</EuiBadge>
-      //     //   </EuiTableRowCell>
-      //     // </EuiTableRow>
-      //   );
-      // });
-      return rows;
-    }
-  }
+  //     //     // <EuiTableRow>
+  //     //     //   <EuiTableRowCell>
+  //     //     //     <EuiText>
+  //     //     //       <h4>{event._id}</h4>
+  //     //     //     </EuiText>
+  //     //     //   </EuiTableRowCell>
+  //     //     //   <EuiTableRowCell>
+  //     //     //     <EuiSwitch/>
+  //     //     //   </EuiTableRowCell>
+  //     //     //   <EuiTableRowCell>
+  //     //     //     <EuiBadge>{event.arcanna.arcanna_class}</EuiBadge>
+  //     //     //   </EuiTableRowCell>
+  //     //     // </EuiTableRow>
+  //     //   );
+  //     // });
+  //     return rows;
+  //   }
+  // }
 
   render() {
     console.log("IN RENDER!!");
@@ -192,7 +193,7 @@ export class FeedbackComponent extends React.Component {
               </EuiFlexItem>
             </EuiFlexGroup>
           </EuiFlexItem>
-          <EuiFlexItem>
+          {/* <EuiFlexItem>
             <EuiFlexGrid>
               <EuiFlexItem>
                 <EuiTable>
@@ -204,7 +205,7 @@ export class FeedbackComponent extends React.Component {
               <EuiFlexItem>
               </EuiFlexItem>
             </EuiFlexGrid>
-          </EuiFlexItem>
+          </EuiFlexItem> */}
         </EuiFlexGroup>  
       </Fragment>
     );
