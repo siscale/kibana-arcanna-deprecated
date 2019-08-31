@@ -40,7 +40,8 @@ export class FeedbackEvent extends React.Component {
         checked: false
       },
       isRelevant: true,
-      isSwitchDisabled: false
+      isSwitchDisabled: false,
+      oldSwitchStatus: false
     };
     this.genericRequest = new GenericRequest();
     // this.feedbackStatusMapping = {
@@ -139,15 +140,15 @@ export class FeedbackEvent extends React.Component {
       this.setState({isRelevant: false});
       this.setState({isSwitchDisabled: true});
       const newStatus = this.feedbackStatusMapping.IRRELEVANT;
-      newStatus.checked = this.state.status.checked; //to know previous state
+      this.setState({oldSwitchStatus: this.state.status.checked}); //to know previous state
       this.setState({status: newStatus});
       this.props.onSwitchChange(this.state.indexName, this.state.id, newStatus.id);
     } else {
       this.setState({isRelevant: true});
       this.setState({isSwitchDisabled: false});
       var newStatus = this.feedbackStatusMapping.SYMPTOM;
-      if(this.state.status.checked) {
-        const newStatus = this.feedbackStatusMapping.ROOT_CAUSE;
+      if(this.state.oldSwitchStatus) {
+        newStatus = this.feedbackStatusMapping.ROOT_CAUSE;
       }
       this.setState({status: newStatus});
       this.props.onSwitchChange(this.state.indexName, this.state.id, newStatus.id);
