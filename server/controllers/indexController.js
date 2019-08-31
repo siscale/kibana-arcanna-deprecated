@@ -205,14 +205,12 @@ export class IndexController {
           doc: {
             best_match: doc.status
           }
-          // doc: {
-          //   arcanna: {
-          //     arcanna_class: doc.status
-          //   },
-          //   arcanna: {
-          //     arcanna_feedback_given: true
-          //   }
-          // }
+        });
+        body.push({ update: { _index: jobIndex, _type: '_doc', _id: doc.id } });
+        body.push({
+          doc: {
+            best_match: doc.status
+          }
         });
       });
       const resp = await callWithRequest(req, 'bulk', {
