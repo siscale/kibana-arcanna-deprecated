@@ -27,7 +27,7 @@ import {
   EuiCode,
   EuiCheckbox
 } from '@elastic/eui';
-import makeId from '@elastic/eui/src/components/form/form_row/make_id';
+// import makeId from '@elastic/eui/src/components/form/form_row/make_id';
 
 
 export class FeedbackEvent extends React.Component {
