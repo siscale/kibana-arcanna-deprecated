@@ -185,7 +185,11 @@ export class FeedbackComponent extends React.Component {
     var rows = [];
     this.state.events.forEach((event) => {
       rows.push(
-        <EuiText>Er es {event._id}</EuiText>
+        <FeedbackEvent
+          event={event}
+          key={event._id}
+          onSwitchChange={this.onSwitchChange}
+        />
       )
     });
     return rows;
