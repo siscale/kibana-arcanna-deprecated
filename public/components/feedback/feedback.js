@@ -128,56 +128,62 @@ export class FeedbackComponent extends React.Component {
     }
   }
 
-  renderFeedbackElements() {
-    console.log("IN RENDER_FEEDBACK_ELEM!!");
-    const rows = [];
-    if(this.state.events.length === 0) {
-      this.setState({submitButtonIsDisabled: true})
-      return (
-        <EuiText>
-          <h3>There are not items to give feedback to. Please try again later.</h3>
-        </EuiText>
-      );
-    } else {      
-      this.setState({submitButtonIsDisabled: false});
-      const events = this.state.events;
-      console.log(events);
-      events.forEach((event) => {
-        // console.log(event);
-        rows.push(
-          // <FeedbackEvent
-          //   event={event}
-          //   key={event._id}
-          //   onSwitchChange={this.onSwitchChange}
-          // />
-          <p>{event._id}</p>
-        )
-      });
-      // this.state.events.forEach((event) => {
-      //   rows.push(
-      //     <FeedbackEvent
-      //       event={event}
-      //       key={event._id}
-      //       onSwitchChange={this.onSwitchChange}
-      //     />
+  // renderFeedbackElements() {
+  //   console.log("IN RENDER_FEEDBACK_ELEM!!");
+  //   const rows = [];
+  //   // if(this.state.events.length === 0) {
+  //   //   this.setState({submitButtonIsDisabled: true})
+  //   //   return (
+  //   //     <EuiText>
+  //   //       <h3>There are not items to give feedback to. Please try again later.</h3>
+  //   //     </EuiText>
+  //   //   );
+  //   // } else {      
+  //     this.setState({submitButtonIsDisabled: false});
+  //     const events = this.state.events;
+  //     console.log(events);
+  //     events.forEach((event) => {
+  //       // console.log(event);
+  //       rows.push(
+  //         // <FeedbackEvent
+  //         //   event={event}
+  //         //   key={event._id}
+  //         //   onSwitchChange={this.onSwitchChange}
+  //         // />
+  //         <p>{event._id}</p>
+  //       )
+  //     });
+  //     // this.state.events.forEach((event) => {
+  //     //   rows.push(
+  //     //     <FeedbackEvent
+  //     //       event={event}
+  //     //       key={event._id}
+  //     //       onSwitchChange={this.onSwitchChange}
+  //     //     />
 
-      //     // <EuiTableRow>
-      //     //   <EuiTableRowCell>
-      //     //     <EuiText>
-      //     //       <h4>{event._id}</h4>
-      //     //     </EuiText>
-      //     //   </EuiTableRowCell>
-      //     //   <EuiTableRowCell>
-      //     //     <EuiSwitch/>
-      //     //   </EuiTableRowCell>
-      //     //   <EuiTableRowCell>
-      //     //     <EuiBadge>{event.arcanna.arcanna_class}</EuiBadge>
-      //     //   </EuiTableRowCell>
-      //     // </EuiTableRow>
-      //   );
-      // });
-      return rows;
-    }
+  //     //     // <EuiTableRow>
+  //     //     //   <EuiTableRowCell>
+  //     //     //     <EuiText>
+  //     //     //       <h4>{event._id}</h4>
+  //     //     //     </EuiText>
+  //     //     //   </EuiTableRowCell>
+  //     //     //   <EuiTableRowCell>
+  //     //     //     <EuiSwitch/>
+  //     //     //   </EuiTableRowCell>
+  //     //     //   <EuiTableRowCell>
+  //     //     //     <EuiBadge>{event.arcanna.arcanna_class}</EuiBadge>
+  //     //     //   </EuiTableRowCell>
+  //     //     // </EuiTableRow>
+  //     //   );
+  //     // });
+  //     return rows;
+  //   // }
+  // }
+
+  renderFeedbackElements() {
+    return (
+      <EuiText>Er es sehr schon.</EuiText>
+    )
   }
 
   render() {
@@ -199,7 +205,7 @@ export class FeedbackComponent extends React.Component {
               <EuiFlexItem>
                 <EuiTable>
                   <EuiTableBody>
-                    
+                    {this.renderFeedbackElements()}
                   </EuiTableBody>
                 </EuiTable>
               </EuiFlexItem>
