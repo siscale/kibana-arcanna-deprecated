@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 
 import { GenericRequest } from '../../utils/requests';
 
-import makeId from '@elastic/eui';
-
 import {
   EuiTable,
   EuiTableHeader,
@@ -27,8 +25,6 @@ import {
   EuiCode,
   EuiCheckbox
 } from '@elastic/eui';
-// import makeId from '@elastic/eui/src/components/form/form_row/make_id';
-
 
 export class FeedbackEvent extends React.Component {
 
@@ -82,6 +78,16 @@ export class FeedbackEvent extends React.Component {
       }
     }
   }
+
+  generateId(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+ }
 
   classToNameMapping(cls) {
     if(cls === -1) {
@@ -189,7 +195,7 @@ export class FeedbackEvent extends React.Component {
         </EuiFlexItem>
         <EuiFlexItem grow={false}>
           <EuiCheckbox
-            id={makeId()}
+            id={this.generateId(8)}
             checked={this.state.isRelevant}
             onChange={this.onChangeCheckbox}
           />
