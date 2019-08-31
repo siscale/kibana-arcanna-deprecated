@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { GenericRequest } from '../../utils/requests';
 
-// import makeId from '@elastic/eui';
+import makeId from '@elastic/eui';
 
 import {
   EuiTable,
@@ -189,7 +189,7 @@ export class FeedbackEvent extends React.Component {
         </EuiFlexItem>
         <EuiFlexItem grow={false}>
           <EuiCheckbox
-            // id={makeId()}
+            id={makeId()}
             checked={this.state.isRelevant}
             onChange={this.onChangeCheckbox}
           />
