@@ -87,7 +87,7 @@ export class FeedbackComponent extends React.Component {
     }
   }
 
-  onNoFeedbackModalClose = () => {
+  onNoFeedbackModalClose = async () => {
     window.location.href = '#/list_jobs';
   }
 
@@ -212,21 +212,23 @@ export class FeedbackComponent extends React.Component {
 
   render() {
     let modal;
-    modal = (
-      <EuiOverlayMask>
-        <EuiModal onClose={this.onNoFeedbackModalClose}>
-          <EuiModalHeader>
-            <EuiModalHeaderTitle>Feedback</EuiModalHeaderTitle>
-          </EuiModalHeader>
-          <EuiModalBody>
-            <EuiText>There are no more incidents to give feedback to, at the current time. Please close this message to go back to the job list.</EuiText>
-          </EuiModalBody>
-          <EuiModalFooter>
-            <EuiButton onClick={this.onNoFeedbackModalClose}>Go back to job list</EuiButton>
-          </EuiModalFooter>
-        </EuiModal>
-      </EuiOverlayMask>
-    )
+    if(this.state.isNoFeedbackModelVisible) {
+      modal = (
+        <EuiOverlayMask>
+          <EuiModal onClose={this.onNoFeedbackModalClose}>
+            <EuiModalHeader>
+              <EuiModalHeaderTitle>Feedback</EuiModalHeaderTitle>
+            </EuiModalHeader>
+            <EuiModalBody>
+              <EuiText>There are no more incidents to give feedback to, at the current time. Please close this message to go back to the job list.</EuiText>
+            </EuiModalBody>
+            <EuiModalFooter>
+              <EuiButton onClick={this.onNoFeedbackModalClose}>Go back to job list</EuiButton>
+            </EuiModalFooter>
+          </EuiModal>
+        </EuiOverlayMask>
+      )
+    }
     return (
       <Fragment>
         <EuiFlexGroup  direction="column">
