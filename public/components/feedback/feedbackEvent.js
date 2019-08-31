@@ -192,16 +192,16 @@ export class FeedbackEvent extends React.Component {
           />
         </EuiFlexItem>
         <EuiFlexItem grow={false}>
-          <EuiBadge color={this.state.status.color}>
-            {this.state.status.displayName}
-          </EuiBadge>
-        </EuiFlexItem>
-        <EuiFlexItem grow={false}>
           <EuiCheckbox
             id={this.generateId(8)}
             checked={this.state.isRelevant}
             onChange={this.onChangeCheckbox}
           />
+        </EuiFlexItem>
+        <EuiFlexItem grow={false}>
+          <EuiBadge color={this.state.status.color}>
+            {this.state.status.displayName}
+          </EuiBadge>
         </EuiFlexItem>
       </EuiFlexGroup>
     );
