@@ -106,7 +106,7 @@ export class FeedbackEvent extends React.Component {
       return -1;
     } else if(name === "SYMPTOM") {
       return 0;
-    } else if(cls === "ROOT_CAUSE") {
+    } else if(name === "ROOT_CAUSE") {
       return 1;
     }
   }
@@ -198,7 +198,7 @@ export class FeedbackEvent extends React.Component {
           <EuiSwitch
             checked={this.state.status.checked}
             onChange={this.onChangeSwitch}
-            isdisabled={this.state.isSwitchDisabled}
+            isdisabled={this.state.isSwitchDisabled.toString()}
           />
         </EuiFlexItem>
         <EuiFlexItem grow={false}>
