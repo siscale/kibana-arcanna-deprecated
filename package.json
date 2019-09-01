@@ -35,7 +35,6 @@
     "eslint-plugin-react": "^7.12.4"
   },
   "dependencies": {
-    "@kbn/i18n": "link:../../packages/kbn-i18n",
     "yo-component": "0.0.4",
     "react2angular": "^4.0.5",
     "elasticsearch": "^15.3.1",
