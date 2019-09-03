@@ -89,7 +89,16 @@ export class IndexController {
     const { callWithRequest } = self.esClient;
     try {
       const rawSearchRes = await callWithRequest(req, 'search', {
-        index: self.settings.jobsIndex
+        index: self.settings.jobsIndex,
+        body: {
+          sort: [
+            {
+              createdAt: {
+                order: "asc"
+              }
+            }
+          ]
+        }
       });
 
       const jobsResults = [];
