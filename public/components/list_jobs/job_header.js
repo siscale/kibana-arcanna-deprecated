@@ -1,21 +1,16 @@
 
 import React, { Fragment } from 'react';
 
-import PropTypes from 'prop-types';
-
-import { GenericRequest } from '../../utils/requests';
-
-import { JobEntry } from './job_entry';
-
 import {
 
   EuiFlexGroup,
   EuiFlexItem,
   EuiButton,
-  EuiSpacer
+  EuiSpacer,
+  EuiText
 } from '@elastic/eui';
-import { EuiText } from '@elastic/eui';
-import { EuiSpacer } from '@elastic/eui';
+
+
 
 
 
