@@ -161,6 +161,11 @@ export class IndexController {
               match: {
                 "batch_id": batch_id
               }
+            },
+            sort: {
+              "@timestamp": {
+                order: "asc"
+              }
             }
           }
         });
