@@ -42,8 +42,8 @@ export class JobListHeader extends React.Component {
   render() {
     return (
       <Fragment>
-        <EuiFlexGroup gutterSize="s" justifyContent="spaceBetween">
-          <EuiFlexGroup direction="column" grow={false}>
+        <EuiFlexGroup gutterSize="s" justifyContent="spaceBetween" alignItems="center">
+          <EuiFlexGroup direction="column" grow={false} gutterSize="none">
             <EuiFlexItem>
               <EuiText>Some explanation 1</EuiText>
             </EuiFlexItem>
