@@ -47,8 +47,7 @@ export class JobListHeader extends React.Component {
               <EuiText size="s" color="subdued">
                 <EuiIcon type="string" size="m" color="warning" style={{marginRight: 10}}/>
                 Trains the Neural Network with the events for which the operator has given feedback.
-              </EuiText>background-color: $euiColorEmptyShade;
-color: $euiColorDarkestShade;
+              </EuiText>
             </EuiFlexItem>
             <EuiFlexItem>
               <EuiText size="s" color="subdued">
