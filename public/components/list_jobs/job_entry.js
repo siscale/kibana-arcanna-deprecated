@@ -318,12 +318,12 @@ export class JobEntry extends React.Component {
               <EuiFlexGrid gutterSize="s" columns={4} style={{paddingRight: 10, paddingTop:10, paddingBottom:10}}>
                 <EuiFlexItem>
                   <EuiLink disabled={this.state.trainAction.disabled} title="Train" onClick={this.onClickTrain}>
-                    <EuiIcon type="bolt" size="l" color={this.state.trainAction.color}/>
+                    <EuiIcon type="training" size="l" color={this.state.trainAction.color}/>
                   </EuiLink>
                 </EuiFlexItem>
                 <EuiFlexItem>
-                  <EuiLink disabled={this.state.evaluateAction.disabled} title="Evaluate" onClick={this.onClickEvaluate}>
-                    <EuiIcon type="stats" size="l" color={this.state.evaluateAction.color}/>
+                  <EuiLink disabled={this.state.evaluateAction.disabled} title="Start" onClick={this.onClickEvaluate}>
+                    <EuiIcon type="play" size="l" color={this.state.evaluateAction.color}/>
                   </EuiLink>
                 </EuiFlexItem>
                 <EuiFlexItem>
