@@ -42,29 +42,29 @@ export class JobListHeader extends React.Component {
       <Fragment>
         <EuiSpacer size="m"/>
         <EuiFlexGroup gutterSize="s" justifyContent="spaceBetween" alignItems="center">
-          <EuiFlexGroup direction="column" grow={false} gutterSize="none" style={{paddingLeft: 40, opacity:80}}>
+          <EuiFlexGroup direction="column" grow={false} gutterSize="none" style={{paddingLeft: 30}}>
             <EuiFlexItem>
               <EuiText size="s">
                 <EuiIcon type="string" size="m" color="warning"/>
-                = Some explanation 1
+                Trains the Neural Network with the events for which the operator has given feedback.
               </EuiText>
             </EuiFlexItem>
             <EuiFlexItem>
               <EuiText size="s">
                 <EuiIcon type="play" size="m" color="secondary"/>
-                = Some explanation 2
+                Starts feeding new events to the Neural Network for analysis.
               </EuiText>
             </EuiFlexItem>
               <EuiFlexItem>
               <EuiText size="s">
                 <EuiIcon type="indexEdit" size="m" color="text" />
-                = Some explanation 3
+                Allows the operator to give feedback on the Neural Network results, and label events for future training.
               </EuiText>
             </EuiFlexItem>
             <EuiFlexItem>
               <EuiText size="s"> 
                 <EuiIcon type="stopFilled" size="m" color="danger"/>
-                = Some explanation 4
+                Stop the job
               </EuiText>
             </EuiFlexItem>
           </EuiFlexGroup>
