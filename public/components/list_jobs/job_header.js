@@ -7,8 +7,7 @@ import {
   EuiFlexItem,
   EuiButton,
   EuiSpacer,
-  EuiText,
-  euiColorMediumShade
+  EuiText
 } from '@elastic/eui';
 import { EuiIcon } from '@elastic/eui';
 
@@ -64,7 +63,7 @@ color: $euiColorDarkestShade;
               </EuiText>
             </EuiFlexItem>
             <EuiFlexItem>
-              <EuiText size="s" color={euiColorMediumShade}> 
+              <EuiText size="s" color="subdued"> 
                 <EuiIcon type="stopFilled" size="m" color="danger" style={{marginRight: 10}}/>
                 Stops the job's current task.
               </EuiText>
