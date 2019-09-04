@@ -40,18 +40,18 @@ export class JobListHeader extends React.Component {
   render() {
     return (
       <Fragment>
-        <EuiSpacer size="s"/>
+        <EuiSpacer size="m"/>
         <EuiFlexGroup gutterSize="s" justifyContent="spaceBetween" alignItems="center">
           <EuiFlexGroup direction="column" grow={false} gutterSize="none" style={{paddingLeft: 10}}>
             <EuiFlexItem>
-              <EuiText>
-                <EuiIcon type="string" size="l" color="warning"/>
+              <EuiText size="s">
+                <EuiIcon type="string" size="m" color="warning"/>
                 = Some explanation 1
               </EuiText>
             </EuiFlexItem>
             <EuiFlexItem>
-              <EuiText>
-                <EuiIcon type="play" size="l" color="secondary"/>
+              <EuiText size="s">
+                <EuiIcon type="play" size="m" color="secondary"/>
                 = Some explanation 2
               </EuiText>
             </EuiFlexItem>
@@ -62,7 +62,7 @@ export class JobListHeader extends React.Component {
               </EuiText>
             </EuiFlexItem>
             <EuiFlexItem>
-              <EuiText size="m"> 
+              <EuiText size="s"> 
                 <EuiIcon type="stopFilled" size="m" color="danger"/>
                 = Some explanation 4
               </EuiText>
