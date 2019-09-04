@@ -25,6 +25,8 @@ import {
   EuiBadge
 } from '@elastic/eui';
 
+import trainSvg from '../../img/train.svg';
+
 
 export class JobEntry extends React.Component {
 
@@ -318,7 +320,7 @@ export class JobEntry extends React.Component {
               <EuiFlexGrid gutterSize="s" columns={4} style={{paddingRight: 10, paddingTop:10, paddingBottom:10}}>
                 <EuiFlexItem>
                   <EuiLink disabled={this.state.trainAction.disabled} title="Train" onClick={this.onClickTrain}>
-                    <EuiIcon type="string" size="l" color={this.state.trainAction.color}/>
+                    <EuiIcon type={trainSvg} size="l" color={this.state.trainAction.color}/>
                   </EuiLink>
                 </EuiFlexItem>
                 <EuiFlexItem>
