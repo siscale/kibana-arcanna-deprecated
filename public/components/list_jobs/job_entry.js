@@ -147,7 +147,7 @@ export class JobEntry extends React.Component {
       },
       EVALUATING: {
         id: "EVALUATING",
-        displayName: "Evaluating",
+        displayName: "Running",
         color: 'secondary'
       }, 
       TRAINING: {
