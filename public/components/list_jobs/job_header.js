@@ -11,9 +11,11 @@ import {
 
   EuiFlexGroup,
   EuiFlexItem,
-  EuiButton
+  EuiButton,
+  EuiSpacer
 } from '@elastic/eui';
 import { EuiText } from '@elastic/eui';
+import { EuiSpacer } from '@elastic/eui';
 
 
 
@@ -42,8 +44,9 @@ export class JobListHeader extends React.Component {
   render() {
     return (
       <Fragment>
+        <EuiSpacer size="xs"></EuiSpacer>
         <EuiFlexGroup gutterSize="s" justifyContent="spaceBetween" alignItems="center">
-          <EuiFlexGroup direction="column" grow={false} gutterSize="none">
+          <EuiFlexGroup direction="column" grow={false} gutterSize="none" style={{paddingLeft: 10}}>
             <EuiFlexItem>
               <EuiText>Some explanation 1</EuiText>
             </EuiFlexItem>
