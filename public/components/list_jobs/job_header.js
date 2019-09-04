@@ -43,7 +43,7 @@ export class JobListHeader extends React.Component {
     return (
       <Fragment>
         <EuiFlexGroup gutterSize="s" justifyContent="spaceBetween">
-          <EuiFlexGroup direction="row" grow={false}>
+          <EuiFlexGroup direction="column" grow={false}>
             <EuiFlexItem>
               <EuiText>Some explanation 1</EuiText>
             </EuiFlexItem>
