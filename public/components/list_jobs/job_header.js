@@ -44,22 +44,28 @@ export class JobListHeader extends React.Component {
         <EuiFlexGroup gutterSize="s" justifyContent="spaceBetween" alignItems="center">
           <EuiFlexGroup direction="column" grow={false} gutterSize="none" style={{paddingLeft: 10}}>
             <EuiFlexItem>
-              <EuiIcon type="string" size="l" color="warning"/>
-            <EuiText> = Some explanation 1</EuiText>
+              <EuiText>
+                <EuiIcon type="string" size="l" color="warning"/>
+                = Some explanation 1
+              </EuiText>
             </EuiFlexItem>
             <EuiFlexItem>
-              <EuiIcon type="play" size="l" color="secondary"/>
-              <EuiText> = Some explanation 2</EuiText>
+              <EuiText>
+                <EuiIcon type="play" size="l" color="secondary"/>
+                = Some explanation 2
+              </EuiText>
+            </EuiFlexItem>
+              <EuiFlexItem>
+              <EuiText size="s">
+                <EuiIcon type="indexEdit" size="m" color="text" />
+                = Some explanation 3
+              </EuiText>
             </EuiFlexItem>
             <EuiFlexItem>
-              <EuiIcon type="indexEdit" size="l" color="text" />
-              <EuiText> = Some explanation 3</EuiText>
-            </EuiFlexItem>
-            <EuiFlexItem>
-            <EuiText size="s"> 
-              <EuiIcon type="stopFilled" size="m" color="danger"/>
-               = Some explanation 4
-            </EuiText>
+              <EuiText size="m"> 
+                <EuiIcon type="stopFilled" size="m" color="danger"/>
+                = Some explanation 4
+              </EuiText>
             </EuiFlexItem>
           </EuiFlexGroup>
           <EuiFlexItem grow={false} style={{paddingRight: 10}}>
