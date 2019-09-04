@@ -63,7 +63,7 @@ export class JobListHeader extends React.Component {
             </EuiFlexItem>
             <EuiFlexItem>
               <EuiText size="s"> 
-                <EuiIcon type="stopFilled" size="m" color="danger"/>
+                <EuiIcon type="stopFilled" size="m" color="danger" style={{marginRight: 10}}/>
                 Stops the job's current task.
               </EuiText>
             </EuiFlexItem>
