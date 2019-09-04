@@ -56,8 +56,10 @@ export class JobListHeader extends React.Component {
               <EuiText> = Some explanation 3</EuiText>
             </EuiFlexItem>
             <EuiFlexItem>
-              <EuiIcon type="stopFilled" size="l" color="danger"/>
-              <EuiText> = Some explanation 4</EuiText>
+            <EuiText size="s"> 
+              <EuiIcon type="stopFilled" size="m" color="danger"/>
+               = Some explanation 4
+            </EuiText>
             </EuiFlexItem>
           </EuiFlexGroup>
           <EuiFlexItem grow={false} style={{paddingRight: 10}}>
