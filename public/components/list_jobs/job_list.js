@@ -40,6 +40,7 @@ export class JobList extends React.Component {
   }
 
   componentDidMount() {
+    console.log("Let's go!");
     this.loadData();
     this.setState({refreshInterval : setInterval(this.loadData, 5000)});
     // this.loadData();
