@@ -91,6 +91,7 @@ export class IndexController {
       const rawSearchRes = await callWithRequest(req, 'search', {
         index: self.settings.jobsIndex,
         body: {
+          size: 10000,
           sort: [
             {
               createdAt: {
@@ -157,6 +158,7 @@ export class IndexController {
         const incidentRes = await callWithRequest(req, 'search', {
           index: jobIndex,
           body: {
+            size: 100,
             query: {
               match: {
                 "batch_id": batch_id
