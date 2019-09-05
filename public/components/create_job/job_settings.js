@@ -83,10 +83,10 @@ export class JobSettings extends React.Component {
       console.error(resp.error);
       this.setState({submitButtonIsLoading: false});
     } else {
-      body = {
-        jobId: resp.jobId
-      };
-      await this.genericRequest.request('tensorflow/evaluate', "POST", JSON.stringify(body));
+      // body = {
+      //   jobId: resp.jobId
+      // };
+      // await this.genericRequest.request('tensorflow/evaluate', "POST", JSON.stringify(body));
       window.location.href='#/list_jobs';
     }
   }
