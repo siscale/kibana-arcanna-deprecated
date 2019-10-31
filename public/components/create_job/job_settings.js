@@ -74,10 +74,10 @@ export class JobSettings extends React.Component {
   submitJob = async () => {
     this.setState({submitButtonIsLoading: true});
     var base64File = ""
-    // if(this.state.files.length != 0) {
-    //   var fileContent = this.state.files[0].stream().read();
-    //   base64File = fileContent.toString('base64');
-    // }
+    if(this.state.files.length != 0) {
+      var fileContent = this.state.files[0].stream().read();
+      base64File = fileContent.toString('base64');
+    }
     var body = {
       jobName: this.state.jobName,
       indexData: this.props.indexFieldMappings,
