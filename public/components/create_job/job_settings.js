@@ -16,7 +16,8 @@ import {
   EuiFlexGrid,
   EuiForm,
   EuiFormRow,
-  EuiFieldText
+  EuiFieldText,
+  EuiFilePicker
 } from '@elastic/eui';
 
 import { MappingField } from './mapping_field';
