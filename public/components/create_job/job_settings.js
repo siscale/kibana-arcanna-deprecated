@@ -149,13 +149,13 @@ export class JobSettings extends React.Component {
               <EuiFormRow
                 label="[Optional] Upload your own TensorFlow model"
               >
-                <EuiFilePicker 
+                {/* <EuiFilePicker 
                   id="filePicker"
                   initialPromptText="Select or drag an archive with your TensorFlow model."
                   onChange={ files => {
                     this.onChangeFileUpload(files);
                   }}
-                />
+                /> */}
               </EuiFormRow>
             </EuiForm>
           </EuiFlexItem>
