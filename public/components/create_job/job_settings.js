@@ -38,6 +38,7 @@ export class JobSettings extends React.Component {
       },
       submitButtonDisabled: true,
       submitButtonIsLoading: false,
+      files: {}
     };
     this.genericRequest = new GenericRequest();
   }
@@ -71,9 +72,15 @@ export class JobSettings extends React.Component {
 
   submitJob = async () => {
     this.setState({submitButtonIsLoading: true});
+    var base64File = ""
+    if(this.state.files.length != 0) {
+      var fileContent = this.state.files[0].stream().read();
+      base64File = fileContent.toString('base64');
+    }
     var body = {
       jobName: this.state.jobName,
-      indexData: this.props.indexFieldMappings
+      indexData: this.props.indexFieldMappings,
+      model: base64File
     };
 
 
@@ -100,6 +107,12 @@ export class JobSettings extends React.Component {
       this.state.invalidFields.jobName.status = true;
     }
     this.checkIfCanSubmit();
+  }
+
+  onChangeFileUpload = files => {
+    this.setState({
+      files: files
+    });
   }
 
   render() {
@@ -130,6 +143,14 @@ export class JobSettings extends React.Component {
                   value={this.state.jobName}
                   onChange={this.onChangeJobName}
                   isInvalid={this.state.invalidFields.jobName.status}
+                />
+                <EuiFilePicker 
+                  id="filePicker"
+                  label="[Optional] Upload your own TensorFlow model"
+                  initialPromptText="Select or drag an archive with your TensorFlow model."
+                  onChange={ files => {
+                    this.onChangeFileUpload(files);
+                  }}
                 />
               </EuiFormRow>
             </EuiForm>
