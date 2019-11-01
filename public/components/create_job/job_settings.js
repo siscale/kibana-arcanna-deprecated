@@ -138,9 +138,9 @@ export class JobSettings extends React.Component {
       }
     }
     if(fileIsOk === true) {
-      this.state.invalidFields.modelUpload.status = true;
-    } else {
       this.state.invalidFields.modelUpload.status = false;
+    } else {
+      this.state.invalidFields.modelUpload.status = true;
     }
     this.setState({
       files: files
