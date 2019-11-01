@@ -74,9 +74,14 @@ export class JobSettings extends React.Component {
   submitJob = async () => {
     this.setState({submitButtonIsLoading: true});
     var base64File = ""
-    if(this.state.files.length != 0) {
-      var fileContent = this.state.files[0].stream().read();
-      base64File = fileContent.toString('base64');
+
+    try {
+      if(this.state.files.length != 0) {
+        var fileContent = this.state.files[0].stream();
+        base64File = fileContent.toString('base64');
+      }
+    } catch(error) {
+      console.error(error);
     }
     var body = {
       jobName: this.state.jobName,
@@ -86,7 +91,8 @@ export class JobSettings extends React.Component {
 
     console.log(base64File);
     const resp = await this.genericRequest.request('put_job', 'POST', JSON.stringify(body));
-
+    //TODO remove
+    resp['error'] = "something"
     if('error' in resp) {
       console.error(resp.error);
       this.setState({submitButtonIsLoading: false});
