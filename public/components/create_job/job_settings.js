@@ -90,9 +90,9 @@ export class JobSettings extends React.Component {
     };
 
     console.log(base64File);
-    const resp = await this.genericRequest.request('put_job', 'POST', JSON.stringify(body));
+    // const resp = await this.genericRequest.request('put_job', 'POST', JSON.stringify(body));
     //TODO remove
-    resp['error'] = "something"
+    var resp = {error: "something"}
     if('error' in resp) {
       console.error(resp.error);
       this.setState({submitButtonIsLoading: false});
