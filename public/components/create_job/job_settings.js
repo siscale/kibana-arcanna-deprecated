@@ -77,7 +77,7 @@ export class JobSettings extends React.Component {
 
     try {
       if(this.state.files.length != 0) {
-        file = this.state.files[0]
+        file = this.state.files[0];
         console.log("File size: " + file.size);
         console.log("File type: " + file.type);
         var fileContent = await file.arrayBuffer();
