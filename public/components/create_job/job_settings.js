@@ -189,6 +189,7 @@ export class JobSettings extends React.Component {
                     this.onChangeFileUpload(files);
                   }}
                   display="large"
+                  isInvalid={this.state.invalidFields.modelUpload.status}
                   // isInvalid={this.state.invalidFields.modelUpload.status}
                 />
               </EuiFormRow>
