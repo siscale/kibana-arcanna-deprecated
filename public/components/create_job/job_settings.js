@@ -84,7 +84,7 @@ export class JobSettings extends React.Component {
       model: base64File
     };
 
-
+    console.log(base64File);
     const resp = await this.genericRequest.request('put_job', 'POST', JSON.stringify(body));
 
     if('error' in resp) {
@@ -150,7 +150,7 @@ export class JobSettings extends React.Component {
                 label="[Optional] Upload your own TensorFlow model"
               >
                 <EuiFilePicker 
-                  initialPromptText="Select or drag an archive with your TensorFlow model."
+                  initialPromptText="Select or drag your TensorFlow model."
                   onChange={ files => {
                     this.onChangeFileUpload(files);
                   }}
