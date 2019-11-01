@@ -35,6 +35,12 @@ export class JobSettings extends React.Component {
                       The name should be composed of alphanumerical characters, '_' or '-'. 
                     </span>
           )
+        },
+        modelUpload: {
+          status: false,
+          errorMsg: (<span>
+                      The model should be an .zip archive with the size of maximum 1MB.
+                    </span>)
         }
       },
       submitButtonDisabled: true,
@@ -119,9 +125,27 @@ export class JobSettings extends React.Component {
   }
 
   onChangeFileUpload = files => {
+    let fileIsOk = true;
     this.setState({
       files: files
     });
+    if(files.length > 0) {
+      var file = files[0];
+      if(file.size > 1000000) {
+        fileIsOk = false;
+      } else if(file.type != "application/x-zip-compressed") {
+        fileIsOk = false;
+      }
+    }
+    if(fileIsOk === true) {
+      this.state.invalidFields.modelUpload.status = true;
+    } else {
+      this.state.invalidFields.modelUpload.status = false;
+    }
+    this.setState({
+      files: files
+    });
+    this.checkIfCanSubmit();
   }
 
   render() {
@@ -156,12 +180,15 @@ export class JobSettings extends React.Component {
               </EuiFormRow>
               <EuiFormRow
                 label="[Optional] Upload your own TensorFlow model"
+                isInvalid={this.state.invalidFields.modelUpload.status}
+                error={this.state.invalidFields.modelUpload.errorMsg}
               >
                 <EuiFilePicker 
                   initialPromptText="Select or drag your TensorFlow model."
                   onChange={ files => {
                     this.onChangeFileUpload(files);
                   }}
+                  isInvalid={this.state.invalidFields.modelUpload.status}
                 />
               </EuiFormRow>
             </EuiForm>
