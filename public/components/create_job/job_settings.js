@@ -39,7 +39,7 @@ export class JobSettings extends React.Component {
         modelUpload: {
           status: false,
           errorMsg: (<span>
-                      The model should be an .zip archive with the size of maximum 1MB.
+                      The model should be an .zip archive with the size of maximum 2MB.
                     </span>)
         }
       },
@@ -131,7 +131,7 @@ export class JobSettings extends React.Component {
     });
     if(files.length > 0) {
       var file = files[0];
-      if(file.size > 1000000) {
+      if(file.size > 2000000) {
         fileIsOk = false;
       } else if(file.type != "application/x-zip-compressed") {
         fileIsOk = false;
