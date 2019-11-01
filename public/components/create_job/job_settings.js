@@ -146,17 +146,16 @@ export class JobSettings extends React.Component {
                   isInvalid={this.state.invalidFields.jobName.status}
                 />
               </EuiFormRow>
-              {/* <EuiFormRow
+              <EuiFormRow
                 label="[Optional] Upload your own TensorFlow model"
               >
                 <EuiFilePicker 
-                  id="filePicker"
                   initialPromptText="Select or drag an archive with your TensorFlow model."
                   onChange={ files => {
                     this.onChangeFileUpload(files);
                   }}
                 />
-              </EuiFormRow> */}
+              </EuiFormRow>
             </EuiForm>
           </EuiFlexItem>
         </EuiFlexGroup>
