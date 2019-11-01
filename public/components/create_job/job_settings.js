@@ -77,8 +77,10 @@ export class JobSettings extends React.Component {
 
     try {
       if(this.state.files.length != 0) {
-        var fileContent = this.state.files[0].stream();
-        base64File = fileContent.toString('base64');
+        file = this.state.files[0]
+        console.log("File size: " + file.size);
+        console.log("File type: " + file.type);
+        var fileContent = await file.arrayBuffer();
       }
     } catch(error) {
       console.error(error);
@@ -86,10 +88,10 @@ export class JobSettings extends React.Component {
     var body = {
       jobName: this.state.jobName,
       indexData: this.props.indexFieldMappings,
-      model: base64File
+      model: fileContent
     };
 
-    console.log(base64File);
+    console.log(fileContent);
     // const resp = await this.genericRequest.request('put_job', 'POST', JSON.stringify(body));
     //TODO remove
     var resp = {error: "something"}
