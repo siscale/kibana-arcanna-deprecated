@@ -186,15 +186,21 @@ export class FeedbackComponent extends React.Component {
                 <EuiFlexGroup direction="column" grow={false} gutterSize="none" style={{paddingLeft: 30}}>
                   <EuiFlexItem>
                     <EuiText size="s" color="subdued">
-                      <EuiSwitch checked={false}/> 
+                      <EuiSwitch checked={false} compressed/> 
                       This means that ...
                     </EuiText>
                   </EuiFlexItem>
                   <EuiFlexItem>
-                    <EuiText size="s" color="subdued">
-                      <EuiSwitch checked={true}/> 
-                      This means that ...
-                    </EuiText>
+                    <EuiFlexGroup gutterSize="s" direction="row">
+                      <EuiFlexItem grow={false}>
+                        <EuiSwitch checked={true}/> 
+                      </EuiFlexItem>
+                      <EuiFlexItem>
+                        <EuiText size="s" color="subdued" compressed>
+                          This means that ...
+                        </EuiText>
+                      </EuiFlexItem>
+                    </EuiFlexGroup>
                   </EuiFlexItem>
                   
                 </EuiFlexGroup>
