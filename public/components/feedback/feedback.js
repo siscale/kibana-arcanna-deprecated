@@ -16,6 +16,7 @@ import {
   EuiTableHeaderCell,
   EuiTableRow,
   EuiTableRowCell,
+  EuiText,
   EuiFlexGroup,
   EuiFlexGrid,
   EuiFlexItem,
@@ -177,7 +178,44 @@ export class FeedbackComponent extends React.Component {
     }
     return (
       <Fragment>
-        <EuiFlexGroup  direction="column">
+        <EuiFlexGroup direction="row">
+          <EuiFlexItem>
+            <EuiFlexItem>
+              <EuiText>
+                TEST!!!
+              </EuiText>
+            </EuiFlexItem>
+            <EuiFlexItem>
+              <EuiFlexGroup direction="column">
+                <EuiFlexItem>
+                  <EuiFlexGroup direction="rowReverse">
+                    <EuiFlexItem grow={false} style={{paddingRight:30}}>
+                      <EuiButton fill onClick={this.onSubmit} isLoading={this.submitButtonIsLoading}>
+                        Submit
+                      </EuiButton>
+                    </EuiFlexItem>
+                  </EuiFlexGroup>
+                </EuiFlexItem>
+              </EuiFlexGroup>
+            </EuiFlexItem>
+          </EuiFlexItem>
+          <EuiFlexItem>
+            <EuiFlexGrid>
+              <EuiFlexItem>
+                <EuiTable>
+                  <EuiTableBody>
+                    {this.renderFeedbackElements()}
+                  </EuiTableBody>
+                </EuiTable>
+              </EuiFlexItem>
+              <EuiFlexItem>
+              </EuiFlexItem>
+            </EuiFlexGrid>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+
+
+        {/* <EuiFlexGroup  direction="column">
           <EuiFlexItem>
             <EuiFlexGroup direction="rowReverse">
               <EuiFlexItem grow={false} style={{paddingRight:30}}>
@@ -200,7 +238,7 @@ export class FeedbackComponent extends React.Component {
               </EuiFlexItem>
             </EuiFlexGrid>
           </EuiFlexItem>
-        </EuiFlexGroup>
+        </EuiFlexGroup> */}
         {modal}
       </Fragment>
     );
