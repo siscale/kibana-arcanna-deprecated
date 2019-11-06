@@ -79,28 +79,28 @@ export class JobSettings extends React.Component {
 
   submitJob = async () => {
     this.setState({submitButtonIsLoading: true});
-    var base64File = ""
+    // var base64File = ""
 
-    try {
-      if(this.state.files.length != 0) {
-        var file = this.state.files[0];
-        console.log("File size: " + file.size);
-        console.log("File type: " + file.type);
-        var fileContent = await file.arrayBuffer();
-      }
-    } catch(error) {
-      console.error(error);
-    }
+    // try {
+    //   if(this.state.files.length != 0) {
+    //     var file = this.state.files[0];
+    //     console.log("File size: " + file.size);
+    //     console.log("File type: " + file.type);
+    //     var fileContent = await file.arrayBuffer();
+    //   }
+    // } catch(error) {
+    //   console.error(error);
+    // }
     var body = {
       jobName: this.state.jobName,
-      indexData: this.props.indexFieldMappings,
-      model: fileContent
+      indexData: this.props.indexFieldMappings
+      // model: fileContent
     };
 
-    console.log(fileContent);
-    // const resp = await this.genericRequest.request('put_job', 'POST', JSON.stringify(body));
+    // console.log(fileContent);
+    const resp = await this.genericRequest.request('put_job', 'POST', JSON.stringify(body));
     //TODO remove
-    var resp = {error: "something"}
+    // var resp = {error: "something"}
     if('error' in resp) {
       console.error(resp.error);
       this.setState({submitButtonIsLoading: false});
