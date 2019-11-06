@@ -184,24 +184,44 @@ export class FeedbackComponent extends React.Component {
               <EuiSpacer size="m"/>
               <EuiFlexGroup gutterSize="s" justifyContent="spaceBetween" alignItems="center">
                 <EuiFlexGroup direction="column" grow={false} gutterSize="s" style={{paddingLeft: 30}}>
-                  <EuiFlexItem>
-                    <EuiText size="s" color="subdued">
-                      <EuiSwitch checked={false} compressed/> 
-                      This means that ...
-                    </EuiText>
-                  </EuiFlexItem>
-                  <EuiFlexItem>
-                    <EuiFlexGroup gutterSize="s" direction="row">
-                      <EuiFlexItem grow={false}>
-                        <EuiSwitch checked={true} compressed={true}/> 
-                      </EuiFlexItem>
-                      <EuiFlexItem>
-                        <EuiText size="s" color="subdued">
-                          This means that ...
-                        </EuiText>
-                      </EuiFlexItem>
-                    </EuiFlexGroup>
-                  </EuiFlexItem>
+                <EuiFlexItem>
+                  <EuiFlexGroup gutterSize="s" direction="row">
+                    <EuiFlexItem grow={false}>
+                      <EuiSwitch checked={true} compressed={true}/> 
+                    </EuiFlexItem>
+                    <EuiFlexItem>
+                      <EuiText size="s" color="subdued">
+                        This means that ...
+                      </EuiText>
+                    </EuiFlexItem>
+                  </EuiFlexGroup>
+                </EuiFlexItem>
+                <EuiFlexItem>
+                  <EuiFlexGroup gutterSize="s" direction="row">
+                    <EuiFlexItem grow={false}>
+                      <EuiSwitch checked={false} size="s"/> 
+                    </EuiFlexItem>
+                    <EuiFlexItem>
+                      <EuiText size="s" color="subdued">
+                        This means that ...
+                      </EuiText>
+                    </EuiFlexItem>
+                  </EuiFlexGroup>
+                </EuiFlexItem>
+                <EuiFlexItem>
+                  <EuiFlexGroup gutterSize="s" direction="row">
+                    <EuiFlexItem grow={false}>
+                      <EuiSwitch compressed={true} disabled/> 
+                    </EuiFlexItem>
+                    <EuiFlexItem>
+                      <EuiText size="s" color="subdued">
+                        This means that ...
+                      </EuiText>
+                    </EuiFlexItem>
+                  </EuiFlexGroup>
+                </EuiFlexItem>
+                
+                  
                   
                 </EuiFlexGroup>
               </EuiFlexGroup>
