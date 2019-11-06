@@ -180,9 +180,24 @@ export class FeedbackComponent extends React.Component {
         <EuiFlexGroup direction="column">
           <EuiFlexItem>
             <EuiFlexItem>
-              <EuiText>
-                TEST!!!
-              </EuiText>
+              <EuiSpacer size="m"/>
+              <EuiFlexGroup gutterSize="s" justifyContent="spaceBetween" alignItems="center">
+                <EuiFlexGroup direction="column" grow={false} gutterSize="none" style={{paddingLeft: 30}}>
+                  <EuiFlexItem>
+                    <EuiText size="s" color="subdued">
+                      <EuiSwitch checked={false}/> 
+                      This means that ...
+                    </EuiText>
+                  </EuiFlexItem>
+                  <EuiFlexItem>
+                    <EuiText size="s" color="subdued">
+                      <EuiSwitch checked={true}/> 
+                      This means that ...
+                    </EuiText>
+                  </EuiFlexItem>
+                  
+                </EuiFlexGroup>
+              </EuiFlexGroup>
             </EuiFlexItem>
             <EuiFlexItem>
               <EuiFlexGroup direction="column">
