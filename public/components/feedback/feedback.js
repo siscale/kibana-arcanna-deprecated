@@ -183,7 +183,7 @@ export class FeedbackComponent extends React.Component {
             <EuiFlexItem>
               <EuiSpacer size="m"/>
               <EuiFlexGroup gutterSize="s" justifyContent="spaceBetween" alignItems="center">
-                <EuiFlexGroup direction="column" grow={false} gutterSize="none" style={{paddingLeft: 30}}>
+                <EuiFlexGroup direction="column" grow={false} gutterSize="s" style={{paddingLeft: 30}}>
                   <EuiFlexItem>
                     <EuiText size="s" color="subdued">
                       <EuiSwitch checked={false} compressed/> 
