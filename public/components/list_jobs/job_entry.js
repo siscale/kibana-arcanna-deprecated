@@ -257,11 +257,11 @@ export class JobEntry extends React.Component {
   }
 
   setFeedbackButtonStatus (trainingStatus, jobStatus) {
-    if(['NOT_YET_PERFORMED', 'OUTDATED'].indexOf(trainingStatus.id) >= 0 && jobStatus.id ==='IDLE') {
-      this.setState({feedbackAction: this.buttonStatuses.feedback.enabled})
-    } else {
-      this.setState({feedbackAction: this.buttonStatuses.feedback.disabled})
-    }
+    // if(['NOT_YET_PERFORMED', 'OUTDATED'].indexOf(trainingStatus.id) >= 0 && jobStatus.id ==='IDLE') {
+    this.setState({feedbackAction: this.buttonStatuses.feedback.enabled})
+    // } else {
+    //   this.setState({feedbackAction: this.buttonStatuses.feedback.disabled})
+    // }
   }
 
   setStopButtonStatus (trainingStatus, jobStatus) {
