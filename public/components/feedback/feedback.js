@@ -193,10 +193,10 @@ export class FeedbackComponent extends React.Component {
                   <EuiFlexItem>
                     <EuiFlexGroup gutterSize="s" direction="row">
                       <EuiFlexItem grow={false}>
-                        <EuiSwitch checked={true}/> 
+                        <EuiSwitch checked={true} compressed={true}/> 
                       </EuiFlexItem>
                       <EuiFlexItem>
-                        <EuiText size="s" color="subdued" compressed>
+                        <EuiText size="s" color="subdued">
                           This means that ...
                         </EuiText>
                       </EuiFlexItem>
