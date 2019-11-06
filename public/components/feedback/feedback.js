@@ -16,7 +16,6 @@ import {
   EuiTableHeaderCell,
   EuiTableRow,
   EuiTableRowCell,
-  EuiText,
   EuiFlexGroup,
   EuiFlexGrid,
   EuiFlexItem,
