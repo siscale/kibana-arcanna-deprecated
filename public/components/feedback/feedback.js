@@ -177,7 +177,7 @@ export class FeedbackComponent extends React.Component {
     }
     return (
       <Fragment>
-        <EuiFlexGroup direction="row">
+        <EuiFlexGroup direction="column">
           <EuiFlexItem>
             <EuiFlexItem>
               <EuiText>
