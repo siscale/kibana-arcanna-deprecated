@@ -216,7 +216,7 @@ export class FeedbackEvent extends React.Component {
         </EuiFlexItem>
         <EuiFlexItem grow={4}>
           <EuiText>
-            <h4>{this.state.errorMessage}</h4>
+            <p>{this.state.errorMessage}</p>
           </EuiText>
         </EuiFlexItem>
 
