@@ -207,7 +207,8 @@ export class JobEntry extends React.Component {
     feedbackFunction: PropTypes.func,
     trainFunction: PropTypes.func,
     evaluateFunction: PropTypes.func,
-    stopFunction: PropTypes.func
+    stopFunction: PropTypes.func,
+    deleteFunction: PropTypes.func
   }
 
   componentDidMount() {
