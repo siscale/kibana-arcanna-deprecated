@@ -200,7 +200,7 @@ export class FeedbackEvent extends React.Component {
 
   render() {
     const accordionContent = (
-      <EuiFlexGroup gutterSize="s">
+      <EuiFlexGroup gutterSize="xs">
         <EuiFlexItem grow={false}>
           <EuiBadge>{this.state.indexName}</EuiBadge>
         </EuiFlexItem>
