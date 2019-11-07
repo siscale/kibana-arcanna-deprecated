@@ -32,7 +32,9 @@ export class FeedbackEvent extends React.Component {
     super(props);
     this.state = {
       id: '',
-      documentName: '', 
+      errorMessage: '',
+      fullUrl: '',
+      hostname: '',
       indexName: '',
       documentContent: '',
       arcanna: {},
@@ -116,13 +118,42 @@ export class FeedbackEvent extends React.Component {
     onSwitchChange: PropTypes.func
   }
 
+  parseEventHeader() {
+    const self = this;
+    const event = self.props.event;
+    var fullUrl = ""
+    var errorMsg = ""
+    var hostname = ""
+    if("full_url" in event.arcanna) {
+      fullUrl = event.arcanna.full_url
+    }
+    
+    if("error_stripped" in event.arcanna) {
+      errorMsg = event.arcanna.error_stripped
+    } else {
+      if("error_message" in event.arcanna) {
+        errorMsg = event.arcanna.error_message
+      }
+    }
+    if("host" in event.arcanna) {
+      hostname = event.arcanna.host
+    }
+    if(fullUrl === "" && errorMsg === "" && hostname === "") {
+      return [event._id, '', '']
+    }
+    return [fullUrl, hostname, errorMsg]
+  }
+
   componentDidMount() {
     const source = this.props.event.origDocument;
     // delete source.arcanna;
     const isRelevant = ((this.props.event.arcanna.best_match === -1) ? false : true);
+    const [url, host, errorMsg] = this.parseEventHeader();
     this.setState({
       id: this.props.event._id,
-      documentName: source._source.error.message,
+      fullUrl: url,
+      hostname: host,
+      errorMessage: errorMsg,
       indexName: this.props.event.arcanna.source_index,
       documentContent: JSON.stringify(source, null, 2),
       arcanna: this.props.event.arcanna,
@@ -169,13 +200,23 @@ export class FeedbackEvent extends React.Component {
 
   render() {
     const accordionContent = (
-      <EuiFlexGroup gutterSize="s">
+      <EuiFlexGroup gutterSize="xs">
         <EuiFlexItem grow={false}>
           <EuiBadge>{this.state.indexName}</EuiBadge>
         </EuiFlexItem>
-        <EuiFlexItem>
-          <EuiText>
-            <h4>{this.state.documentName}</h4>
+        <EuiFlexItem grow={3}>
+          <EuiText size="m">
+          <span style={{fontWeight: "bold"}}>{this.state.fullUrl}</span> 
+          </EuiText>
+        </EuiFlexItem>
+        <EuiFlexItem grow={2}>
+          <EuiText size="m">
+            <span>Host: {this.state.hostname}</span>
+          </EuiText>
+        </EuiFlexItem>
+        <EuiFlexItem grow={7}>
+          <EuiText size="s">
+            <p>{this.state.errorMessage}</p>
           </EuiText>
         </EuiFlexItem>
 
@@ -184,7 +225,7 @@ export class FeedbackEvent extends React.Component {
     return (
 
       <EuiFlexGroup>
-        <EuiFlexItem style={{ minWidth: 800 }} grow={false}>
+        <EuiFlexItem style={{ minWidth: 1024 }} grow={false}>
           <EuiAccordion buttonContent={accordionContent}>
             <EuiCodeBlock language="json">
               {this.state.documentContent}
