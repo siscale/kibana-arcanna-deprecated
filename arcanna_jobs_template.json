@@ -10,6 +10,15 @@
 		  "batch_size":{
 			"type":"long"
 		  },
+		  "learning_rate":{
+			"type":"float",
+		  },
+		  "label_count":{
+			"type":"byte"
+		  },
+		  "labels_caption":{
+			"type":"text"
+	          },
 		  "train_interval":{
 				"type": "date_range", 
 				"format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
