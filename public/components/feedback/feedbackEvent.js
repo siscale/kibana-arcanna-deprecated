@@ -205,17 +205,17 @@ export class FeedbackEvent extends React.Component {
           <EuiBadge>{this.state.indexName}</EuiBadge>
         </EuiFlexItem>
         <EuiFlexItem grow={2}>
-          <EuiText>
-            <h4>{this.state.fullUrl}</h4> 
+          <EuiText size="m">
+          <span style={{fontWeight: "bold"}}>{this.state.fullUrl}</span> 
           </EuiText>
         </EuiFlexItem>
         <EuiFlexItem grow={1}>
-          <EuiText>
-            <span style={{fontWeight: "bold"}}>Host: {this.state.hostname}</span>
+          <EuiText size="m">
+            <span>Host: {this.state.hostname}</span>
           </EuiText>
         </EuiFlexItem>
         <EuiFlexItem grow={7}>
-          <EuiText>
+          <EuiText size="s">
             <p>{this.state.errorMessage}</p>
           </EuiText>
         </EuiFlexItem>
