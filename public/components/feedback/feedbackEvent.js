@@ -122,6 +122,7 @@ export class FeedbackEvent extends React.Component {
     var fullUrl = ""
     var errorMsg = ""
     var hostname = ""
+    console.log(event.arcanna);
     if("full_url" in event.arcanna) {
       fullUrl = event.arcanna.full_url
     }
