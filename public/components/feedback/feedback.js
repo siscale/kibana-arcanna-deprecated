@@ -196,7 +196,7 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiText size="s" color="subdued">
-                        - the event represents the <EuiTextColor color="danger">Root Cause</EuiTextColor> of the incident.
+                        - the event represents the <EuiTextColor color="danger">Root Cause</EuiTextColor> of this incident.
                       </EuiText>
                     </EuiFlexItem>
                   </EuiFlexGroup>
@@ -232,12 +232,13 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                   </EuiFlexGroup>
                 </EuiFlexItem>*/}
-                {/* <EuiFlexItem> 
+                <EuiFlexItem> 
                   <EuiFlexGroup gutterSize="s" direction="row">
                     <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)"}}>
                       <EuiCheckBox
                         id="legendcheckboxChecked"
                         checked={true}
+                        onChange={()=>{}}
                       />
                     </EuiFlexItem>
                     <EuiFlexItem>
@@ -253,6 +254,7 @@ export class FeedbackComponent extends React.Component {
                       <EuiCheckBox
                         id="legendcheckboxUnchecked"
                         checked={true}
+                        onChange={()=>{}}
                       />
                     </EuiFlexItem>
                     <EuiFlexItem>
@@ -261,7 +263,7 @@ export class FeedbackComponent extends React.Component {
                       </EuiText>
                     </EuiFlexItem>
                   </EuiFlexGroup>
-                </EuiFlexItem> */}
+                </EuiFlexItem>
                 
                   
                   
