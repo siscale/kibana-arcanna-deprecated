@@ -186,7 +186,7 @@ export class FeedbackComponent extends React.Component {
                 <EuiFlexGroup direction="column" grow={false} gutterSize="s" style={{paddingLeft: 30}}>
                 <EuiFlexItem>
                   <EuiFlexGroup gutterSize="s" direction="row">
-                    <EuiFlexItem grow={false} style={{zoom: 0.5, "-moz-transform": "scale(0.5)"}}>
+                    <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)"}}>
                       <EuiSwitch 
                         checked={true} 
                         onChange={()=>{}}
@@ -194,12 +194,42 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiText size="s" color="subdued">
-                        This means that ...
+                        If the switch is checked, it means that the event represents the Root Cause of the incident.
                       </EuiText>
                     </EuiFlexItem>
                   </EuiFlexGroup>
                 </EuiFlexItem>
-                
+                <EuiFlexItem>
+                  <EuiFlexGroup gutterSize="s" direction="row">
+                    <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)"}}>
+                      <EuiSwitch 
+                        checked={false} 
+                        onChange={()=>{}}
+                      />
+                    </EuiFlexItem>
+                    <EuiFlexItem>
+                      <EuiText size="s" color="subdued">
+                        If the switch is not checked, it means that the event represents a symptom.
+                      </EuiText>
+                    </EuiFlexItem>
+                  </EuiFlexGroup>
+                </EuiFlexItem>
+                <EuiFlexItem>
+                  <EuiFlexGroup gutterSize="s" direction="row">
+                    <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)"}}>
+                      <EuiSwitch 
+                        checked={false}
+                        disabled={true}
+                        onChange={()=>{}}
+                      />
+                    </EuiFlexItem>
+                    <EuiFlexItem>
+                      <EuiText size="s" color="subdued">
+                        If the switch is disabled, it means that the event is irrelevant to this incident.
+                      </EuiText>
+                    </EuiFlexItem>
+                  </EuiFlexGroup>
+                </EuiFlexItem>
                 
                   
                   
