@@ -93,6 +93,7 @@ export class IndexController {
           deleted: true
         }
       };
+      console.log(jobId);
       const resp = await callWithRequest(req, 'update', {
         id: jobId,
         index: self.settings.jobsIndex,
