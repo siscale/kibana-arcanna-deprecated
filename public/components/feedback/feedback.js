@@ -197,7 +197,7 @@ export class FeedbackComponent extends React.Component {
                         </EuiFlexItem>
                         <EuiFlexItem>
                           <EuiText size="s" color="subdued">
-                            the event represents the <EuiTextColor color="danger">Root Cause</EuiTextColor> of this incident.
+                            the event represents the <EuiTextColor color="danger"><span style={{fontWeight: "bold"}}>root cause</span></EuiTextColor> of this incident.
                           </EuiText>
                         </EuiFlexItem>
                       </EuiFlexGroup>
@@ -212,7 +212,7 @@ export class FeedbackComponent extends React.Component {
                         </EuiFlexItem>
                         <EuiFlexItem>
                           <EuiText size="s" color="subdued">
-                            the event represents a <EuiTextColor color="warning">symptom</EuiTextColor>.
+                            the event represents a <EuiTextColor color="warning"><span style={{fontWeight: "bold"}}>symptom</span></EuiTextColor>.
                           </EuiText>
                         </EuiFlexItem>
                       </EuiFlexGroup>
@@ -228,7 +228,7 @@ export class FeedbackComponent extends React.Component {
                         </EuiFlexItem>
                         <EuiFlexItem>
                           <EuiText size="s" color="subdued">
-                          the event is <EuiTextColor color="default">relevant</EuiTextColor> to this incident.
+                          the event is <EuiTextColor color="default"><span style={{fontWeight: "bold"}}>relevant</span></EuiTextColor> to this incident.
                           </EuiText>
                         </EuiFlexItem>
                       </EuiFlexGroup>
@@ -244,7 +244,7 @@ export class FeedbackComponent extends React.Component {
                         </EuiFlexItem>
                         <EuiFlexItem grow={false}>
                           <EuiText size="s" color="subdued">
-                            the event is <EuiTextColor color="default">irrelevant</EuiTextColor> to this incident.
+                            the event is <EuiTextColor color="default"><span style={{fontWeight: "bold"}}>irrelevant</span></EuiTextColor> to this incident.
                           </EuiText>
                         </EuiFlexItem>
                       </EuiFlexGroup>
