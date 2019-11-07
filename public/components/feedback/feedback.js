@@ -182,7 +182,7 @@ export class FeedbackComponent extends React.Component {
       <Fragment>
         <EuiFlexGroup direction="column">
           <EuiFlexItem>
-            <EuiFlexGroup direction="row">
+            <EuiFlexGroup direction="row" justifyContent="spaceBetween">
               <EuiFlexItem>
                 <EuiSpacer size="m"/>
                 <EuiFlexGroup gutterSize="s" justifyContent="spaceBetween" alignItems="center">
@@ -228,7 +228,7 @@ export class FeedbackComponent extends React.Component {
                         </EuiFlexItem>
                         <EuiFlexItem>
                           <EuiText size="s" color="subdued">
-                          - the event is <EuiTextColor color="default"><span style={{fontWeight: "bold"}}>relevant</span></EuiTextColor> to this incident.
+                          - the event is <EuiTextColor color="default">relevant</EuiTextColor> to this incident.
                           </EuiText>
                         </EuiFlexItem>
                       </EuiFlexGroup>
@@ -240,11 +240,12 @@ export class FeedbackComponent extends React.Component {
                             id="legendcheckboxUnchecked"
                             checked={false}
                             onChange={()=>{}}
+                            style={{paddingLeft:20}}
                           />
                         </EuiFlexItem>
                         <EuiFlexItem grow={false}>
                           <EuiText size="s" color="subdued">
-                            - the event is <EuiTextColor color="default"><span style={{fontWeight: "bold"}}>irrelevant</span></EuiTextColor> to this incident.
+                            - the event is <EuiTextColor color="default">irrelevant</EuiTextColor> to this incident.
                           </EuiText>
                         </EuiFlexItem>
                       </EuiFlexGroup>
