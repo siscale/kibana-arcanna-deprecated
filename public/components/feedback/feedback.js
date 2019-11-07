@@ -189,7 +189,7 @@ export class FeedbackComponent extends React.Component {
                   <EuiFlexGroup direction="column" grow={false} gutterSize="xs" style={{paddingLeft: 30}}>
                     <EuiFlexItem>
                       <EuiFlexGroup gutterSize="none" direction="row" >
-                        <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)", width: 60}}>
+                        <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)", width: 80}}>
                           <EuiSwitch 
                             checked={true} 
                             onChange={()=>{}}
@@ -204,7 +204,7 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiFlexGroup gutterSize="none" direction="row">
-                        <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)", width: 60}}>
+                        <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)", width: 80}}>
                           <EuiSwitch 
                             checked={false} 
                             onChange={()=>{}}
