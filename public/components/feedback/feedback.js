@@ -235,12 +235,11 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiFlexGroup gutterSize="s" direction="row">
-                        <EuiFlexItem grow={false} style={{ minWidth: 50 }}>
+                        <EuiFlexItem grow={false} style={{ minWidth: 50, paddingLeft:20 }}>
                           <EuiCheckbox
                             id="legendcheckboxUnchecked"
                             checked={false}
                             onChange={()=>{}}
-                            style={{paddingLeft:20}}
                           />
                         </EuiFlexItem>
                         <EuiFlexItem grow={false}>
