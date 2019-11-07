@@ -187,7 +187,12 @@ export class FeedbackComponent extends React.Component {
                 <EuiFlexItem>
                   <EuiFlexGroup gutterSize="s" direction="row">
                     <EuiFlexItem grow={false}>
-                      <EuiSwitch checked={true} compressed={true} style={{width:20}}/> 
+                      <EuiSwitch 
+                        checked={true} 
+                        compressed 
+                        showLabel={false} label="" 
+                        onChange={()=>{}}
+                      />
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiText size="s" color="subdued">
@@ -196,30 +201,7 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                   </EuiFlexGroup>
                 </EuiFlexItem>
-                <EuiFlexItem>
-                  <EuiFlexGroup gutterSize="s" direction="row">
-                    <EuiFlexItem grow={false}>
-                      <EuiSwitch checked={false} size="s"/> 
-                    </EuiFlexItem>
-                    <EuiFlexItem>
-                      <EuiText size="s" color="subdued">
-                        This means that ...
-                      </EuiText>
-                    </EuiFlexItem>
-                  </EuiFlexGroup>
-                </EuiFlexItem>
-                <EuiFlexItem>
-                  <EuiFlexGroup gutterSize="s" direction="row">
-                    <EuiFlexItem grow={false}>
-                      <EuiSwitch compressed={true} disabled/> 
-                    </EuiFlexItem>
-                    <EuiFlexItem>
-                      <EuiText size="s" color="subdued">
-                        This means that ...
-                      </EuiText>
-                    </EuiFlexItem>
-                  </EuiFlexGroup>
-                </EuiFlexItem>
+                
                 
                   
                   

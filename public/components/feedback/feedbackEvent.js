@@ -198,7 +198,7 @@ export class FeedbackEvent extends React.Component {
           <EuiSwitch
             checked={this.state.status.checked}
             onChange={this.onChangeSwitch}
-            isdisabled={this.state.isSwitchDisabled.toString()}
+            disabled={this.state.isSwitchDisabled}
           />
         </EuiFlexItem>
         <EuiFlexItem grow={false}>
