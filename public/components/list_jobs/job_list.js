@@ -108,6 +108,7 @@ export class JobList extends React.Component {
           trainFunction={this.onTrainClick}
           evaluateFunction={this.onEvaluateClick}
           stopFunction={this.onStopClick}
+          deleteFunction={this.onDeleteClick}
         />
       );
     });
