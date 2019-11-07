@@ -130,9 +130,8 @@ export class FeedbackEvent extends React.Component {
     if("error_stripped" in event.arcanna) {
       errorMsg = event.arcanna.error_stripped
     } else {
-      if("error" in event.arcanna) {
-        if("message" in event.arcanna.error) {
-          errorMsg = event.arcanna.error.message
+      if("error_message" in event.arcanna) {
+          errorMsg = event.arcanna.error_message
         }
       }
     }
