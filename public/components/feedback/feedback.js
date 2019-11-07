@@ -243,7 +243,7 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiText size="s" color="subdued">
-                       - the event is <span style={{fontWeight: "bold"}}>relevant</span> to this incident.
+                       {/* - the event is <span style={{fontWeight: "bold"}}>relevant</span> to this incident. */}
                       </EuiText>
                     </EuiFlexItem>
                   </EuiFlexGroup>
@@ -259,7 +259,7 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiText size="s" color="subdued">
-                        - the event is <span style={{fontWeight: "bold"}}>irrelevant</span> to this incident.
+                        {/* - the event is <span style={{fontWeight: "bold"}}>irrelevant</span> to this incident. */}
                       </EuiText>
                     </EuiFlexItem>
                   </EuiFlexGroup>
