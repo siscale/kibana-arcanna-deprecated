@@ -250,7 +250,7 @@ export class FeedbackComponent extends React.Component {
                 </EuiFlexItem>
                 <EuiFlexItem>
                   <EuiFlexGroup gutterSize="s" direction="row">
-                    <EuiFlexItem grow={false}>
+                    <EuiFlexItem>
                       <EuiCheckbox
                         id="legendcheckboxUnchecked"
                         checked={true}
@@ -259,7 +259,7 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiText size="s" color="subdued">
-                        - the event is <span style={{fontWeight: "bold"}}>irrelevant</span> to this incident.
+                        - the event is <EuiTextColor color="default"><span style={{fontWeight: "bold"}}>irrelevant</span></EuiTextColor> to this incident.
                       </EuiText>
                     </EuiFlexItem>
                   </EuiFlexGroup>
