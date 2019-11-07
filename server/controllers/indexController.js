@@ -111,19 +111,31 @@ export class IndexController {
   async getJobList(req, reply) {
     const self = this;
     const { callWithRequest } = self.esClient;
-    try {
-      const rawSearchRes = await callWithRequest(req, 'search', {
-        index: self.settings.jobsIndex,
-        body: {
-          size: 10000,
-          sort: [
+    const body = {
+      size: 10000,
+      sort: [
+        {
+          createdAt: {
+            order: "asc"
+          }
+        }
+      ],
+      query: {
+        bool: {
+          must_not: [
             {
-              createdAt: {
-                order: "asc"
+              match: {
+                deleted: true
               }
             }
           ]
         }
+      }
+    }
+    try {
+      const rawSearchRes = await callWithRequest(req, 'search', {
+        index: self.settings.jobsIndex,
+        body: body
       });
 
       const jobsResults = [];
