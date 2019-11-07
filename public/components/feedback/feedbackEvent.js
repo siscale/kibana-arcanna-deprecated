@@ -32,7 +32,9 @@ export class FeedbackEvent extends React.Component {
     super(props);
     this.state = {
       id: '',
-      documentName: '', 
+      errorMessage: '',
+      fullUrl: '',
+      hostname: '',
       indexName: '',
       documentContent: '',
       arcanna: {},
@@ -116,7 +118,7 @@ export class FeedbackEvent extends React.Component {
     onSwitchChange: PropTypes.func
   }
 
-  parseDocumentName() {
+  parseEventHeader() {
     const self = this;
     const event = self.props.event;
     var fullUrl = ""
@@ -137,19 +139,21 @@ export class FeedbackEvent extends React.Component {
       hostname = " | " + event.arcanna.host
     }
     if(fullUrl === "" && errorMsg === "" && hostname === "") {
-      return event._id
+      return [event._id, '', '']
     }
-    return fullUrl + hostname + errorMsg
+    return [fullUrl, hostname, errorMsg]
   }
 
   componentDidMount() {
     const source = this.props.event.origDocument;
     // delete source.arcanna;
     const isRelevant = ((this.props.event.arcanna.best_match === -1) ? false : true);
-
+    const [url, host, errorMsg] = this.parseEventHeader();
     this.setState({
       id: this.props.event._id,
-      documentName: this.parseDocumentName(),
+      fullUrl: url,
+      hostname: host,
+      errorMessage: errorMsg,
       indexName: this.props.event.arcanna.source_index,
       documentContent: JSON.stringify(source, null, 2),
       arcanna: this.props.event.arcanna,
@@ -200,15 +204,15 @@ export class FeedbackEvent extends React.Component {
         <EuiFlexItem grow={false}>
           <EuiBadge>{this.state.indexName}</EuiBadge>
         </EuiFlexItem>
-        <EuiFlexItem>
-          oeiwrjfoewirj
+        <EuiFlexItem grow={1}>
+          <h4>{this.state.fullUrl}</h4>
         </EuiFlexItem>
-        <EuiFlexItem>
-          3t44353425
+        <EuiFlexItem grow={1}>
+          <h4>{this.state.hostname}</h4>
         </EuiFlexItem>
-        <EuiFlexItem>
+        <EuiFlexItem grow={3}>
           <EuiText>
-            <h4>{this.state.documentName}</h4>
+            <h4>{this.state.errorMessage}</h4>
           </EuiText>
         </EuiFlexItem>
 
