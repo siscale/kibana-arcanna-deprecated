@@ -201,6 +201,12 @@ export class FeedbackEvent extends React.Component {
           <EuiBadge>{this.state.indexName}</EuiBadge>
         </EuiFlexItem>
         <EuiFlexItem>
+          oeiwrjfoewirj
+        </EuiFlexItem>
+        <EuiFlexItem>
+          3t44353425
+        </EuiFlexItem>
+        <EuiFlexItem>
           <EuiText>
             <h4>{this.state.documentName}</h4>
           </EuiText>
