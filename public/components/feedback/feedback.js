@@ -243,12 +243,12 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiText size="s" color="subdued">
-                       {/* - the event is <span style={{fontWeight: "bold"}}>relevant</span> to this incident. */}
+                       sadsa
                       </EuiText>
                     </EuiFlexItem>
                   </EuiFlexGroup>
                 </EuiFlexItem>
-                <EuiFlexItem>
+                {/* <EuiFlexItem>
                   <EuiFlexGroup gutterSize="s" direction="row">
                     <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)"}}>
                       <EuiCheckBox
@@ -259,11 +259,11 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiText size="s" color="subdued">
-                        {/* - the event is <span style={{fontWeight: "bold"}}>irrelevant</span> to this incident. */}
+                        - the event is <span style={{fontWeight: "bold"}}>irrelevant</span> to this incident.
                       </EuiText>
                     </EuiFlexItem>
                   </EuiFlexGroup>
-                </EuiFlexItem>
+                </EuiFlexItem> */}
                 
                   
                   
