@@ -206,7 +206,7 @@ export class FeedbackEvent extends React.Component {
         </EuiFlexItem>
         <EuiFlexItem grow={2}>
           <EuiText>
-            <h4>{this.state.fullUrl}</h4> 
+            <h4>Host: {this.state.fullUrl}</h4> 
           </EuiText>
         </EuiFlexItem>
         <EuiFlexItem grow={1}>
