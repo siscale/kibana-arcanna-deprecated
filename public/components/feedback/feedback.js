@@ -219,7 +219,7 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem> 
                       <EuiFlexGroup gutterSize="none" direction="row" >
-                        <EuiFlexItem grow={false} style={{ width: 60}}>
+                        <EuiFlexItem grow={false} style={{ width: 80, paddingLeft:15}}>
                           <EuiCheckbox
                             id="legendcheckboxChecked"
                             checked={true}
@@ -235,7 +235,7 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiFlexGroup gutterSize="none" direction="row">
-                        <EuiFlexItem grow={false} style={{ width: 60}}>
+                        <EuiFlexItem grow={false} style={{ width: 80, paddingLeft:15}}>
                           <EuiCheckbox
                             id="legendcheckboxUnchecked"
                             checked={false}
