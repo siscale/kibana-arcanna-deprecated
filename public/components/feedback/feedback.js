@@ -194,7 +194,7 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiText size="s" color="subdued">
-                        If the switch is checked, it means that the event represents the Root Cause of the incident.
+                        - the event represents the <b>Root Cause</b> of the incident.
                       </EuiText>
                     </EuiFlexItem>
                   </EuiFlexGroup>
@@ -209,12 +209,12 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiText size="s" color="subdued">
-                        If the switch is not checked, it means that the event represents a symptom.
+                        - the event represents a <b>symptom</b>.
                       </EuiText>
                     </EuiFlexItem>
                   </EuiFlexGroup>
                 </EuiFlexItem>
-                <EuiFlexItem>
+                {/* <EuiFlexItem>
                   <EuiFlexGroup gutterSize="s" direction="row">
                     <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)"}}>
                       <EuiSwitch 
@@ -225,7 +225,37 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiText size="s" color="subdued">
-                        If the switch is disabled, it means that the event is irrelevant to this incident.
+                        means that the event is irrelevant to this incident.
+                      </EuiText>
+                    </EuiFlexItem>
+                  </EuiFlexGroup>
+                </EuiFlexItem>*/}
+                <EuiFlexItem> 
+                  <EuiFlexGroup gutterSize="s" direction="row">
+                    <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)"}}>
+                      <EuiCheckBox
+                        id="legendcheckboxChecked"
+                        checked={true}
+                      />
+                    </EuiFlexItem>
+                    <EuiFlexItem>
+                      <EuiText size="s" color="subdued">
+                       - the event is <b>relevant</b> to this incident.
+                      </EuiText>
+                    </EuiFlexItem>
+                  </EuiFlexGroup>
+                </EuiFlexItem>
+                <EuiFlexItem>
+                  <EuiFlexGroup gutterSize="s" direction="row">
+                    <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)"}}>
+                      <EuiCheckBox
+                        id="legendcheckboxChecked"
+                        checked={true}
+                      />
+                    </EuiFlexItem>
+                    <EuiFlexItem>
+                      <EuiText size="s" color="subdued">
+                        - the event is <b>irrelevant</b> to this incident.
                       </EuiText>
                     </EuiFlexItem>
                   </EuiFlexGroup>
