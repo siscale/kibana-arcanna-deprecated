@@ -162,6 +162,8 @@ export class JobList extends React.Component {
       jobId: jobId
     }
     const resp = await this.genericRequest.request('/delete_job', "POST", JSON.stringify(body));
+    console.log("I'm here!");
+    console.log(resp);
   }
 
   render() {
