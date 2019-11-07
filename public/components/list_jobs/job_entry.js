@@ -80,6 +80,16 @@ export class JobEntry extends React.Component {
           disabled: false,
           type: "play"
         }
+      },
+      delete: {
+        disabled: {
+          color: "subdued",
+          disabled: true
+        },
+        enabled: {
+          color: "default",
+          disabled: false
+        }
       }
     };
 
@@ -96,7 +106,8 @@ export class JobEntry extends React.Component {
       trainAction: this.buttonStatuses.train.disabled,
       evaluateAction: this.buttonStatuses.evaluate.disabled,
       feedbackAction: this.buttonStatuses.feedback.disabled,
-      stopAction: this.buttonStatuses.stop.disabled
+      stopAction: this.buttonStatuses.stop.disabled,
+      deleteAction: this.buttonStatuses.delete.enabled
     };
     this.genericRequest = new GenericRequest();
     
@@ -238,6 +249,7 @@ export class JobEntry extends React.Component {
     this.setEvaluateButtonStatus(trainingStatus, jobStatus);
     this.setFeedbackButtonStatus(trainingStatus, jobStatus);
     this.setStopButtonStatus(trainingStatus, jobStatus);
+    this.setDeleteButtonStatus(trainingStatus, jobStatus);
   }
 
   setTrainButtonStatus(trainingStatus, jobStatus) {
@@ -276,6 +288,15 @@ export class JobEntry extends React.Component {
     }
   }
 
+  setDeleteButtonStatus (trainingStatus, jobStatus) {
+    if(['EVALUATING', 'TRAINING'].indexOf(jobStatus.id) >= 0 && trainingStatus.id !== 'UNKNOWN') {
+      this.setState({deleteAction: this.buttonStatuses.delete.disabled})
+    }
+    else {
+      this.setState({deleteAction: this.buttonStatuses.delete.enabled})
+    }
+  }
+
   onClickFeedback = () => {
     this.setState({feedbackAction: this.buttonStatuses.feedback.disabled})
     this.props.feedbackFunction(this.state.id);
@@ -294,6 +315,14 @@ export class JobEntry extends React.Component {
   onClickStop = () => {
     this.setState({stopAction: this.buttonStatuses.stop.disabled})
     this.props.stopFunction(this.state.id);
+  }
+
+  onClickDelete = () => {
+    this.setState({feedbackAction: this.buttonStatuses.feedback.disabled})
+    this.setState({trainAction: this.buttonStatuses.train.disabled})
+    this.setState({evaluateAction: this.buttonStatuses.evaluate.disabled})
+    this.setState({stopAction: this.buttonStatuses.stop.disabled})
+    // this.props.deleteFunction(this.state.id);
   }
 
   render() {
@@ -336,6 +365,11 @@ export class JobEntry extends React.Component {
                 <EuiFlexItem>
                   <EuiLink disabled={this.state.stopAction.disabled} title="Pause job" onClick={this.onClickStop}>
                     <EuiIcon type={this.state.stopAction.type} size="l" color={this.state.stopAction.color}/>
+                  </EuiLink>
+                </EuiFlexItem>
+                <EuiFlexItem>
+                  <EuiLink disabled={this.state.deleteAction.disabled} title="Delete Job" onClick={this.onClickDelete}>
+                    <EuiIcon type="trash" size="l" color={this.state.delete.color}/>
                   </EuiLink>
                 </EuiFlexItem>
               </EuiFlexGrid>
