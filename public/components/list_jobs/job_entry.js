@@ -84,13 +84,13 @@ export class JobEntry extends React.Component {
         }
       },
       delete: {
-        disabled: {
-          color: "subdued",
-          disabled: true
-        },
         enabled: {
           color: "default",
           disabled: false
+        },
+        disabled: {
+          color: "subdued",
+          disabled: true
         }
       }
     };
@@ -110,7 +110,7 @@ export class JobEntry extends React.Component {
       feedbackAction: this.buttonStatuses.feedback.disabled,
       stopAction: this.buttonStatuses.stop.disabled,
       deleteAction: this.buttonStatuses.delete.enabled,
-      deleteModalIsVisible: false
+      isDeleteModalVisible: false
     };
     this.genericRequest = new GenericRequest();
     
@@ -321,15 +321,15 @@ export class JobEntry extends React.Component {
   }
 
   showDeleteModal = () => {
-    this.setState({deleteModalIsVisible: true});
+    this.setState({isDeleteModalVisible: true});
   }
 
   deleteModalCancel = () => {
-    this.setState({deleteModalIsVisible: false});
+    this.setState({isDeleteModalVisible: false});
   }
 
   deleteModalConfirm = () => {
-    this.setState({deleteModalIsVisible: false});
+    this.setState({isDeleteModalVisible: false});
     this.setState({feedbackAction: this.buttonStatuses.feedback.disabled})
     this.setState({trainAction: this.buttonStatuses.train.disabled})
     this.setState({evaluateAction: this.buttonStatuses.evaluate.disabled})
@@ -341,7 +341,7 @@ export class JobEntry extends React.Component {
   render() {
     let deleteModal;
     let modalTitle = "Are you sure you want to delete job " + this.state.jobName + "?";
-    if(this.state.showDeleteModal) {
+    if(this.state.isDeleteModalVisible) {
       deleteModal = (
         <EuiOverlayMask>
           <EuiConfirmModal
