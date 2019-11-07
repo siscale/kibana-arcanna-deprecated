@@ -188,7 +188,7 @@ export class FeedbackComponent extends React.Component {
                 <EuiFlexGroup gutterSize="s" justifyContent="spaceBetween" alignItems="center">
                   <EuiFlexGroup direction="column" grow={false} gutterSize="xs" style={{paddingLeft: 30}}>
                     <EuiFlexItem>
-                      <EuiFlexGroup gutterSize="s" direction="row" >
+                      <EuiFlexGroup gutterSize="none" direction="row" >
                         <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)", minWidth: 50}}>
                           <EuiSwitch 
                             checked={true} 
@@ -203,7 +203,7 @@ export class FeedbackComponent extends React.Component {
                       </EuiFlexGroup>
                     </EuiFlexItem>
                     <EuiFlexItem>
-                      <EuiFlexGroup gutterSize="s" direction="row">
+                      <EuiFlexGroup gutterSize="none" direction="row">
                         <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)", minWidth: 50}}>
                           <EuiSwitch 
                             checked={false} 
@@ -218,7 +218,7 @@ export class FeedbackComponent extends React.Component {
                       </EuiFlexGroup>
                     </EuiFlexItem>
                     <EuiFlexItem> 
-                      <EuiFlexGroup gutterSize="s" direction="row" >
+                      <EuiFlexGroup gutterSize="none" direction="row" >
                         <EuiFlexItem grow={false} style={{ minWidth: 50, paddingLeft:15}}>
                           <EuiCheckbox
                             id="legendcheckboxChecked"
@@ -234,7 +234,7 @@ export class FeedbackComponent extends React.Component {
                       </EuiFlexGroup>
                     </EuiFlexItem>
                     <EuiFlexItem>
-                      <EuiFlexGroup gutterSize="s" direction="row">
+                      <EuiFlexGroup gutterSize="none" direction="row">
                         <EuiFlexItem grow={false} style={{ minWidth: 50, paddingLeft:15 }}>
                           <EuiCheckbox
                             id="legendcheckboxUnchecked"
