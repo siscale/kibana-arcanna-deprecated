@@ -22,6 +22,7 @@ import {
   EuiButton,
   EuiText,
   EuiSwitch,
+  EuiCheckBox,
   EuiSpacer,
   EuiBadge,
   EuiOverlayMask,
