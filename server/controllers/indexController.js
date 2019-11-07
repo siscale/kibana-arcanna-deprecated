@@ -88,6 +88,7 @@ export class IndexController {
     try {
       const self = this;
       const jobId = req.payload.jobId;
+      const { callWithRequest } = this.esClient;
       const body = {
         doc: {
           deleted: true
