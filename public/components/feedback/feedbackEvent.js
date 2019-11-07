@@ -214,7 +214,7 @@ export class FeedbackEvent extends React.Component {
             <h4>{this.state.hostname}</h4>
           </EuiText>
         </EuiFlexItem>
-        <EuiFlexItem grow={5}>
+        <EuiFlexItem grow={7}>
           <EuiText>
             <p>{this.state.errorMessage}</p>
           </EuiText>
