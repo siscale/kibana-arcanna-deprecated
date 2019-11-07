@@ -116,7 +116,7 @@ export class FeedbackEvent extends React.Component {
     onSwitchChange: PropTypes.func
   }
 
-  createDocumentName() {
+  parseDocumentName() {
     const self = this;
     const event = self.props.event;
     var fullUrl = ""
@@ -127,19 +127,19 @@ export class FeedbackEvent extends React.Component {
     }
     
     if("error_stripped" in event.arcanna) {
-      errorMsg = event.arcanna.error_stripped
+      errorMsg = " | " + event.arcanna.error_stripped
     } else {
       if("error_message" in event.arcanna) {
-        errorMsg = event.arcanna.error_message
+        errorMsg = " | " + event.arcanna.error_message
       }
     }
     if("host" in event.arcanna) {
-      hostname = event.arcanna.host
+      hostname = " | " + event.arcanna.host
     }
     if(fullUrl === "" && errorMsg === "" && hostname === "") {
       return event._id
     }
-    return fullUrl +  " | " + hostname + " | " + errorMsg
+    return fullUrl + hostname + errorMsg
   }
 
   componentDidMount() {
@@ -149,7 +149,7 @@ export class FeedbackEvent extends React.Component {
 
     this.setState({
       id: this.props.event._id,
-      documentName: this.createDocumentName(),
+      documentName: this.parseDocumentName(),
       indexName: this.props.event.arcanna.source_index,
       documentContent: JSON.stringify(source, null, 2),
       arcanna: this.props.event.arcanna,
