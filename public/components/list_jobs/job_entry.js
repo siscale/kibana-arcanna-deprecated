@@ -377,7 +377,7 @@ export class JobEntry extends React.Component {
           </EuiTableRowCell>
           <EuiTableRowCell align="right">
             <EuiFlexGroup>
-              <EuiFlexGrid gutterSize="s" columns={5} style={{paddingRight: 10, paddingTop:10, paddingBottom:10}}>
+              <EuiFlexGrid gutterSize="s" style={{paddingRight: 10, paddingTop:10, paddingBottom:10}}>
                 <EuiFlexItem>
                   <EuiLink disabled={this.state.trainAction.disabled} title="Train" onClick={this.onClickTrain}>
                     <EuiIcon type="string" size="l" color={this.state.trainAction.color}/>

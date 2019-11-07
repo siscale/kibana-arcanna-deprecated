@@ -95,10 +95,11 @@ export class IndexController {
       };
       const resp = await callWithRequest(req, 'update', {
         id: jobId,
-        type: "_doc",
         index: self.settings.jobsIndex,
-        body: body
+        body: body,
+        refresh: true
       })
+      console.log(JSON.stringify(resp))
       return { success: true };
     } catch(error) {
       console.error(err);
