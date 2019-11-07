@@ -369,7 +369,7 @@ export class JobEntry extends React.Component {
                 </EuiFlexItem>
                 <EuiFlexItem>
                   <EuiLink disabled={this.state.deleteAction.disabled} title="Delete Job" onClick={this.onClickDelete}>
-                    <EuiIcon type="trash" size="l" color={this.state.delete.color}/>
+                    <EuiIcon type="trash" size="l" color={this.state.deleteAction.color}/>
                   </EuiLink>
                 </EuiFlexItem>
               </EuiFlexGrid>
