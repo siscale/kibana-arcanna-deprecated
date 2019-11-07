@@ -182,91 +182,90 @@ export class FeedbackComponent extends React.Component {
       <Fragment>
         <EuiFlexGroup direction="column">
           <EuiFlexItem>
-            <EuiFlexItem>
-              <EuiSpacer size="m"/>
-              <EuiFlexGroup gutterSize="s" justifyContent="spaceBetween" alignItems="center">
-                <EuiFlexGroup direction="column" grow={false} gutterSize="xs" style={{paddingLeft: 30}}>
-                <EuiFlexItem>
-                  <EuiFlexGroup gutterSize="s" direction="row" >
-                    <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)", minWidth: 50}}>
-                      <EuiSwitch 
-                        checked={true} 
-                        onChange={()=>{}}
-                      />
+            <EuiFlexGroup direction="row">
+              <EuiFlexItem>
+                <EuiSpacer size="m"/>
+                <EuiFlexGroup gutterSize="s" justifyContent="spaceBetween" alignItems="center">
+                  <EuiFlexGroup direction="column" grow={false} gutterSize="xs" style={{paddingLeft: 30}}>
+                    <EuiFlexItem>
+                      <EuiFlexGroup gutterSize="s" direction="row" >
+                        <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)", minWidth: 50}}>
+                          <EuiSwitch 
+                            checked={true} 
+                            onChange={()=>{}}
+                          />
+                        </EuiFlexItem>
+                        <EuiFlexItem>
+                          <EuiText size="s" color="subdued">
+                            - the event represents the <EuiTextColor color="danger">Root Cause</EuiTextColor> of this incident.
+                          </EuiText>
+                        </EuiFlexItem>
+                      </EuiFlexGroup>
                     </EuiFlexItem>
                     <EuiFlexItem>
-                      <EuiText size="s" color="subdued">
-                        - the event represents the <EuiTextColor color="danger">Root Cause</EuiTextColor> of this incident.
-                      </EuiText>
+                      <EuiFlexGroup gutterSize="s" direction="row">
+                        <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)", minWidth: 50}}>
+                          <EuiSwitch 
+                            checked={false} 
+                            onChange={()=>{}}
+                          />
+                        </EuiFlexItem>
+                        <EuiFlexItem>
+                          <EuiText size="s" color="subdued">
+                            - the event represents a <EuiTextColor color="warning">symptom</EuiTextColor>.
+                          </EuiText>
+                        </EuiFlexItem>
+                      </EuiFlexGroup>
                     </EuiFlexItem>
-                  </EuiFlexGroup>
-                </EuiFlexItem>
-                <EuiFlexItem>
-                  <EuiFlexGroup gutterSize="s" direction="row">
-                    <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)", minWidth: 50}}>
-                      <EuiSwitch 
-                        checked={false} 
-                        onChange={()=>{}}
-                      />
+                    <EuiFlexItem> 
+                      <EuiFlexGroup gutterSize="s" direction="row" >
+                        <EuiFlexItem grow={false} style={{ minWidth: 50 }}>
+                          <EuiCheckbox
+                            id="legendcheckboxChecked"
+                            checked={true}
+                            onChange={()=>{}}
+                          />
+                        </EuiFlexItem>
+                        <EuiFlexItem>
+                          <EuiText size="s" color="subdued">
+                          - the event is <EuiTextColor color="default"><span style={{fontWeight: "bold"}}>relevant</span></EuiTextColor> to this incident.
+                          </EuiText>
+                        </EuiFlexItem>
+                      </EuiFlexGroup>
                     </EuiFlexItem>
                     <EuiFlexItem>
-                      <EuiText size="s" color="subdued">
-                        - the event represents a <EuiTextColor color="warning">symptom</EuiTextColor>.
-                      </EuiText>
+                      <EuiFlexGroup gutterSize="s" direction="row">
+                        <EuiFlexItem grow={false} style={{ minWidth: 50 }}>
+                          <EuiCheckbox
+                            id="legendcheckboxUnchecked"
+                            checked={false}
+                            onChange={()=>{}}
+                          />
+                        </EuiFlexItem>
+                        <EuiFlexItem grow={false}>
+                          <EuiText size="s" color="subdued">
+                            - the event is <EuiTextColor color="default"><span style={{fontWeight: "bold"}}>irrelevant</span></EuiTextColor> to this incident.
+                          </EuiText>
+                        </EuiFlexItem>
+                      </EuiFlexGroup>
                     </EuiFlexItem>
                   </EuiFlexGroup>
-                </EuiFlexItem>
-                <EuiFlexItem> 
-                  <EuiFlexGroup gutterSize="s" direction="row" >
-                    <EuiFlexItem grow={false} style={{ minWidth: 50 }}>
-                      <EuiCheckbox
-                        id="legendcheckboxChecked"
-                        checked={true}
-                        onChange={()=>{}}
-                      />
-                    </EuiFlexItem>
-                    <EuiFlexItem>
-                      <EuiText size="s" color="subdued">
-                       - the event is <EuiTextColor color="default"><span style={{fontWeight: "bold"}}>relevant</span></EuiTextColor> to this incident.
-                      </EuiText>
-                    </EuiFlexItem>
-                  </EuiFlexGroup>
-                </EuiFlexItem>
-                <EuiFlexItem>
-                  <EuiFlexGroup gutterSize="s" direction="row">
-                    <EuiFlexItem grow={false} style={{ minWidth: 50 }}>
-                      <EuiCheckbox
-                        id="legendcheckboxUnchecked"
-                        checked={false}
-                        onChange={()=>{}}
-                      />
-                    </EuiFlexItem>
-                    <EuiFlexItem grow={false}>
-                      <EuiText size="s" color="subdued">
-                        - the event is <EuiTextColor color="default"><span style={{fontWeight: "bold"}}>irrelevant</span></EuiTextColor> to this incident.
-                      </EuiText>
-                    </EuiFlexItem>
-                  </EuiFlexGroup>
-                </EuiFlexItem>
-                
-                  
-                  
                 </EuiFlexGroup>
-              </EuiFlexGroup>
-            </EuiFlexItem>
-            <EuiFlexItem>
-              <EuiFlexGroup direction="column">
-                <EuiFlexItem>
-                  <EuiFlexGroup direction="rowReverse">
-                    <EuiFlexItem grow={false} style={{paddingRight:30}}>
-                      <EuiButton fill onClick={this.onSubmit} isLoading={this.submitButtonIsLoading}>
-                        Submit
-                      </EuiButton>
-                    </EuiFlexItem>
-                  </EuiFlexGroup>
-                </EuiFlexItem>
-              </EuiFlexGroup>
-            </EuiFlexItem>
+              </EuiFlexItem>
+              <EuiFlexItem>
+                <EuiFlexGroup direction="column">
+                  <EuiFlexItem>
+                    <EuiFlexGroup direction="rowReverse">
+                      <EuiFlexItem grow={false} style={{paddingRight:30}}>
+                        <EuiButton fill onClick={this.onSubmit} isLoading={this.submitButtonIsLoading}>
+                          Submit
+                        </EuiButton>
+                      </EuiFlexItem>
+                    </EuiFlexGroup>
+                  </EuiFlexItem>
+                </EuiFlexGroup>
+              </EuiFlexItem>
+            </EuiFlexGroup>
           </EuiFlexItem>
           <EuiFlexItem>
             <EuiFlexGrid>
