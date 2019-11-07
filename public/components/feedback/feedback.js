@@ -185,10 +185,10 @@ export class FeedbackComponent extends React.Component {
             <EuiFlexItem>
               <EuiSpacer size="m"/>
               <EuiFlexGroup gutterSize="s" justifyContent="spaceBetween" alignItems="center">
-                <EuiFlexGroup direction="column" grow={false} gutterSize="s" style={{paddingLeft: 30}}>
+                <EuiFlexGroup direction="column" grow={false} gutterSize="xs" style={{paddingLeft: 30}}>
                 <EuiFlexItem>
-                  <EuiFlexGroup gutterSize="s" direction="row">
-                    <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)"}}>
+                  <EuiFlexGroup gutterSize="s" direction="row" >
+                    <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)", minWidth: 50}}>
                       <EuiSwitch 
                         checked={true} 
                         onChange={()=>{}}
@@ -203,7 +203,7 @@ export class FeedbackComponent extends React.Component {
                 </EuiFlexItem>
                 <EuiFlexItem>
                   <EuiFlexGroup gutterSize="s" direction="row">
-                    <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)"}}>
+                    <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)", minWidth: 50}}>
                       <EuiSwitch 
                         checked={false} 
                         onChange={()=>{}}
@@ -216,25 +216,9 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                   </EuiFlexGroup>
                 </EuiFlexItem>
-                {/* <EuiFlexItem>
-                  <EuiFlexGroup gutterSize="s" direction="row">
-                    <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)"}}>
-                      <EuiSwitch 
-                        checked={false}
-                        disabled={true}
-                        onChange={()=>{}}
-                      />
-                    </EuiFlexItem>
-                    <EuiFlexItem>
-                      <EuiText size="s" color="subdued">
-                        means that the event is irrelevant to this incident.
-                      </EuiText>
-                    </EuiFlexItem>
-                  </EuiFlexGroup>
-                </EuiFlexItem>*/}
                 <EuiFlexItem> 
-                  <EuiFlexGroup gutterSize="s" direction="row">
-                    <EuiFlexItem grow={false} style={{ minWidth: 48 }}>
+                  <EuiFlexGroup gutterSize="s" direction="row" >
+                    <EuiFlexItem grow={false} style={{ minWidth: 50 }}>
                       <EuiCheckbox
                         id="legendcheckboxChecked"
                         checked={true}
@@ -250,7 +234,7 @@ export class FeedbackComponent extends React.Component {
                 </EuiFlexItem>
                 <EuiFlexItem>
                   <EuiFlexGroup gutterSize="s" direction="row">
-                    <EuiFlexItem grow={false} style={{ minWidth: 48 }}>
+                    <EuiFlexItem grow={false} style={{ minWidth: 50 }}>
                       <EuiCheckbox
                         id="legendcheckboxUnchecked"
                         checked={false}
