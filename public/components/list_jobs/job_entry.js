@@ -22,7 +22,9 @@ import {
   EuiButton,
   EuiIcon,
   EuiLink,
-  EuiBadge
+  EuiBadge,
+  EuiConfirmModal,
+  EuiOverlayMask
 } from '@elastic/eui';
 
 // import trainSvg from '../../img/train.svg';
@@ -107,7 +109,8 @@ export class JobEntry extends React.Component {
       evaluateAction: this.buttonStatuses.evaluate.disabled,
       feedbackAction: this.buttonStatuses.feedback.disabled,
       stopAction: this.buttonStatuses.stop.disabled,
-      deleteAction: this.buttonStatuses.delete.enabled
+      deleteAction: this.buttonStatuses.delete.enabled,
+      deleteModalIsVisible: false
     };
     this.genericRequest = new GenericRequest();
     
@@ -317,7 +320,16 @@ export class JobEntry extends React.Component {
     this.props.stopFunction(this.state.id);
   }
 
-  onClickDelete = () => {
+  showDeleteModal = () => {
+    this.setState({deleteModalIsVisible: true});
+  }
+
+  deleteModalCancel = () => {
+    this.setState({deleteModalIsVisible: false});
+  }
+
+  deleteModalConfirm = () => {
+    this.setState({deleteModalIsVisible: false});
     this.setState({feedbackAction: this.buttonStatuses.feedback.disabled})
     this.setState({trainAction: this.buttonStatuses.train.disabled})
     this.setState({evaluateAction: this.buttonStatuses.evaluate.disabled})
@@ -327,6 +339,23 @@ export class JobEntry extends React.Component {
   }
 
   render() {
+    let deleteModal;
+    let modalTitle = "Are you sure you want to delete job " + this.state.jobName + "?";
+    if(this.state.showDeleteModal) {
+      deleteModal = (
+        <EuiOverlayMask>
+          <EuiConfirmModal
+            title={modalTitle}
+            onCancel={this.deleteModalCancel}
+            onConfirm={this.deleteModalConfirm}
+            cancelButtonText="Cancel"
+            confirmButtonText="Delete"
+            buttonColor="danger"
+            defaultFocusedButton="confirm">
+          </EuiConfirmModal>
+        </EuiOverlayMask>
+      )
+    }
     return (
       <EuiTableRow>
           <EuiTableRowCell>
@@ -369,41 +398,14 @@ export class JobEntry extends React.Component {
                   </EuiLink>
                 </EuiFlexItem>
                 <EuiFlexItem>
-                  <EuiLink disabled={this.state.deleteAction.disabled} title="Delete Job" onClick={this.onClickDelete}>
+                  <EuiLink disabled={this.state.deleteAction.disabled} title="Delete Job" onClick={this.showDeleteModal}>
                     <EuiIcon type="trash" size="l" color={this.state.deleteAction.color}/>
                   </EuiLink>
                 </EuiFlexItem>
               </EuiFlexGrid>
             </EuiFlexGroup>
+            {deleteModal}
           </EuiTableRowCell>
-          {/* <EuiTableRowCell>
-            <EuiButton>
-              Train
-            </EuiButton>
-          </EuiTableRowCell>
-          <EuiTableRowCell>
-            <EuiButton>
-              Train
-            </EuiButton>
-          </EuiTableRowCell> */}
-            {/* <EuiFlexGroup>
-              <EuiFlexItem>
-                <EuiButton>
-                  Train
-                </EuiButton>
-              </EuiFlexItem>
-              <EuiFlexItem>
-                <EuiButton>
-                  Evaluate
-                </EuiButton>
-              </EuiFlexItem>
-              <EuiFlexItem>
-                <EuiButton>
-                  Feedback
-                </EuiButton>
-              </EuiFlexItem>
-            </EuiFlexGroup> */}
-          {/* </EuiTableRowCell> */}
         </EuiTableRow>
     );
   }
