@@ -133,6 +133,9 @@ export class FeedbackEvent extends React.Component {
         errorMsg = event.arcanna.error_message
       }
     }
+    if("host" in event.arcanna) {
+      hostname = event.arcanna.host
+    }
     if(fullUrl === "" && errorMsg === "" && hostname === "") {
       return event._id
     }
