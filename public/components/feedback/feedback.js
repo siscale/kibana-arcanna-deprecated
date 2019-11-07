@@ -234,7 +234,7 @@ export class FeedbackComponent extends React.Component {
                 </EuiFlexItem>*/}
                 <EuiFlexItem> 
                   <EuiFlexGroup gutterSize="s" direction="row">
-                    <EuiFlexItem grow={false}>
+                    <EuiFlexItem grow={false} style={{ minWidth: 50 }}>
                       <EuiCheckbox
                         id="legendcheckboxChecked"
                         checked={true}
@@ -243,21 +243,21 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiText size="s" color="subdued">
-                       - the event is <span style={{fontWeight: "bold"}}>relevant</span> to this incident.
+                       - the event is <EuiTextColor color="default"><span style={{fontWeight: "bold"}}>relevant</span></EuiTextColor> to this incident.
                       </EuiText>
                     </EuiFlexItem>
                   </EuiFlexGroup>
                 </EuiFlexItem>
                 <EuiFlexItem>
                   <EuiFlexGroup gutterSize="s" direction="row">
-                    <EuiFlexItem>
+                    <EuiFlexItem style={{ minWidth: 50 }}>
                       <EuiCheckbox
                         id="legendcheckboxUnchecked"
-                        checked={true}
+                        checked={false}
                         onChange={()=>{}}
                       />
                     </EuiFlexItem>
-                    <EuiFlexItem>
+                    <EuiFlexItem grow={false}>
                       <EuiText size="s" color="subdued">
                         - the event is <EuiTextColor color="default"><span style={{fontWeight: "bold"}}>irrelevant</span></EuiTextColor> to this incident.
                       </EuiText>
