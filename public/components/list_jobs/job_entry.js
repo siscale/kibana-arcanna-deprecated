@@ -340,7 +340,7 @@ export class JobEntry extends React.Component {
 
   render() {
     let deleteModal;
-    let modalTitle = "Are you sure you want to delete job " + this.state.jobName + "?";
+    let modalTitle = 'Are you sure you want to delete job "' + this.state.jobName + '"?';
     if(this.state.isDeleteModalVisible) {
       deleteModal = (
         <EuiOverlayMask>
