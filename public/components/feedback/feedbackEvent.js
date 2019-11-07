@@ -209,12 +209,12 @@ export class FeedbackEvent extends React.Component {
             <h4>{this.state.fullUrl}</h4> 
           </EuiText>
         </EuiFlexItem>
-        <EuiFlexItem grow={2}>
+        <EuiFlexItem grow={1}>
           <EuiText>
             <h4>{this.state.hostname}</h4>
           </EuiText>
         </EuiFlexItem>
-        <EuiFlexItem grow={4}>
+        <EuiFlexItem grow={5}>
           <EuiText>
             <p>{this.state.errorMessage}</p>
           </EuiText>
