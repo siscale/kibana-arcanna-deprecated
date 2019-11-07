@@ -129,14 +129,14 @@ export class FeedbackEvent extends React.Component {
     }
     
     if("error_stripped" in event.arcanna) {
-      errorMsg = " | " + event.arcanna.error_stripped
+      errorMsg = event.arcanna.error_stripped
     } else {
       if("error_message" in event.arcanna) {
-        errorMsg = " | " + event.arcanna.error_message
+        errorMsg = event.arcanna.error_message
       }
     }
     if("host" in event.arcanna) {
-      hostname = " | " + event.arcanna.host
+      hostname = event.arcanna.host
     }
     if(fullUrl === "" && errorMsg === "" && hostname === "") {
       return [event._id, '', '']
@@ -205,10 +205,14 @@ export class FeedbackEvent extends React.Component {
           <EuiBadge>{this.state.indexName}</EuiBadge>
         </EuiFlexItem>
         <EuiFlexItem grow={1}>
-          <h4>{this.state.fullUrl}</h4>
+          <EuiText>
+            <h4>{this.state.fullUrl}</h4> 
+          </EuiText>
         </EuiFlexItem>
         <EuiFlexItem grow={1}>
-          <h4>{this.state.hostname}</h4>
+          <EuiText>
+            <h4>{this.state.hostname}</h4>
+          </EuiText>
         </EuiFlexItem>
         <EuiFlexItem grow={3}>
           <EuiText>
