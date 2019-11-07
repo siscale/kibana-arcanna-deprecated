@@ -21,6 +21,7 @@ import {
   EuiFlexItem,
   EuiButton,
   EuiText,
+  EuiTextColor,
   EuiSwitch,
   EuiCheckBox,
   EuiSpacer,
@@ -195,7 +196,7 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiText size="s" color="subdued">
-                        - the event represents the <b>Root Cause</b> of the incident.
+                        - the event represents the <EuiTextColor color="danger">Root Cause</EuiTextColor> of the incident.
                       </EuiText>
                     </EuiFlexItem>
                   </EuiFlexGroup>
@@ -210,7 +211,7 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiText size="s" color="subdued">
-                        - the event represents a <b>symptom</b>.
+                        - the event represents a <EuiTextColor color="warning">symptom</EuiTextColor>.
                       </EuiText>
                     </EuiFlexItem>
                   </EuiFlexGroup>
@@ -241,7 +242,7 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiText size="s" color="subdued">
-                       - the event is <b>relevant</b> to this incident.
+                       - the event is <span style={{fontWeight: "bold"}}>relevant</span> to this incident.
                       </EuiText>
                     </EuiFlexItem>
                   </EuiFlexGroup>
@@ -256,7 +257,7 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiText size="s" color="subdued">
-                        - the event is <b>irrelevant</b> to this incident.
+                        - the event is <span style={{fontWeight: "bold"}}>irrelevant</span> to this incident.
                       </EuiText>
                     </EuiFlexItem>
                   </EuiFlexGroup>
