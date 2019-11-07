@@ -84,6 +84,29 @@ export class IndexController {
     // }
   }
 
+  async deleteJob(req, reply) {
+    try {
+      const self = this;
+      const jobId = req.payload.jobId;
+      body = {
+        doc: {
+          deleted: true
+        }
+      };
+      const resp = await callWithRequest(req, 'update', {
+        id: jobId,
+        type: "_doc",
+        index: self.settings.jobsIndex,
+        body: body
+      })
+      return { success: true };
+    } catch(error) {
+      console.error(err);
+      return {error: err};
+    }
+  }
+
+
   async getJobList(req, reply) {
     const self = this;
     const { callWithRequest } = self.esClient;

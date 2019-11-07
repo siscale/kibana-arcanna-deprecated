@@ -30,6 +30,14 @@ export default function (server) {
   })
 
   server.route({
+    path: '/api/arcanna/delete_job',
+    method: 'POST',
+    handler(req, reply) {
+      return indexCtrl.deleteJob(req, reply);
+    }
+  })
+
+  server.route({
     path: '/api/arcanna/get_incident',
     method: 'POST',
     handler(req, reply) {

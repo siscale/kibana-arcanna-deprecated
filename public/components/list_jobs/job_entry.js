@@ -322,7 +322,8 @@ export class JobEntry extends React.Component {
     this.setState({trainAction: this.buttonStatuses.train.disabled})
     this.setState({evaluateAction: this.buttonStatuses.evaluate.disabled})
     this.setState({stopAction: this.buttonStatuses.stop.disabled})
-    // this.props.deleteFunction(this.state.id);
+    this.setState({deleteAction: this.buttonStatuses.delete.disabled})
+    this.props.deleteFunction(this.state.id);
   }
 
   render() {
