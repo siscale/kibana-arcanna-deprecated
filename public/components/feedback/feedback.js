@@ -204,7 +204,7 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiFlexGroup gutterSize="none" direction="row">
-                        <EuiFlexItem grow={false} stype={{minWidth: 60}}>
+                        <EuiFlexItem grow={false} stype={{minWidth: 80}}>
                           <EuiFlexItem style={{zoom: 0.8, "-moz-transform": "scale(0.8)"}}>
                             <EuiSwitch 
                               checked={false} 
