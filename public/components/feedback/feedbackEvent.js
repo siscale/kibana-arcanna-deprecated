@@ -225,7 +225,7 @@ export class FeedbackEvent extends React.Component {
     return (
 
       <EuiFlexGroup>
-        <EuiFlexItem style={{ minWidth: 800 }} grow={false}>
+        <EuiFlexItem style={{ minWidth: 1024 }} grow={false}>
           <EuiAccordion buttonContent={accordionContent}>
             <EuiCodeBlock language="json">
               {this.state.documentContent}
