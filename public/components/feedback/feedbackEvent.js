@@ -122,7 +122,6 @@ export class FeedbackEvent extends React.Component {
     var fullUrl = ""
     var errorMsg = ""
     var hostname = ""
-    console.log(event.arcanna);
     if("full_url" in event.arcanna) {
       fullUrl = event.arcanna.full_url
     }
@@ -131,8 +130,7 @@ export class FeedbackEvent extends React.Component {
       errorMsg = event.arcanna.error_stripped
     } else {
       if("error_message" in event.arcanna) {
-          errorMsg = event.arcanna.error_message
-        }
+        errorMsg = event.arcanna.error_message
       }
     }
     if(fullUrl === "" && errorMsg === "" && hostname === "") {
