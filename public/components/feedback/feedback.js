@@ -23,7 +23,7 @@ import {
   EuiText,
   EuiTextColor,
   EuiSwitch,
-  EuiCheckBox,
+  EuiCheckbox,
   EuiSpacer,
   EuiBadge,
   EuiOverlayMask,
@@ -234,12 +234,12 @@ export class FeedbackComponent extends React.Component {
                 </EuiFlexItem>*/}
                 <EuiFlexItem> 
                   <EuiFlexGroup gutterSize="s" direction="row">
-                    <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)"}}>
-                    <EuiCheckbox
-                      id="fdejworj234"
-                      checked={true}
-                      onChange={()=>{}}
-                    />
+                    <EuiFlexItem grow={false}>
+                      <EuiCheckbox
+                        id="legendcheckboxChecked"
+                        checked={true}
+                        onChange={()=>{}}
+                      />
                     </EuiFlexItem>
                     <EuiFlexItem>
                       <EuiText size="s" color="subdued">
@@ -248,10 +248,10 @@ export class FeedbackComponent extends React.Component {
                     </EuiFlexItem>
                   </EuiFlexGroup>
                 </EuiFlexItem>
-                {/* <EuiFlexItem>
+                <EuiFlexItem>
                   <EuiFlexGroup gutterSize="s" direction="row">
-                    <EuiFlexItem grow={false} style={{zoom: 0.8, "-moz-transform": "scale(0.8)"}}>
-                      <EuiCheckBox
+                    <EuiFlexItem grow={false}>
+                      <EuiCheckbox
                         id="legendcheckboxUnchecked"
                         checked={true}
                         onChange={()=>{}}
@@ -263,7 +263,7 @@ export class FeedbackComponent extends React.Component {
                       </EuiText>
                     </EuiFlexItem>
                   </EuiFlexGroup>
-                </EuiFlexItem> */}
+                </EuiFlexItem>
                 
                   
                   
