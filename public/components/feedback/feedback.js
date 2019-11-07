@@ -186,11 +186,9 @@ export class FeedbackComponent extends React.Component {
                 <EuiFlexGroup direction="column" grow={false} gutterSize="s" style={{paddingLeft: 30}}>
                 <EuiFlexItem>
                   <EuiFlexGroup gutterSize="s" direction="row">
-                    <EuiFlexItem grow={false}>
+                    <EuiFlexItem grow={false} style={{zoom: 0.5, "-moz-transform": scale(0.5)}}>
                       <EuiSwitch 
                         checked={true} 
-                        compressed 
-                        showLabel={false} label="" 
                         onChange={()=>{}}
                       />
                     </EuiFlexItem>
