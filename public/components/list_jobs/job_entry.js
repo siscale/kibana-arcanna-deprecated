@@ -212,9 +212,7 @@ export class JobEntry extends React.Component {
   }
 
   componentDidMount() {
-    // console.log(this.trainingStatusMapping); 
     const self = this;
-    // console.log("I'm here");
     this.setState({
       id: this.props.jobData._id,
       jobName: self.props.jobData.jobName,
@@ -222,7 +220,6 @@ export class JobEntry extends React.Component {
       jobStatus: self.getJobStatusMapping(self.props.jobData.jobStatus),
       trainingStatus: self.getTrainingStatusMapping(self.props.jobData.trainingStatus)
     });
-    // console.log(this.getTrainingStatusMapping(self.props.jobData.trainingStatus));
     this.setActionsStatus(self.getTrainingStatusMapping(self.props.jobData.trainingStatus), self.getJobStatusMapping(self.props.jobData.jobStatus)); 
   }
 

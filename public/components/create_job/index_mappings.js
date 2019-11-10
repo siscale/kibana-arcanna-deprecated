@@ -56,7 +56,6 @@ export class IndexMappings extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.indexFieldMappings);
     if(this.props.selectedIndexList.length === 0) {
       window.location.href = '#/create_job';
       return;
@@ -66,7 +65,6 @@ export class IndexMappings extends React.Component {
 
   analyzeMappingField(mappingData, indexName, fieldName, fieldInfo) {
     const self = this;
-    // console.log(fieldName);
     if('type' in fieldInfo) {
       mappingData[indexName].push({field_name: fieldName, type: fieldInfo.type});
     }
@@ -144,13 +142,9 @@ export class IndexMappings extends React.Component {
   }
 
   onChangeQueryTextarea = (indexName, value) => {
-    console.log(indexName);
-    console.log(value);
     this.state.selectionQueries[indexName] = value;
   }
   onBlurQueryTextarea = () => {
-    console.log('blur');
-    console.log(this.state.selectionQueries);
     this.setState({selectionQueries: this.state.selectionQueries})
   }
 
