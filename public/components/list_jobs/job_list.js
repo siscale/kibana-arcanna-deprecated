@@ -22,6 +22,7 @@ import {
 } from '@elastic/eui';
 
 
+
 export class JobList extends React.Component {
 
   constructor(props) {
@@ -71,7 +72,6 @@ export class JobList extends React.Component {
   }
 
   loadData = async () => {
-    // console.log("Loading data");
     const data = await this.genericRequest.request('list_jobs', 'GET');
     if('error' in data) {
       console.error(data.error);
@@ -108,6 +108,7 @@ export class JobList extends React.Component {
           trainFunction={this.onTrainClick}
           evaluateFunction={this.onEvaluateClick}
           stopFunction={this.onStopClick}
+          deleteFunction={this.onDeleteClick}
         />
       );
     });
@@ -154,6 +155,15 @@ export class JobList extends React.Component {
       jobId: jobId
     }
     const resp = await this.genericRequest.request('tensorflow/stop', "POST", JSON.stringify(body));
+  }
+
+  onDeleteClick = async (jobId) => {
+    const body = {
+      jobId: jobId
+    }
+    const resp = await this.genericRequest.request('delete_job', "POST", JSON.stringify(body));
+    console.log("I'm here!");
+    console.log(resp);
   }
 
   render() {

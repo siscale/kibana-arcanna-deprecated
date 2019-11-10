@@ -1,11 +1,10 @@
-
+import React from 'react';
 import { uiModules } from 'ui/modules';
-
-// import { MainController } from './controllers/main';
-
+import chrome from 'ui/chrome';
 import 'ui/autoload/styles';
 import './less/main.less';
-// import { Main } from './components/main';
+import {Il8nProvider} from '@kbn/i18n/react';
+import {} from '@kbn/i18n/react'
 
 const app = uiModules.get('apps/arcanna');
 
@@ -20,13 +19,15 @@ app.config(stateManagementConfigProvider =>
   stateManagementConfigProvider.disable()
 );
 
-
-import './services/routes';
-import './services/factories';
-
-import './controllers/index';
-
 import './components/index';
+import './services/factories';
+import './controllers/index';
+import './services/routes';
 
-// chrome.setRootController('testPlugin', MainController);
+setTimeout(() => { window.location.href = '#/'; }, 1000)
 
+
+import { HomepageController } from './controllers/homepage'
+import homepageTemplate from './templates/homepage.html';
+// chrome.setRootController('homepageController', HomepageController);
+// chrome.setRootTemplate(homepageTemplate);

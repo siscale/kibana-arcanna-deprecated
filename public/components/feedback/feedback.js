@@ -21,8 +21,17 @@ import {
   EuiFlexItem,
   EuiButton,
   EuiText,
+  EuiTextColor,
   EuiSwitch,
-  EuiBadge
+  EuiCheckbox,
+  EuiSpacer,
+  EuiBadge,
+  EuiOverlayMask,
+  EuiModal,
+  EuiModalHeader,
+  EuiModalHeaderTitle,
+  EuiModalBody,
+  EuiModalFooter
 } from '@elastic/eui';
 
 
@@ -34,19 +43,24 @@ export class FeedbackComponent extends React.Component {
       events: [],
       newStates: [],
       submitButtonIsLoading: false,
-      submitButtonIsDisabled: true
+      submitButtonIsDisabled: true,
+      isNoFeedbackModalVisible: false
     };
     this.genericRequest = new GenericRequest();
-    this.feedbackStatusMapping = {
-      SYMPTOM: {
-        color: 'warning',
-        checked: false
-      },
-      ROOT_CAUSE: {
-        color: 'danger',
-        checked: true
-      }
-    }
+    // this.feedbackStatusMapping = {
+    //   IRRELEVANT: {
+    //     color: 'default',
+    //     checked: false
+    //   },
+    //   SYMPTOM: {
+    //     color: 'warning',
+    //     checked: false
+    //   },
+    //   ROOT_CAUSE: {
+    //     color: 'danger',
+    //     checked: true
+    //   }
+    // }
   }
 
   static propTypes = {
@@ -54,8 +68,7 @@ export class FeedbackComponent extends React.Component {
   }
 
   componentDidMount() {
-    console.log('aaaa');
-    if(!('jobInformation' in this.props.feedbackJobInformation)) {
+    if (!('jobInformation' in this.props.feedbackJobInformation)) {
       window.location.href = '#/list_jobs';
       return;
     }
@@ -63,31 +76,34 @@ export class FeedbackComponent extends React.Component {
   }
 
   componentWillUnmount() {
-    
+
   }
 
   onSwitchChange = (indexName, id, status) => {
-    for(let i = 0; i < this.state.newStates.length; i++) {
-      if(this.state.newStates[i].indexName === indexName && this.state.newStates[i].id === id) {
+    for (let i = 0; i < this.state.newStates.length; i++) {
+      if (this.state.newStates[i].indexName === indexName && this.state.newStates[i].id === id) {
         this.state.newStates[i].status = status;
         break;
       }
     }
   }
 
+  onNoFeedbackModalClose = async () => {
+    window.location.href = '#/list_jobs';
+  }
+
   onSubmit = async () => {
     const body = {
-      events: this.state.newStates
+      events: this.state.newStates,
+      jobId: this.props.feedbackJobInformation.jobInformation._id
     };
-    console.log(body);
     this.setState({submitButtonIsLoading: true});
+
     const resp = await this.genericRequest.request('give_feedback', 'POST', JSON.stringify(body));
-    console.log('success' in resp);
     if('error' in resp) {
       console.error(resp.error);
       this.setState({submitButtonIsLoading: false});
     } else {
-      console.log(resp);
       window.location.href = '#/feedback_next';
       // this.render();
     }
@@ -95,21 +111,28 @@ export class FeedbackComponent extends React.Component {
 
   loadData = async () => {
     const self = this;
-    const indexList = []
-    this.props.feedbackJobInformation.jobInformation.indexData.forEach( (indexData) => {
-      indexList.push(indexData.index);
-    });
-    
-    const body = { indexList: indexList };
+    // const indexList = []
+
+    // this.props.feed
+    // this.props.feedbackJobInformation.jobInformation.indexData.forEach( (indexData) => {
+    // indexList.push(indexData.index);
+    // });
+
+    // const body = { indexList: indexList };
+    const body = { jobId: self.props.feedbackJobInformation.jobInformation._id }
 
     const incidentData = await self.genericRequest.request('get_incident', 'POST', JSON.stringify(body));
-    if('incident' in incidentData) {
-      self.setState({events: incidentData.incident});
+    if ('incident' in incidentData) {
+      if(incidentData.incident.length == 0) {
+        console.log("No new incidents to give feedback");
+        self.setState({isNoFeedbackModalVisible: true});        
+      }
+      self.setState({ events: incidentData.incident });
       const newStates = [];
       incidentData.incident.forEach((incident) => {
         newStates.push({
-          indexName: incident.hit._index,
-          status: incident.arcanna.arcanna_class,
+          indexName: incident.arcanna.source_index,
+          status: incident.arcanna.best_match,
           id: incident._id
         });
       });
@@ -118,50 +141,153 @@ export class FeedbackComponent extends React.Component {
       });
     } else {
       console.log("No new incidents to give feedback");
+      self.setState({isNoFeedbackModalVisible: true});
     }
   }
 
-  renderFeedbackElements = () => {
-    const rows = [];
-    if(this.state.events.length === 0) {
-      this.setState({submitButtonIsDisabled: true})
-      return (
-        <EuiText>
-          <H3>There are not items to give feedback to. Please try again later.</H3>
-        </EuiText>
-      );
-    } else {
-      this.setState({submitButtonIsDisabled: false})
-      this.state.events.forEach((event) => {
-        rows.push(
-          <FeedbackEvent
-            event={event}
-            key={event._id}
-            onSwitchChange={this.onSwitchChange}
-          />
-          // <EuiTableRow>
-          //   <EuiTableRowCell>
-          //     <EuiText>
-          //       <h4>{event._id}</h4>
-          //     </EuiText>
-          //   </EuiTableRowCell>
-          //   <EuiTableRowCell>
-          //     <EuiSwitch/>
-          //   </EuiTableRowCell>
-          //   <EuiTableRowCell>
-          //     <EuiBadge>{event.arcanna.arcanna_class}</EuiBadge>
-          //   </EuiTableRowCell>
-          // </EuiTableRow>
-        );
-      });
-      return rows;
-    }
+  renderFeedbackElements() {
+    var rows = [];
+    this.state.events.forEach((event) => {
+      rows.push(
+        <FeedbackEvent
+          event={event}
+          key={event._id}
+          onSwitchChange={this.onSwitchChange}
+        />
+      )
+    });
+    return rows;
   }
 
   render() {
+    let modal;
+    if(this.state.isNoFeedbackModalVisible) {
+      modal = (
+        <EuiOverlayMask>
+          <EuiModal onClose={this.onNoFeedbackModalClose}>
+            <EuiModalHeader>
+              <EuiModalHeaderTitle>Feedback</EuiModalHeaderTitle>
+            </EuiModalHeader>
+            <EuiModalBody>
+              <EuiText>There are no more incidents to give feedback to, at the current time. Please close this message to go back to the job list.</EuiText>
+            </EuiModalBody>
+            <EuiModalFooter>
+              <EuiButton onClick={this.onNoFeedbackModalClose}>Go back to job list</EuiButton>
+            </EuiModalFooter>
+          </EuiModal>
+        </EuiOverlayMask>
+      )
+    }
     return (
       <Fragment>
-        <EuiFlexGroup  direction="column">
+        <EuiFlexGroup direction="column">
+          <EuiFlexItem>
+            <EuiFlexGroup direction="row" justifyContent="spaceBetween">
+              <EuiFlexItem>
+                <EuiSpacer size="m"/>
+                <EuiFlexGroup gutterSize="s" justifyContent="spaceBetween" alignItems="center">
+                  <EuiFlexGroup direction="column" grow={false} gutterSize="xs" style={{paddingLeft: 30}}>
+                    <EuiFlexItem>
+                      <EuiFlexGroup gutterSize="none" direction="row" >
+                        <EuiFlexItem grow={false} style={{minWidth: 60}}>
+                          <EuiFlexItem style={{zoom: 0.8, "-moz-transform": "scale(0.8)"}}>
+                            <EuiSwitch 
+                              checked={true} 
+                              onChange={()=>{}}
+                            />
+                          </EuiFlexItem>
+                        </EuiFlexItem>
+                        <EuiFlexItem>
+                          <EuiText size="s" color="subdued">
+                            the event represents the <EuiTextColor color="danger"><span style={{fontWeight: "bold"}}>root cause</span></EuiTextColor> of this incident.
+                          </EuiText>
+                        </EuiFlexItem>
+                      </EuiFlexGroup>
+                    </EuiFlexItem>
+                    <EuiFlexItem>
+                      <EuiFlexGroup gutterSize="none" direction="row">
+                        <EuiFlexItem grow={false} style={{minWidth: 60}}>
+                          <EuiFlexItem style={{zoom: 0.8, "-moz-transform": "scale(0.8)"}}>
+                            <EuiSwitch 
+                              checked={false} 
+                              onChange={()=>{}}
+                            />
+                          </EuiFlexItem>
+                        </EuiFlexItem>
+                        <EuiFlexItem>
+                          <EuiText size="s" color="subdued">
+                            the event represents a <EuiTextColor color="warning"><span style={{fontWeight: "bold"}}>symptom</span></EuiTextColor>.
+                          </EuiText>
+                        </EuiFlexItem>
+                      </EuiFlexGroup>
+                    </EuiFlexItem>
+                    <EuiFlexItem> 
+                      <EuiFlexGroup gutterSize="none" direction="row" >
+                        <EuiFlexItem grow={false} style={{ minWidth: 60, paddingLeft:15}}>
+                          <EuiCheckbox
+                            id="legendcheckboxChecked"
+                            checked={true}
+                            onChange={()=>{}}
+                          />
+                        </EuiFlexItem>
+                        <EuiFlexItem>
+                          <EuiText size="s" color="subdued">
+                          the event is <EuiTextColor color="default"><span style={{fontWeight: "bold"}}>relevant</span></EuiTextColor> to this incident.
+                          </EuiText>
+                        </EuiFlexItem>
+                      </EuiFlexGroup>
+                    </EuiFlexItem>
+                    <EuiFlexItem>
+                      <EuiFlexGroup gutterSize="none" direction="row">
+                        <EuiFlexItem grow={false} style={{ minWidth: 60, paddingLeft:15}}>
+                          <EuiCheckbox
+                            id="legendcheckboxUnchecked"
+                            checked={false}
+                            onChange={()=>{}}
+                          />
+                        </EuiFlexItem>
+                        <EuiFlexItem grow={false}>
+                          <EuiText size="s" color="subdued">
+                            the event is <EuiTextColor color="default"><span style={{fontWeight: "bold"}}>irrelevant</span></EuiTextColor> to this incident.
+                          </EuiText>
+                        </EuiFlexItem>
+                      </EuiFlexGroup>
+                    </EuiFlexItem>
+                  </EuiFlexGroup>
+                </EuiFlexGroup>
+              </EuiFlexItem>
+              <EuiFlexItem>
+                <EuiFlexGroup direction="column">
+                  <EuiFlexItem>
+                    <EuiFlexGroup direction="rowReverse">
+                      <EuiFlexItem grow={false} style={{paddingRight:30}}>
+                        <EuiButton fill onClick={this.onSubmit} isLoading={this.submitButtonIsLoading}>
+                          Submit
+                        </EuiButton>
+                      </EuiFlexItem>
+                    </EuiFlexGroup>
+                  </EuiFlexItem>
+                </EuiFlexGroup>
+              </EuiFlexItem>
+            </EuiFlexGroup>
+          </EuiFlexItem>
+          <EuiFlexItem>
+            <EuiFlexGrid>
+              <EuiFlexItem>
+                <EuiTable>
+                  <EuiTableBody>
+                    {this.renderFeedbackElements()}
+                  </EuiTableBody>
+                </EuiTable>
+              </EuiFlexItem>
+              <EuiFlexItem>
+              </EuiFlexItem>
+            </EuiFlexGrid>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+
+
+        {/* <EuiFlexGroup  direction="column">
           <EuiFlexItem>
             <EuiFlexGroup direction="rowReverse">
               <EuiFlexItem grow={false} style={{paddingRight:30}}>
@@ -184,7 +310,8 @@ export class FeedbackComponent extends React.Component {
               </EuiFlexItem>
             </EuiFlexGrid>
           </EuiFlexItem>
-        </EuiFlexGroup>  
+        </EuiFlexGroup> */}
+        {modal}
       </Fragment>
     );
   }

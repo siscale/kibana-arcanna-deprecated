@@ -17,7 +17,6 @@ export class TensorflowController {
   }
 
   async train(req, reply) {
-    // console.log(this.server.config().get('arcanna_v_1.endpoint.url'));
     try {
       const jobId = req.payload.jobId;
       const body = {
@@ -26,19 +25,19 @@ export class TensorflowController {
         jobId: jobId
       };
       const fetch = require('node-fetch');
-      fetch(this.tfEndpointUrl +'/api/v1/execute', {
+      return fetch(this.tfEndpointUrl +'/api/v1/execute', {
         method: "POST",
         headers: this.tfEndpointHeader,
         body: JSON.stringify(body)
       }).then(response => {
-        reply({response: response.json()});
+        return {response: response.json()};
       }).catch(err => {
         console.error(err);
-        reply({error: err});
+        return {error: err};
       });
     } catch(err) {
       console.error(err);
-      reply({error: err});
+      return {error: err};
     }
   }
 
@@ -51,21 +50,20 @@ export class TensorflowController {
         jobId: jobId
       };
 
-      console.log(JSON.stringify(body));
       const fetch = require('node-fetch');
-      fetch(this.tfEndpointUrl +'/api/v1/execute', {
+      return fetch(this.tfEndpointUrl +'/api/v1/execute', {
         method: "POST",
         headers: this.tfEndpointHeader,
         body: JSON.stringify(body)
       }).then(response => {
-        reply({response: response.json()});
+        return {response: response.json()};
       }).catch(err => {
         console.error(err);
-        reply({error: err});
+        return {error: err};
       });
     } catch(err) {
       console.error(err);
-      reply({error: err});
+      return {error: err};
     }
   }
 
@@ -78,19 +76,19 @@ export class TensorflowController {
         jobId: jobId
       };
       const fetch = require('node-fetch');
-      fetch(this.tfEndpointUrl +'/api/v1/execute', {
+      return fetch(this.tfEndpointUrl +'/api/v1/execute', {
         method: "POST",
         headers: this.tfEndpointHeader,
         body: JSON.stringify(body)
       }).then(response => {
-        reply({response: response.json()});
+        return {response: response.json()};
       }).catch(err => {
         console.error(err);
-        reply({error: err});
+        return {error: err};
       });
     } catch(err) {
       console.error(err);
-      reply({error: err});
+      return {error: err};
     } 
   }
 
@@ -103,19 +101,19 @@ export class TensorflowController {
         jobId: jobId
       };
       const fetch = require('node-fetch');
-      fetch(this.tfEndpointUrl +'/api/v1/execute', {
+      return fetch(this.tfEndpointUrl +'/api/v1/execute', {
         method: "POST",
         headers: this.tfEndpointHeader,
         body: JSON.stringify(body)
       }).then(response => {
-        reply({response: response.json()});
+        return {response: response.json()};
       }).catch(err => {
         console.error(err);
-        reply({error: err});
+        return {error: err};
       });
     } catch(err) {
       console.error(err);
-      reply({error: err});
+      return {error: err};
     } 
   }
 
@@ -125,19 +123,19 @@ export class TensorflowController {
         apiToken: this.tfEndpointToken
       };
       const fetch = require('node-fetch');
-      fetch(this.tfEndpointUrl +'/api/v1/health_check', {
+      return fetch(this.tfEndpointUrl +'/health', {
         method: "POST",
         headers: this.tfEndpointHeader,
         body: JSON.stringify(body)
       }).then(response => {
-        reply({response: response.json()});
+        return {response: response.json()};
       }).catch(err => {
         console.error(err);
-        reply({error: err});
+        return {error: err};
       });
     } catch(err) {
       console.error(err);
-      reply({error: err});
+      return {error: err};
     }
   }
 }

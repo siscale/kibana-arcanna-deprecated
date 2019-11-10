@@ -8,7 +8,7 @@ export default function (server) {
     path: '/api/arcanna/list_indices',
     method: 'GET',
     handler(req, reply) {
-      indexCtrl.listIndices(req, reply);
+      return indexCtrl.listIndices(req, reply);
     }
   });
 
@@ -17,7 +17,7 @@ export default function (server) {
     path: '/api/arcanna/list_jobs',
     method: 'GET',
     handler(req, reply) {
-      indexCtrl.getJobList(req, reply);
+      return indexCtrl.getJobList(req, reply);
     }
   });
 
@@ -25,7 +25,15 @@ export default function (server) {
     path: '/api/arcanna/put_job',
     method: 'POST',
     handler(req, reply) {
-      indexCtrl.putJob(req, reply);
+      return indexCtrl.putJob(req, reply);
+    }
+  })
+
+  server.route({
+    path: '/api/arcanna/delete_job',
+    method: 'POST',
+    handler(req, reply) {
+      return indexCtrl.deleteJob(req, reply);
     }
   })
 
@@ -33,7 +41,7 @@ export default function (server) {
     path: '/api/arcanna/get_incident',
     method: 'POST',
     handler(req, reply) {
-      indexCtrl.getFeedbackBatch(req, reply);
+      return indexCtrl.getFeedbackBatch(req, reply);
     }
   });
 
@@ -41,7 +49,7 @@ export default function (server) {
     path: '/api/arcanna/give_feedback',
     method: 'POST',
     handler(req, reply) {
-      indexCtrl.giveFeedback(req, reply);
+      return indexCtrl.giveFeedback(req, reply);
     }
   });
 
@@ -49,7 +57,7 @@ export default function (server) {
     path:'/api/arcanna/tensorflow/train',
     method: 'POST',
     handler(req, reply) {
-      tensorCtrl.train(req, reply)
+      return tensorCtrl.train(req, reply)
     }
   });
 
@@ -57,7 +65,7 @@ export default function (server) {
     path:'/api/arcanna/tensorflow/evaluate',
     method: 'POST',
     handler(req, reply) {
-      tensorCtrl.evaluate(req, reply)
+      return tensorCtrl.evaluate(req, reply)
     }
   });
 
@@ -65,7 +73,7 @@ export default function (server) {
     path:'/api/arcanna/tensorflow/pause',
     method: 'POST',
     handler(req, reply) {
-      tensorCtrl.pause(req, reply)
+      return tensorCtrl.pause(req, reply)
     }
   });
 
@@ -74,7 +82,7 @@ export default function (server) {
     path:'/api/arcanna/tensorflow/stop',
     method: 'POST',
     handler(req, reply) {
-      tensorCtrl.stop(req, reply)
+      return tensorCtrl.stop(req, reply)
     }
   });
 
@@ -82,7 +90,7 @@ export default function (server) {
     path:'/api/arcanna/tensorflow/health_check',
     method: 'GET',
     handler(req, reply) {
-      tensorCtrl.healthCheck(req, reply);
+      return tensorCtrl.healthCheck(req, reply);
     }
   })
 }

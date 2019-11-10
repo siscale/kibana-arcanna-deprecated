@@ -1,4 +1,6 @@
 import exampleRoute from './server/routes/backend';
+import { resolve } from 'path';
+import { existsSync } from 'fs';
 
 export default function (kibana) {
   return new kibana.Plugin({
@@ -12,7 +14,7 @@ export default function (kibana) {
         main: 'plugins/arcanna/app',
       },
       hacks: [],
-      styleSheetPaths: require('path').resolve(__dirname, 'public/app.scss'),
+      styleSheetPaths: [resolve(__dirname, 'public/app.scss'), resolve(__dirname, 'public/app.css')].find(p => existsSync(p)),
     },
 
     config(Joi) {
@@ -26,7 +28,10 @@ export default function (kibana) {
     },
 
     init(server, options) { // eslint-disable-line no-unused-vars
+      
+
       // Add server routes and initialize the plugin here
+      // console.log(JSON.stringify(server.config().get()));
       exampleRoute(server);
     }
   });

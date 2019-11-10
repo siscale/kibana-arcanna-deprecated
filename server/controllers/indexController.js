@@ -8,26 +8,29 @@ export class IndexController {
       jobsIndex: '.arcanna-jobs',
       jobsIndexType: '_doc'
     };
-    this.esClient = new Client({
-      host: server.config().get('elasticsearch.url')
-    });
+    this.esClient = server.plugins.elasticsearch.getCluster('data');
   }
 
   async listIndices(req, reply) {
-    const { callWithRequest } = this.server.plugins.elasticsearch.getCluster('data');
-    callWithRequest(req, 'cluster.state', {
-      metric: 'metadata',
-      index: req.params.name
-    }).then(function (response) {
-      const jsonResp = JSON.stringify(response.metadata.indices);
-      reply(jsonResp);
-    });
+    const { callWithRequest } = this.esClient;
+    try {
+      const results = await callWithRequest(req, 'cluster.state', {
+        metric: 'metadata',
+        index: req.params.name
+      })
+      const jsonResp = JSON.stringify(results.metadata.indices);
+      return jsonResp;
+    } catch (error) {
+      console.error(error);
+      return { error: error };
+    }
+
   }
 
   async putJob(req, reply) {
     const self = this;
+    const { callWithRequest } = this.esClient;
     const jobInfo = req.payload;
-
     try {
       const body = {
         jobName: jobInfo.jobName,
@@ -52,29 +55,87 @@ export class IndexController {
         })
       });
 
-
-      await self.esClient.index({
+      const resp = await callWithRequest(req, 'index', {
         index: self.settings.jobsIndex,
         type: '_doc',
         body: body,
         refresh: "true"
       });
-      reply({success: true});
+      // await self.esClient.index({
+      //   index: self.settings.jobsIndex,
+      //   type: '_doc',
+      //   body: body,
+      //   refresh: "true"
+      // });
 
-    } catch(error) {
+      // console.log(JSON.stringify(resp));
+      const jobId = resp._id.toLowerCase();
+      return {
+        success: true,
+        jobId: jobId
+      };
+
+    } catch (error) {
       console.error(error);
-      reply({error: error})
+      return { error: error };
     }
     // } catch(error) {
     //   reply(error);
     // }
   }
 
+  async deleteJob(req, reply) {
+    try {
+      const self = this;
+      const jobId = req.payload.jobId;
+      const { callWithRequest } = this.esClient;
+      const body = {
+        doc: {
+          deleted: true
+        }
+      };
+      const resp = await callWithRequest(req, 'update', {
+        id: jobId,
+        index: self.settings.jobsIndex,
+        body: body,
+        refresh: true
+      })
+      return { success: true };
+    } catch(err) {
+      console.error(err);
+      return {error: err};
+    }
+  }
+
+
   async getJobList(req, reply) {
     const self = this;
+    const { callWithRequest } = self.esClient;
+    const body = {
+      size: 10000,
+      sort: [
+        {
+          createdAt: {
+            order: "asc"
+          }
+        }
+      ],
+      query: {
+        bool: {
+          must_not: [
+            {
+              match: {
+                deleted: true
+              }
+            }
+          ]
+        }
+      }
+    }
     try {
-      const rawSearchRes = await self.esClient.search({
-        index: self.settings.jobsIndex
+      const rawSearchRes = await callWithRequest(req, 'search', {
+        index: self.settings.jobsIndex,
+        body: body
       });
 
       const jobsResults = [];
@@ -84,97 +145,143 @@ export class IndexController {
         source._id = hit._id;
         jobsResults.push(source);
       });
-    
-      reply(jobsResults);
-    } catch(err) {
+
+      return jobsResults;
+    } catch (err) {
       console.error(err);
-      reply({error: err});
+      return { error: err };
     }
 
   }
 
   async getFeedbackBatch(req, reply) {
     const self = this;
+    const { callWithRequest } = self.esClient;
     try {
-      const indexList = req.payload.indexList;
-      const feedbackGivenRes = await self.esClient.search({
-        index: indexList,
+      const jobId = req.payload.jobId.toLowerCase();
+      const jobIndex = ".arcanna-job-" + jobId;
+
+      const feedbackGivenRes = await callWithRequest(req, 'search', {
+        index: jobIndex,
         body: {
           size: 1,
           query: {
-            match: {
-              "arcanna.arcanna_feedback_given": false
+            bool: {
+              must_not: [
+                {
+                  match: {
+                    tags: "feedback_given"
+                  }
+                }
+              ]
             }
           }
         }
       });
-      if(feedbackGivenRes.hits.hits.length > 0) {
-        const incidentId = feedbackGivenRes.hits.hits[0]._source.arcanna.arcanna_incident_id;
-        const incidentRes = await self.esClient.search({
-          index: indexList,
+      // const feedbackGivenRes = await self.esClient.search({
+      //   index: indexList,
+      //   body: {
+      //     size: 1,
+      //     query: {
+      //       match: {
+      //         "arcanna.arcanna_feedback_given": false
+      //       }
+      //     }
+      //   }
+      // });
+      if (feedbackGivenRes.hits.hits.length > 0) {
+        const batch_id = feedbackGivenRes.hits.hits[0]._source.batch_id;
+        const incidentRes = await callWithRequest(req, 'search', {
+          index: jobIndex,
           body: {
+            size: 100,
             query: {
               match: {
-                "arcanna.arcanna_incident_id": incidentId
+                "batch_id": batch_id
+              }
+            },
+            sort: {
+              "@timestamp": {
+                order: "asc"
               }
             }
           }
         });
+        // const incidentRes = await self.esClient.search({
+        //   index: indexList,
+        //   body: {
+        //     query: {
+        //       match: {
+        //         "arcanna.arcanna_incident_id": incidentId
+        //       }
+        //     }
+        //   }
+        // });
 
         let documents = [];
-        incidentRes.hits.hits.forEach(hit => {
+        for(const hit of incidentRes.hits.hits) {
           const source = hit._source;
-          documents.push({_id: hit._id, arcanna: source.arcanna, hit: hit});
+          const origDocument = await callWithRequest(req, 'get', {
+            index: source.source_index,
+            id: source.source_id
+          });
+          documents.push({ _id: hit._id, arcanna: source, origDocument: origDocument });
+        }
 
-        });
-        reply({incident: documents});
+        return { incident: documents };
 
       } else {
-        reply({incident: []});
+        return { incident: [] };
       }
 
 
-    } catch(err) {
+    } catch (err) {
       console.error(err);
-      reply({error: err});
+      return { error: err };
     }
   }
 
   async giveFeedback(req, reply) {
     const self = this;
+    const { callWithRequest } = self.esClient;
     try {
-      console.log(JSON.stringify(req.payload));
       const docList = req.payload.events;
+      const jobId = req.payload.jobId.toLowerCase();
+      const jobIndex = ".arcanna-job-" + jobId;
       const body = [];
       docList.forEach((doc) => {
-        body.push({update: {_index: doc.indexName, _type: '_doc', _id: doc.id}});
+        body.push({ update: { _index: jobIndex, _type: '_doc', _id: doc.id } });
         body.push({
-          doc: {
-            arcanna: {
-              arcanna_class: doc.status
-            },
-            arcanna: {
-              arcanna_feedback_given: true
+          script: {
+            source: "if (!ctx._source.tags.contains(params.tag)) { ctx._source.tags.add(params.tag) }",
+            lang: "painless",
+            params: {
+              tag: "feedback_given"
             }
           }
         });
+        body.push({ update: { _index: jobIndex, _type: '_doc', _id: doc.id } });
+        body.push({
+          doc: {
+            best_match: doc.status
+          }
+        });
       });
-      const resp = await self.esClient.bulk({
+      const resp = await callWithRequest(req, 'bulk', {
         body: body,
         refresh: "true"
-      })
-      console.log(JSON.stringify(resp));
-      reply({success: true});
-    } catch(err) {
+      });
+      return { success: true };
+    } catch (err) {
       console.error(err);
-      reply({error: err});
+      return { error: err };
     }
   }
   // async getIndexMappings(req, reply) {
   //   // const { callWithRequest } = this.server.plugins.elasticsearch.getCluster('data');
   //   // console.log(req);
   //   console.log(req.payload)
-    
+
   //   // callWithRequest(req, 'cluster.state', {
   //   //   metric: 'metadata',
   //   //   index: req.params.name

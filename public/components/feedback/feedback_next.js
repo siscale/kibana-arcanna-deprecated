@@ -33,9 +33,7 @@ export class FeedbackNext extends React.Component {
   }
 
   componentDidMount() {
-    console.log('bbb');
     window.location.href = '#/feedback';
-    console.log('aaa');
   }
 
   componentWillUnmount() {
