@@ -33,7 +33,6 @@ export class HomepageComponent extends React.Component {
 
   componentDidMount() {
     this.loadData();
-    console.log("Hola!!")
   }
 
   componentWillUnmount() {

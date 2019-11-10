@@ -101,36 +101,12 @@ export class IndexTable extends Component {
     // this.componentWillUpdate();
   }
 
-  // onChangePage = () => {
-  //   console.log('AAAAAA');
-  // }
 
   onSelectionChange = (selectedItems) => {
     this.setState({
       selectedItems: selectedItems
     })
   };
-
-  // onTableChange = ({ page = {}, sort = {} }) => {
-  //   const {
-  //     index: pageIndex,
-  //     size: pageSize,
-  //   } = page;
-
-  //   console.log(page);
-  //   const {
-  //     field: sortField,
-  //     direction: sortDirection,
-  //   } = sort;
-
-
-  //   this.setState({
-  //     pageIndex,
-  //     pageSize,
-  //     sortField,
-  //     sortDirection,
-  //   });
-  // };
 
   onClickSubmit(self) {
     if(self.state.selectedItems.length === 0) {
@@ -157,44 +133,11 @@ export class IndexTable extends Component {
     );
   }
 
-  // getIndexPage(pageIndex, pageSize, sortField, sortDirection) {
-  //   const sd = sortDirection === 'asc' ? 1 : -1;
-  //   const  rows  = this.state.rows.slice();
-  //   rows.sort(function (a, b) {
-  //     if (a[sortField] < b[sortField]) return -1 * sd;
-  //     if (a[sortField] > b[sortField]) return 1 * sd;
-  //     return 0;
-  //   });
-  //   return { 
-  //     pageOfItems: rows.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize),
-  //     totalItemCount: this.state.rows.length
-  //   }
-  // }
-
   render() {
-    // const {
-    //   pageIndex,
-    //   pageSize,
-    //   sortField,
-    //   sortDirection
-    // } = this.state;
-
-    // const {
-    //   pageOfItems,
-    //   totalItemCount,
-    // } = this.getIndexPage(pageIndex, pageSize, sortField, sortDirection)
-
     const selection = {
       selectable: (index) => index.state,
       onSelectionChange: (selection) => this.onSelectionChange(selection)
     };
-
-    // const pagination = {
-    //   pageIndex: pageIndex,
-    //   pageSize: pageSize,
-    //   totalItemCount: totalItemCount,
-    //   pageSizeOptions: [10, 25, 50]
-    // };
 
     const search = {
       toolsRight: this.renderSubmitButton(),
