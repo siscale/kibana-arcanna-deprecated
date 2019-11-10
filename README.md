@@ -1,6 +1,20 @@
-# Arcanna Kibana Plugin
+# The ARCANNA Kibana Plugin
+
+<div style="text-align:center"><img src="./docs/resources/readme_banner.png" /></div>
+
+Arcanna - **A**utomated **R**oot **C**ause **A**nalysis **N**eural **N**etwork **A**ssisted - is a custom built Elastic plugin capable of identifying with increased accuracy the probable root cause of issues that arise within the entire infrastructure stack. For a more in-depth description of the product, please visit [our website](https://www.siscale.com/arcanna/) and our blog postings ([#1](https://www.siscale.com/arcanna-explained-part-i-event-clustering/), [#2](https://www.siscale.com/arcanna-explained-part-ii-probable-root-cause-determination/), [#3](https://www.siscale.com/arcanna-explained-part-iii-user-feedback/)).
+
+This repository represents the Kibana plugin (UI) of the solution.
+
+In order to use the solution, you also need use the solution backend, which can be found [here](https://github.com/siscale/arcanna).
 
 ---
+
+## Installation
+
+In order to install the Arcanna Kibana Plugin, first download the appropriate release for your Kibana version from the [releases tab](https://github.com/siscale/kibana-arcanna/releases).
+
+
 
 ## development
 
