@@ -40,7 +40,6 @@ export class JobList extends React.Component {
   }
 
   componentDidMount() {
-    console.log("Let's go!");
     this.loadData();
     this.setState({refreshInterval : setInterval(this.loadData, 5000)});
     // this.loadData();
@@ -109,6 +108,7 @@ export class JobList extends React.Component {
           trainFunction={this.onTrainClick}
           evaluateFunction={this.onEvaluateClick}
           stopFunction={this.onStopClick}
+          deleteFunction={this.onDeleteClick}
         />
       );
     });
@@ -155,6 +155,15 @@ export class JobList extends React.Component {
       jobId: jobId
     }
     const resp = await this.genericRequest.request('tensorflow/stop', "POST", JSON.stringify(body));
+  }
+
+  onDeleteClick = async (jobId) => {
+    const body = {
+      jobId: jobId
+    }
+    const resp = await this.genericRequest.request('delete_job', "POST", JSON.stringify(body));
+    console.log("I'm here!");
+    console.log(resp);
   }
 
   render() {

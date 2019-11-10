@@ -22,7 +22,9 @@ import {
   EuiButton,
   EuiIcon,
   EuiLink,
-  EuiBadge
+  EuiBadge,
+  EuiConfirmModal,
+  EuiOverlayMask
 } from '@elastic/eui';
 
 // import trainSvg from '../../img/train.svg';
@@ -80,6 +82,16 @@ export class JobEntry extends React.Component {
           disabled: false,
           type: "play"
         }
+      },
+      delete: {
+        enabled: {
+          color: "default",
+          disabled: false
+        },
+        disabled: {
+          color: "subdued",
+          disabled: true
+        }
       }
     };
 
@@ -96,7 +108,9 @@ export class JobEntry extends React.Component {
       trainAction: this.buttonStatuses.train.disabled,
       evaluateAction: this.buttonStatuses.evaluate.disabled,
       feedbackAction: this.buttonStatuses.feedback.disabled,
-      stopAction: this.buttonStatuses.stop.disabled
+      stopAction: this.buttonStatuses.stop.disabled,
+      deleteAction: this.buttonStatuses.delete.enabled,
+      isDeleteModalVisible: false
     };
     this.genericRequest = new GenericRequest();
     
@@ -193,7 +207,8 @@ export class JobEntry extends React.Component {
     feedbackFunction: PropTypes.func,
     trainFunction: PropTypes.func,
     evaluateFunction: PropTypes.func,
-    stopFunction: PropTypes.func
+    stopFunction: PropTypes.func,
+    deleteFunction: PropTypes.func
   }
 
   componentDidMount() {
@@ -238,6 +253,7 @@ export class JobEntry extends React.Component {
     this.setEvaluateButtonStatus(trainingStatus, jobStatus);
     this.setFeedbackButtonStatus(trainingStatus, jobStatus);
     this.setStopButtonStatus(trainingStatus, jobStatus);
+    this.setDeleteButtonStatus(trainingStatus, jobStatus);
   }
 
   setTrainButtonStatus(trainingStatus, jobStatus) {
@@ -276,6 +292,15 @@ export class JobEntry extends React.Component {
     }
   }
 
+  setDeleteButtonStatus (trainingStatus, jobStatus) {
+    if(['EVALUATING', 'TRAINING'].indexOf(jobStatus.id) >= 0 && trainingStatus.id !== 'UNKNOWN') {
+      this.setState({deleteAction: this.buttonStatuses.delete.disabled})
+    }
+    else {
+      this.setState({deleteAction: this.buttonStatuses.delete.enabled})
+    }
+  }
+
   onClickFeedback = () => {
     this.setState({feedbackAction: this.buttonStatuses.feedback.disabled})
     this.props.feedbackFunction(this.state.id);
@@ -296,7 +321,42 @@ export class JobEntry extends React.Component {
     this.props.stopFunction(this.state.id);
   }
 
+  showDeleteModal = () => {
+    this.setState({isDeleteModalVisible: true});
+  }
+
+  deleteModalCancel = () => {
+    this.setState({isDeleteModalVisible: false});
+  }
+
+  deleteModalConfirm = () => {
+    this.setState({isDeleteModalVisible: false});
+    this.setState({feedbackAction: this.buttonStatuses.feedback.disabled})
+    this.setState({trainAction: this.buttonStatuses.train.disabled})
+    this.setState({evaluateAction: this.buttonStatuses.evaluate.disabled})
+    this.setState({stopAction: this.buttonStatuses.stop.disabled})
+    this.setState({deleteAction: this.buttonStatuses.delete.disabled})
+    this.props.deleteFunction(this.state.id);
+  }
+
   render() {
+    let deleteModal;
+    let modalTitle = 'Are you sure you want to delete job "' + this.state.jobName + '"?';
+    if(this.state.isDeleteModalVisible) {
+      deleteModal = (
+        <EuiOverlayMask>
+          <EuiConfirmModal
+            title={modalTitle}
+            onCancel={this.deleteModalCancel}
+            onConfirm={this.deleteModalConfirm}
+            cancelButtonText="Cancel"
+            confirmButtonText="Delete"
+            buttonColor="danger"
+            defaultFocusedButton="confirm">
+          </EuiConfirmModal>
+        </EuiOverlayMask>
+      )
+    }
     return (
       <EuiTableRow>
           <EuiTableRowCell>
@@ -317,7 +377,7 @@ export class JobEntry extends React.Component {
           </EuiTableRowCell>
           <EuiTableRowCell align="right">
             <EuiFlexGroup>
-              <EuiFlexGrid gutterSize="s" columns={4} style={{paddingRight: 10, paddingTop:10, paddingBottom:10}}>
+              <EuiFlexGrid gutterSize="s" style={{paddingRight: 10, paddingTop:10, paddingBottom:10}}>
                 <EuiFlexItem>
                   <EuiLink disabled={this.state.trainAction.disabled} title="Train" onClick={this.onClickTrain}>
                     <EuiIcon type="string" size="l" color={this.state.trainAction.color}/>
@@ -338,37 +398,15 @@ export class JobEntry extends React.Component {
                     <EuiIcon type={this.state.stopAction.type} size="l" color={this.state.stopAction.color}/>
                   </EuiLink>
                 </EuiFlexItem>
+                <EuiFlexItem>
+                  <EuiLink disabled={this.state.deleteAction.disabled} title="Delete Job" onClick={this.showDeleteModal}>
+                    <EuiIcon type="trash" size="l" color={this.state.deleteAction.color}/>
+                  </EuiLink>
+                </EuiFlexItem>
               </EuiFlexGrid>
             </EuiFlexGroup>
+            {deleteModal}
           </EuiTableRowCell>
-          {/* <EuiTableRowCell>
-            <EuiButton>
-              Train
-            </EuiButton>
-          </EuiTableRowCell>
-          <EuiTableRowCell>
-            <EuiButton>
-              Train
-            </EuiButton>
-          </EuiTableRowCell> */}
-            {/* <EuiFlexGroup>
-              <EuiFlexItem>
-                <EuiButton>
-                  Train
-                </EuiButton>
-              </EuiFlexItem>
-              <EuiFlexItem>
-                <EuiButton>
-                  Evaluate
-                </EuiButton>
-              </EuiFlexItem>
-              <EuiFlexItem>
-                <EuiButton>
-                  Feedback
-                </EuiButton>
-              </EuiFlexItem>
-            </EuiFlexGroup> */}
-          {/* </EuiTableRowCell> */}
         </EuiTableRow>
     );
   }

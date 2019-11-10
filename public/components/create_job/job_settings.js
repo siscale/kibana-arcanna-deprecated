@@ -178,7 +178,7 @@ export class JobSettings extends React.Component {
                   isInvalid={this.state.invalidFields.jobName.status}
                 />
               </EuiFormRow>
-              {/* <EuiFormRow
+              <EuiFormRow
                 label="[Optional] Upload your own TensorFlow model"
                 isInvalid={this.state.invalidFields.modelUpload.status}
                 error={this.state.invalidFields.modelUpload.errorMsg}
@@ -190,7 +190,7 @@ export class JobSettings extends React.Component {
                   }}
                   display="large"
                 />
-              </EuiFormRow> */}
+              </EuiFormRow>
             </EuiForm>
           </EuiFlexItem>
         </EuiFlexGroup>

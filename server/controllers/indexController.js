@@ -84,22 +84,58 @@ export class IndexController {
     // }
   }
 
+  async deleteJob(req, reply) {
+    try {
+      const self = this;
+      const jobId = req.payload.jobId;
+      const { callWithRequest } = this.esClient;
+      const body = {
+        doc: {
+          deleted: true
+        }
+      };
+      const resp = await callWithRequest(req, 'update', {
+        id: jobId,
+        index: self.settings.jobsIndex,
+        body: body,
+        refresh: true
+      })
+      return { success: true };
+    } catch(err) {
+      console.error(err);
+      return {error: err};
+    }
+  }
+
+
   async getJobList(req, reply) {
     const self = this;
     const { callWithRequest } = self.esClient;
-    try {
-      const rawSearchRes = await callWithRequest(req, 'search', {
-        index: self.settings.jobsIndex,
-        body: {
-          size: 10000,
-          sort: [
+    const body = {
+      size: 10000,
+      sort: [
+        {
+          createdAt: {
+            order: "asc"
+          }
+        }
+      ],
+      query: {
+        bool: {
+          must_not: [
             {
-              createdAt: {
-                order: "asc"
+              match: {
+                deleted: true
               }
             }
           ]
         }
+      }
+    }
+    try {
+      const rawSearchRes = await callWithRequest(req, 'search', {
+        index: self.settings.jobsIndex,
+        body: body
       });
 
       const jobsResults = [];
