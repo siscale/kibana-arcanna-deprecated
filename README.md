@@ -6,7 +6,7 @@ Arcanna - **A**utomated **R**oot **C**ause **A**nalysis **N**eural **N**etwork *
 
 This repository represents the Kibana plugin (UI) of the solution.
 
-In order to use the solution, you also need use the solution backend, which can be found [here](https://github.com/siscale/arcanna).
+In order to use the solution, you also need to setup the solution backend, which can be found [here](https://github.com/siscale/arcanna).
 
 ---
 
