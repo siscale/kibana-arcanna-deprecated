@@ -147,7 +147,8 @@ export class FeedbackComponent extends React.Component {
     if(this.state.events.length > 0) {
       return (
         <EuiText>
-          <h3>Incident ID: <EuiTextColor color="accent">{this.state.events[0].arcanna.batch_id}</EuiTextColor></h3>
+          {/* <h3>Incident ID: <EuiTextColor color="accent">{this.state.events[0].arcanna.batch_id}</EuiTextColor></h3> */}
+          <h3>Incident ID: <EuiBadge color="hollow">{this.state.events[0].arcanna.batch_id}</EuiBadge></h3>
         </EuiText>
       );
     }
