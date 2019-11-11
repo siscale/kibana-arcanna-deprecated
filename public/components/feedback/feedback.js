@@ -143,6 +143,16 @@ export class FeedbackComponent extends React.Component {
     }
   }
 
+  renderFeedbackBatchTitle() {
+    if(this.state.events.length > 0) {
+      return (
+        <EuiText>
+          <h3>Incident {this.state.events[0].arcanna.batch_id}</h3>
+        </EuiText>
+      );
+    }
+  }
+
   renderFeedbackElements() {
     var rows = [];
     this.state.events.forEach((event) => {
@@ -268,6 +278,9 @@ export class FeedbackComponent extends React.Component {
                 </EuiFlexGroup>
               </EuiFlexItem>
             </EuiFlexGroup>
+          </EuiFlexItem>
+          <EuiFlexItem>
+            {this.renderFeedbackBatchTitle()}
           </EuiFlexItem>
           <EuiFlexItem>
             <EuiFlexGrid>
