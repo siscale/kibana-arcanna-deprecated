@@ -43,6 +43,7 @@ export class IndexMappings extends React.Component {
       indices: {},
       selectedFields: {},
       selectionQueries: {},
+      selectAllChecked:{},
       nextButtonDisabled: true,
       isFlyoutVisible: false
     };
@@ -110,6 +111,9 @@ export class IndexMappings extends React.Component {
       }
     });
     self.setState({indices: mappingData});
+    Object.keys(mappingData).forEach((indexName) => {
+      self.state.selectAllChecked[indexName] = false;
+    });
   }
 
   onFieldActivated = (indexName, fieldName, newMappingName, fieldType) => {
@@ -223,6 +227,9 @@ export class IndexMappings extends React.Component {
     this.setState({ isFlyoutVisible: true });
   }
 
+  onSelectAll = (indexName) => {
+    console.log(indexName)
+  }
 
   renderFields(index) {
     const fieldRenderings = [];
@@ -268,6 +275,11 @@ export class IndexMappings extends React.Component {
             >
             <EuiFlexGroup>
               <EuiFlexItem grow={false}> 
+                <EuiSwitch
+                  key={'switch-all-' + indexName}
+                  checked={this.state.selectAllChecked[indexName]}
+                  onChange={self.onSelectAll(indexName)}
+                />
                 {self.renderFields(indexName)}
               </EuiFlexItem>
               <EuiFlexItem grow={false}>
