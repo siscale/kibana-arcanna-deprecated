@@ -31,7 +31,8 @@ import {
   EuiCodeBlock,
   EuiFlyoutBody,
   EuiFlyoutHeader,
-  EuiSwitch
+  EuiSwitch,
+  EuiSpacer
 } from '@elastic/eui';
 
 import { MappingField } from './mapping_field';
@@ -294,6 +295,7 @@ export class IndexMappings extends React.Component {
                   checked={this.state.selectAllChecked[indexName]}
                   onChange={() => {self.onSelectAll(indexName)}}
                 />
+                <EuiSpacer size="s"/>
                 {self.renderFields(indexName)}
               </EuiFlexItem>
               <EuiFlexItem grow={false}>
