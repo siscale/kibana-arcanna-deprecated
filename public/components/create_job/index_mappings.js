@@ -237,10 +237,10 @@ export class IndexMappings extends React.Component {
     else {
       self.state.selectAllChecked[indexName] = false;
     }
-      self.state.indices[indexName].forEach((fieldData) => {
-        const key = indexName + '.' + fieldData.field_name;
-        self.state.childrenReferences[key].current.setState({checked: self.state.selectAllChecked[indexName]}) 
-      });
+    self.state.indices[indexName].forEach((fieldData) => {
+      const key = indexName + '.' + fieldData.field_name;
+      self.state.childrenReferences[key].current.setState({checked: self.state.selectAllChecked[indexName]}) 
+    });
   }
 
   renderFields(index) {
