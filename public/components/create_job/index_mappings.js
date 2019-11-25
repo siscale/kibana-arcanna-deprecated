@@ -239,7 +239,8 @@ export class IndexMappings extends React.Component {
     }
     self.state.indices[indexName].forEach((fieldData) => {
       const key = indexName + '.' + fieldData.field_name;
-      self.state.childrenReferences[key].current.setState({checked: self.state.selectAllChecked[indexName]}) 
+      // self.state.childrenReferences[key].current.setState({checked: self.state.selectAllChecked[indexName]}) 
+      self.state.childrenReferences[key].current.onChangeSwitch(); 
     });
   }
 
