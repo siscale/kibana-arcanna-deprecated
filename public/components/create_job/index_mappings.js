@@ -31,8 +31,7 @@ import {
   EuiCodeBlock,
   EuiFlyoutBody,
   EuiFlyoutHeader,
-  EuiSwitch,
-  EuiSpacer
+  EuiSwitch
 } from '@elastic/eui';
 
 import { MappingField } from './mapping_field';
