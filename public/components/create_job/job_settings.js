@@ -71,10 +71,10 @@ export class JobSettings extends React.Component {
         inputDisplay: 'Binary Classification',
         dropdownDisplay: (
           <Fragment>
-            <strong>Binary</strong>
+            <strong>Binary Classification</strong>
             <EuiText size="s" color="subdued">
               <p className="euiTextColor--subdued">
-                Allows you to give feedback to a NN in order to train it to do binary classification in your data.
+                Allows you to give feedback to a NN in order to train it for binary classification on your data.
               </p>
             </EuiText>
           </Fragment>
