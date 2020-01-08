@@ -227,25 +227,24 @@ export class JobSettings extends React.Component {
 
   renderClassLabelingForm() {
     const self = this;
-    if(!self.state.classCount) {
-      return null;
-    }
-    var classLabels = [];
-    for(var i = 0; i < self.state.classCount; ++i) {
-      var labelId = i;
-      classLabels.push(<EuiFormRow
-        label={"Class " + (labelId + 1)}
-        error={this.state.invalidFields.classLabels.errorMsg}
-        isInvalid={this.state.invalidFields.classLabels.status[labelId]}
-      >
-        <EuiFieldText
-          value={this.state.classLabels[labelId]}
-          onChange={e => {self.onChangeClassLabel(e, labelId)}}
-          isInvalid={this.state.invalidFields.classLabels.status[labelId]}/>
-      </EuiFormRow>
+    const classLabels = [];
+
+    self.state.classLabels.forEach((value, i) => {
+      classLabels.push(
+        <EuiFormRow
+          label={"Class " + (labelId + 1)}
+          error={this.state.invalidFields.classLabels.errorMsg}
+          isInvalid={this.state.invalidFields.classLabels.status[labelId]}
+        >
+          <EuiFieldText
+            value={this.state.classLabels[labelId]}
+            onChange={e => {self.onChangeClassLabel(e, labelId)}}
+            isInvalid={this.state.invalidFields.classLabels.status[labelId]}
+          />
+        </EuiFormRow>
       );
-    }
-    return classLabels;
+    });
+    return classLabels.length ? classLabels : null;
 
   }
 
