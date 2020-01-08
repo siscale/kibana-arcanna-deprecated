@@ -30,7 +30,8 @@ import {
   EuiTitle,
   EuiCodeBlock,
   EuiFlyoutBody,
-  EuiFlyoutHeader
+  EuiFlyoutHeader,
+  EuiSwitch
 } from '@elastic/eui';
 
 import { MappingField } from './mapping_field';
@@ -43,8 +44,10 @@ export class IndexMappings extends React.Component {
       indices: {},
       selectedFields: {},
       selectionQueries: {},
+      selectAllChecked:{},
       nextButtonDisabled: true,
-      isFlyoutVisible: false
+      isFlyoutVisible: false,
+      childrenReferences: {}
     };
     this.tempIndices = {};
     this.genericRequest = new GenericRequest();
@@ -110,6 +113,9 @@ export class IndexMappings extends React.Component {
       }
     });
     self.setState({indices: mappingData});
+    Object.keys(mappingData).forEach((indexName) => {
+      self.state.selectAllChecked[indexName] = false;
+    });
   }
 
   onFieldActivated = (indexName, fieldName, newMappingName, fieldType) => {
@@ -223,18 +229,33 @@ export class IndexMappings extends React.Component {
     this.setState({ isFlyoutVisible: true });
   }
 
+  onSelectAll = (indexName) => {
+    const self = this;
+    if(self.state.selectAllChecked[indexName] === false) {
+      self.state.selectAllChecked[indexName] = true;
+    }
+    else {
+      self.state.selectAllChecked[indexName] = false;
+    }
+    self.state.indices[indexName].forEach((fieldData) => {
+      const key = indexName + '.' + fieldData.field_name;
+      self.state.childrenReferences[key].current.forceSwitchChange(self.state.selectAllChecked[indexName]); 
+    });
+  }
 
   renderFields(index) {
     const fieldRenderings = [];
     const self = this;
     this.state.indices[index].forEach((fieldData) => {
       const key = index + '.' + fieldData.field_name;
+      self.state.childrenReferences[key] = React.createRef();
       // const keyTextArea = 'textarea-' + key;
       fieldRenderings.push(
         <EuiFlexGroup>
           <EuiFlexItem>
             <MappingField 
               key={key} 
+              ref={self.state.childrenReferences[key]}
               fieldName={fieldData.field_name}
               fieldType={fieldData.type}
               indexName={index}
@@ -268,6 +289,12 @@ export class IndexMappings extends React.Component {
             >
             <EuiFlexGroup>
               <EuiFlexItem grow={false}> 
+                <EuiSwitch
+                  key={'switch-all-' + indexName}
+                  checked={this.state.selectAllChecked[indexName]}
+                  onChange={() => {self.onSelectAll(indexName)}}
+                />
+                <EuiSpacer size="s"/>
                 {self.renderFields(indexName)}
               </EuiFlexItem>
               <EuiFlexItem grow={false}>

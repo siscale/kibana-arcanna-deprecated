@@ -39,6 +39,16 @@ export class MappingField extends React.Component {
   onChangeSwitch = () => {
     if(this.state.checked === false) { 
       //Change to true
+      this.forceSwitchChange(true);
+      
+    }
+    else { 
+      this.forceSwitchChange(false);
+    }
+  };
+
+  forceSwitchChange(newState) {
+    if(newState === true){
       this.setState({checked: true});
       this.setState({textFieldVisibility: "visible"})
       this.props.onActivate(
@@ -47,9 +57,7 @@ export class MappingField extends React.Component {
         this.state.mappingNewName,
         this.props.fieldType
       );
-      
-    }
-    else { 
+    } else {
       this.setState({checked: false}); 
       this.setState({textFieldVisibility: "hidden"})
       this.props.onDeactivate(
@@ -57,7 +65,6 @@ export class MappingField extends React.Component {
         this.props.fieldName
       );
     }
-
   };
 
 
