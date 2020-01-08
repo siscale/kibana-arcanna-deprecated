@@ -237,7 +237,7 @@ export class JobSettings extends React.Component {
       >
         <EuiFieldText
           value={this.state.classLabels[i]}
-          onChange={e => {this.onChangeJobName(e, i)}}
+          onChange={e => {this.onChangeClassLabel(e, i)}}
           isInvalid={this.state.invalidFields.classLabels.status[i]}/>
       </EuiFormRow>
       );
