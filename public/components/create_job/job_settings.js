@@ -303,11 +303,7 @@ export class JobSettings extends React.Component {
                 />
                 <EuiFieldText/>
               </EuiFormRow>
-              <EuiFormRow
-
-              >
-
-              </EuiFormRow>
+              {this.renderClassLabelingForm()}
             </EuiForm>
           </EuiFlexItem>
         </EuiFlexGroup>
