@@ -232,15 +232,16 @@ export class JobSettings extends React.Component {
     }
     var classLabels = [];
     for(var i = 0; i < self.state.classCount; ++i) {
+      var labelId = i;
       classLabels.push(<EuiFormRow
-        label={"Class " + (i + 1)}
+        label={"Class " + (labelId + 1)}
         error={this.state.invalidFields.classLabels.errorMsg}
-        isInvalid={this.state.invalidFields.classLabels.status[i]}
+        isInvalid={this.state.invalidFields.classLabels.status[labelId]}
       >
         <EuiFieldText
-          value={this.state.classLabels[i]}
-          onChange={e => {self.onChangeClassLabel(e, i)}}
-          isInvalid={this.state.invalidFields.classLabels.status[i]}/>
+          value={this.state.classLabels[labelId]}
+          onChange={e => {self.onChangeClassLabel(e, labelId)}}
+          isInvalid={this.state.invalidFields.classLabels.status[labelId]}/>
       </EuiFormRow>
       );
     }
