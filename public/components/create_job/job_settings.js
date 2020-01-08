@@ -211,19 +211,6 @@ export class JobSettings extends React.Component {
                 />
               </EuiFormRow>
               <EuiFormRow
-                label="Job type"
-                error={this.state.invalidFields.jobType.errorMsg}
-                isInvalid={this.state.invalidFields.jobType.status}
-              >
-                <EuiSuperSelect
-                  options={this.jobTypeOptions}
-                  valueOfSelected={this.state.jobType}
-                  onChange={this.onChangeJobType}
-                  hasDividers
-                  itemLayoutAlign="top"
-                />
-              </EuiFormRow>
-              <EuiFormRow
                 label="[Optional] Upload your own TensorFlow model"
                 isInvalid={this.state.invalidFields.modelUpload.status}
                 error={this.state.invalidFields.modelUpload.errorMsg}
@@ -236,6 +223,21 @@ export class JobSettings extends React.Component {
                   display="large"
                 />
               </EuiFormRow>
+              <EuiFormRow
+                label="Job type"
+                error={this.state.invalidFields.jobType.errorMsg}
+                isInvalid={this.state.invalidFields.jobType.status}
+              >
+                <EuiSuperSelect
+                  options={this.jobTypeOptions}
+                  valueOfSelected={this.state.jobType}
+                  onChange={this.onChangeJobType}
+                  hasDividers
+                  itemLayoutAlign="top"
+                />
+                <EuiFieldText/>
+              </EuiFormRow>
+              
             </EuiForm>
           </EuiFlexItem>
         </EuiFlexGroup>
