@@ -230,7 +230,7 @@ export class JobSettings extends React.Component {
     }
     var classLabels = [];
     for(var i = 0; i < self.state.classCount; ++i) {
-      classLabels += (<EuiFormRow
+      classLabels.push(<EuiFormRow
         label={"Class " + (i + 1)}
         error={this.state.invalidFields.classLabels.errorMsg}
         isInvalid={this.state.invalidFields.classLabels.status[i]}
