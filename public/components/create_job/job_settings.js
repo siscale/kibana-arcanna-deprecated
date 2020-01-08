@@ -23,6 +23,7 @@ import {
 } from '@elastic/eui';
 
 import { MappingField } from './mapping_field';
+import { COLORS } from '@elastic/eui/src/components/icon/icon';
 
 export class JobSettings extends React.Component {
 
@@ -193,8 +194,7 @@ export class JobSettings extends React.Component {
   }
 
   onChangeClassLabel = (e,i) => {
-    console.log(e);
-    console.log(i);
+    console.log(e.target.value);
     var classLabels = this.state.classLabels;
     classLabels[i] = e.target.value;
     this.setState({classLabels: classLabels});
@@ -232,15 +232,16 @@ export class JobSettings extends React.Component {
     }
     var classLabels = [];
     for(var i = 0; i < self.state.classCount; ++i) {
+      var id = i;
       classLabels.push(<EuiFormRow
-        label={"Class " + (i + 1)}
+        label={"Class " + (id + 1)}
         error={this.state.invalidFields.classLabels.errorMsg}
-        isInvalid={this.state.invalidFields.classLabels.status[i]}
+        isInvalid={this.state.invalidFields.classLabels.status[id]}
       >
         <EuiFieldText
-          value={this.state.classLabels[i]}
-          onChange={e => {this.onChangeClassLabel(e, i)}}
-          isInvalid={this.state.invalidFields.classLabels.status[i]}/>
+          value={this.state.classLabels[id]}
+          onChange={e => {self.onChangeClassLabel(e, id)}}
+          isInvalid={this.state.invalidFields.classLabels.status[id]}/>
       </EuiFormRow>
       );
     }
