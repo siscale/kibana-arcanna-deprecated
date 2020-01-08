@@ -242,6 +242,7 @@ export class JobSettings extends React.Component {
       </EuiFormRow>
       );
     }
+    return classLabels;
 
   }
 
