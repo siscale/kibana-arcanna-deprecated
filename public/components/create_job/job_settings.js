@@ -229,7 +229,7 @@ export class JobSettings extends React.Component {
     const self = this;
     const classLabels = [];
 
-    self.state.classLabels.forEach((value, i) => {
+    self.state.classLabels.forEach((value, labelId) => {
       classLabels.push(
         <EuiFormRow
           label={"Class " + (labelId + 1)}
