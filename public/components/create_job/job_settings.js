@@ -194,7 +194,7 @@ export class JobSettings extends React.Component {
   }
 
   onChangeClassLabel = (e,i) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     var classLabels = this.state.classLabels;
     classLabels[i] = e.target.value;
     this.setState({classLabels: classLabels});
