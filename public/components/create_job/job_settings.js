@@ -229,19 +229,19 @@ export class JobSettings extends React.Component {
       return null;
     }
     var classLabels = [];
-    for(var i = 0; i < self.state.classCount; ++i) {
-      classLabels += (<EuiFormRow
-        label={"Class " + (i + 1)}
-        error={this.state.invalidFields.classLabels.errorMsg}
-        isInvalid={this.state.invalidFields.classLabels.status[i]}
-      >
-        <EuiFieldText
-          value={this.state.classLabels[i]}
-          onChange={e => {this.onChangeJobName(e, i)}}
-          isInvalid={this.state.invalidFields.classLabels.status[i]}/>
-      </EuiFormRow>
-      );
-    }
+    // for(var i = 0; i < self.state.classCount; ++i) {
+    //   classLabels += (<EuiFormRow
+    //     label={"Class " + (i + 1)}
+    //     error={this.state.invalidFields.classLabels.errorMsg}
+    //     isInvalid={this.state.invalidFields.classLabels.status[i]}
+    //   >
+    //     <EuiFieldText
+    //       value={this.state.classLabels[i]}
+    //       onChange={e => {this.onChangeJobName(e, i)}}
+    //       isInvalid={this.state.invalidFields.classLabels.status[i]}/>
+    //   </EuiFormRow>
+    //   );
+    // }
     return classLabels;
 
   }
