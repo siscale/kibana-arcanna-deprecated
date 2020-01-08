@@ -7,18 +7,19 @@ import { GenericRequest } from '../../utils/requests';
 
 import {
   EuiAccordion,
-  EuiSpacer,
-  EuiHorizontalRule,
-  EuiPanel,
   EuiButton,
+  EuiFieldText,
+  EuiFilePicker,
+  EuiFlexGrid,
   EuiFlexGroup,
   EuiFlexItem,
-  EuiFlexGrid,
   EuiForm,
   EuiFormRow,
+  EuiHorizontalRule,
+  EuiPanel,
+  EuiSpacer,
   EuiSuperSelect,
-  EuiFieldText,
-  EuiFilePicker
+  EuiText
 } from '@elastic/eui';
 
 import { MappingField } from './mapping_field';
