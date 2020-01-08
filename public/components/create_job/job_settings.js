@@ -28,9 +28,12 @@ export class JobSettings extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       jobName: "",
-      jobType: 'rca',
+      chosenJobType: 'rca',
+      classCount: 0,
+      classLabels: [],
       invalidFields: {
         jobName: {
           status: true,
@@ -44,6 +47,10 @@ export class JobSettings extends React.Component {
         modelUpload: {
           status: false,
           errorMsg: (<span>The model should be an .zip archive with the size of maximum 2MB.</span>)
+        },
+        classLabels: {
+          status: [],
+          errorMsg: (<span>The class label should be composed of alphanumerical characters, '_' or '-'.</span>)
         }
       },
       submitButtonDisabled: true,
@@ -51,6 +58,20 @@ export class JobSettings extends React.Component {
       files: {}
     };
 
+    this.jobTypeProperties = {
+      rca: {
+        classCount: 0,
+        status: []
+      },
+      binary: {
+        classCount: 2,
+        defaultClassLabels: [
+          "class1",
+          "class2"
+        ],
+        status: [false, false]
+      }
+    }
     this.jobTypeOptions = [
       {
         value: 'rca',
@@ -153,7 +174,28 @@ export class JobSettings extends React.Component {
   }
 
   onChangeJobType = value => {
-    this.setState({ jobType: value });
+
+    var count = this.jobTypeProperties[value].classCount;
+    var invalidLabelStatuses = [];
+    var defaultLabels = [];
+    for(var i=1; i <= count; ++i) {
+      defaultLabels.push("class" + i);
+    }
+    if(count > 0) {
+      invalidLabelStatuses= Array(count).fill(false);
+    }
+    this.setState({ 
+      chosenJobType: value, 
+      classCount: count,
+      classLabels: defaultLabels
+    });
+    this.state.invalidFields.classLabels.status = invalidLabelStatuses;
+  }
+
+  onChangeClassLabel = (e,i) => {
+    console.log(e);
+    console.log(i);
+    this.state.classLabels[i] = e.target.value;
   }
 
   onChangeFileUpload = files => {
@@ -179,6 +221,30 @@ export class JobSettings extends React.Component {
     });
     this.checkIfCanSubmit();
   }
+
+
+  renderClassLabelingForm() {
+    const self = this;
+    if(!self.state.classCount) {
+      return null;
+    }
+    var classLabels = [];
+    for(var i = 0; i < self.state.classCount; ++i) {
+      classLabels += (<EuiFormRow
+        label={"Class " + (i + 1)}
+        error={this.state.invalidFields.classLabels.errorMsg}
+        isInvalid={this.state.invalidFields.classLabels.status[i]}
+      >
+        <EuiFieldText
+          value={this.state.classLabels[i]}
+          onChange={e => {this.onChangeJobName(e, i)}}
+          isInvalid={this.state.invalidFields.classLabels.status[i]}/>
+      </EuiFormRow>
+      );
+    }
+
+  }
+
 
   render() {
     return (
@@ -230,14 +296,18 @@ export class JobSettings extends React.Component {
               >
                 <EuiSuperSelect
                   options={this.jobTypeOptions}
-                  valueOfSelected={this.state.jobType}
+                  valueOfSelected={this.state.chosenJobType}
                   onChange={this.onChangeJobType}
                   hasDividers
                   itemLayoutAlign="top"
                 />
                 <EuiFieldText/>
               </EuiFormRow>
-              
+              <EuiFormRow
+
+              >
+
+              </EuiFormRow>
             </EuiForm>
           </EuiFlexItem>
         </EuiFlexGroup>
