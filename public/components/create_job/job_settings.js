@@ -50,7 +50,7 @@ export class JobSettings extends React.Component {
         },
         classLabels: {
           status: [],
-          errorMsg: (<span>The class label should be composed of alphanumerical characters, '_' or '-'.</span>)
+          errorMsg: (<span>The class label should be composed of alphanumerical characters.</span>)
         }
       },
       submitButtonDisabled: true,
@@ -208,7 +208,7 @@ export class JobSettings extends React.Component {
     var classLabels = this.state.classLabels;
     classLabels[i] = e.target.value;
     this.setState({classLabels: classLabels});
-    let re = new RegExp('^[a-zA-Z0-9]+[-a-zA-Z0-9_]*$');
+    let re = new RegExp('^[a-zA-Z0-9]+$');
     if (re.test(e.target.value)) {
       this.state.invalidFields.classLabels.status[i] = false;
     } else {
