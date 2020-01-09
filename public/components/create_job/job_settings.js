@@ -124,6 +124,15 @@ export class JobSettings extends React.Component {
     Object.keys(this.state.invalidFields).forEach((fieldName) => {
       if (self.state.invalidFields[fieldName].status === true) {
         canSubmit = false;
+      } else {
+        if(Array.isArray(self.state.invalidFields[fieldName].status)) {
+          for(var i=0; i < self.state.invalidFields[fieldName].status.length; ++i) {
+            if(self.state.invalidFields[fieldName].status[i] === true) {
+              canSubmit = false;
+              break;
+            }
+          }
+        }
       }
     })
     if (canSubmit === true) {
@@ -193,11 +202,16 @@ export class JobSettings extends React.Component {
   }
 
   onChangeClassLabel = (e,i) => {
-    console.log(e);
-    console.log(i);
     var classLabels = this.state.classLabels;
     classLabels[i] = e.target.value;
     this.setState({classLabels: classLabels});
+    let re = new RegExp('^[-a-zA-Z0-9_]+$');
+    if (re.test(e.target.value)) {
+      this.state.invalidFields.classLabels.status[i] = false;
+    } else {
+      this.state.invalidFields.classLabels.status[i] = true;
+    }
+    this.checkIfCanSubmit();
   }
 
   onChangeFileUpload = files => {
