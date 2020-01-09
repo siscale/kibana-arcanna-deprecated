@@ -199,6 +199,7 @@ export class JobSettings extends React.Component {
       classLabels: defaultLabels
     });
     this.state.invalidFields.classLabels.status = invalidLabelStatuses;
+    this.checkIfCanSubmit();
   }
 
   onChangeClassLabel = (e,i) => {
