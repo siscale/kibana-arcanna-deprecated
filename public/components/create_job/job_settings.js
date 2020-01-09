@@ -158,6 +158,8 @@ export class JobSettings extends React.Component {
     // }
     var body = {
       jobName: this.state.jobName,
+      jobType: this.state.jobType,
+      classLabels: this.state.classLabels,
       indexData: this.props.indexFieldMappings
       // model: fileContent
     };
@@ -173,7 +175,7 @@ export class JobSettings extends React.Component {
 
   onChangeJobName = e => {
     this.setState({ jobName: e.target.value });
-    let re = new RegExp('^[-a-zA-Z0-9_]+$');
+    let re = new RegExp('^[a-zA-Z0-9]+[-a-zA-Z0-9_]*$');
     if (re.test(e.target.value)) {
       this.state.invalidFields.jobName.status = false;
     } else {
@@ -206,7 +208,7 @@ export class JobSettings extends React.Component {
     var classLabels = this.state.classLabels;
     classLabels[i] = e.target.value;
     this.setState({classLabels: classLabels});
-    let re = new RegExp('^[-a-zA-Z0-9_]+$');
+    let re = new RegExp('^[a-zA-Z0-9]+[-a-zA-Z0-9_]*$');
     if (re.test(e.target.value)) {
       this.state.invalidFields.classLabels.status[i] = false;
     } else {
