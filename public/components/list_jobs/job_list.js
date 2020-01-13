@@ -56,7 +56,8 @@ export class JobList extends React.Component {
       name: 'Job name'
     }, {
       field: 'job_type',
-      name: 'Job type'
+      name: 'Job type',
+      align: 'center'
     }, {
       field: 'created_at',
       name: 'Created at'
