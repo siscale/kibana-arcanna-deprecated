@@ -381,7 +381,7 @@ export class JobEntry extends React.Component {
           <EuiTableRowCell>
             {this.state.jobName}
           </EuiTableRowCell>
-          <EuiTableRowCell>
+          <EuiTableRowCell align="center">
             <EuiBadge color={this.state.jobType.color}>
               {this.state.jobType.label}
             </EuiBadge>
