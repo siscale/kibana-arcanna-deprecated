@@ -32,6 +32,7 @@ export class IndexController {
     const { callWithRequest } = this.esClient;
     const jobInfo = req.payload;
     try {
+      console.log(JSON.stringify(jobInfo));
       const body = {
         jobName: jobInfo.jobName,
         createdAt: Date.now(),
@@ -55,21 +56,14 @@ export class IndexController {
         })
       });
 
-      const resp = await callWithRequest(req, 'index', {
-        index: self.settings.jobsIndex,
-        type: '_doc',
-        body: body,
-        refresh: "true"
-      });
-      // await self.esClient.index({
+      // const resp = await callWithRequest(req, 'index', {
       //   index: self.settings.jobsIndex,
       //   type: '_doc',
       //   body: body,
       //   refresh: "true"
       // });
-
-      // console.log(JSON.stringify(resp));
-      const jobId = resp._id.toLowerCase();
+      // // console.log(JSON.stringify(resp));
+      // const jobId = resp._id.toLowerCase();
       return {
         success: true,
         jobId: jobId
