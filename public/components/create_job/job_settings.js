@@ -158,7 +158,7 @@ export class JobSettings extends React.Component {
     // }
     var body = {
       jobName: this.state.jobName,
-      jobType: this.state.jobType,
+      jobType: this.state.chosenJobType,
       classLabels: this.state.classLabels,
       indexData: this.props.indexFieldMappings
       // model: fileContent
