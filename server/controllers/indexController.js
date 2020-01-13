@@ -32,12 +32,13 @@ export class IndexController {
     const { callWithRequest } = this.esClient;
     const jobInfo = req.payload;
     try {
-      console.log(JSON.stringify(jobInfo));
       const body = {
         jobName: jobInfo.jobName,
         createdAt: Date.now(),
         trainingStatus: "NOT_YET_PERFORMED",
         jobStatus: "NOT_STARTED",
+        jobType: jobInfo.jobType,
+        classLabels: jobInfo.classLabels,
         indexData: []
       }
       Object.keys(jobInfo.indexData).forEach((indexName) => {
@@ -56,14 +57,14 @@ export class IndexController {
         })
       });
 
-      // const resp = await callWithRequest(req, 'index', {
-      //   index: self.settings.jobsIndex,
-      //   type: '_doc',
-      //   body: body,
-      //   refresh: "true"
-      // });
-      // // console.log(JSON.stringify(resp));
-      // const jobId = resp._id.toLowerCase();
+      const resp = await callWithRequest(req, 'index', {
+        index: self.settings.jobsIndex,
+        type: '_doc',
+        body: body,
+        refresh: "true"
+      });
+      // console.log(JSON.stringify(resp));
+      const jobId = resp._id.toLowerCase();
       return {
         success: true,
         jobId: jobId
