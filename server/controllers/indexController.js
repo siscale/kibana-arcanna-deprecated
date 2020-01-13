@@ -71,7 +71,7 @@ export class IndexController {
 
     } catch (error) {
       console.error(error);
-      return { error: error };
+      return { error: error.message };
     }
     // } catch(error) {
     //   reply(error);
