@@ -224,6 +224,7 @@ export class JobEntry extends React.Component {
   }
 
   getJobType(jobType) {
+    console.log(jobType);
     if(Object.keys(this.jobTypes).indexOf(jobType) >= 0) {
       return this.jobTypes[jobType];
     } else {
