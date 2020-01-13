@@ -95,9 +95,21 @@ export class JobEntry extends React.Component {
       }
     };
 
+    this.jobTypes = {
+      rca: {
+        label: "RCA",
+        color: "accent"
+      },
+      binary: {
+        label: "BINARY",
+        color: "primary"
+      }
+    }
+
     this.state = {
       id: '',
       jobName: '',
+      jobType: this.jobTypes.rca,
       createdAt: '',
       jobStatus: '',
       trainingStatus: {
@@ -211,11 +223,20 @@ export class JobEntry extends React.Component {
     deleteFunction: PropTypes.func
   }
 
+  getJobType(jobType) {
+    if(this.jobTypes.keys().indexOf(jobType) >= 0) {
+      return this.jobTypes[jobType];
+    } else {
+      return this.jobTypes.rca;
+    }
+  }
+
   componentDidMount() {
     const self = this;
     this.setState({
       id: this.props.jobData._id,
       jobName: self.props.jobData.jobName,
+      jobType: self.getJobType(self.props.jobData.jobType),
       createdAt: moment(Number(self.props.jobData.createdAt)).toISOString(),
       jobStatus: self.getJobStatusMapping(self.props.jobData.jobStatus),
       trainingStatus: self.getTrainingStatusMapping(self.props.jobData.trainingStatus)
@@ -358,6 +379,11 @@ export class JobEntry extends React.Component {
       <EuiTableRow>
           <EuiTableRowCell>
             {this.state.jobName}
+          </EuiTableRowCell>
+          <EuiTableRowCell>
+            <EuiBadge color={this.state.jobType.color}>
+              {this.state.jobType.label}
+            </EuiBadge>
           </EuiTableRowCell>
           <EuiTableRowCell>
             {this.state.createdAt}

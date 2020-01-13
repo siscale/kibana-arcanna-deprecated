@@ -36,12 +36,12 @@ export class JobList extends React.Component {
   }
 
   static propTypes = {
-    feedbackJobInformation: PropTypes.object 
+    feedbackJobInformation: PropTypes.object
   }
 
   componentDidMount() {
     this.loadData();
-    this.setState({refreshInterval : setInterval(this.loadData, 5000)});
+    this.setState({ refreshInterval: setInterval(this.loadData, 5000) });
     // this.loadData();
     this.setColumnInfo();
   }
@@ -55,16 +55,19 @@ export class JobList extends React.Component {
       field: 'job_name',
       name: 'Job name'
     }, {
+      field: 'job_type',
+      name: 'Job type'
+    }, {
       field: 'created_at',
       name: 'Created at'
     }, {
       field: 'job_status',
       name: 'Job status',
-      align:'center'
+      align: 'center'
     }, {
       field: 'training_status',
       name: 'Training status',
-      align:'center'
+      align: 'center'
     }, {
       field: 'actions',
       name: ''
@@ -73,17 +76,17 @@ export class JobList extends React.Component {
 
   loadData = async () => {
     const data = await this.genericRequest.request('list_jobs', 'GET');
-    if('error' in data) {
+    if ('error' in data) {
       console.error(data.error);
     } else {
-      this.setState({jobs: data});
+      this.setState({ jobs: data });
     }
   }
 
   renderHeaderCells = () => {
     const headers = [];
-    
-    this.columns.forEach( (column, columnIndex) => {
+
+    this.columns.forEach((column, columnIndex) => {
       headers.push(
         <EuiTableHeaderCell
           key={column.field}
@@ -99,7 +102,7 @@ export class JobList extends React.Component {
 
   renderRows() {
     const rows = [];
-    this.state.jobs.forEach( (job, jobIndex) => {
+    this.state.jobs.forEach((job, jobIndex) => {
       rows.push(
         <JobEntry
           key={job._id}
@@ -119,17 +122,17 @@ export class JobList extends React.Component {
   onFeedbackClick = (jobId) => {
     let i = 0;
     let jobToReturn = null;
-    for(; i < this.state.jobs.length; ++i) {
-      if(this.state.jobs[i]._id === jobId) {
+    for (; i < this.state.jobs.length; ++i) {
+      if (this.state.jobs[i]._id === jobId) {
         jobToReturn = this.state.jobs[i];
       }
     }
 
-    if(jobToReturn !== null) {
+    if (jobToReturn !== null) {
       this.props.feedbackJobInformation.jobInformation = jobToReturn;
       window.location.href = '#/feedback';
     }
-    
+
     // this.props.feedbackJobInformation.jobInformation = 
     // window.location.href('#/feedback');
   }
@@ -139,7 +142,7 @@ export class JobList extends React.Component {
       jobId: jobId
     }
     const resp = await this.genericRequest.request('tensorflow/train', "POST", JSON.stringify(body));
-    
+
 
   }
 
