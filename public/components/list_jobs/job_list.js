@@ -131,7 +131,11 @@ export class JobList extends React.Component {
 
     if (jobToReturn !== null) {
       this.props.feedbackJobInformation.jobInformation = jobToReturn;
-      window.location.href = '#/feedback';
+      if(jobToReturn.jobType === "rca") {
+        window.location.href = '#/feedback';
+      } else if(jobToReturn.jobType === "binary") {
+        window.location.href = '#/feedback_binary';
+      }
     }
 
     // this.props.feedbackJobInformation.jobInformation = 

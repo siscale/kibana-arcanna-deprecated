@@ -97,10 +97,12 @@ export class JobEntry extends React.Component {
 
     this.jobTypes = {
       rca: {
+        key: 'rca',
         label: "RCA",
         color: "warning"
       },
       binary: {
+        key: 'rca',
         label: "BINARY",
         color: "secondary"
       }
