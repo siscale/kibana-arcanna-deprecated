@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { GenericRequest } from '../../utils/requests';
+import { GenericRequest } from '../../../utils/requests';
 
 import {
   EuiButton,

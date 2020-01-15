@@ -1,5 +1,5 @@
 
-import { GenericRequest } from '../../../utils/requests';
+import { GenericRequest } from '../utils/requests';
 
 export class FeedbackBinaryController {
   constructor(
