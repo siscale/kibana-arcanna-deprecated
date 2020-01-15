@@ -16,7 +16,7 @@ import {
 } from '@elastic/eui';
 
 
-export class FeedbackComponent extends React.Component {
+export class FeedbackBinaryComponent extends React.Component {
 
   constructor(props) {
     super(props);
