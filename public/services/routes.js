@@ -7,6 +7,7 @@ import createJobTemplate from '../templates/create_job.html';
 import createJobMappingsTemplate from '../templates/create_job_mappings.html';
 import createJobSettingsTemplate from '../templates/create_job_settings.html';
 import feedbackTemplate from '../templates/feedback.html';
+import feedbackBinaryTemplate from '../templates/feedback_binary.html'
 import feedbackNextTemplate from '../templates/feedback_next.html';
 import homepageTemplate from '../templates/homepage.html';
 
@@ -42,6 +43,11 @@ routes
   .when('/create_job_settings', {
     template: createJobSettingsTemplate,
     controller: 'createJobSettingsController',
+    controllerAs: 'ctrl'
+  })
+  .when('/feedback_binary', {
+    template: feedbackBinaryTemplate,
+    controller: 'feedbackBinaryController',
     controllerAs: 'ctrl'
   })
   .when('/feedback', {
