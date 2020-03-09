@@ -28,7 +28,7 @@ function RootController($scope, $element, $http) {
   const template = (
     <EuiPage>
       <h1>Test</h1>
-      <ArcannaRouter></ArcannaRouter>
+      <ArcannaRouter httpClient={$http}></ArcannaRouter>
     </EuiPage>
   )
 
