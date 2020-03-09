@@ -24,7 +24,6 @@ import {
 import arcannaSettings from './kibana.html';
 
 import 'brace/mode/yaml';
-import { EuiTitle } from '@elastic/eui';
 
 
 export class HomepageComponent extends React.Component {
