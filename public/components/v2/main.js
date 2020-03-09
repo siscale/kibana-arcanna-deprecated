@@ -15,7 +15,11 @@ import {
   EuiFlexItem,
   EuiSpacer,
 } from '@elastic/eui';
-import { ArcannaRouter } from './router';
+// import { ArcannaRouter } from './router';
+import { Switch, BrowserRouter, Route } from 'react-router-dom';
+import {HealthCheck} from './health_check';
+import {JobList} from './list_jobs';
+
 
 
 export class Main extends Component {
@@ -35,7 +39,13 @@ export class Main extends Component {
             </EuiPageHeaderSection>
           </EuiPageHeader>
           <EuiPageContent panelPaddingSize="s">
-            <ArcannaRouter httpClient={this.props.httpClient}/>
+            {/* <ArcannaRouter httpClient={this.props.httpClient}/> */}
+            <BrowserRouter>
+              <Switch>
+                <Route path="/" component={HealthCheck} exact/>
+                <Route path="/list_jobs" component={JobList}/>
+              </Switch>
+            </BrowserRouter>
             <EuiSpacer size="m"/>
           </EuiPageContent>
         </EuiPageBody>
