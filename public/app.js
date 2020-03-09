@@ -1,4 +1,5 @@
 import React from 'react';
+import { render, unmountComponentAtNode } from 'react-dom';
 import { uiModules } from 'ui/modules';
 import chrome from 'ui/chrome';
 import 'ui/autoload/styles';
