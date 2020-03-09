@@ -31,7 +31,7 @@ export class CreateJob extends Component {
       <Fragment>
         <h2>Create new ML job</h2>
         <BrowserRouter>
-          <Route component={IndexSelection}/>
+          <Route path="/" component={IndexSelection}/>
         </BrowserRouter>
       </Fragment>
     );
