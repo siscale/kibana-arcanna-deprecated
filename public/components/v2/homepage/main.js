@@ -26,7 +26,7 @@ import arcannaSettings from './kibana.html';
 import 'brace/mode/yaml';
 
 
-export class HomepageComponent extends React.Component {
+export class Main extends React.Component {
 
   constructor(props) {
     super(props);
