@@ -21,7 +21,6 @@ import {
   EuiFlexItem,
   EuiButton
 } from '@elastic/eui';
-import { JobListHeader } from './job_header';
 
 
 
