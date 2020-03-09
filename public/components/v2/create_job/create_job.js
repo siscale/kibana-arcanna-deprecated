@@ -30,11 +30,12 @@ export class CreateJob extends Component {
 
   render() {
     const self = this;
+    const baseUrl = self.props.baseUrl + self.props.location.pathname;
     return (
       <Fragment>
         <h2>Create new ML job</h2>
         <div>
-          <BrowserRouter basename={self.props.location.pathname}>
+          <BrowserRouter basename={baseUrl}>
             <Switch>
               <Route path="/" component={IndexSelection} exact/>
               <Route render={() => {console.log(this.props);return (<h2>something</h2>)}}/>

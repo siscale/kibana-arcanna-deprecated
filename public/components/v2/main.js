@@ -50,7 +50,10 @@ export class Main extends Component {
               <Switch>
                 <Route path="/" component={HealthCheck} exact/>
                 <Route path="/list_jobs" component={JobList}/>
-                <Route path="/create_job" component={CreateJob}/>
+                <Route path="/create_job" component={
+                  (props) => {
+                    return (<CreateJob {...props} baseUrl={baseUrl} />)}
+                  }/>
               </Switch>
             </BrowserRouter>
             <EuiSpacer size="m"/>
