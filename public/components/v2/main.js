@@ -15,6 +15,7 @@ import {
   EuiFlexItem,
   EuiSpacer,
 } from '@elastic/eui';
+import { ArcannaRouter } from './router';
 
 
 export class Main extends Component {
@@ -34,7 +35,7 @@ export class Main extends Component {
             </EuiPageHeaderSection>
           </EuiPageHeader>
           <EuiPageContent panelPaddingSize="s">
-            <h1>HAAHAHA</h1>
+            <ArcannaRouter/>
             <EuiSpacer size="m"/>
           </EuiPageContent>
         </EuiPageBody>
