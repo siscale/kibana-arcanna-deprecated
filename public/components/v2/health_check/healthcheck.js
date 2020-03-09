@@ -64,22 +64,22 @@ export class HealthCheck extends React.Component {
           
         )})
     } else {
-      window.location.href = '#/list_jobs';
+      // window.location.href = '#/list_jobs';
     }
   }
 
   
   render() {
     return (
-      // <Fragment>
-      //   <EuiSpacer/>
-      //   <EuiFlexGroup>
-      //     <EuiFlexItem>
-      //         {this.state.errorMessage}
-      //     </EuiFlexItem>
-      //   </EuiFlexGroup>
-      //   <EuiSpacer/>
-      // </Fragment>
+      <Fragment>
+        <EuiSpacer/>
+        <EuiFlexGroup>
+          <EuiFlexItem>
+              {this.state.errorMessage}
+          </EuiFlexItem>
+        </EuiFlexGroup>
+        <EuiSpacer/>
+      </Fragment>
     );
   }
 }
