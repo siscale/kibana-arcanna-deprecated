@@ -52,7 +52,7 @@ export class Main extends Component {
                 <Route path="/list_jobs" component={JobList}/>
                 <Route path="/create_job" component={
                   (props) => {
-                    return (<CreateJob {...props} baseUrl={baseUrl} />)}
+                    return (<CreateJob {...props} baseUrl={this.props.baseUrl} />)}
                   }/>
               </Switch>
             </BrowserRouter>
