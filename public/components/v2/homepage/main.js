@@ -12,7 +12,13 @@ import {
   EuiTextColor,
   EuiSpacer,
   EuiCodeBlock,
-  EuiCode
+  EuiCode,
+  EuiPage,
+  EuiHeaderSection,
+  EuiHeaderSectionItem,
+  EuiTitle,
+  EuiHeader
+
 } from '@elastic/eui';
 
 import arcannaSettings from './kibana.html';
