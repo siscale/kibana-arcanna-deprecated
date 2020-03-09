@@ -26,8 +26,6 @@ app.config(stateManagementConfigProvider =>
 function RootController($scope, $element, $http) {
   const domNode = $element[0];
 
-  window.location.href ="/";
-
   const baseUrl = window.location.pathname;
   // render react to DOM
   render(<Main title="Arcanna" httpClient={$http} baseUrl={baseUrl} />, domNode);
