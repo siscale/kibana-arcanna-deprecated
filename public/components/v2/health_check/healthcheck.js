@@ -50,7 +50,6 @@ export class HealthCheck extends React.Component {
     const data = await this.genericRequest.request('tensorflow/health_check', 'GET');
     
     if('error' in data) {
-      this.props.history.push('list_jobs');
       self.setState({errorMessage: 
         (
           <Fragment>
@@ -66,6 +65,8 @@ export class HealthCheck extends React.Component {
           </Fragment>
           
         )})
+      this.props.history.push('list_jobs');
+      this.componentWillUnmount();
     } else {
       console.log("i'm here chacha!");
       // window.location.href = '#/list_jobs';
