@@ -26,7 +26,7 @@ import arcannaSettings from './kibana.html';
 import 'brace/mode/yaml';
 
 
-export class Main extends React.Component {
+export class HealthCheck extends React.Component {
 
   constructor(props) {
     super(props);
@@ -64,29 +64,13 @@ export class Main extends React.Component {
           
         )})
     } else {
-      // window.location.href = '#/list_jobs';
+      window.location.href = '#/list_jobs';
     }
   }
 
   
   render() {
     return (
-      <EuiPage>
-        <EuiHeader>
-          <EuiHeaderSection>
-            <EuiHeaderSectionItem>
-              <EuiTitle>
-                Arcanna
-              </EuiTitle>
-            </EuiHeaderSectionItem>
-          </EuiHeaderSection>
-          <EuiHeaderSection>
-            <EuiHeaderSectionItem>
-              Automated Root Cause Analysis Neural Network Assisted
-            </EuiHeaderSectionItem>
-          </EuiHeaderSection>
-        </EuiHeader>
-      </EuiPage>
       // <Fragment>
       //   <EuiSpacer/>
       //   <EuiFlexGroup>

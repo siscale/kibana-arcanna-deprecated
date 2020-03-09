@@ -3,7 +3,9 @@ import { uiModules } from 'ui/modules';
 import chrome from 'ui/chrome';
 import 'ui/autoload/styles';
 import './less/main.less';
-import {Main} from './components/v2/homepage'
+import { ArcannaRouter } from './components/v2/router';
+import {EuiPage} from '@elastic/eui';
+
 // import {Il8nProvider} from '@kbn/i18n/react';
 // import {} from '@kbn/i18n/react'
 
@@ -22,6 +24,13 @@ app.config(stateManagementConfigProvider =>
 
 function RootController($scope, $element, $http) {
   const domNode = $element[0];
+
+  const template = (
+    <EuiPage>
+      <h1>Test</h1>
+      <ArcannaRouter></ArcannaRouter>
+    </EuiPage>
+  )
 
   // render react to DOM
   render(<Main httpClient={$http} />, domNode);
