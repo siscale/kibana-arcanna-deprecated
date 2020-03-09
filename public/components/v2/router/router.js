@@ -2,7 +2,7 @@
 import React from 'react';
 import { Switch, BrowserRouter, Route } from 'react-router-dom';
 import {HealthCheck} from '../health_check';
-import {JobList} from '../list_jobs'
+import {JobList} from '../list_jobs';
 
 
 
