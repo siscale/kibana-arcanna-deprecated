@@ -18,6 +18,7 @@ import {
 import arcannaSettings from './kibana.html';
 
 import 'brace/mode/yaml';
+import { EuiTitle } from '@elastic/eui';
 
 
 export class HomepageComponent extends React.Component {
@@ -65,15 +66,31 @@ export class HomepageComponent extends React.Component {
   
   render() {
     return (
-      <Fragment>
-        <EuiSpacer/>
-        <EuiFlexGroup>
-          <EuiFlexItem>
-              {this.state.errorMessage}
-          </EuiFlexItem>
-        </EuiFlexGroup>
-        <EuiSpacer/>
-      </Fragment>
+      <EuiPage>
+        <EuiHeader>
+          <EuiHeaderSection>
+            <EuiHeaderSectionItem>
+              <EuiTitle>
+                Arcanna
+              </EuiTitle>
+            </EuiHeaderSectionItem>
+          </EuiHeaderSection>
+          <EuiHeaderSection>
+            <EuiHeaderSectionItem>
+              Automated Root Cause Analysis Neural Network Assisted
+            </EuiHeaderSectionItem>
+          </EuiHeaderSection>
+        </EuiHeader>
+      </EuiPage>
+      // <Fragment>
+      //   <EuiSpacer/>
+      //   <EuiFlexGroup>
+      //     <EuiFlexItem>
+      //         {this.state.errorMessage}
+      //     </EuiFlexItem>
+      //   </EuiFlexGroup>
+      //   <EuiSpacer/>
+      // </Fragment>
     );
   }
 }
