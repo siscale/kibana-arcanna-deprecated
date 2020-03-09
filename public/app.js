@@ -3,8 +3,9 @@ import { uiModules } from 'ui/modules';
 import chrome from 'ui/chrome';
 import 'ui/autoload/styles';
 import './less/main.less';
-import {Il8nProvider} from '@kbn/i18n/react';
-import {} from '@kbn/i18n/react'
+import {Main} from './components/v2/homepage'
+// import {Il8nProvider} from '@kbn/i18n/react';
+// import {} from '@kbn/i18n/react'
 
 const app = uiModules.get('apps/arcanna');
 
@@ -19,15 +20,29 @@ app.config(stateManagementConfigProvider =>
   stateManagementConfigProvider.disable()
 );
 
-import './components/index';
-import './services/factories';
-import './controllers/index';
-import './services/routes';
+function RootController($scope, $element, $http) {
+  const domNode = $element[0];
 
-setTimeout(() => { window.location.href = '#/'; }, 1000)
+  // render react to DOM
+  render(<Main httpClient={$http} />, domNode);
+
+  // unmount react on controller destroy
+  $scope.$on('$destroy', () => {
+    unmountComponentAtNode(domNode);
+  });
+}
+
+chrome.setRootController('homepage', RootController);
+
+// import './components/index';
+// import './services/factories';
+// import './controllers/index';
+// import './services/routes';
+
+// setTimeout(() => { window.location.href = '#/'; }, 1000)
 
 
-import { HomepageController } from './controllers/homepage'
-import homepageTemplate from './templates/homepage.html';
-// chrome.setRootController('homepageController', HomepageController);
-// chrome.setRootTemplate(homepageTemplate);
+// import { HomepageController } from './controllers/homepage'
+// import homepageTemplate from './templates/homepage.html';
+// // chrome.setRootController('homepageController', HomepageController);
+// // chrome.setRootTemplate(homepageTemplate);
