@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Switch, Router, Route } from 'react-router-dom';
+import { Switch, BrowserRouter, Route } from 'react-router-dom';
 import {HealthCheck} from '../health_check';
 
 
@@ -24,11 +24,11 @@ export class ArcannaRouter extends React.Component {
   
   render() {
     return (
-      <Router>
+      <BrowserRouter>
         <Switch>
           <Route path="/" component={HealthCheck} exact/>
         </Switch>
-      </Router>
+      </BrowserRouter>
     );
   }
 }
