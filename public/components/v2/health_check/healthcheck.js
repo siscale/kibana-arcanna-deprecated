@@ -47,6 +47,7 @@ export class HealthCheck extends React.Component {
   loadData = async () => {
     const self = this;
     const data = await this.genericRequest.request('tensorflow/health_check', 'GET');
+    console.log("i'm here!");
     if('error' in data) {
       self.setState({errorMessage: 
         (
@@ -64,7 +65,8 @@ export class HealthCheck extends React.Component {
           
         )})
     } else {
-      window.location.href = '#/list_jobs';
+      // window.location.href = '#/list_jobs';
+      this.history.pushState(null, 'list_jobs');
     }
   }
 
