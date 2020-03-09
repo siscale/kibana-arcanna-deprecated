@@ -28,7 +28,6 @@ export class Main extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <EuiPage restrictWidth={false}>
         <EuiPageBody restrictWidth={false}>
