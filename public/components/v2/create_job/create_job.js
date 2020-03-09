@@ -32,8 +32,10 @@ export class CreateJob extends Component {
         <h2>Create new ML job</h2>
         <div>
           <BrowserRouter basename={this.props.history.pathname}>
-            <Route path="/" component={IndexSelection} exact/>
-            <Route render={() => {return (<h2>something</h2>)}}/>
+            <Switch>
+              <Route path="/" component={IndexSelection} exact/>
+              <Route render={() => {return (<h2>something</h2>)}}/>
+            </Switch>
           </BrowserRouter>
         </div>
       </Fragment>
