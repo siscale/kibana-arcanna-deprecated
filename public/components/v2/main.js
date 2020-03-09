@@ -51,7 +51,6 @@ export class Main extends Component {
                 <Route path="/" component={HealthCheck} exact/>
                 <Route path="/list_jobs" component={JobList}/>
                 <Route path="/create_job" component={CreateJob}/>
-                <Route render={() => this.props.history.push('/')}/>
               </Switch>
             </BrowserRouter>
             <EuiSpacer size="m"/>
