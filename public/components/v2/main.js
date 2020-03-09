@@ -42,8 +42,8 @@ export class Main extends Component {
             {/* <ArcannaRouter httpClient={this.props.httpClient}/> */}
             <BrowserRouter>
               <Switch>
-                <Route path ="/" render={() => {return (<HealthCheck/>)}} exact/>
-                
+                <Route path="/list_jobs" render={() => {return (<JobList/>)}}/>
+                <Route path="/" render={() => {return (<HealthCheck/>)}}/>
                 {/* <Route render={() => {return (<h1>This does not work</h1>)}}/> */}
                 {/* <Route path="#/" component={HealthCheck} exact/> */}
                 {/* <Route path="/list_jobs" component={JobList}/> */}
