@@ -2,6 +2,7 @@
 import React from 'react';
 import { Switch, BrowserRouter, Route } from 'react-router-dom';
 import {HealthCheck} from '../health_check';
+import {JobList} from '../list_jobs'
 
 
 
@@ -27,6 +28,7 @@ export class ArcannaRouter extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route path="/" component={HealthCheck} exact/>
+          <Route path="/list_jobs" component={JobList}/>
         </Switch>
       </BrowserRouter>
     );

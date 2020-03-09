@@ -64,7 +64,7 @@ export class HealthCheck extends React.Component {
           
         )})
     } else {
-      // window.location.href = '#/list_jobs';
+      window.location.href = '#/list_jobs';
     }
   }
 
