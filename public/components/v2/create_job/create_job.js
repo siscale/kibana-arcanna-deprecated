@@ -19,6 +19,8 @@ export class CreateJob extends Component {
     super(props);
     this.state = {
     };
+    console.log("I'm in create Job");
+    console.log(this.props);
   }
 
 
