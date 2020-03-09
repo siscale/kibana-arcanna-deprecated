@@ -50,7 +50,7 @@ export class HealthCheck extends React.Component {
     const data = await this.genericRequest.request('tensorflow/health_check', 'GET');
     
     if('error' in data) {
-      this.history.pushState(null, 'list_jobs');
+      this.props.history.pushState(null, 'list_jobs');
       self.setState({errorMessage: 
         (
           <Fragment>
