@@ -25,7 +25,7 @@ import {JobList} from './list_jobs';
 export class Main extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
+    
   }
 
   render() {
@@ -41,7 +41,7 @@ export class Main extends Component {
           </EuiPageHeader>
           <EuiPageContent panelPaddingSize="s">
             {/* <ArcannaRouter httpClient={this.props.httpClient}/> */}
-            <BrowserRouter>
+            <BrowserRouter basename={this.props.baseUrl}>
               <Switch>
                 {/* <Route path="/list_jobs" render={() => { (<JobList/>)}}/> */}
                 {/* <Route path="/" render={() => {return (<HealthCheck/>)}}/> */}
