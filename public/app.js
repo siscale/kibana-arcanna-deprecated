@@ -1,5 +1,6 @@
 import React from 'react';
 import { uiModules } from 'ui/modules';
+import routes from 'ui/routes';
 import chrome from 'ui/chrome';
 import 'ui/autoload/styles';
 import './less/main.less';
@@ -21,6 +22,8 @@ app.config($locationProvider => {
 app.config(stateManagementConfigProvider =>
   stateManagementConfigProvider.disable()
 );
+
+routes.enable();
 
 function RootController($scope, $element, $http) {
   const domNode = $element[0];
