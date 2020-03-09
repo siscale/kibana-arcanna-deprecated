@@ -33,7 +33,7 @@ function RootController($scope, $element, $http) {
   )
 
   // render react to DOM
-  render(<Main httpClient={$http} />, domNode);
+  render(template, domNode);
 
   // unmount react on controller destroy
   $scope.$on('$destroy', () => {
