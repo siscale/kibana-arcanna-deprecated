@@ -1,11 +1,9 @@
 import React from 'react';
 import { uiModules } from 'ui/modules';
-import routes from 'ui/routes';
 import chrome from 'ui/chrome';
 import 'ui/autoload/styles';
 import './less/main.less';
-import { ArcannaRouter } from './components/v2/router';
-import {EuiPage} from '@elastic/eui';
+import { Main } from './components/v2/main';
 
 // import {Il8nProvider} from '@kbn/i18n/react';
 // import {} from '@kbn/i18n/react'
@@ -23,20 +21,12 @@ app.config(stateManagementConfigProvider =>
   stateManagementConfigProvider.disable()
 );
 
-routes.enable();
 
 function RootController($scope, $element, $http) {
   const domNode = $element[0];
 
-  const template = (
-    <EuiPage>
-      <h1>Test</h1>
-      <ArcannaRouter httpClient={$http}></ArcannaRouter>
-    </EuiPage>
-  )
-
   // render react to DOM
-  render(template, domNode);
+  render(<Main title="Arcanna" httpClient={$http} />, domNode);
 
   // unmount react on controller destroy
   $scope.$on('$destroy', () => {
@@ -44,7 +34,7 @@ function RootController($scope, $element, $http) {
   });
 }
 
-chrome.setRootController('homepage', RootController);
+chrome.setRootController('analyzeApiUiController', RootController);
 
 // import './components/index';
 // import './services/factories';
