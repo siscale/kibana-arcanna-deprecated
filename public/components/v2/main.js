@@ -19,6 +19,8 @@ import {
 import { Switch, BrowserRouter, Route } from 'react-router-dom';
 import {HealthCheck} from './health_check';
 import {JobList} from './list_jobs';
+import {CreateJob} from './create_job';
+
 
 
 
@@ -46,11 +48,9 @@ export class Main extends Component {
             {/* <ArcannaRouter httpClient={this.props.httpClient}/> */}
             <BrowserRouter basename={this.props.baseUrl}>
               <Switch>
-                {/* <Route path="/list_jobs" render={() => { (<JobList/>)}}/> */}
-                {/* <Route path="/" render={() => {return (<HealthCheck/>)}}/> */}
-                {/* <Route render={() => {return (<h1>This does not work</h1>)}}/> */}
                 <Route path="/" component={HealthCheck} exact/>
                 <Route path="/list_jobs" component={JobList}/>
+                <Route path="/create_job" component={CreateJob}/>
               </Switch>
             </BrowserRouter>
             <EuiSpacer size="m"/>

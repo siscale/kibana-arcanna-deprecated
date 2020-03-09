@@ -177,7 +177,7 @@ export class JobList extends React.Component {
     return (
       <Fragment>
         <h2>Job List</h2>
-        <JobListHeader/>
+        <JobListHeader history={this.props.history}/>
         <EuiTable>
           <EuiTableHeader>
             {this.renderHeaderCells()}

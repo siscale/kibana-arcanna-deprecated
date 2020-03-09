@@ -71,7 +71,7 @@ export class HealthCheck extends React.Component {
     } else {
       console.log("i'm here chacha!");
       // window.location.href = '#/list_jobs';
-      this.history.pushState(null, 'list_jobs');
+      this.props.history.push('list_jobs');
     }
   }
 
