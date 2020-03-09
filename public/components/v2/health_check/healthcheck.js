@@ -33,6 +33,7 @@ export class HealthCheck extends React.Component {
     this.state = {
       errorMessage: ""
     };
+    console.log(this.props);
     this.genericRequest = new GenericRequest();
   }
 
@@ -73,7 +74,6 @@ export class HealthCheck extends React.Component {
 
   
   render() {
-    console.log(this.props);
     return (
       <Fragment>
         <EuiSpacer/>
