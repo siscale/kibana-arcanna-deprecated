@@ -20,6 +20,9 @@ export class IndexSelection extends Component {
     console.log(this.props);
   }
 
+  onClickButton = () => {
+    this.props.history.push('something');
+  }
 
   componentDidMount() {
   }
@@ -28,6 +31,7 @@ export class IndexSelection extends Component {
   render() {
     return (
       <Fragment>
+        <EuiButton onClick={this.onClickButton} />
         <h3>My very cool table</h3>
       </Fragment>
     );
