@@ -2,7 +2,7 @@ import React, {
   Component, Fragment,
 } from 'react';
 
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import {
   EuiInMemoryTable,
@@ -12,6 +12,7 @@ import {
   EuiForm
 } from '@elastic/eui';
 
+import { IndexSelection } from './job_stages';
 
 export class CreateJob extends Component {
   constructor(props) {
@@ -29,6 +30,9 @@ export class CreateJob extends Component {
     return (
       <Fragment>
         <h2>Create new ML job</h2>
+        <BrowserRouter>
+          <Route component={IndexSelection}/>
+        </BrowserRouter>
       </Fragment>
     );
   }
