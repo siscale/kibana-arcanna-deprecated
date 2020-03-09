@@ -43,7 +43,7 @@ export class Main extends Component {
             <BrowserRouter>
               <Switch>
                 {/* <Route path="/list_jobs" render={() => { (<JobList/>)}}/> */}
-                <Route path="/" render={() => {return (<HealthCheck/>)}}/>
+                {/* <Route path="/" render={() => {return (<HealthCheck/>)}}/> */}
                 {/* <Route render={() => {return (<h1>This does not work</h1>)}}/> */}
                 <Route path="/" component={HealthCheck}/>
                 {/* <Route path="/list_jobs" component={JobList}/> */}
