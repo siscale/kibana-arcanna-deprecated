@@ -26,8 +26,9 @@ app.config(stateManagementConfigProvider =>
 function RootController($scope, $element, $http) {
   const domNode = $element[0];
 
+  const baseUrl = window.location;
   // render react to DOM
-  render(<Main title="Arcanna" httpClient={$http} />, domNode);
+  render(<Main title="Arcanna" httpClient={$http} baseUrl={baseUrl} />, domNode);
 
   // unmount react on controller destroy
   $scope.$on('$destroy', () => {
