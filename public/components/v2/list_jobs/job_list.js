@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import { GenericRequest } from '../../../utils/requests';
 
+import {JobListHeader} from './job_header';
 import { JobEntry } from './job_entry';
 
 import {
@@ -20,6 +21,7 @@ import {
   EuiFlexItem,
   EuiButton
 } from '@elastic/eui';
+import { JobListHeader } from './job_header';
 
 
 
@@ -175,6 +177,7 @@ export class JobList extends React.Component {
   render() {
     return (
       <Fragment>
+        <JobListHeader/>
         <EuiTable>
           <EuiTableHeader>
             {this.renderHeaderCells()}

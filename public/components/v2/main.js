@@ -35,8 +35,11 @@ export class Main extends Component {
           <EuiPageHeader>
             <EuiPageHeaderSection>
               <EuiTitle size="m">
-                <h2>Perform analyze via _analyze API</h2>
+                <h1>Arcanna</h1>
               </EuiTitle>
+            </EuiPageHeaderSection>
+            <EuiPageHeaderSection>
+              Automated Root Cause Analysis Neural Network Assisted
             </EuiPageHeaderSection>
           </EuiPageHeader>
           <EuiPageContent panelPaddingSize="s">
