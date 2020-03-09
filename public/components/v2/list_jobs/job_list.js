@@ -176,6 +176,7 @@ export class JobList extends React.Component {
   render() {
     return (
       <Fragment>
+        <h2>Job List</h2>
         <JobListHeader/>
         <EuiTable>
           <EuiTableHeader>
