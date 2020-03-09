@@ -29,13 +29,14 @@ export class CreateJob extends Component {
 
 
   render() {
+    const self = this;
     return (
       <Fragment>
         <h2>Create new ML job</h2>
         <div>
-          <BrowserRouter>
+          <BrowserRouter basename={self.props.location.pathname}>
             <Switch>
-              <Route path="/createJob" component={IndexSelection}/>
+              <Route path="/" component={IndexSelection} exact/>
               <Route render={() => {console.log(this.props);return (<h2>something</h2>)}}/>
             </Switch>
           </BrowserRouter>
