@@ -36,7 +36,7 @@ export class CreateJob extends Component {
           <BrowserRouter>
             <Switch>
               <Route path="/" component={IndexSelection} exact/>
-              <Route render={() => {return (<h2>something</h2>)}}/>
+              <Route render={() => {console.log(this.props.history);return (<h2>something</h2>)}}/>
             </Switch>
           </BrowserRouter>
         </div>
