@@ -105,16 +105,16 @@ export class IndexSelection extends Component {
     })
   };
 
-  onClickSubmit(self) {
-    if (self.state.selectedItems.length === 0) {
-      return;
-    }
-    self.props.selectedIndexList.length = 0;
-    self.state.selectedItems.forEach((element) => {
-      self.props.selectedIndexList.push(element);
-    });
-    window.location.href = '#/create_job_mappings';
-  }
+  // onClickSubmit(self) {
+  //   if (self.state.selectedItems.length === 0) {
+  //     return;
+  //   }
+  //   self.props.selectedIndexList.length = 0;
+  //   self.state.selectedItems.forEach((element) => {
+  //     self.props.selectedIndexList.push(element);
+  //   });
+  //   window.location.href = '#/create_job_mappings';
+  // }
 
   renderSubmitButton() {
     const self = this;
@@ -122,12 +122,12 @@ export class IndexSelection extends Component {
     if (selection.length === 0) {
       return;
     }
-
-    return (
-      <EuiButton onClick={() => this.onClickSubmit(self)}>
-        Select {selection.length} indices
-      </EuiButton>
-    );
+    return;
+    // return (
+    //   <EuiButton onClick={() => this.onClickSubmit(self)}>
+    //     Select {selection.length} indices
+    //   </EuiButton>
+    // );
   }
 
   render() {
