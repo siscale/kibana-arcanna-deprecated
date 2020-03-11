@@ -14,7 +14,7 @@ import PropTypes from 'prop-types';
 
 import moment from 'moment';
 
-import { GenericRequest } from '../../../utils/requests';
+import { GenericRequest } from '../../../../utils/requests';
 
 export class IndexSelection extends Component {
   constructor(props) {
