@@ -36,7 +36,7 @@ function RootController($scope, $element, $http) {
   });
 }
 
-chrome.setRootController('analyzeApiUiController', RootController);
+chrome.setRootController('arcannaController', RootController);
 
 // import './components/index';
 // import './services/factories';
