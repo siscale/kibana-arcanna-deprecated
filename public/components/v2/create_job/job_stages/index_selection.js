@@ -87,7 +87,7 @@ export class IndexSelection extends Component {
           number_of_shards: obj.settings.index.number_of_shards,
           number_of_replicas: obj.settings.index.number_of_replicas
         });
-      } catch(error) {
+      } catch (error) {
         console.error(error);
       }
     });
@@ -106,12 +106,12 @@ export class IndexSelection extends Component {
   };
 
   onClickSubmit(self) {
-    if(self.state.selectedItems.length === 0) {
+    if (self.state.selectedItems.length === 0) {
       return;
     }
     self.props.selectedIndexList.length = 0;
     self.state.selectedItems.forEach((element) => {
-      self.props.selectedIndexList.push(element);  
+      self.props.selectedIndexList.push(element);
     });
     window.location.href = '#/create_job_mappings';
   }
@@ -119,7 +119,7 @@ export class IndexSelection extends Component {
   renderSubmitButton() {
     const self = this;
     const selection = this.state.selectedItems;
-    if(selection.length === 0) {
+    if (selection.length === 0) {
       return;
     }
 
@@ -159,4 +159,5 @@ export class IndexSelection extends Component {
         />
       </EuiForm>
     );
+  }
 }
