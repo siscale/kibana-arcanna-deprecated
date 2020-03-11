@@ -1,1 +1,1 @@
-export * from './requests.service';
+export {GenericRequest} from './requests.service';
