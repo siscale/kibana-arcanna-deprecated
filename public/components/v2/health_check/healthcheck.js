@@ -33,9 +33,6 @@ export class HealthCheck extends React.Component {
     this.state = {
       errorMessage: ""
     };
-    require('path');
-    global.appRoot = path.resolve(__dirname);
-    console.log(appRoot);
     this.genericRequest = new GenericRequest();
   }
 
