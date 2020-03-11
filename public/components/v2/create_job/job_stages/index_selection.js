@@ -1,18 +1,18 @@
 import React, {
-  Component, Fragment,
+  Component, Fragment
 } from 'react';
 
-import {
-  EuiInMemoryTable,
-  EuiBasicTable,
-  EuiHealth,
-  EuiButton,
-  EuiForm
-} from '@elastic/eui';
+// import {
+//   EuiInMemoryTable,
+//   EuiBasicTable,
+//   EuiHealth,
+//   EuiButton,
+//   EuiForm
+// } from '@elastic/eui';
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-import moment from 'moment';
+// import moment from 'moment';
 
 import { GenericRequest } from '../../../../services';
 
