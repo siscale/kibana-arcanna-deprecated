@@ -14,7 +14,7 @@ import React, {
 
 // import moment from 'moment';
 
-import { GenericRequest } from '../../../../services';
+import { GenericRequest } from '../../../../utils/requests';
 
 export class IndexSelection extends Component {
   constructor(props) {
