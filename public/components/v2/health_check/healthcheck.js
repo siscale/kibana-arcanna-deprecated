@@ -33,7 +33,7 @@ export class HealthCheck extends React.Component {
     this.state = {
       errorMessage: ""
     };
-    console.log(global.__basedir);
+    console.log(__dirname);
     this.genericRequest = new GenericRequest();
   }
 
