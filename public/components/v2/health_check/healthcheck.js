@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { GenericRequest } from '/services';
+import { GenericRequest } from '../../../utils/requests';
 
 import {
   EuiFlexGroup,
@@ -33,7 +33,7 @@ export class HealthCheck extends React.Component {
     this.state = {
       errorMessage: ""
     };
-    console.log(this.props);
+    console.log(global.__basedir);
     this.genericRequest = new GenericRequest();
   }
 
