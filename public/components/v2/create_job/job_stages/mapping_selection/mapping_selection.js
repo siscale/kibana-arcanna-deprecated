@@ -352,7 +352,7 @@ export class MappingSelection extends React.Component {
             {/* {this.renderIndices()} */}
           </EuiFlexItem>
         </EuiFlexGroup>
-        {/* {this.renderFlyout()} */}
+        {this.renderFlyout()}
       </Fragment>
     );
   }
