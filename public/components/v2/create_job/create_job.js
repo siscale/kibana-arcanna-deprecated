@@ -37,16 +37,17 @@ export class CreateJob extends Component {
 
   render() {
     const self = this;
-    const baseUrl = self.props.baseUrl + self.props.location.pathname;
+    const baseUrl = self.props.baseUrl;
+    const creatJobBaseUrl = self.props.location.pathname;
     return (
       <Fragment>
         <h2>Create new ML job</h2>
         <div>
           <CreateJobContext.Provider value={self.contextStore}>
-            <BrowserRouter basename={baseUrl}>
+            <BrowserRouter basename={self.props.baseUrl}>
               <Switch>
-                <Route exact path="/"  render={(props) => {return (<IndexSelection {...props} updateIndexList={this.updateIndexList} />); } }/>
-                <Route path="/select_mappings" render={(props) => {return (<MappingSelection {...props} selectedIndexList={self.state.selectedIndexList}/>)}} />
+                <Route exact path={creatJobBaseUrl + "/"}  render={(props) => {return (<IndexSelection {...props} updateIndexList={this.updateIndexList} />); } }/>
+                <Route path={creatJobBaseUrl + "/select_mappings"} render={(props) => {return (<MappingSelection {...props} selectedIndexList={self.state.selectedIndexList}/>)}} />
               </Switch>
             </BrowserRouter>
           </CreateJobContext.Provider>
