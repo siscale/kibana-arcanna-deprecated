@@ -15,6 +15,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import { GenericRequest } from '~services';
+import { EuiText } from '@elastic/eui';
 
 export class IndexSelection extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ export class IndexSelection extends Component {
   }
 
   static propTypes = {
-    selectedIndexList: PropTypes.array
+    updateIndexList: PropTypes.func
   }
 
   setColumnInfo() {
@@ -109,11 +110,13 @@ export class IndexSelection extends Component {
     if (self.state.selectedItems.length === 0) {
       return;
     }
-    self.props.selectedIndexList.length = 0;
-    self.state.selectedItems.forEach((element) => {
-      self.props.selectedIndexList.push(element);
-    });
-    window.location.href = '#/create_job_mappings';
+    self.props.updateIndexList(self.state.selectedItems);
+    // self.props.selectedIndexList.length = 0;
+    // self.state.selectedItems.forEach((element) => {
+    //   self.props.selectedIndexList.push(element);
+    // });
+    // self.
+    this.props.history.push('create_job');
   }
 
   renderSubmitButton() {
@@ -157,6 +160,7 @@ export class IndexSelection extends Component {
           search={search}
           sorting={true}
         />
+        <h2></h2>
       </EuiForm>
     );
   }

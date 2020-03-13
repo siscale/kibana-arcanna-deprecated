@@ -13,14 +13,20 @@ import {
 } from '@elastic/eui';
 
 import { IndexSelection } from './job_stages';
+import { MappingSelection } from './job_stages/mapping_selection';
+
+export const CreateJobContext = React.createContext();
 
 export class CreateJob extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectedIndexList: []
     };
-    console.log("I'm in create Job");
-    console.log(this.props);
+  }
+
+  updateIndexList = (newList) => {
+    this.setState({selectedIndexList: newList})
   }
 
 
@@ -35,12 +41,15 @@ export class CreateJob extends Component {
       <Fragment>
         <h2>Create new ML job</h2>
         <div>
-          <BrowserRouter basename={baseUrl}>
-            <Switch>
-              <Route path="/" component={IndexSelection} exact/>
-              <Route render={() => {console.log(this.props);return (<h2>something</h2>)}}/>
-            </Switch>
-          </BrowserRouter>
+          <CreateJobContext.Provider value={self.contextStore}>
+            <BrowserRouter basename={baseUrl}>
+              <Switch>
+                <Route exact path="/"  render={(props) => {return (<IndexSelection {...props} updateIndexList={this.updateIndexList} />); } }/>
+                <Route path="/select-mappings" render={(props) => {return (<MappingSelection {...props} selectedIndexList={self.selectedIndexList}/>)}}
+                {/* <Route render={() => {console.log(this.props);return (<h2>something</h2>)}}/> */}
+              </Switch>
+            </BrowserRouter>
+          </CreateJobContext.Provider>
         </div>
       </Fragment>
     );

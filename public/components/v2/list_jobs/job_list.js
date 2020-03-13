@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { GenericRequest } from '../../../utils/requests';
+import { GenericRequest } from '~services';
 
 import {JobListHeader} from './job_header';
 import { JobEntry } from './job_entry';
