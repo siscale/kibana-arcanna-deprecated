@@ -59,11 +59,11 @@ export class IndexMappings extends React.Component {
   }
 
   componentDidMount() {
-    if(this.props.selectedIndexList.length === 0) {
-      this.props.history.push('/');
-      this.componentWillUnmount();
-      return;
-    }
+    // if(this.props.selectedIndexList.length === 0) {
+    //   this.props.history.push('/');
+    //   this.componentWillUnmount();
+    //   return;
+    // }
     this.retrieveData();
   }
 
