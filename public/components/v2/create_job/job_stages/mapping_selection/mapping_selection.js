@@ -158,24 +158,25 @@ export class MappingSelection extends React.Component {
   
   onClickNextPage = () => {
     const self = this;
-    // if(Object.keys(this.state.selectedFields).length > 0) {
-    //   //clear old indexFieldMappings
-    //   Object.keys(this.props.indexFieldMappings).forEach((indexName) => {
-    //     delete self.props.indexFieldMappings[indexName];
-    //   });
+    if(Object.keys(this.state.selectedFields).length > 0) {
+      //clear old indexFieldMappings
+      // Object.keys(this.props.indexFieldMappings).forEach((indexName) => {
+      //   delete self.props.indexFieldMappings[indexName];
+      // });
 
 
-    //   Object.keys(this.state.selectedFields).forEach((indexName) => {
-    //     self.props.indexFieldMappings[indexName] = {};
-    //     self.props.indexFieldMappings[indexName].mappings = self.state.selectedFields[indexName];
-    //     if(indexName in self.state.selectionQueries) {
-    //       self.props.indexFieldMappings[indexName].query = self.state.selectionQueries[indexName];
-    //     } else {
-    //       self.props.indexFieldMappings[indexName].query = '';
-    //     }
-    //   });
-    //   window.location.href = "#/create_job_settings"
-    // }
+      // Object.keys(this.state.selectedFields).forEach((indexName) => {
+      //   self.props.indexFieldMappings[indexName] = {};
+      //   self.props.indexFieldMappings[indexName].mappings = self.state.selectedFields[indexName];
+      //   if(indexName in self.state.selectionQueries) {
+      //     self.props.indexFieldMappings[indexName].query = self.state.selectionQueries[indexName];
+      //   } else {
+      //     self.props.indexFieldMappings[indexName].query = '';
+      //   }
+      // });
+      // window.location.href = "#/create_job_settings"
+      self.props.history.push('');
+    }
   }
 
   renderFlyout() {
