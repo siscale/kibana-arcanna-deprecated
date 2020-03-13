@@ -271,65 +271,65 @@ export class MappingSelection extends React.Component {
   // }
 
 
-  // renderIndices() {
-  //   const self = this;
-  //   const indexRenderings = [];
+  renderIndices() {
+    const self = this;
+    const indexRenderings = [];
     
-  //   Object.keys(self.state.indices).forEach((indexName) => {
-  //     const renderAccordionContent = (<EuiText>
-  //                                       <h3><EuiTextColor color="secondary">{indexName}</EuiTextColor></h3>
-  //                                     </EuiText>
-  //     );
-  //     indexRenderings.push(
-  //           <EuiAccordion 
-  //             id={indexName}
-  //             key={'accordion-' +indexName} 
-  //             initialIsOpen={true}
-  //             buttonContent={renderAccordionContent}
-  //             paddingSize="m"
-  //           >
-  //           <EuiFlexGroup>
-  //             <EuiFlexItem grow={false}> 
-  //               <EuiSwitch
-  //                 key={'switch-all-' + indexName}
-  //                 checked={this.state.selectAllChecked[indexName]}
-  //                 onChange={() => {self.onSelectAll(indexName)}}
-  //               />
-  //               <EuiSpacer size="s"/>
-  //               {self.renderFields(indexName)}
-  //             </EuiFlexItem>
-  //             <EuiFlexItem grow={false}>
-  //               <EuiFlexGroup gutterSize="xs" direction="column">
-  //                 <EuiFlexItem grow={false}>
-  //                   <EuiFlexGroup gutterSize="none">
-  //                     <EuiFlexItem grow={false}>
-  //                       <EuiButton onClick={this.showFlyout} iconType="questionInCircle">
-  //                         Help
-  //                       </EuiButton>
-  //                     </EuiFlexItem>
-  //                   </EuiFlexGroup>
-  //                 </EuiFlexItem>
-  //                 <EuiFlexItem>
-  //                   <EuiCodeEditor
-  //                     mode="json"
-  //                     key={'textArea-' +indexName} 
-  //                     value={this.state.selectionQueries[indexName]}
-  //                     onBlur={this.onBlurQueryTextarea}
-  //                     onChange={(value) => this.onChangeQueryTextarea(indexName, value) }
-  //                   />
-  //                 </EuiFlexItem>
-  //               </EuiFlexGroup>
+    Object.keys(self.state.indices).forEach((indexName) => {
+      const renderAccordionContent = (<EuiText>
+                                        <h3><EuiTextColor color="secondary">{indexName}</EuiTextColor></h3>
+                                      </EuiText>
+      );
+      indexRenderings.push(
+            <EuiAccordion 
+              id={indexName}
+              key={'accordion-' +indexName} 
+              initialIsOpen={true}
+              buttonContent={renderAccordionContent}
+              paddingSize="m"
+            >
+            <EuiFlexGroup>
+              <EuiFlexItem grow={false}> 
+                <EuiSwitch
+                  key={'switch-all-' + indexName}
+                  checked={this.state.selectAllChecked[indexName]}
+                  onChange={() => {self.onSelectAll(indexName)}}
+                />
+                <EuiSpacer size="s"/>
+                {/* {self.renderFields(indexName)} */}
+              </EuiFlexItem>
+              <EuiFlexItem grow={false}>
+                <EuiFlexGroup gutterSize="xs" direction="column">
+                  <EuiFlexItem grow={false}>
+                    <EuiFlexGroup gutterSize="none">
+                      <EuiFlexItem grow={false}>
+                        <EuiButton onClick={this.showFlyout} iconType="questionInCircle">
+                          Help
+                        </EuiButton>
+                      </EuiFlexItem>
+                    </EuiFlexGroup>
+                  </EuiFlexItem>
+                  <EuiFlexItem>
+                    <EuiCodeEditor
+                      mode="json"
+                      key={'textArea-' +indexName} 
+                      value={this.state.selectionQueries[indexName]}
+                      onBlur={this.onBlurQueryTextarea}
+                      onChange={(value) => this.onChangeQueryTextarea(indexName, value) }
+                    />
+                  </EuiFlexItem>
+                </EuiFlexGroup>
                
-  //             </EuiFlexItem>
-  //           </EuiFlexGroup>
+              </EuiFlexItem>
+            </EuiFlexGroup>
 
             
-  //           </EuiAccordion>
-  //         // <EuiSpacer/>
-  //     )
-  //   });
-  //   return indexRenderings;
-  // }
+            </EuiAccordion>
+          // <EuiSpacer/>
+      )
+    });
+    return indexRenderings;
+  }
 
 
   render() {
@@ -349,7 +349,7 @@ export class MappingSelection extends React.Component {
         </EuiFlexGroup>
         <EuiFlexGroup gutterSize="m">
           <EuiFlexItem>
-            {/* {this.renderIndices()} */}
+            {this.renderIndices()}
           </EuiFlexItem>
         </EuiFlexGroup>
         {this.renderFlyout()}
