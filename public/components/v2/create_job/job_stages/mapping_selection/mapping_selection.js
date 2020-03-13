@@ -175,7 +175,7 @@ export class MappingSelection extends React.Component {
       //   }
       // });
       // window.location.href = "#/create_job_settings"
-      self.props.history.push('');
+      this.context.history.push('/')
     }
   }
 
