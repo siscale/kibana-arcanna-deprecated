@@ -47,7 +47,6 @@ export class CreateJob extends Component {
               <Switch>
                 <Route exact path="/"  render={(props) => {return (<IndexSelection {...props} updateIndexList={this.updateIndexList} />); } }/>
                 <Route path="/select_mappings" render={(props) => {return (<MappingSelection {...props} selectedIndexList={self.state.selectedIndexList}/>)}} />
-                {/* <Route render={() => {console.log(this.props);return (<h2>something</h2>)}}/> */}
               </Switch>
             </BrowserRouter>
           </CreateJobContext.Provider>
