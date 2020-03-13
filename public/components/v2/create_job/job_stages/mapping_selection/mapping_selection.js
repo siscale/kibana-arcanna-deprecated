@@ -247,26 +247,26 @@ export class IndexMappings extends React.Component {
   renderFields(index) {
     const fieldRenderings = [];
     const self = this;
-    this.state.indices[index].forEach((fieldData) => {
-      const key = index + '.' + fieldData.field_name;
-      self.state.childrenReferences[key] = React.createRef();
-      // const keyTextArea = 'textarea-' + key;
-      fieldRenderings.push(
-        <EuiFlexGroup>
-          <EuiFlexItem>
-            <MappingField 
-              key={key} 
-              ref={self.state.childrenReferences[key]}
-              fieldName={fieldData.field_name}
-              fieldType={fieldData.type}
-              indexName={index}
-              onActivate={this.onFieldActivated}
-              onDeactivate={this.onFieldDeactivated}
-            />
-          </EuiFlexItem>
-        </EuiFlexGroup>
-      )
-    });
+    // this.state.indices[index].forEach((fieldData) => {
+    //   const key = index + '.' + fieldData.field_name;
+    //   self.state.childrenReferences[key] = React.createRef();
+    //   // const keyTextArea = 'textarea-' + key;
+    //   fieldRenderings.push(
+    //     <EuiFlexGroup>
+    //       <EuiFlexItem>
+    //         <MappingField 
+    //           key={key} 
+    //           ref={self.state.childrenReferences[key]}
+    //           fieldName={fieldData.field_name}
+    //           fieldType={fieldData.type}
+    //           indexName={index}
+    //           onActivate={this.onFieldActivated}
+    //           onDeactivate={this.onFieldDeactivated}
+    //         />
+    //       </EuiFlexItem>
+    //     </EuiFlexGroup>
+    //   )
+    // });
     return fieldRenderings;
   }
 
