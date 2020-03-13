@@ -42,6 +42,7 @@ export class MappingSelection extends React.Component {
     super(props);
     this.state = {};
     this.genericRequest = new GenericRequest();
+    console.log(this.props);
   }
 
   static propTypes = {
