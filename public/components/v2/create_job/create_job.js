@@ -13,7 +13,7 @@ import {
 } from '@elastic/eui';
 
 import { IndexSelection } from './job_stages';
-import { MappingSelection } from './job_stages/mapping_selection';
+import { MappingSelection } from './job_stages';
 
 export const CreateJobContext = React.createContext();
 
