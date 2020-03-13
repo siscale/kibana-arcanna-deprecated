@@ -332,35 +332,28 @@ export class MappingSelection extends React.Component {
   // }
 
 
-  // render() {
-  //   return (
-  //     <Fragment>
-  //       <EuiFlexGroup alignItems="flexEnd" direction="column">
-  //         <EuiFlexItem grow={false} style={{paddingRight: 30}}>
-  //           <EuiButton 
-  //             fill 
-  //             key="button"
-  //             isDisabled={this.state.nextButtonDisabled} 
-  //             onClick={this.onClickNextPage}
-  //           >
-  //             Next
-  //           </EuiButton>
-  //         </EuiFlexItem>
-  //       </EuiFlexGroup>
-  //       <EuiFlexGroup gutterSize="m">
-  //         <EuiFlexItem>
-  //           {this.renderIndices()}
-  //         </EuiFlexItem>
-  //       </EuiFlexGroup>
-  //       {this.renderFlyout()}
-  //     </Fragment>
-  //   );
-  // }
   render() {
     return (
       <Fragment>
-        <h2>HAHAHA</h2>
+        <EuiFlexGroup alignItems="flexEnd" direction="column">
+          <EuiFlexItem grow={false} style={{paddingRight: 30}}>
+            <EuiButton 
+              fill 
+              key="button"
+              isDisabled={this.state.nextButtonDisabled} 
+              onClick={this.onClickNextPage}
+            >
+              Next
+            </EuiButton>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+        <EuiFlexGroup gutterSize="m">
+          <EuiFlexItem>
+            {/* {this.renderIndices()} */}
+          </EuiFlexItem>
+        </EuiFlexGroup>
+        {/* {this.renderFlyout()} */}
       </Fragment>
-    )
+    );
   }
 }
