@@ -25,6 +25,7 @@ export class CreateJob extends Component {
     };
   }
 
+  
   updateIndexList = (newList) => {
     this.setState({selectedIndexList: newList})
   }
