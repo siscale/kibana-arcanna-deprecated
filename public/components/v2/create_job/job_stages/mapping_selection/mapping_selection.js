@@ -34,7 +34,7 @@ import {
   EuiSwitch
 } from '@elastic/eui';
 
-import { MappingField } from './mapping_field';
+// import { MappingField } from './mapping_field';
 
 export class MappingSelection extends React.Component {
 
