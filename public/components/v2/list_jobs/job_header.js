@@ -34,7 +34,7 @@ export class JobListHeader extends React.Component {
 
   onClickCreateJob = () => {
     this.props.history.push('create_job');
-    this.componentWillUnmount();
+    // this.componentWillUnmount();
   }
 
 
