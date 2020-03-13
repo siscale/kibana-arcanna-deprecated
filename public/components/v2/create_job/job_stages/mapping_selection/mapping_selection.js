@@ -254,7 +254,7 @@ export class MappingSelection extends React.Component {
       fieldRenderings.push(
         <EuiFlexGroup>
           <EuiFlexItem>
-            {/* <MappingField 
+            <MappingField 
               key={key} 
               ref={self.state.childrenReferences[key]}
               fieldName={fieldData.field_name}
@@ -262,7 +262,7 @@ export class MappingSelection extends React.Component {
               indexName={index}
               onActivate={this.onFieldActivated}
               onDeactivate={this.onFieldDeactivated}
-            /> */}
+            />
           </EuiFlexItem>
         </EuiFlexGroup>
       )
