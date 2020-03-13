@@ -244,31 +244,31 @@ export class MappingSelection extends React.Component {
     });
   }
 
-  // renderFields(index) {
-  //   const fieldRenderings = [];
-  //   const self = this;
-  //   this.state.indices[index].forEach((fieldData) => {
-  //     const key = index + '.' + fieldData.field_name;
-  //     self.state.childrenReferences[key] = React.createRef();
-  //     // const keyTextArea = 'textarea-' + key;
-  //     fieldRenderings.push(
-  //       <EuiFlexGroup>
-  //         <EuiFlexItem>
-  //           <MappingField 
-  //             key={key} 
-  //             ref={self.state.childrenReferences[key]}
-  //             fieldName={fieldData.field_name}
-  //             fieldType={fieldData.type}
-  //             indexName={index}
-  //             onActivate={this.onFieldActivated}
-  //             onDeactivate={this.onFieldDeactivated}
-  //           />
-  //         </EuiFlexItem>
-  //       </EuiFlexGroup>
-  //     )
-  //   });
-  //   return fieldRenderings;
-  // }
+  renderFields(index) {
+    const fieldRenderings = [];
+    const self = this;
+    this.state.indices[index].forEach((fieldData) => {
+      const key = index + '.' + fieldData.field_name;
+      self.state.childrenReferences[key] = React.createRef();
+      // const keyTextArea = 'textarea-' + key;
+      fieldRenderings.push(
+        <EuiFlexGroup>
+          <EuiFlexItem>
+            {/* <MappingField 
+              key={key} 
+              ref={self.state.childrenReferences[key]}
+              fieldName={fieldData.field_name}
+              fieldType={fieldData.type}
+              indexName={index}
+              onActivate={this.onFieldActivated}
+              onDeactivate={this.onFieldDeactivated}
+            /> */}
+          </EuiFlexItem>
+        </EuiFlexGroup>
+      )
+    });
+    return fieldRenderings;
+  }
 
 
   renderIndices() {
@@ -296,7 +296,7 @@ export class MappingSelection extends React.Component {
                   onChange={() => {self.onSelectAll(indexName)}}
                 />
                 <EuiSpacer size="s"/>
-                {/* {self.renderFields(indexName)} */}
+                {self.renderFields(indexName)}
               </EuiFlexItem>
               <EuiFlexItem grow={false}>
                 <EuiFlexGroup gutterSize="xs" direction="column">
