@@ -244,116 +244,123 @@ export class MappingSelection extends React.Component {
     });
   }
 
-  renderFields(index) {
-    const fieldRenderings = [];
-    const self = this;
-    this.state.indices[index].forEach((fieldData) => {
-      const key = index + '.' + fieldData.field_name;
-      self.state.childrenReferences[key] = React.createRef();
-      // const keyTextArea = 'textarea-' + key;
-      fieldRenderings.push(
-        <EuiFlexGroup>
-          <EuiFlexItem>
-            <MappingField 
-              key={key} 
-              ref={self.state.childrenReferences[key]}
-              fieldName={fieldData.field_name}
-              fieldType={fieldData.type}
-              indexName={index}
-              onActivate={this.onFieldActivated}
-              onDeactivate={this.onFieldDeactivated}
-            />
-          </EuiFlexItem>
-        </EuiFlexGroup>
-      )
-    });
-    return fieldRenderings;
-  }
+  // renderFields(index) {
+  //   const fieldRenderings = [];
+  //   const self = this;
+  //   this.state.indices[index].forEach((fieldData) => {
+  //     const key = index + '.' + fieldData.field_name;
+  //     self.state.childrenReferences[key] = React.createRef();
+  //     // const keyTextArea = 'textarea-' + key;
+  //     fieldRenderings.push(
+  //       <EuiFlexGroup>
+  //         <EuiFlexItem>
+  //           <MappingField 
+  //             key={key} 
+  //             ref={self.state.childrenReferences[key]}
+  //             fieldName={fieldData.field_name}
+  //             fieldType={fieldData.type}
+  //             indexName={index}
+  //             onActivate={this.onFieldActivated}
+  //             onDeactivate={this.onFieldDeactivated}
+  //           />
+  //         </EuiFlexItem>
+  //       </EuiFlexGroup>
+  //     )
+  //   });
+  //   return fieldRenderings;
+  // }
 
 
-  renderIndices() {
-    const self = this;
-    const indexRenderings = [];
+  // renderIndices() {
+  //   const self = this;
+  //   const indexRenderings = [];
     
-    Object.keys(self.state.indices).forEach((indexName) => {
-      const renderAccordionContent = (<EuiText>
-                                        <h3><EuiTextColor color="secondary">{indexName}</EuiTextColor></h3>
-                                      </EuiText>
-      );
-      indexRenderings.push(
-            <EuiAccordion 
-              id={indexName}
-              key={'accordion-' +indexName} 
-              initialIsOpen={true}
-              buttonContent={renderAccordionContent}
-              paddingSize="m"
-            >
-            <EuiFlexGroup>
-              <EuiFlexItem grow={false}> 
-                <EuiSwitch
-                  key={'switch-all-' + indexName}
-                  checked={this.state.selectAllChecked[indexName]}
-                  onChange={() => {self.onSelectAll(indexName)}}
-                />
-                <EuiSpacer size="s"/>
-                {self.renderFields(indexName)}
-              </EuiFlexItem>
-              <EuiFlexItem grow={false}>
-                <EuiFlexGroup gutterSize="xs" direction="column">
-                  <EuiFlexItem grow={false}>
-                    <EuiFlexGroup gutterSize="none">
-                      <EuiFlexItem grow={false}>
-                        <EuiButton onClick={this.showFlyout} iconType="questionInCircle">
-                          Help
-                        </EuiButton>
-                      </EuiFlexItem>
-                    </EuiFlexGroup>
-                  </EuiFlexItem>
-                  <EuiFlexItem>
-                    <EuiCodeEditor
-                      mode="json"
-                      key={'textArea-' +indexName} 
-                      value={this.state.selectionQueries[indexName]}
-                      onBlur={this.onBlurQueryTextarea}
-                      onChange={(value) => this.onChangeQueryTextarea(indexName, value) }
-                    />
-                  </EuiFlexItem>
-                </EuiFlexGroup>
+  //   Object.keys(self.state.indices).forEach((indexName) => {
+  //     const renderAccordionContent = (<EuiText>
+  //                                       <h3><EuiTextColor color="secondary">{indexName}</EuiTextColor></h3>
+  //                                     </EuiText>
+  //     );
+  //     indexRenderings.push(
+  //           <EuiAccordion 
+  //             id={indexName}
+  //             key={'accordion-' +indexName} 
+  //             initialIsOpen={true}
+  //             buttonContent={renderAccordionContent}
+  //             paddingSize="m"
+  //           >
+  //           <EuiFlexGroup>
+  //             <EuiFlexItem grow={false}> 
+  //               <EuiSwitch
+  //                 key={'switch-all-' + indexName}
+  //                 checked={this.state.selectAllChecked[indexName]}
+  //                 onChange={() => {self.onSelectAll(indexName)}}
+  //               />
+  //               <EuiSpacer size="s"/>
+  //               {self.renderFields(indexName)}
+  //             </EuiFlexItem>
+  //             <EuiFlexItem grow={false}>
+  //               <EuiFlexGroup gutterSize="xs" direction="column">
+  //                 <EuiFlexItem grow={false}>
+  //                   <EuiFlexGroup gutterSize="none">
+  //                     <EuiFlexItem grow={false}>
+  //                       <EuiButton onClick={this.showFlyout} iconType="questionInCircle">
+  //                         Help
+  //                       </EuiButton>
+  //                     </EuiFlexItem>
+  //                   </EuiFlexGroup>
+  //                 </EuiFlexItem>
+  //                 <EuiFlexItem>
+  //                   <EuiCodeEditor
+  //                     mode="json"
+  //                     key={'textArea-' +indexName} 
+  //                     value={this.state.selectionQueries[indexName]}
+  //                     onBlur={this.onBlurQueryTextarea}
+  //                     onChange={(value) => this.onChangeQueryTextarea(indexName, value) }
+  //                   />
+  //                 </EuiFlexItem>
+  //               </EuiFlexGroup>
                
-              </EuiFlexItem>
-            </EuiFlexGroup>
+  //             </EuiFlexItem>
+  //           </EuiFlexGroup>
 
             
-            </EuiAccordion>
-          // <EuiSpacer/>
-      )
-    });
-    return indexRenderings;
-  }
+  //           </EuiAccordion>
+  //         // <EuiSpacer/>
+  //     )
+  //   });
+  //   return indexRenderings;
+  // }
 
 
+  // render() {
+  //   return (
+  //     <Fragment>
+  //       <EuiFlexGroup alignItems="flexEnd" direction="column">
+  //         <EuiFlexItem grow={false} style={{paddingRight: 30}}>
+  //           <EuiButton 
+  //             fill 
+  //             key="button"
+  //             isDisabled={this.state.nextButtonDisabled} 
+  //             onClick={this.onClickNextPage}
+  //           >
+  //             Next
+  //           </EuiButton>
+  //         </EuiFlexItem>
+  //       </EuiFlexGroup>
+  //       <EuiFlexGroup gutterSize="m">
+  //         <EuiFlexItem>
+  //           {this.renderIndices()}
+  //         </EuiFlexItem>
+  //       </EuiFlexGroup>
+  //       {this.renderFlyout()}
+  //     </Fragment>
+  //   );
+  // }
   render() {
     return (
       <Fragment>
-        <EuiFlexGroup alignItems="flexEnd" direction="column">
-          <EuiFlexItem grow={false} style={{paddingRight: 30}}>
-            <EuiButton 
-              fill 
-              key="button"
-              isDisabled={this.state.nextButtonDisabled} 
-              onClick={this.onClickNextPage}
-            >
-              Next
-            </EuiButton>
-          </EuiFlexItem>
-        </EuiFlexGroup>
-        <EuiFlexGroup gutterSize="m">
-          <EuiFlexItem>
-            {this.renderIndices()}
-          </EuiFlexItem>
-        </EuiFlexGroup>
-        {this.renderFlyout()}
+        <h2>HAHAHA</h2>
       </Fragment>
-    );
+    )
   }
 }
