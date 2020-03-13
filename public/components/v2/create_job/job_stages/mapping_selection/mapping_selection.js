@@ -49,6 +49,7 @@ export class MappingSelection extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({selectedIndexList: this.props.selectedIndexList});
   }
 
 
@@ -56,7 +57,7 @@ export class MappingSelection extends React.Component {
   render() {
     return (
       <Fragment>
-        <h2>{this.props.selectedIndexList}</h2>
+        <h2>{this.state.selectedIndexList}</h2>
       </Fragment>
     );
   }
