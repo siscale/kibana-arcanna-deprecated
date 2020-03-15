@@ -39,14 +39,15 @@ export class CreateJob extends Component {
     const self = this;
     console.log(self.props);
     const baseUrl = self.props.baseUrl;
-    const creatJobBaseUrl = self.props.location.pathname;
+    // const creatJobBaseUrl = self.props.location.pathname;
     return (
       <Fragment>
         <h2>Create new ML job</h2>
         <div>
               <Switch>
-                <Route exact path={creatJobBaseUrl + "/"}  render={(props) => {return (<IndexSelection {...props} updateIndexList={this.updateIndexList} />); } }/>
-                <Route path={creatJobBaseUrl + "/select_mappings"} render={(props) => {return (<MappingSelection {...props} selectedIndexList={self.state.selectedIndexList}/>)}} />
+                <Route exact path={self.props.match.path}  render={(props) => {return (<IndexSelection {...props} updateIndexList={this.updateIndexList} />); } }/>
+                {/* <Route exact path={creatJobBaseUrl + "/"}  render={(props) => {return (<IndexSelection {...props} updateIndexList={this.updateIndexList} />); } }/> */}
+                <Route path={`${self.props.match.path}/select_mappings`} render={(props) => {return (<MappingSelection {...props} selectedIndexList={self.state.selectedIndexList}/>)}} />
               </Switch>
         </div>
       </Fragment>
