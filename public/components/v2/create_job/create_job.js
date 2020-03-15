@@ -37,6 +37,7 @@ export class CreateJob extends Component {
 
   render() {
     const self = this;
+    console.log(self.props);
     const baseUrl = self.props.baseUrl;
     const creatJobBaseUrl = self.props.location.pathname;
     return (
