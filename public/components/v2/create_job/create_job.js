@@ -43,14 +43,10 @@ export class CreateJob extends Component {
       <Fragment>
         <h2>Create new ML job</h2>
         <div>
-          <CreateJobContext.Provider value={self.contextStore}>
-            <BrowserRouter basename={self.props.baseUrl}>
               <Switch>
                 <Route exact path={creatJobBaseUrl + "/"}  render={(props) => {return (<IndexSelection {...props} updateIndexList={this.updateIndexList} />); } }/>
                 <Route path={creatJobBaseUrl + "/select_mappings"} render={(props) => {return (<MappingSelection {...props} selectedIndexList={self.state.selectedIndexList}/>)}} />
               </Switch>
-            </BrowserRouter>
-          </CreateJobContext.Provider>
         </div>
       </Fragment>
     );
