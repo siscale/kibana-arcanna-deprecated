@@ -35,7 +35,7 @@ import {
 } from '@elastic/eui';
 
 
-export class FeedbackComponent extends React.Component {
+export class RcaFeedback extends React.Component {
 
   constructor(props) {
     super(props);
