@@ -29,7 +29,7 @@ export class CreateJob extends Component {
         previousPage: ''
       },
       mappingSelection: {
-        nextPage: `${self.props.match.path}/job_settings`,
+        nextPage: `${this.props.match.path}/job_settings`,
         previousPage: `${this.props.match.path}`
       },
       jobSettings: {
