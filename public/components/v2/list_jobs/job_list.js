@@ -37,7 +37,7 @@ export class JobList extends React.Component {
   }
 
   static propTypes = {
-    feedbackJobInformation: PropTypes.object
+    updateFeedbackJobDetails: PropTypes.func.isRequired
   }
 
   componentDidMount() {
@@ -131,16 +131,16 @@ export class JobList extends React.Component {
     }
 
     if (jobToReturn !== null) {
-      this.props.feedbackJobInformation.jobInformation = jobToReturn;
-      if (jobToReturn.jobType === "binary") {
-        window.location.href = '#/feedback_binary';
-      } else {
-        window.location.href = '#/feedback';
-      }
-    }
+      this.updateFeedbackJobDetails(jobToReturn);
+      this.props.history.push('feedback');
+      this.componentWillUnmount();
+      // if (jobToReturn.jobType === "binary") {
+      //   // window.location.href = '#/feedback_binary';
 
-    // this.props.feedbackJobInformation.jobInformation = 
-    // window.location.href('#/feedback');
+      // } else {
+
+      // }
+    }
   }
 
   onTrainClick = async (jobId) => {

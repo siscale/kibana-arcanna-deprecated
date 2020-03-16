@@ -16,18 +16,16 @@ import {
   EuiSpacer,
 } from '@elastic/eui';
 // import { ArcannaRouter } from './router';
-import { Switch, BrowserRouter, Route } from 'react-router-dom';
-import {HealthCheck} from './health_check';
-import {JobList} from './list_jobs';
-import {CreateJob} from './create_job';
-
+import {MainContent} from './mainContent';
 
 
 
 export class Main extends Component {
   constructor(props) {
     super(props);
-    
+    this.state= {
+      feedbackItem: 
+    }
   }
 
   render() {
@@ -45,17 +43,7 @@ export class Main extends Component {
             </EuiPageHeaderSection>
           </EuiPageHeader>
           <EuiPageContent panelPaddingSize="s">
-            {/* <ArcannaRouter httpClient={this.props.httpClient}/> */}
-            <BrowserRouter basename={this.props.baseUrl}>
-              <Switch>
-                <Route path="/" component={HealthCheck} exact/>
-                <Route path="/list_jobs" component={JobList}/>
-                <Route path="/create_job" component={
-                  (props) => {
-                    return (<CreateJob {...props} baseUrl={this.props.baseUrl} />)}
-                  }/>
-              </Switch>
-            </BrowserRouter>
+            <MainContent/>         
             <EuiSpacer size="m"/>
           </EuiPageContent>
         </EuiPageBody>
