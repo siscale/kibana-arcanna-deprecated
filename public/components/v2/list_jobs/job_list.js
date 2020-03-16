@@ -131,7 +131,7 @@ export class JobList extends React.Component {
     }
 
     if (jobToReturn !== null) {
-      this.updateFeedbackJobDetails(jobToReturn);
+      this.props.updateFeedbackJobDetails(jobToReturn);
       this.props.history.push('feedback');
       
       // if (jobToReturn.jobType === "binary") {
