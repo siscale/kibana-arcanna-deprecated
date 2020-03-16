@@ -133,7 +133,7 @@ export class JobList extends React.Component {
     if (jobToReturn !== null) {
       this.updateFeedbackJobDetails(jobToReturn);
       this.props.history.push('feedback');
-      this.componentWillUnmount();
+      
       // if (jobToReturn.jobType === "binary") {
       //   // window.location.href = '#/feedback_binary';
 
