@@ -35,7 +35,7 @@ export class Main extends Component {
             </EuiPageHeaderSection>
           </EuiPageHeader>
           <EuiPageContent panelPaddingSize="s">
-            <MainContent/>         
+            <MainContent baseUrl={this.props.baseUrl}/>         
             <EuiSpacer size="m"/>
           </EuiPageContent>
         </EuiPageBody>
