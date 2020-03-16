@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { GenericRequest } from '~services';
 
-import { FeedbackEvent } from './feedbackEvent';
+import { FeedbackEvent } from './feedback_event';
 
 import {
 
