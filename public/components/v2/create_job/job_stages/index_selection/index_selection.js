@@ -30,7 +30,9 @@ export class IndexSelection extends Component {
   }
 
   static propTypes = {
-    updateIndexList: PropTypes.func
+    updateIndexList: PropTypes.func.isRequired,
+    nextPage: PropTypes.string,
+    previousPage: PropTypes.string
   }
 
   setColumnInfo() {
@@ -116,7 +118,9 @@ export class IndexSelection extends Component {
     //   self.props.selectedIndexList.push(element);
     // });
     // self.
-    this.props.history.push('create_job/select_mappings');
+
+    this.props.history.push(this.props.nextPage);
+    // this.props.history.push('create_job/select_mappings');
   }
 
   renderSubmitButton() {

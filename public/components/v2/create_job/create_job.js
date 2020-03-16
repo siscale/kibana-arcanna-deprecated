@@ -12,22 +12,41 @@ import {
   EuiForm
 } from '@elastic/eui';
 
-import { IndexSelection } from './job_stages';
-import { MappingSelection } from './job_stages';
+import { IndexSelection, MappingSelection, JobSettings } from './job_stages';
 
-export const CreateJobContext = React.createContext();
 
 export class CreateJob extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedIndexList: []
+      selectedIndexList: [],
+      indexFieldMappings: {}
     };
+
+    this.pageFlow = {
+      indexSelection: {
+        nextPage: `${this.props.match.path}/select_mappings`,
+        previousPage: ''
+      },
+      mappingSelection: {
+        nextPage: `${self.props.match.path}/job_settings`,
+        previousPage: `${this.props.match.path}`
+      },
+      jobSettings: {
+        nextPage: '',
+        previousPage: `${this.props.match.path}/select_mappings`
+      }
+      
+    }
   }
 
 
   updateIndexList = (newList) => {
     this.setState({selectedIndexList: newList})
+  }
+
+  updateFieldMappings =(newMapping) => {
+    this.setState({indexFieldMappings: newMapping});
   }
 
 
@@ -45,9 +64,13 @@ export class CreateJob extends Component {
         <h2>Create new ML job</h2>
         <div>
               <Switch>
-                <Route exact path={self.props.match.path}  render={(props) => {return (<IndexSelection {...props} updateIndexList={this.updateIndexList} />); } }/>
-                {/* <Route exact path={creatJobBaseUrl + "/"}  render={(props) => {return (<IndexSelection {...props} updateIndexList={this.updateIndexList} />); } }/> */}
-                <Route path={`${self.props.match.path}/select_mappings`} render={(props) => {return (<MappingSelection {...props} selectedIndexList={self.state.selectedIndexList}/>)}} />
+
+                <Route exact path={self.props.match.path}  render={(props) => {return (<IndexSelection {...props} {...self.pageFlow.indexSelection} updateIndexList={this.updateIndexList} nextPage={`${self.props.match.path}/select_mappings`}/>); } }/>
+
+                <Route path={`${self.props.match.path}/select_mappings`} render={(props) => {return (<MappingSelection {...props} {...self.pageFlow.mappingSelection} selectedIndexList={self.state.selectedIndexList} updateFieldMappings={this.updateFieldMappings}/>)}} />
+
+                <Route path={`${self.props.match.path}/job_settings`} render={(props) => {return (<JobSettings {...props} {...self.pageFlow.jobSettings} indexFieldMappings={self.state.indexFieldMappings} />)}} />
+
               </Switch>
         </div>
       </Fragment>
