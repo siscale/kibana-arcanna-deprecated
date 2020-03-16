@@ -30,6 +30,10 @@ export class FeedbackMain extends Component {
 
   componentDidMount() {
     console.log(this.props.jobDetails);
+    if(this.props.jobDetails.jobType === undefined) {
+      this.props.jobDetails.jobType = 'rca';
+    }
+    this.props.history.push(`${this.props.match.path}/${this.props.jobDetails.jobType}`);
   }
 
 
