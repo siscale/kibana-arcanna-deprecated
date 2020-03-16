@@ -177,7 +177,6 @@ export class MappingSelection extends React.Component {
       });
       self.props.updateFieldMappings(indexFieldMappings);
       self.props.history.push(self.props.nextPage);
-      self.componentWillUnmount();
     }
   }
 
