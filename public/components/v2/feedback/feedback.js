@@ -4,6 +4,8 @@ import React, {
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import { RcaFeedback} from './rca_feedback';
+
 import PropTypes from 'prop-types';
 
 export class FeedbackMain extends Component {
@@ -45,7 +47,11 @@ export class FeedbackMain extends Component {
         <div>
               <Switch>
                 <Route exact path={self.props.match.path} component={Fragment}/>
-                <Route path={`${self.props.match.path}/rca`} render={(props) => {return (<h2>RCA</h2>)}}/>
+                <Route path={`${self.props.match.path}/rca`} render={
+                  (props) => {
+                    return (<RcaFeedback/>)
+                  }
+                }/>
                 <Route path={`${self.props.match.path}/binary`} render={(props) => {return (<h2>binary</h2>)}}/>
               </Switch>
         </div>

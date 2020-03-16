@@ -36,17 +36,17 @@ export class CreateJob extends Component {
         nextPage: '',
         previousPage: `${this.props.match.path}/select_mappings`
       }
-      
+
     }
   }
 
 
   updateIndexList = (newList) => {
-    this.setState({selectedIndexList: newList})
+    this.setState({ selectedIndexList: newList })
   }
 
-  updateFieldMappings =(newMapping) => {
-    this.setState({indexFieldMappings: newMapping});
+  updateFieldMappings = (newMapping) => {
+    this.setState({ indexFieldMappings: newMapping });
   }
 
 
@@ -62,15 +62,15 @@ export class CreateJob extends Component {
       <Fragment>
         <h2>Create new ML job</h2>
         <div>
-              <Switch>
+          <Switch>
 
-                <Route exact path={self.props.match.path}  render={(props) => {return (<IndexSelection {...props} {...self.pageFlow.indexSelection} updateIndexList={this.updateIndexList} nextPage={`${self.props.match.path}/select_mappings`}/>); } }/>
+            <Route exact path={self.props.match.path} render={(props) => { return (<IndexSelection {...props} {...self.pageFlow.indexSelection} updateIndexList={this.updateIndexList} />); }} />
 
-                <Route path={`${self.props.match.path}/select_mappings`} render={(props) => {return (<MappingSelection {...props} {...self.pageFlow.mappingSelection} selectedIndexList={self.state.selectedIndexList} updateFieldMappings={this.updateFieldMappings}/>)}} />
+            <Route path={`${self.props.match.path}/select_mappings`} render={(props) => { return (<MappingSelection {...props} {...self.pageFlow.mappingSelection} selectedIndexList={self.state.selectedIndexList} updateFieldMappings={this.updateFieldMappings} />) }} />
 
-                <Route path={`${self.props.match.path}/job_settings`} render={(props) => {return (<JobSettings {...props} {...self.pageFlow.jobSettings} indexFieldMappings={self.state.indexFieldMappings} />)}} />
+            <Route path={`${self.props.match.path}/job_settings`} render={(props) => { return (<JobSettings {...props} {...self.pageFlow.jobSettings} indexFieldMappings={self.state.indexFieldMappings} />) }} />
 
-              </Switch>
+          </Switch>
         </div>
       </Fragment>
     );
