@@ -20,7 +20,7 @@ export class MainContent extends Component {
     }
   }
 
-  updateFeedbackJobDetails(jobDetails) {
+  updateFeedbackJobDetails = (jobDetails) => {
     this.setState({feedbackSelectedJobDetails: jobDetails});
   }
 
