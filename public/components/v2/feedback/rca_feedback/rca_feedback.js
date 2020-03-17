@@ -7,6 +7,8 @@ import { GenericRequest } from '~services';
 
 import { FeedbackEvent } from './feedback_event';
 
+import {Legend} from './legend';
+
 import {
 
   EuiTable,
@@ -31,7 +33,8 @@ import {
   EuiModalHeader,
   EuiModalHeaderTitle,
   EuiModalBody,
-  EuiModalFooter
+  EuiModalFooter,
+  EuiToast
 } from '@elastic/eui';
 
 
@@ -54,7 +57,6 @@ export class RcaFeedback extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.jobDetails);
     this.loadData();
   }
 
@@ -82,14 +84,13 @@ export class RcaFeedback extends React.Component {
       events: this.state.newStates,
       jobId: this.props.jobDetails._id
     };
-    this.setState({submitButtonIsLoading: true});
+    this.setState({ submitButtonIsLoading: true });
 
     const resp = await this.genericRequest.request('give_feedback', 'POST', JSON.stringify(body));
-    if('error' in resp) {
+    if ('error' in resp) {
       console.error(resp.error);
-      this.setState({submitButtonIsLoading: false});
+      this.setState({ submitButtonIsLoading: false });
     } else {
-      window.location.href = '#/feedback_next';
       // this.render();
     }
   }
@@ -108,8 +109,8 @@ export class RcaFeedback extends React.Component {
 
     const incidentData = await self.genericRequest.request('get_incident', 'POST', JSON.stringify(body));
     if ('incident' in incidentData) {
-      if(incidentData.incident.length == 0) {
-        self.setState({isNoFeedbackModalVisible: true});        
+      if (incidentData.incident.length == 0) {
+        self.setState({ isNoFeedbackModalVisible: true });
       }
       self.setState({ events: incidentData.incident });
       const newStates = [];
@@ -124,12 +125,12 @@ export class RcaFeedback extends React.Component {
         newStates: newStates
       });
     } else {
-      self.setState({isNoFeedbackModalVisible: true});
+      self.setState({ isNoFeedbackModalVisible: true });
     }
   }
 
   renderFeedbackBatchTitle() {
-    if(this.state.events.length > 0) {
+    if (this.state.events.length > 0) {
       return (
         <EuiText>
           <h3>Incident ID: <EuiTextColor color="secondary">{this.state.events[0].arcanna.batch_id}</EuiTextColor></h3>
@@ -154,7 +155,7 @@ export class RcaFeedback extends React.Component {
 
   render() {
     let modal;
-    if(this.state.isNoFeedbackModalVisible) {
+    if (this.state.isNoFeedbackModalVisible) {
       modal = (
         <EuiOverlayMask>
           <EuiModal onClose={this.onNoFeedbackModalClose}>
@@ -175,94 +176,7 @@ export class RcaFeedback extends React.Component {
       <Fragment>
         <EuiFlexGroup direction="column">
           <EuiFlexItem>
-            <EuiFlexGroup direction="row" justifyContent="spaceBetween">
-              <EuiFlexItem>
-                <EuiSpacer size="m"/>
-                <EuiFlexGroup gutterSize="s" justifyContent="spaceBetween" alignItems="center">
-                  <EuiFlexGroup direction="column" grow={false} gutterSize="xs" style={{paddingLeft: 30}}>
-                    <EuiFlexItem>
-                      <EuiFlexGroup gutterSize="none" direction="row" >
-                        <EuiFlexItem grow={false} style={{minWidth: 60}}>
-                          <EuiFlexItem style={{zoom: 0.8, "-moz-transform": "scale(0.8)"}}>
-                            <EuiSwitch 
-                              checked={true} 
-                              onChange={()=>{}}
-                            />
-                          </EuiFlexItem>
-                        </EuiFlexItem>
-                        <EuiFlexItem>
-                          <EuiText size="s" color="subdued">
-                            the event represents the <EuiTextColor color="danger"><span style={{fontWeight: "bold"}}>root cause</span></EuiTextColor> of this incident.
-                          </EuiText>
-                        </EuiFlexItem>
-                      </EuiFlexGroup>
-                    </EuiFlexItem>
-                    <EuiFlexItem>
-                      <EuiFlexGroup gutterSize="none" direction="row">
-                        <EuiFlexItem grow={false} style={{minWidth: 60}}>
-                          <EuiFlexItem style={{zoom: 0.8, "-moz-transform": "scale(0.8)"}}>
-                            <EuiSwitch 
-                              checked={false} 
-                              onChange={()=>{}}
-                            />
-                          </EuiFlexItem>
-                        </EuiFlexItem>
-                        <EuiFlexItem>
-                          <EuiText size="s" color="subdued">
-                            the event represents a <EuiTextColor color="warning"><span style={{fontWeight: "bold"}}>symptom</span></EuiTextColor>.
-                          </EuiText>
-                        </EuiFlexItem>
-                      </EuiFlexGroup>
-                    </EuiFlexItem>
-                    <EuiFlexItem> 
-                      <EuiFlexGroup gutterSize="none" direction="row" >
-                        <EuiFlexItem grow={false} style={{ minWidth: 60, paddingLeft:15}}>
-                          <EuiCheckbox
-                            id="legendcheckboxChecked"
-                            checked={true}
-                            onChange={()=>{}}
-                          />
-                        </EuiFlexItem>
-                        <EuiFlexItem>
-                          <EuiText size="s" color="subdued">
-                          the event is <EuiTextColor color="default"><span style={{fontWeight: "bold"}}>relevant</span></EuiTextColor> to this incident.
-                          </EuiText>
-                        </EuiFlexItem>
-                      </EuiFlexGroup>
-                    </EuiFlexItem>
-                    <EuiFlexItem>
-                      <EuiFlexGroup gutterSize="none" direction="row">
-                        <EuiFlexItem grow={false} style={{ minWidth: 60, paddingLeft:15}}>
-                          <EuiCheckbox
-                            id="legendcheckboxUnchecked"
-                            checked={false}
-                            onChange={()=>{}}
-                          />
-                        </EuiFlexItem>
-                        <EuiFlexItem grow={false}>
-                          <EuiText size="s" color="subdued">
-                            the event is <EuiTextColor color="default"><span style={{fontWeight: "bold"}}>irrelevant</span></EuiTextColor> to this incident.
-                          </EuiText>
-                        </EuiFlexItem>
-                      </EuiFlexGroup>
-                    </EuiFlexItem>
-                  </EuiFlexGroup>
-                </EuiFlexGroup>
-              </EuiFlexItem>
-              <EuiFlexItem>
-                <EuiFlexGroup direction="column">
-                  <EuiFlexItem>
-                    <EuiFlexGroup direction="rowReverse">
-                      <EuiFlexItem grow={false} style={{paddingRight:30}}>
-                        <EuiButton fill onClick={this.onSubmit} isLoading={this.submitButtonIsLoading}>
-                          Submit
-                        </EuiButton>
-                      </EuiFlexItem>
-                    </EuiFlexGroup>
-                  </EuiFlexItem>
-                </EuiFlexGroup>
-              </EuiFlexItem>
-            </EuiFlexGroup>
+            <Legend/>
           </EuiFlexItem>
           <EuiFlexItem>
             {this.renderFeedbackBatchTitle()}
@@ -281,33 +195,8 @@ export class RcaFeedback extends React.Component {
             </EuiFlexGrid>
           </EuiFlexItem>
         </EuiFlexGroup>
-
-
-        {/* <EuiFlexGroup  direction="column">
-          <EuiFlexItem>
-            <EuiFlexGroup direction="rowReverse">
-              <EuiFlexItem grow={false} style={{paddingRight:30}}>
-                <EuiButton fill onClick={this.onSubmit} isLoading={this.submitButtonIsLoading}>
-                  Submit
-                </EuiButton>
-              </EuiFlexItem>
-            </EuiFlexGroup>
-          </EuiFlexItem>
-          <EuiFlexItem>
-            <EuiFlexGrid>
-              <EuiFlexItem>
-                <EuiTable>
-                  <EuiTableBody>
-                    {this.renderFeedbackElements()}
-                  </EuiTableBody>
-                </EuiTable>
-              </EuiFlexItem>
-              <EuiFlexItem>
-              </EuiFlexItem>
-            </EuiFlexGrid>
-          </EuiFlexItem>
-        </EuiFlexGroup> */}
         {modal}
+        <EuiToast dismissToast={() => {console.log("AAAA")}} toastLifeTimeMs={2000}/>
       </Fragment>
     );
   }
