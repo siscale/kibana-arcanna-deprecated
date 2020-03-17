@@ -175,7 +175,22 @@ export class RcaFeedback extends React.Component {
       <Fragment>
         <EuiFlexGroup direction="column">
           <EuiFlexItem>
-            <Legend/>
+            <EuiFlexGroup direction="row" justifyContent="spaceBetween">
+              <Legend />
+              <EuiFlexItem>
+                <EuiFlexGroup direction="column">
+                  <EuiFlexItem>
+                    <EuiFlexGroup direction="rowReverse">
+                      <EuiFlexItem grow={false} style={{ paddingRight: 30 }}>
+                        <EuiButton fill onClick={this.onSubmit} isLoading={this.submitButtonIsLoading}>
+                          Submit
+                        </EuiButton>
+                      </EuiFlexItem>
+                    </EuiFlexGroup>
+                  </EuiFlexItem>
+                </EuiFlexGroup>
+              </EuiFlexItem>
+            </EuiFlexGroup>
           </EuiFlexItem>
           <EuiFlexItem>
             {this.renderFeedbackBatchTitle()}
