@@ -49,7 +49,7 @@ export class FeedbackMain extends Component {
                 <Route exact path={self.props.match.path} component={Fragment}/>
                 <Route path={`${self.props.match.path}/rca`} render={
                   (props) => {
-                    return (<RcaFeedback jobDetails={self.props.jobDetails}/>)
+                    return (<RcaFeedback {...props} jobDetails={self.props.jobDetails}/>)
                   }
                 }/>
                 <Route path={`${self.props.match.path}/binary`} render={(props) => {return (<h2>binary</h2>)}}/>
