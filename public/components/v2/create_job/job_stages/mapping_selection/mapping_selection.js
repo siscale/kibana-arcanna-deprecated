@@ -64,7 +64,6 @@ export class MappingSelection extends React.Component {
   componentDidMount() {
     if (this.props.selectedIndexList.length === 0) {
       this.props.history.push(this.props.previousPage);
-      this.componentWillUnmount();
       return;
     }
     this.retrieveData();

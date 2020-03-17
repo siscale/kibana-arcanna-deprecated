@@ -37,19 +37,4 @@ function RootController($scope, $element, $http) {
   });
 }
 
-
-
 chrome.setRootController('arcannaController', RootController);
-
-// import './components/index';
-// import './services/factories';
-// import './controllers/index';
-// import './services/routes';
-
-// setTimeout(() => { window.location.href = '#/'; }, 1000)
-
-
-// import { HomepageController } from './controllers/homepage'
-// import homepageTemplate from './templates/homepage.html';
-// // chrome.setRootController('homepageController', HomepageController);
-// // chrome.setRootTemplate(homepageTemplate);
