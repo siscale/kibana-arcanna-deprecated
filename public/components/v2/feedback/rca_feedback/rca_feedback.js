@@ -85,8 +85,8 @@ export class RcaFeedback extends React.Component {
     };
     console.log(body);
     this.setState({ submitButtonIsLoading: true });
-    const resp={};
-    // const resp = await this.genericRequest.request('give_feedback', 'POST', JSON.stringify(body));
+    // const resp={};
+    const resp = await this.genericRequest.request('give_feedback', 'POST', JSON.stringify(body));
     if ('error' in resp) {
       console.error(resp.error);
       this.setState({ submitButtonIsLoading: false });
