@@ -72,9 +72,9 @@ export class RcaFeedback extends React.Component {
     }
   }
 
-  onNoFeedbackModalClose = async () => {
+  onNoFeedbackModalClose = () => {
     // Go back home
-    self.props.history.push('');
+    this.props.history.push('');
   }
 
   onSubmit = async () => {
