@@ -1,5 +1,5 @@
 
-function Legend(props) {
+export const Legend = (props) => {
   return (
     <EuiFlexGroup direction="row" justifyContent="spaceBetween">
       <EuiFlexItem>
@@ -91,5 +91,3 @@ function Legend(props) {
     </EuiFlexGroup>
   )
 }
-
-export default Legend;
