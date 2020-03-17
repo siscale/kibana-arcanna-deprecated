@@ -83,6 +83,7 @@ export class RcaFeedback extends React.Component {
       events: this.state.newStates,
       jobId: this.props.jobDetails._id
     };
+    console.log(body);
     this.setState({ submitButtonIsLoading: true });
     const resp={};
     // const resp = await this.genericRequest.request('give_feedback', 'POST', JSON.stringify(body));
