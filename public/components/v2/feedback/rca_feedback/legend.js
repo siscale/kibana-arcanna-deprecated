@@ -78,7 +78,7 @@ export const Legend = (props) => {
               <EuiFlexItem grow={false}>
                 <EuiText size="s" color="subdued">
                   the event is <EuiTextColor color="default"><span style={{ fontWeight: "bold" }}>irrelevant</span></EuiTextColor> to this incident.
-                          </EuiText>
+                </EuiText>
               </EuiFlexItem>
             </EuiFlexGroup>
           </EuiFlexItem>
