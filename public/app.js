@@ -4,6 +4,8 @@ import { uiModules } from 'ui/modules';
 import chrome from 'ui/chrome';
 import 'ui/autoload/styles';
 import './less/main.less';
+import routes from 'ui/routes';
+
 import { Main } from './components/v2/main';
 
 // import {Il8nProvider} from '@kbn/i18n/react';
@@ -36,7 +38,19 @@ function RootController($scope, $element, $http) {
   });
 }
 
+
+
 chrome.setRootController('arcannaController', RootController);
+
+routes.enable();
+
+routes
+  .when('/', {
+    controller:'arcannaController'
+  })
+  .otherwise({
+    controller: 'arcannaController'
+  });
 
 // import './components/index';
 // import './services/factories';
