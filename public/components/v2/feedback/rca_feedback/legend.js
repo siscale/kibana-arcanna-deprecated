@@ -1,3 +1,13 @@
+import {
+  EuiFlexGroup,
+  EuiFlexItem,
+  EuiButton,
+  EuiText,
+  EuiTextColor,
+  EuiSwitch,
+  EuiCheckbox,
+  EuiSpacer,
+} from '@elastic/eui';
 
 export const Legend = (props) => {
   return (
