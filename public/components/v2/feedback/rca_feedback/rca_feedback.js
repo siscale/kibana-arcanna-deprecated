@@ -91,7 +91,7 @@ export class RcaFeedback extends React.Component {
       console.error(resp.error);
       this.setState({ submitButtonIsLoading: false });
     } else {
-      this.loadData();
+      await this.loadData();
       this.setState({ submitButtonIsLoading: false });
       // this.render();
     }
