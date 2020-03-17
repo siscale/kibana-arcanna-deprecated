@@ -47,35 +47,19 @@ export class RcaFeedback extends React.Component {
       isNoFeedbackModalVisible: false
     };
     this.genericRequest = new GenericRequest();
-    // this.feedbackStatusMapping = {
-    //   IRRELEVANT: {
-    //     color: 'default',
-    //     checked: false
-    //   },
-    //   SYMPTOM: {
-    //     color: 'warning',
-    //     checked: false
-    //   },
-    //   ROOT_CAUSE: {
-    //     color: 'danger',
-    //     checked: true
-    //   }
-    // }
   }
 
   static propTypes = {
-    feedbackJobInformation: PropTypes.object
+    jobDetails: PropTypes.object
   }
 
   componentDidMount() {
-    if (!('jobInformation' in this.props.feedbackJobInformation)) {
-      window.location.href = '#/list_jobs';
-      return;
-    }
+    console.log(this.props.jobDetails);
     this.loadData();
   }
 
   componentWillUnmount() {
+    this.genericRequest = null;
 
   }
 
@@ -89,13 +73,14 @@ export class RcaFeedback extends React.Component {
   }
 
   onNoFeedbackModalClose = async () => {
-    window.location.href = '#/list_jobs';
+    // Go back home
+    self.props.history.push('');
   }
 
   onSubmit = async () => {
     const body = {
       events: this.state.newStates,
-      jobId: this.props.feedbackJobInformation.jobInformation._id
+      jobId: this.props.jobDetails._id
     };
     this.setState({submitButtonIsLoading: true});
 
@@ -119,7 +104,7 @@ export class RcaFeedback extends React.Component {
     // });
 
     // const body = { indexList: indexList };
-    const body = { jobId: self.props.feedbackJobInformation.jobInformation._id }
+    const body = { jobId: self.props.jobDetails._id }
 
     const incidentData = await self.genericRequest.request('get_incident', 'POST', JSON.stringify(body));
     if ('incident' in incidentData) {
