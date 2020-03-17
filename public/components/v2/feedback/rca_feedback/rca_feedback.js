@@ -7,7 +7,7 @@ import { GenericRequest } from '~services';
 
 import { FeedbackEvent } from './feedback_event';
 
-import {Legend} from './legend';
+import { Legend } from './legend';
 
 import {
 
@@ -33,8 +33,7 @@ import {
   EuiModalHeader,
   EuiModalHeaderTitle,
   EuiModalBody,
-  EuiModalFooter,
-  EuiToast
+  EuiModalFooter
 } from '@elastic/eui';
 
 
@@ -196,7 +195,7 @@ export class RcaFeedback extends React.Component {
           </EuiFlexItem>
         </EuiFlexGroup>
         {modal}
-        <EuiToast dismissToast={() => {console.log("AAAA")}} toastLifeTimeMs={2000}/>
+        {/* <EuiToast dismissToast={() => {console.log("AAAA")}} toastLifeTimeMs={2000}/> */}
       </Fragment>
     );
   }
