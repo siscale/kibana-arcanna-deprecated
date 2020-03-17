@@ -12,6 +12,7 @@ import {
 } from '@elastic/eui';
 // import { ArcannaRouter } from './router';
 import { MainContent } from './mainContent';
+import { HashRouter } from 'react-router-dom';
 
 
 
@@ -22,7 +23,7 @@ export class Main extends Component {
 
   render() {
     return (
-      <BrowserRouter basename={this.props.baseUrl}>
+      <HashRouter basename={this.props.baseUrl}>
         <EuiPage restrictWidth={false}>
           <EuiPageBody restrictWidth={false}>
             <EuiPageHeader>
@@ -41,7 +42,7 @@ export class Main extends Component {
             </EuiPageContent>
           </EuiPageBody>
         </EuiPage>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }
