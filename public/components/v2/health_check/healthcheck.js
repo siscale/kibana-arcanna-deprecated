@@ -64,11 +64,8 @@ export class HealthCheck extends React.Component {
           </Fragment>
           
         )})
-      // TODO will have to remove this
-      this.props.history.push('list_jobs');
       this.componentWillUnmount();
     } else {
-      console.log("i'm here chacha!");
       // window.location.href = '#/list_jobs';
       this.props.history.push('list_jobs');
     }
