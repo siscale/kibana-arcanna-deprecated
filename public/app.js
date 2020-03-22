@@ -5,7 +5,7 @@ import chrome from 'ui/chrome';
 import 'ui/autoload/styles';
 import './less/main.less';
 
-import { Main } from './components/v2/main';
+import { Main } from './components/main';
 
 // import {Il8nProvider} from '@kbn/i18n/react';
 // import {} from '@kbn/i18n/react'
