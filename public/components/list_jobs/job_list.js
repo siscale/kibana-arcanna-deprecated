@@ -3,8 +3,9 @@ import React, { Fragment } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { GenericRequest } from '../../utils/requests';
+import { GenericRequest } from '~services';
 
+import {JobListHeader} from './job_header';
 import { JobEntry } from './job_entry';
 
 import {
@@ -36,7 +37,7 @@ export class JobList extends React.Component {
   }
 
   static propTypes = {
-    feedbackJobInformation: PropTypes.object
+    updateFeedbackJobDetails: PropTypes.func.isRequired
   }
 
   componentDidMount() {
@@ -130,16 +131,16 @@ export class JobList extends React.Component {
     }
 
     if (jobToReturn !== null) {
-      this.props.feedbackJobInformation.jobInformation = jobToReturn;
-      if (jobToReturn.jobType === "binary") {
-        window.location.href = '#/feedback_binary';
-      } else {
-        window.location.href = '#/feedback';
-      }
-    }
+      this.props.updateFeedbackJobDetails(jobToReturn);
+      this.props.history.push('feedback');
+      
+      // if (jobToReturn.jobType === "binary") {
+      //   // window.location.href = '#/feedback_binary';
 
-    // this.props.feedbackJobInformation.jobInformation = 
-    // window.location.href('#/feedback');
+      // } else {
+
+      // }
+    }
   }
 
   onTrainClick = async (jobId) => {
@@ -175,6 +176,8 @@ export class JobList extends React.Component {
   render() {
     return (
       <Fragment>
+        <h2>Job List</h2>
+        <JobListHeader history={this.props.history}/>
         <EuiTable>
           <EuiTableHeader>
             {this.renderHeaderCells()}
