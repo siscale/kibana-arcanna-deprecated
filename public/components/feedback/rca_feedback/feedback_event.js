@@ -3,8 +3,6 @@ import React, { Fragment } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { GenericRequest } from '../../utils/requests';
-
 import {
   EuiTable,
   EuiTableHeader,
@@ -46,7 +44,6 @@ export class FeedbackEvent extends React.Component {
       isSwitchDisabled: false,
       oldSwitchStatus: false
     };
-    this.genericRequest = new GenericRequest();
     // this.feedbackStatusMapping = {
     //   SYMPTOM: {
     //     id: "SYMPTOM",

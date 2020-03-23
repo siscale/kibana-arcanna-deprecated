@@ -37,6 +37,8 @@ export class IndexController {
         createdAt: Date.now(),
         trainingStatus: "NOT_YET_PERFORMED",
         jobStatus: "NOT_STARTED",
+        jobType: jobInfo.jobType,
+        classLabels: jobInfo.classLabels,
         indexData: []
       }
       Object.keys(jobInfo.indexData).forEach((indexName) => {
@@ -61,13 +63,6 @@ export class IndexController {
         body: body,
         refresh: "true"
       });
-      // await self.esClient.index({
-      //   index: self.settings.jobsIndex,
-      //   type: '_doc',
-      //   body: body,
-      //   refresh: "true"
-      // });
-
       // console.log(JSON.stringify(resp));
       const jobId = resp._id.toLowerCase();
       return {
@@ -77,7 +72,7 @@ export class IndexController {
 
     } catch (error) {
       console.error(error);
-      return { error: error };
+      return { error: error.message };
     }
     // } catch(error) {
     //   reply(error);

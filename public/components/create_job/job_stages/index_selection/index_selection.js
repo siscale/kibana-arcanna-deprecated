@@ -1,14 +1,6 @@
 import React, {
-  Component,
+  Component, Fragment,
 } from 'react';
-
-import PropTypes from 'prop-types';
-
-import moment from 'moment';
-
-import { GenericRequest } from '../../utils/requests';
-
-// import { formatDate } from '@elastic/eui/src/services/format';
 
 import {
   EuiInMemoryTable,
@@ -18,8 +10,14 @@ import {
   EuiForm
 } from '@elastic/eui';
 
+import PropTypes from 'prop-types';
 
-export class IndexTable extends Component {
+import moment from 'moment';
+
+import { GenericRequest } from '~services';
+import { EuiText } from '@elastic/eui';
+
+export class IndexSelection extends Component {
   constructor(props) {
     super(props);
     this.genericRequest = new GenericRequest();
@@ -32,7 +30,9 @@ export class IndexTable extends Component {
   }
 
   static propTypes = {
-    selectedIndexList: PropTypes.array
+    updateIndexList: PropTypes.func.isRequired,
+    nextPage: PropTypes.string,
+    previousPage: PropTypes.string
   }
 
   setColumnInfo() {
@@ -90,7 +90,7 @@ export class IndexTable extends Component {
           number_of_shards: obj.settings.index.number_of_shards,
           number_of_replicas: obj.settings.index.number_of_replicas
         });
-      } catch(error) {
+      } catch (error) {
         console.error(error);
       }
     });
@@ -109,20 +109,24 @@ export class IndexTable extends Component {
   };
 
   onClickSubmit(self) {
-    if(self.state.selectedItems.length === 0) {
+    if (self.state.selectedItems.length === 0) {
       return;
     }
-    self.props.selectedIndexList.length = 0;
-    self.state.selectedItems.forEach((element) => {
-      self.props.selectedIndexList.push(element);  
-    });
-    window.location.href = '#/create_job_mappings';
+    self.props.updateIndexList(self.state.selectedItems);
+    // self.props.selectedIndexList.length = 0;
+    // self.state.selectedItems.forEach((element) => {
+    //   self.props.selectedIndexList.push(element);
+    // });
+    // self.
+
+    this.props.history.push(this.props.nextPage);
+    // this.props.history.push('create_job/select_mappings');
   }
 
   renderSubmitButton() {
     const self = this;
     const selection = this.state.selectedItems;
-    if(selection.length === 0) {
+    if (selection.length === 0) {
       return;
     }
 
@@ -160,6 +164,7 @@ export class IndexTable extends Component {
           search={search}
           sorting={true}
         />
+        <h2></h2>
       </EuiForm>
     );
   }
