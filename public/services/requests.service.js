@@ -1,4 +1,3 @@
-
 import chrome from 'ui/chrome';
 
 export class GenericRequest {

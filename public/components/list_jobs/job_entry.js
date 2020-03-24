@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import moment from 'moment';
 
-import { GenericRequest } from '../../utils/requests';
+import { GenericRequest } from '~services';
 
 import {
 
@@ -95,9 +95,23 @@ export class JobEntry extends React.Component {
       }
     };
 
+    this.jobTypes = {
+      rca: {
+        key: 'rca',
+        label: "RCA",
+        color: "warning"
+      },
+      binary: {
+        key: 'rca',
+        label: "BINARY",
+        color: "secondary"
+      }
+    }
+
     this.state = {
       id: '',
       jobName: '',
+      jobType: this.jobTypes.rca,
       createdAt: '',
       jobStatus: '',
       trainingStatus: {
@@ -211,11 +225,21 @@ export class JobEntry extends React.Component {
     deleteFunction: PropTypes.func
   }
 
+  getJobType(jobType) {
+    console.log(jobType);
+    if(Object.keys(this.jobTypes).indexOf(jobType) >= 0) {
+      return this.jobTypes[jobType];
+    } else {
+      return this.jobTypes.rca;
+    }
+  }
+
   componentDidMount() {
     const self = this;
     this.setState({
       id: this.props.jobData._id,
       jobName: self.props.jobData.jobName,
+      jobType: self.getJobType(self.props.jobData.jobType),
       createdAt: moment(Number(self.props.jobData.createdAt)).toISOString(),
       jobStatus: self.getJobStatusMapping(self.props.jobData.jobStatus),
       trainingStatus: self.getTrainingStatusMapping(self.props.jobData.trainingStatus)
@@ -358,6 +382,11 @@ export class JobEntry extends React.Component {
       <EuiTableRow>
           <EuiTableRowCell>
             {this.state.jobName}
+          </EuiTableRowCell>
+          <EuiTableRowCell align="center">
+            <EuiBadge color={this.state.jobType.color}>
+              {this.state.jobType.label}
+            </EuiBadge>
           </EuiTableRowCell>
           <EuiTableRowCell>
             {this.state.createdAt}

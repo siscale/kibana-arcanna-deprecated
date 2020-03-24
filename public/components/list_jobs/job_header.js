@@ -33,7 +33,8 @@ export class JobListHeader extends React.Component {
   }
 
   onClickCreateJob = () => {
-    window.location.href = '#/create_job';
+    this.props.history.push('create_job');
+    // this.componentWillUnmount();
   }
 
 

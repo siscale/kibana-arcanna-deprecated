@@ -20,6 +20,7 @@
   },
   "scripts": {
     "preinstall": "node ../../preinstall_check",
+    "postinstall": "link-module-alias",
     "kbn": "node ../../scripts/kbn",
     "lint": "eslint .",
     "start": "plugin-helpers start",
@@ -46,6 +47,11 @@
     "react2angular": "^4.0.5",
     "elasticsearch": "^15.3.1",
     "expect.js": "^0.3.1",
-    "brace": "^0.11.1"
+    "brace": "^0.11.1",
+    "react-router-dom": "^5.1.2",
+    "link-module-alias": "1.2.0"
+  },
+  "_moduleAliases": {
+    "~services": "public/services"
   }
 }

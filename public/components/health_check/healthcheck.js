@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { GenericRequest } from '../../utils/requests';
+import { GenericRequest } from '~services';
 
 import {
   EuiFlexGroup,
@@ -12,7 +12,13 @@ import {
   EuiTextColor,
   EuiSpacer,
   EuiCodeBlock,
-  EuiCode
+  EuiCode,
+  EuiPage,
+  EuiHeaderSection,
+  EuiHeaderSectionItem,
+  EuiTitle,
+  EuiHeader
+
 } from '@elastic/eui';
 
 import arcannaSettings from './kibana.html';
@@ -20,7 +26,7 @@ import arcannaSettings from './kibana.html';
 import 'brace/mode/yaml';
 
 
-export class HomepageComponent extends React.Component {
+export class HealthCheck extends React.Component {
 
   constructor(props) {
     super(props);
@@ -41,6 +47,7 @@ export class HomepageComponent extends React.Component {
   loadData = async () => {
     const self = this;
     const data = await this.genericRequest.request('tensorflow/health_check', 'GET');
+    
     if('error' in data) {
       self.setState({errorMessage: 
         (
@@ -57,8 +64,10 @@ export class HomepageComponent extends React.Component {
           </Fragment>
           
         )})
+      this.componentWillUnmount();
     } else {
-      window.location.href = '#/list_jobs';
+      // window.location.href = '#/list_jobs';
+      this.props.history.push('list_jobs');
     }
   }
 

@@ -1,10 +1,14 @@
 import React from 'react';
+import { render, unmountComponentAtNode } from 'react-dom';
 import { uiModules } from 'ui/modules';
 import chrome from 'ui/chrome';
 import 'ui/autoload/styles';
 import './less/main.less';
-import {Il8nProvider} from '@kbn/i18n/react';
-import {} from '@kbn/i18n/react'
+
+import { Main } from './components/main';
+
+// import {Il8nProvider} from '@kbn/i18n/react';
+// import {} from '@kbn/i18n/react'
 
 const app = uiModules.get('apps/arcanna');
 
@@ -19,15 +23,18 @@ app.config(stateManagementConfigProvider =>
   stateManagementConfigProvider.disable()
 );
 
-import './components/index';
-import './services/factories';
-import './controllers/index';
-import './services/routes';
 
-setTimeout(() => { window.location.href = '#/'; }, 1000)
+function RootController($scope, $element, $http) {
+  const domNode = $element[0];
 
+  const baseUrl = window.location.pathname;
+  // render react to DOM
+  render(<Main title="Arcanna" httpClient={$http} baseUrl={baseUrl} />, domNode);
 
-import { HomepageController } from './controllers/homepage'
-import homepageTemplate from './templates/homepage.html';
-// chrome.setRootController('homepageController', HomepageController);
-// chrome.setRootTemplate(homepageTemplate);
+  // unmount react on controller destroy
+  $scope.$on('$destroy', () => {
+    unmountComponentAtNode(domNode);
+  });
+}
+
+chrome.setRootController('arcannaController', RootController);

@@ -1,9 +1,9 @@
 
-import React, { Fragment }from 'react';
+import React, { Fragment } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { GenericRequest } from '../../utils/requests';
+import { GenericRequest } from '~services';
 
 // import 'brace/theme/github';
 import 'brace/mode/json';
@@ -36,7 +36,7 @@ import {
 
 import { MappingField } from './mapping_field';
 
-export class IndexMappings extends React.Component {
+export class MappingSelection extends React.Component {
 
   constructor(props) {
     super(props);
@@ -44,7 +44,7 @@ export class IndexMappings extends React.Component {
       indices: {},
       selectedFields: {},
       selectionQueries: {},
-      selectAllChecked:{},
+      selectAllChecked: {},
       nextButtonDisabled: true,
       isFlyoutVisible: false,
       childrenReferences: {}
@@ -54,13 +54,16 @@ export class IndexMappings extends React.Component {
   }
 
   static propTypes = {
-    selectedIndexList: PropTypes.array,
-    indexFieldMappings: PropTypes.object
+    selectedIndexList: PropTypes.array.isRequired,
+    updateFieldMappings: PropTypes.func.isRequired,
+    nextPage: PropTypes.string,
+    previousPage: PropTypes.string
+    // indexFieldMappings: PropTypes.object
   }
 
   componentDidMount() {
-    if(this.props.selectedIndexList.length === 0) {
-      window.location.href = '#/create_job';
+    if (this.props.selectedIndexList.length === 0) {
+      this.props.history.push(this.props.previousPage);
       return;
     }
     this.retrieveData();
@@ -68,26 +71,26 @@ export class IndexMappings extends React.Component {
 
   analyzeMappingField(mappingData, indexName, fieldName, fieldInfo) {
     const self = this;
-    if('type' in fieldInfo) {
-      mappingData[indexName].push({field_name: fieldName, type: fieldInfo.type});
+    if ('type' in fieldInfo) {
+      mappingData[indexName].push({ field_name: fieldName, type: fieldInfo.type });
     }
-    if('properties' in fieldInfo) {
+    if ('properties' in fieldInfo) {
       Object.keys(fieldInfo.properties).forEach((propName) => {
         self.analyzeMappingField(
           mappingData,
-          indexName, 
-          fieldName + '.' + propName, 
+          indexName,
+          fieldName + '.' + propName,
           fieldInfo.properties[propName]
         );
       });
     }
 
-    if('fields' in fieldInfo) {
+    if ('fields' in fieldInfo) {
       Object.keys(fieldInfo.fields).forEach((innerField) => {
         self.analyzeMappingField(
           mappingData,
-          indexName, 
-          fieldName + '.' + innerField, 
+          indexName,
+          fieldName + '.' + innerField,
           fieldInfo.fields[innerField]
         );
       });
@@ -101,18 +104,18 @@ export class IndexMappings extends React.Component {
     let mappingData = {};
     self.props.selectedIndexList.forEach((index) => {
       try {
-        if(index.index_name in indexData) {
+        if (index.index_name in indexData) {
           var currentMapping = indexData[index.index_name].mappings[Object.keys(indexData[index.index_name].mappings)[0]].properties;
           mappingData[index.index_name] = [];
           Object.keys(currentMapping).forEach((fieldName) => {
-            self.analyzeMappingField(mappingData, index.index_name, fieldName ,currentMapping[fieldName])
+            self.analyzeMappingField(mappingData, index.index_name, fieldName, currentMapping[fieldName])
           });
         }
       } catch (error) {
         console.error(error);
       }
     });
-    self.setState({indices: mappingData});
+    self.setState({ indices: mappingData });
     Object.keys(mappingData).forEach((indexName) => {
       self.state.selectAllChecked[indexName] = false;
     });
@@ -120,7 +123,7 @@ export class IndexMappings extends React.Component {
 
   onFieldActivated = (indexName, fieldName, newMappingName, fieldType) => {
     const self = this;
-    if(!(indexName in self.state.selectedFields)) {
+    if (!(indexName in self.state.selectedFields)) {
       self.state.selectedFields[indexName] = {};
     }
     // if(!(fieldName in self.state.selectedFields[indexName])) {
@@ -128,22 +131,22 @@ export class IndexMappings extends React.Component {
       newMappingName: newMappingName,
       fieldType: fieldType
     };
-    self.setState({nextButtonDisabled: false});
+    self.setState({ nextButtonDisabled: false });
     // }
   }
 
   onFieldDeactivated = (indexName, fieldName) => {
     const self = this;
-    if(indexName in self.state.selectedFields) {
-      if(fieldName in self.state.selectedFields[indexName]) {
+    if (indexName in self.state.selectedFields) {
+      if (fieldName in self.state.selectedFields[indexName]) {
         delete self.state.selectedFields[indexName][fieldName];
       }
-      if(Object.keys(self.state.selectedFields[indexName]).length === 0) {
+      if (Object.keys(self.state.selectedFields[indexName]).length === 0) {
         delete self.state.selectedFields[indexName];
       }
     }
-    if(Object.keys(self.state.selectedFields).length === 0) {
-      self.setState({nextButtonDisabled: true});
+    if (Object.keys(self.state.selectedFields).length === 0) {
+      self.setState({ nextButtonDisabled: true });
     }
   }
 
@@ -151,34 +154,33 @@ export class IndexMappings extends React.Component {
     this.state.selectionQueries[indexName] = value;
   }
   onBlurQueryTextarea = () => {
-    this.setState({selectionQueries: this.state.selectionQueries})
+    this.setState({ selectionQueries: this.state.selectionQueries })
   }
 
-  
+
   onClickNextPage = () => {
     const self = this;
-    if(Object.keys(this.state.selectedFields).length > 0) {
+    if (Object.keys(this.state.selectedFields).length > 0) {
       //clear old indexFieldMappings
-      Object.keys(this.props.indexFieldMappings).forEach((indexName) => {
-        delete self.props.indexFieldMappings[indexName];
-      });
 
+      var indexFieldMappings = {};
 
       Object.keys(this.state.selectedFields).forEach((indexName) => {
-        self.props.indexFieldMappings[indexName] = {};
-        self.props.indexFieldMappings[indexName].mappings = self.state.selectedFields[indexName];
-        if(indexName in self.state.selectionQueries) {
-          self.props.indexFieldMappings[indexName].query = self.state.selectionQueries[indexName];
+        indexFieldMappings[indexName] = {};
+        indexFieldMappings[indexName].mappings = self.state.selectedFields[indexName];
+        if (indexName in self.state.selectionQueries) {
+          indexFieldMappings[indexName].query = self.state.selectionQueries[indexName];
         } else {
-          self.props.indexFieldMappings[indexName].query = '';
+          indexFieldMappings[indexName].query = '';
         }
       });
-      window.location.href = "#/create_job_settings"
+      self.props.updateFieldMappings(indexFieldMappings);
+      self.props.history.push(self.props.nextPage);
     }
   }
 
   renderFlyout() {
-    if(this.state.isFlyoutVisible) {
+    if (this.state.isFlyoutVisible) {
       // const exampleQuery1 = require('./example_queries/example1.json');
       const examples = [];
       exampleQueries.forEach((queryJson) => {
@@ -206,11 +208,11 @@ export class IndexMappings extends React.Component {
           <EuiFlyoutBody>
             <EuiText>
               <p>
-                If you wish select only particular documents from the index, you can add a 
-                query that will be applied when retrieving documents. You must respect the 
+                If you wish select only particular documents from the index, you can add a
+                query that will be applied when retrieving documents. You must respect the
                 Elasticsearch query syntax.
               </p>
-              <p>Here are some examples of valid queries:</p> 
+              <p>Here are some examples of valid queries:</p>
               {examples}
             </EuiText>
           </EuiFlyoutBody>
@@ -231,7 +233,7 @@ export class IndexMappings extends React.Component {
 
   onSelectAll = (indexName) => {
     const self = this;
-    if(self.state.selectAllChecked[indexName] === false) {
+    if (self.state.selectAllChecked[indexName] === false) {
       self.state.selectAllChecked[indexName] = true;
     }
     else {
@@ -239,7 +241,7 @@ export class IndexMappings extends React.Component {
     }
     self.state.indices[indexName].forEach((fieldData) => {
       const key = indexName + '.' + fieldData.field_name;
-      self.state.childrenReferences[key].current.forceSwitchChange(self.state.selectAllChecked[indexName]); 
+      self.state.childrenReferences[key].current.forceSwitchChange(self.state.selectAllChecked[indexName]);
     });
   }
 
@@ -253,8 +255,8 @@ export class IndexMappings extends React.Component {
       fieldRenderings.push(
         <EuiFlexGroup>
           <EuiFlexItem>
-            <MappingField 
-              key={key} 
+            <MappingField
+              key={key}
               ref={self.state.childrenReferences[key]}
               fieldName={fieldData.field_name}
               fieldType={fieldData.type}
@@ -273,58 +275,58 @@ export class IndexMappings extends React.Component {
   renderIndices() {
     const self = this;
     const indexRenderings = [];
-    
+
     Object.keys(self.state.indices).forEach((indexName) => {
       const renderAccordionContent = (<EuiText>
-                                        <h3><EuiTextColor color="secondary">{indexName}</EuiTextColor></h3>
-                                      </EuiText>
+        <h3><EuiTextColor color="secondary">{indexName}</EuiTextColor></h3>
+      </EuiText>
       );
       indexRenderings.push(
-            <EuiAccordion 
-              id={indexName}
-              key={'accordion-' +indexName} 
-              initialIsOpen={true}
-              buttonContent={renderAccordionContent}
-              paddingSize="m"
-            >
-            <EuiFlexGroup>
-              <EuiFlexItem grow={false}> 
-                <EuiSwitch
-                  key={'switch-all-' + indexName}
-                  checked={this.state.selectAllChecked[indexName]}
-                  onChange={() => {self.onSelectAll(indexName)}}
-                />
-                <EuiSpacer size="s"/>
-                {self.renderFields(indexName)}
-              </EuiFlexItem>
-              <EuiFlexItem grow={false}>
-                <EuiFlexGroup gutterSize="xs" direction="column">
-                  <EuiFlexItem grow={false}>
-                    <EuiFlexGroup gutterSize="none">
-                      <EuiFlexItem grow={false}>
-                        <EuiButton onClick={this.showFlyout} iconType="questionInCircle">
-                          Help
+        <EuiAccordion
+          id={indexName}
+          key={'accordion-' + indexName}
+          initialIsOpen={true}
+          buttonContent={renderAccordionContent}
+          paddingSize="m"
+        >
+          <EuiFlexGroup>
+            <EuiFlexItem grow={false}>
+              <EuiSwitch
+                key={'switch-all-' + indexName}
+                checked={this.state.selectAllChecked[indexName]}
+                onChange={() => { self.onSelectAll(indexName) }}
+              />
+              <EuiSpacer size="s" />
+              {self.renderFields(indexName)}
+            </EuiFlexItem>
+            <EuiFlexItem grow={false}>
+              <EuiFlexGroup gutterSize="xs" direction="column">
+                <EuiFlexItem grow={false}>
+                  <EuiFlexGroup gutterSize="none">
+                    <EuiFlexItem grow={false}>
+                      <EuiButton onClick={this.showFlyout} iconType="questionInCircle">
+                        Help
                         </EuiButton>
-                      </EuiFlexItem>
-                    </EuiFlexGroup>
-                  </EuiFlexItem>
-                  <EuiFlexItem>
-                    <EuiCodeEditor
-                      mode="json"
-                      key={'textArea-' +indexName} 
-                      value={this.state.selectionQueries[indexName]}
-                      onBlur={this.onBlurQueryTextarea}
-                      onChange={(value) => this.onChangeQueryTextarea(indexName, value) }
-                    />
-                  </EuiFlexItem>
-                </EuiFlexGroup>
-               
-              </EuiFlexItem>
-            </EuiFlexGroup>
+                    </EuiFlexItem>
+                  </EuiFlexGroup>
+                </EuiFlexItem>
+                <EuiFlexItem>
+                  <EuiCodeEditor
+                    mode="json"
+                    key={'textArea-' + indexName}
+                    value={this.state.selectionQueries[indexName]}
+                    onBlur={this.onBlurQueryTextarea}
+                    onChange={(value) => this.onChangeQueryTextarea(indexName, value)}
+                  />
+                </EuiFlexItem>
+              </EuiFlexGroup>
 
-            
-            </EuiAccordion>
-          // <EuiSpacer/>
+            </EuiFlexItem>
+          </EuiFlexGroup>
+
+
+        </EuiAccordion>
+        // <EuiSpacer/>
       )
     });
     return indexRenderings;
@@ -335,11 +337,11 @@ export class IndexMappings extends React.Component {
     return (
       <Fragment>
         <EuiFlexGroup alignItems="flexEnd" direction="column">
-          <EuiFlexItem grow={false} style={{paddingRight: 30}}>
-            <EuiButton 
-              fill 
+          <EuiFlexItem grow={false} style={{ paddingRight: 30 }}>
+            <EuiButton
+              fill
               key="button"
-              isDisabled={this.state.nextButtonDisabled} 
+              isDisabled={this.state.nextButtonDisabled}
               onClick={this.onClickNextPage}
             >
               Next
