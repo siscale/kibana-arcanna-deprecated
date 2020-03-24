@@ -32,13 +32,39 @@ You are now ready to use the Arcanna plugin.
 
 ## Development
 
-See the [kibana contributing guide](https://github.com/elastic/kibana/blob/master/CONTRIBUTING.md) for instructions setting up your development environment. Once you have completed that, use the following yarn scripts.
+
+
+### Kibana setup
+Check the [kibana contributing guide](https://github.com/elastic/kibana/blob/master/CONTRIBUTING.md#setting-up-your-development-environment) for initial setup steps.
+
+#### Extra steps
+
+Once Kibana is setup, find the last commit for the required Kibana version. Check the plugin `package.json` to get the exact kibana version. You can use the [tags](https://github.com/elastic/kibana/tags) to find the proper commit.
+
+```
+git checkout <commit-sha1>
+yarn kbn bootstrap
+```
+
+You can add a [kibana dev config](https://github.com/elastic/kibana/blob/master/CONTRIBUTING.md#customizing-configkibanadevyml) file to kibana to avoid involuntary deletion.
+
+The plugin currently uses the deprecated kibana dev folder structure:
+```
+.
++-- kibana
++-- kibana-extra
+|   +-- kibana-arcanna
+```
+
+
+
+When in the plugin folder, the following commands are available:
 
   - `yarn kbn bootstrap`
 
     Install dependencies and crosslink Kibana and all projects/plugins.
 
-    > ***IMPORTANT:*** Use this script instead of `yarn` to install dependencies when switching branches, and re-run it whenever your dependencies change.
+    > ***IMPORTANT:*** Use this script to install dependencies when switching branches, and re-run it whenever your dependencies change.
 
   - `yarn start`
 
@@ -47,6 +73,10 @@ See the [kibana contributing guide](https://github.com/elastic/kibana/blob/maste
       ```
       yarn start --elasticsearch.url http://localhost:9220
       ```
+    In order to use the dev kibana config use the script with the `--dev` flag:
+    ```
+    yarn start --dev
+    ```
 
   - `yarn build`
 
