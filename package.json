@@ -21,6 +21,7 @@
   "scripts": {
     "preinstall": "node ../../preinstall_check",
     "postinstall": "link-module-alias",
+    "es": "node ../../scripts/es",
     "kbn": "node ../../scripts/kbn",
     "lint": "eslint .",
     "start": "plugin-helpers start",
