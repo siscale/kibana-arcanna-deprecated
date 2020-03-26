@@ -52,10 +52,19 @@ export class FeedbackMain extends Component {
                     return (<RcaFeedback {...props} jobDetails={self.props.jobDetails}/>)
                   }
                 }/>
-                <Route path={`${self.props.match.path}/binary`} render={(props) => {return (<h2>binary</h2>)}}/>
+                <Route path={`${self.props.match.path}/binary`} render={(props) => {
+                    return (
+                          <h2>binary</h2>
+                          <p>Hello arcanna</p>
+                          )
+                        }}
+                />
               </Switch>
         </div>
       </Fragment>
     );
   }
+
+  
+
 }
