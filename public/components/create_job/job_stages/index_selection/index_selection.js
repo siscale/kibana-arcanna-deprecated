@@ -14,7 +14,7 @@ import PropTypes from 'prop-types';
 
 import moment from 'moment';
 
-import { GenericRequest } from '~services';
+import { GenericRequest } from '../../../../services';
 import { EuiText } from '@elastic/eui';
 
 export class IndexSelection extends Component {
