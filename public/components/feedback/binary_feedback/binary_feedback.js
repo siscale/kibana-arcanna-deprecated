@@ -62,6 +62,21 @@ export class BinaryFeedback extends React.Component {
   }
 
   render() {
+    const self = this;
+    console.log(self.props);
+    // const creatJobBaseUrl = self.props.location.pathname;
+    return (
+      <Fragment>
+        <h2>Binary Classification Feeback</h2>
+        <div>
+              <p>YOOOOO</p>
+        </div>
+      </Fragment>
+    );
+  }
+}
+
+  render() {
     
     let modal;
     if(this.state.isNoFeedbackModalVisible) {
