@@ -62,6 +62,7 @@ export class BinaryFeedback extends React.Component {
   }
 
   render() {
+    
     let modal;
     if(this.state.isNoFeedbackModalVisible) {
       modal = (
