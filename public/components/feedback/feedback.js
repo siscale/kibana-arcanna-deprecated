@@ -53,7 +53,7 @@ export class FeedbackMain extends Component {
                   }
                 }/>
                 <Route path={`${self.props.match.path}/binary`} render={(props) => {return (<h2>binary</h2>)}}/>
-                <Route path={`${self.props.match.path}/binary`} render={(props) => {return (<p>Hello, Arcanna!/</p>}}/>
+                <Route path={`${self.props.match.path}/binary`} render={(props) => {return (<p>Hello, Arcanna!/</p>)}}/>
               </Switch>
         </div>
       </Fragment>
