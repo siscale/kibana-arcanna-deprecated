@@ -38,6 +38,11 @@ export class BinaryFeedback extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      events: [],
+      newStates: [],
+      submitButtonIsLoading: false,
+      submitButtonIsDisabled: true,
+      isNoFeedbackModalVisible: false
     };
     this.genericRequest = new GenericRequest();
   }
