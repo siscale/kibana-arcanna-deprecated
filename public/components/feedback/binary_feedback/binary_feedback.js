@@ -50,7 +50,7 @@ export class BinaryFeedback extends React.Component {
   static propTypes = {
     jobDetails: PropTypes.object
   }
-
+  /*
   componentDidMount() {
     this.loadData();
   }
@@ -66,7 +66,7 @@ export class BinaryFeedback extends React.Component {
     this.props.history.push('');
   }
 
-
+*/
   render() {
     
     let modal;
