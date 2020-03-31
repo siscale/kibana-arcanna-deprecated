@@ -19,7 +19,8 @@ import {
   EuiPanel,
   EuiSpacer,
   EuiSuperSelect,
-  EuiText
+  EuiText,
+  EuiButtonGroup
 } from '@elastic/eui';
 
 
@@ -52,6 +53,16 @@ export class JobSettings extends React.Component {
           errorMsg: (<span>The class label should be composed of alphanumerical characters or '_'.</span>)
         }
       },
+      toggleButtons: [
+          {
+            id: "0",
+            label: "No"
+          },
+          {
+            id: "1",
+            label: "Yes"
+          }
+      ],
       submitButtonDisabled: true,
       submitButtonIsLoading: false,
       files: {}
