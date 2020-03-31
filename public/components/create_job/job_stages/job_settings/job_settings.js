@@ -284,13 +284,14 @@ export class JobSettings extends React.Component {
       <Fragment>
         <EuiSpacer />
         <EuiFlexGroup direction="rowReverse">
-           Do you want to create a separate ARCANNA index?
-            <EuiButtonGroup
-                legend={this.state.toggleButtons.legend}
-                options={this.state.toggleButtons}
-                idSelected={this.state.toggleButtons.id}
-                onChange={this.onChange}
-              />
+            <EuiFlexItem> Do you want to create a separate ARCANNA index?
+                <EuiButtonGroup
+                    legend={this.state.toggleButtons.legend}
+                    options={this.state.toggleButtons}
+                    idSelected={this.state.toggleButtons.id}
+                    onChange={this.onChange}
+                  />
+                </EuiFlexItem>
             <EuiFlexItem grow={false} style={{ paddingRight: 30 }}>
             <EuiButton
               fill
