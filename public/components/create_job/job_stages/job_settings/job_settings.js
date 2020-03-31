@@ -339,7 +339,8 @@ export class JobSettings extends React.Component {
             </EuiForm>
           </EuiFlexItem>
         </EuiFlexGroup>
-        <EuiFlexItem grow={false} style={{ paddingLeft: 30}}> 
+       <EuiFlexGroup>
+       <EuiFlexItem grow={false} style={{ paddingLeft: 30}}> 
                 <p>Do you want to create a separate ARCANNA index?</p>
                 <br />
                 <EuiButtonGroup
@@ -349,6 +350,7 @@ export class JobSettings extends React.Component {
                     onChange={this.onChange}
                   />
             </EuiFlexItem>
+       </EuiFlexGroup>
       </Fragment>
     );
   }
