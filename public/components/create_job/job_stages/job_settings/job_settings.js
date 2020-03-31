@@ -285,9 +285,9 @@ export class JobSettings extends React.Component {
         <EuiSpacer />
         <EuiFlexGroup direction="rowReverse">
             <EuiButtonGroup
-                legend={legend}
-                options={this.toggleButtons}
-                idSelected={this.state.toggleIdSelected}
+                legend={this.state.toggleButtons.legend}
+                options={this.state.toggleButtons}
+                idSelected={this.state.toggleButtons.id}
                 onChange={this.onChange}
               />
             <EuiFlexItem grow={false} style={{ paddingRight: 30 }}>
