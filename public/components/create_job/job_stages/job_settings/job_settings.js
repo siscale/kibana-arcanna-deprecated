@@ -285,12 +285,7 @@ export class JobSettings extends React.Component {
         <EuiSpacer />
         <EuiFlexGroup direction="rowReverse">
             <EuiFlexItem grow={false} style={{ paddingRight: 30}}> 
-                <EuiForm>
-                    <EuiFormRow
-                      label="Do you wan to create a separate ARCANNA index?"
-                    >
-                    </EuiFormRow>
-                </EuiForm>
+                <p>Do you want to create a separate ARCANNA index?</p>
                 <EuiButtonGroup
                     legend={this.state.toggleButtons.legend}
                     options={this.state.toggleButtons}
