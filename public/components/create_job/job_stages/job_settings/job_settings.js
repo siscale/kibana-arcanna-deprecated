@@ -254,21 +254,8 @@ export class JobSettings extends React.Component {
     this.checkIfCanSubmit();
   }
 
-  onChangeToggle = value => {
-
-    const valueOk = true;
-
-    this.setState({
-      value: value
-
-    });
-     
-    if ( valueOk == true ) {
-      console.log(this.state.toggleButtons.id);
-    }
-    else {
-      console.log("Error");
-    }
+  buttonValue(id) {
+    console.log(id);
   }
 
   renderClassLabelingForm() {
@@ -363,7 +350,7 @@ export class JobSettings extends React.Component {
                     legend={this.state.toggleButtons.legend}
                     options={this.state.toggleButtons}
                     idSelected={this.state.toggleButtons.id}
-                    onChange={this.onChangeToggle}
+                    onChange={this.buttonValue.bind(this.state.toggleButtons.id)}
                   />
             </EuiFlexItem>
        </EuiFlexGroup>
