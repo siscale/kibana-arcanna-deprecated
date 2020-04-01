@@ -270,10 +270,10 @@ export class JobSettings extends React.Component {
     */
     console.log(id);
     if( id == 0) {
-      this.state.createNewIndex = false;
+      this.state.resultsInNewIndex = false;
     }
     else {
-      this.state.createNewIndex = true;
+      this.state.resultsInNewIndex = true;
     }
   }
 
