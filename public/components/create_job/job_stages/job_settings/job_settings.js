@@ -171,7 +171,8 @@ export class JobSettings extends React.Component {
       jobName: this.state.jobName,
       jobType: this.state.chosenJobType,
       classLabels: this.state.classLabels,
-      indexData: this.props.indexFieldMappings
+      indexData: this.props.indexFieldMappings,
+      resultsNewIndex: this.createNewIndex
       // model: fileContent
     };
 
@@ -254,8 +255,9 @@ export class JobSettings extends React.Component {
     this.checkIfCanSubmit();
   }
 
-  buttonValue(id) {
-    console.log(id);
+  crateNewIndex(id) {
+      console.log(id);
+      return id;
   }
 
   renderClassLabelingForm() {
@@ -350,7 +352,7 @@ export class JobSettings extends React.Component {
                     legend={this.state.toggleButtons.legend}
                     options={this.state.toggleButtons}
                     idSelected={this.state.toggleButtons.id}
-                    onChange={this.buttonValue.bind(this.state.toggleButtons.id)}
+                    onChange={this.createNewIndex.bind(this.state.toggleButtons.id)}
                   />
             </EuiFlexItem>
        </EuiFlexGroup>

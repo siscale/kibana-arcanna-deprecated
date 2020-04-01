@@ -39,6 +39,7 @@ export class IndexController {
         jobStatus: "NOT_STARTED",
         jobType: jobInfo.jobType,
         classLabels: jobInfo.classLabels,
+        resultNewIndex: jobInfo.resultNewIndex,
         indexData: []
       }
       Object.keys(jobInfo.indexData).forEach((indexName) => {
