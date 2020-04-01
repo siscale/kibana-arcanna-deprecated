@@ -65,7 +65,8 @@ export class JobSettings extends React.Component {
       ],
       submitButtonDisabled: true,
       submitButtonIsLoading: false,
-      files: {}
+      files: {},
+      resultsInNewIndex: false
     };
 
     this.jobTypeProperties = {
@@ -172,7 +173,7 @@ export class JobSettings extends React.Component {
       jobType: this.state.chosenJobType,
       classLabels: this.state.classLabels,
       indexData: this.props.indexFieldMappings,
-      resultsInNewIndex: this.createNewIndex
+      resultsInNewIndex: this.state.resultsInNewIndex
       // model: fileContent
     };
 
@@ -262,10 +263,18 @@ export class JobSettings extends React.Component {
   */
 
   createNewIndex = id => {
+    /*
     this.setState({
       resultsInNewIndex: id
     });
+    */
     console.log(id);
+    if( id == 0) {
+      this.state.createNewIndex = false;
+    }
+    else {
+      this.state.createNewIndex = true;
+    }
   }
 
   renderClassLabelingForm() {
