@@ -350,7 +350,7 @@ export class JobSettings extends React.Component {
                     legend={this.state.toggleButtons.legend}
                     options={this.state.toggleButtons}
                     idSelected={this.state.toggleButtons.id}
-                    onChange={this.onChange}
+                    onChange={this.onChangeToggle}
                   />
             </EuiFlexItem>
        </EuiFlexGroup>
