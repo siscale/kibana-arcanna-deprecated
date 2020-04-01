@@ -255,15 +255,15 @@ export class JobSettings extends React.Component {
   }
 
   onChangeToggle = value => {
-    
-    let value = true;
+
+    let valueOk = true;
 
     this.setValue {
       value: value
 
     }
      
-    if ( value == true ) {
+    if ( valueOk == true ) {
       console.log(this.state.toggleButtons.id);
     }
     else {
