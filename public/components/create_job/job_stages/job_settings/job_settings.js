@@ -344,7 +344,7 @@ export class JobSettings extends React.Component {
         </EuiFlexGroup>
        <EuiFlexGroup>
        <EuiFlexItem grow={false} style={{ paddingLeft: 30}}> 
-                <p>Do you want to create a separate ARCANNA index?</p>
+                <p>Do you want to create a separate ARCANNA index for the results?</p>
                 <br />
                 <EuiButtonGroup color="danger"
                     legend={this.state.toggleButtons.legend}
