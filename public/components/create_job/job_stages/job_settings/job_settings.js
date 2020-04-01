@@ -256,12 +256,12 @@ export class JobSettings extends React.Component {
 
   onChangeToggle = value => {
 
-    let valueOk = true;
+    const valueOk = true;
 
-    this.setValue {
+    this.setValue({
       value: value
 
-    }
+    });
      
     if ( valueOk == true ) {
       console.log(this.state.toggleButtons.id);
