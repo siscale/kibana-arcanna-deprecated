@@ -258,7 +258,7 @@ export class JobSettings extends React.Component {
 
     const valueOk = true;
 
-    this.setValue({
+    this.setState({
       value: value
 
     });
