@@ -172,7 +172,7 @@ export class JobSettings extends React.Component {
       jobType: this.state.chosenJobType,
       classLabels: this.state.classLabels,
       indexData: this.props.indexFieldMappings,
-      resultsNewIndex: this.createNewIndex
+      resultsInNewIndex: this.createNewIndex
       // model: fileContent
     };
 
@@ -255,9 +255,17 @@ export class JobSettings extends React.Component {
     this.checkIfCanSubmit();
   }
 
+  /*
   crateNewIndex(id) {
       console.log(id);
-      
+  }
+  */
+
+  createNewIndex = id => {
+    this.setState({
+      resultsInNewIndex: id
+    });
+    console.log(id);
   }
 
   renderClassLabelingForm() {
