@@ -257,7 +257,7 @@ export class JobSettings extends React.Component {
 
   crateNewIndex(id) {
       console.log(id);
-      return id;
+      
   }
 
   renderClassLabelingForm() {
