@@ -254,9 +254,21 @@ export class JobSettings extends React.Component {
     this.checkIfCanSubmit();
   }
 
-  onChangeToggle = e => {
-    var button_value = this.state.toggleButtons.id 
-    console.log(button_value)
+  onChangeToggle = value => {
+    
+    let value = true;
+
+    this.setValue {
+      value: value
+
+    }
+     
+    if ( value == true ) {
+      console.log(this.state.toggleButtons.id);
+    }
+    else {
+      console.log("Error");
+    }
   }
 
   renderClassLabelingForm() {
