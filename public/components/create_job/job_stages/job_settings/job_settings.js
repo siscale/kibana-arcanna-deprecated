@@ -254,7 +254,8 @@ export class JobSettings extends React.Component {
     this.checkIfCanSubmit();
   }
 
-  onChangeToggle = e => this.state.toggleButtons.id {
+  onChangeToggle = e => {
+    e.this.state.toggleButtons.id 
     console.log(e)
   }
 
