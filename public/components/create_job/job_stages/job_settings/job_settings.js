@@ -256,19 +256,10 @@ export class JobSettings extends React.Component {
     this.checkIfCanSubmit();
   }
 
-  /*
-  crateNewIndex(id) {
-      console.log(id);
-  }
-  */
-
+  
   createNewIndex = id => {
-    /*
-    this.setState({
-      resultsInNewIndex: id
-    });
-    */
-    console.log(id);
+    
+    //console.log(id);
     if( id == 0) {
       this.state.resultsInNewIndex = false;
     }
