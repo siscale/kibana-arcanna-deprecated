@@ -255,8 +255,8 @@ export class JobSettings extends React.Component {
   }
 
   onChangeToggle = e => {
-    e.this.state.toggleButtons.id 
-    console.log(e)
+    var button_value = this.state.toggleButtons.id 
+    console.log(button_value)
   }
 
   renderClassLabelingForm() {
