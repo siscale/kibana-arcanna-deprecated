@@ -19,7 +19,8 @@ import {
   EuiPanel,
   EuiSpacer,
   EuiSuperSelect,
-  EuiText
+  EuiText,
+  EuiButtonGroup
 } from '@elastic/eui';
 
 
@@ -52,9 +53,20 @@ export class JobSettings extends React.Component {
           errorMsg: (<span>The class label should be composed of alphanumerical characters or '_'.</span>)
         }
       },
+      toggleButtons: [
+          {
+            id: "0",
+            label: "No"
+          },
+          {
+            id: "1",
+            label: "Yes"
+          }
+      ],
       submitButtonDisabled: true,
       submitButtonIsLoading: false,
-      files: {}
+      files: {},
+      resultsInNewIndex: false
     };
 
     this.jobTypeProperties = {
@@ -160,7 +172,8 @@ export class JobSettings extends React.Component {
       jobName: this.state.jobName,
       jobType: this.state.chosenJobType,
       classLabels: this.state.classLabels,
-      indexData: this.props.indexFieldMappings
+      indexData: this.props.indexFieldMappings,
+      resultsInNewIndex: this.state.resultsInNewIndex
       // model: fileContent
     };
 
@@ -243,6 +256,17 @@ export class JobSettings extends React.Component {
     this.checkIfCanSubmit();
   }
 
+  
+  createNewIndex = id => {
+    
+    //console.log(id);
+    if( id == 0) {
+      this.state.resultsInNewIndex = false;
+    }
+    else {
+      this.state.resultsInNewIndex = true;
+    }
+  }
 
   renderClassLabelingForm() {
     const self = this;
@@ -273,7 +297,7 @@ export class JobSettings extends React.Component {
       <Fragment>
         <EuiSpacer />
         <EuiFlexGroup direction="rowReverse">
-          <EuiFlexItem grow={false} style={{ paddingRight: 30 }}>
+            <EuiFlexItem grow={false} style={{ paddingRight: 30 }}>
             <EuiButton
               fill
               isDisabled={this.state.submitButtonDisabled}
@@ -328,6 +352,18 @@ export class JobSettings extends React.Component {
             </EuiForm>
           </EuiFlexItem>
         </EuiFlexGroup>
+       <EuiFlexGroup>
+       <EuiFlexItem grow={false} style={{ paddingLeft: 30}}> 
+                <p>Do you want to create a separate ARCANNA index for the results?</p>
+                <br />
+                <EuiButtonGroup color="danger"
+                    legend={this.state.toggleButtons.legend}
+                    options={this.state.toggleButtons}
+                    idSelected={this.state.toggleButtons.id}
+                    onChange={this.createNewIndex.bind(this.state.toggleButtons.id)}
+                  />
+            </EuiFlexItem>
+       </EuiFlexGroup>
       </Fragment>
     );
   }

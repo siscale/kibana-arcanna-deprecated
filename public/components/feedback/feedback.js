@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { RcaFeedback} from './rca_feedback';
 
 import PropTypes from 'prop-types';
+import { BinaryFeedback } from './binary_feedback/binary_feedback';
 
 export class FeedbackMain extends Component {
   constructor(props) {
@@ -52,10 +53,17 @@ export class FeedbackMain extends Component {
                     return (<RcaFeedback {...props} jobDetails={self.props.jobDetails}/>)
                   }
                 }/>
-                <Route path={`${self.props.match.path}/binary`} render={(props) => {return (<h2>binary</h2>)}}/>
+                <Route path={`${self.props.match.path}/binary`} render={
+                  (props) => {
+                    //return (<h2>binary</h2>)}}/>
+                    return (<BinaryFeedback {...props} jobDetails={self.props.jobDetails}/>)}
+                    }/>
               </Switch>
         </div>
       </Fragment>
     );
   }
+
+  
+
 }

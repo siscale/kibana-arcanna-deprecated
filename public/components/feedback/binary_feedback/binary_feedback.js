@@ -38,6 +38,11 @@ export class BinaryFeedback extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      events: [],
+      newStates: [],
+      submitButtonIsLoading: false,
+      submitButtonIsDisabled: true,
+      isNoFeedbackModalVisible: false
     };
     this.genericRequest = new GenericRequest();
   }
@@ -45,7 +50,7 @@ export class BinaryFeedback extends React.Component {
   static propTypes = {
     jobDetails: PropTypes.object
   }
-
+  /*
   componentDidMount() {
     this.loadData();
   }
@@ -61,7 +66,9 @@ export class BinaryFeedback extends React.Component {
     this.props.history.push('');
   }
 
+*/
   render() {
+    
     let modal;
     if(this.state.isNoFeedbackModalVisible) {
       modal = (
