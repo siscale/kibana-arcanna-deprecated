@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { GenericRequest } from '~services';
+import { GenericRequest } from '../../../../services';
 
 import {
   EuiAccordion,
